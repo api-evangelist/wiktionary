@@ -1,0 +1,32 @@
+aid: wiktionary
+name: Wiktionary
+description: "Collaborative dictionary data"
+url: https://en.wiktionary.org/w/api.php
+specificationVersion: '0.20'
+created: '2026-05-28'
+modified: '2026-05-28'
+x-source: public-apis/public-apis
+x-category: "Dictionaries"
+x-tier: 3
+x-tier-reason: bulk-registered-from-public-apis
+tags:
+  - Dictionaries
+  - Public APIs
+apis:
+  - name: Wiktionary
+    description: "Collaborative dictionary data"
+    humanURL: https://en.wiktionary.org/w/api.php
+    baseURL: https://en.wiktionary.org/w/api.php
+    tags:
+      - Dictionaries
+    properties:
+      - type: Documentation
+        url: https://en.wiktionary.org/w/api.php
+common:
+  - type: Website
+    url: https://en.wiktionary.org/w/api.php
+  - type: PublicAPIsListing
+    url: https://github.com/public-apis/public-apis
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
