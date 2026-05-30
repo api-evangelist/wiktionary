@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wiktionary/refs/heads/main/json-structure/rest-api-page-summary-structure.json",
+  "description": "Short structured summary of a page.",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "example": "standard"
+    },
+    "title": {
+      "type": "string",
+      "example": "hello"
+    },
+    "displaytitle": {
+      "type": "string",
+      "example": "hello"
+    },
+    "pageid": {
+      "type": "int32",
+      "example": 12345
+    },
+    "extract": {
+      "type": "string",
+      "description": "Plain-text extract.",
+      "example": "A standard greeting; an expression of puzzlement."
+    },
+    "extract_html": {
+      "type": "string",
+      "description": "HTML extract.",
+      "example": "<p>A standard greeting.</p>"
+    },
+    "content_urls": {
+      "type": "object",
+      "properties": {
+        "desktop": {
+          "type": "object",
+          "properties": {
+            "page": {
+              "type": "uri",
+              "example": "https://en.wiktionary.org/wiki/hello"
+            }
+          }
+        },
+        "mobile": {
+          "type": "object",
+          "properties": {
+            "page": {
+              "type": "uri",
+              "example": "https://en.m.wiktionary.org/wiki/hello"
+            }
+          }
+        }
+      },
+      "name": "ContentUrls"
+    },
+    "timestamp": {
+      "type": "datetime",
+      "example": "2025-03-15T14:30:00Z"
+    }
+  },
+  "name": "PageSummary"
+}

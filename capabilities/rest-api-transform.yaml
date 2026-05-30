@@ -1,0 +1,197 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Wiktionary Wikimedia REST API — Transform
+  description: 'Wikimedia REST API — Transform. 3 operations. Lead operation: Wiktionary Transform Wikitext to HTML. Self-contained Naftiko capability covering one Wiktionary business surface.'
+  tags:
+  - Wiktionary
+  - Wikimedia REST API
+  - Transform
+  created: '2026-05-30'
+  modified: '2026-05-30'
+binds:
+- namespace: env
+  keys:
+    WIKTIONARY_WIKIMEDIA_TOKEN: WIKTIONARY_WIKIMEDIA_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: rest-api-transform
+    baseUri: https://en.wiktionary.org/api/rest_v1
+    description: Wiktionary Wikimedia REST API — Transform business capability. Self-contained, no shared references.
+    authentication:
+      type: bearer
+      token: '{{env.WIKTIONARY_WIKIMEDIA_TOKEN}}'
+    resources:
+    - name: transform-wikitext-to-html-title
+      path: /transform/wikitext/to/html/{title}
+      operations:
+      - name: transformWikitextToHtml
+        method: POST
+        description: Wiktionary Transform Wikitext to HTML
+        inputParameters:
+        - name: title
+          in: path
+          type: string
+          required: true
+          description: URL-encoded page title context.
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Wikitext payload to transform.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: transform-html-to-wikitext-title-revision
+      path: /transform/html/to/wikitext/{title}/{revision}
+      operations:
+      - name: transformHtmlToWikitext
+        method: POST
+        description: Wiktionary Transform HTML to Wikitext
+        inputParameters:
+        - name: title
+          in: path
+          type: string
+          required: true
+          description: URL-encoded page title.
+        - name: revision
+          in: path
+          type: string
+          required: true
+          description: Revision id to anchor the round-trip against.
+        - name: If-Match
+          in: header
+          type: string
+          required: true
+          description: ETag from the corresponding /page/html call.
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: HTML payload to transform back to wikitext.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: transform-wikitext-to-lint-title
+      path: /transform/wikitext/to/lint/{title}
+      operations:
+      - name: transformWikitextToLint
+        method: POST
+        description: Wiktionary Transform Wikitext to Lint
+        inputParameters:
+        - name: title
+          in: path
+          type: string
+          required: true
+          description: URL-encoded page title context.
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Wikitext payload to lint.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: rest-api-transform-rest
+    port: 8080
+    description: REST adapter for Wiktionary Wikimedia REST API — Transform. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/transform/wikitext/to/html/{title}
+      name: transform-wikitext-to-html-title
+      description: REST surface for Wiktionary Transform Wikitext to HTML.
+      operations:
+      - method: POST
+        name: transformWikitextToHtml
+        description: Wiktionary Transform Wikitext to HTML
+        call: rest-api-transform.transformWikitextToHtml
+        with:
+          title: rest.title
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/transform/html/to/wikitext/{title}/{revision}
+      name: transform-html-to-wikitext-title-revision
+      description: REST surface for Wiktionary Transform HTML to Wikitext.
+      operations:
+      - method: POST
+        name: transformHtmlToWikitext
+        description: Wiktionary Transform HTML to Wikitext
+        call: rest-api-transform.transformHtmlToWikitext
+        with:
+          title: rest.title
+          revision: rest.revision
+          If-Match: rest.If-Match
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/transform/wikitext/to/lint/{title}
+      name: transform-wikitext-to-lint-title
+      description: REST surface for Wiktionary Transform Wikitext to Lint.
+      operations:
+      - method: POST
+        name: transformWikitextToLint
+        description: Wiktionary Transform Wikitext to Lint
+        call: rest-api-transform.transformWikitextToLint
+        with:
+          title: rest.title
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rest-api-transform-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Wiktionary Wikimedia REST API — Transform. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: transform-wikitext-html
+      description: Wiktionary Transform Wikitext to HTML
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: rest-api-transform.transformWikitextToHtml
+      with:
+        title: tools.title
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: transform-html-wikitext
+      description: Wiktionary Transform HTML to Wikitext
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: rest-api-transform.transformHtmlToWikitext
+      with:
+        title: tools.title
+        revision: tools.revision
+        If-Match: tools.If-Match
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: transform-wikitext-lint
+      description: Wiktionary Transform Wikitext to Lint
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: rest-api-transform.transformWikitextToLint
+      with:
+        title: tools.title
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

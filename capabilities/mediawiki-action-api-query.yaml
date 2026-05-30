@@ -1,0 +1,302 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Wiktionary MediaWiki Action API — Query
+  description: 'MediaWiki Action API — Query. 4 operations. Lead operation: Wiktionary Query Action. Self-contained Naftiko capability covering one Wiktionary business surface.'
+  tags:
+  - Wiktionary
+  - MediaWiki Action API
+  - Query
+  created: '2026-05-30'
+  modified: '2026-05-30'
+binds:
+- namespace: env
+  keys:
+    WIKTIONARY_MEDIAWIKI_TOKEN: WIKTIONARY_MEDIAWIKI_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: mediawiki-action-api-query
+    baseUri: https://en.wiktionary.org/w
+    description: Wiktionary MediaWiki Action API — Query business capability. Self-contained, no shared references.
+    authentication:
+      type: bearer
+      token: '{{env.WIKTIONARY_MEDIAWIKI_TOKEN}}'
+    resources:
+    - name: api-php
+      path: /api.php
+      operations:
+      - name: queryAction
+        method: GET
+        description: Wiktionary Query Action
+        inputParameters:
+        - name: titles
+          in: query
+          type: string
+          required: false
+          description: Pipe-separated list of page titles (max 50 per request).
+        - name: prop
+          in: query
+          type: string
+          required: false
+          description: Properties to fetch (e.g. wikitext, extracts, revisions, links).
+        - name: list
+          in: query
+          type: string
+          required: false
+          description: Lists to fetch (e.g. search, allpages, recentchanges).
+        - name: meta
+          in: query
+          type: string
+          required: false
+          description: Meta information (e.g. siteinfo, tokens, userinfo).
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-php-query-wikitext
+      path: /api.php#query-wikitext
+      operations:
+      - name: queryWikitext
+        method: GET
+        description: Wiktionary Query Wikitext
+        inputParameters:
+        - name: action
+          in: query
+          type: string
+          required: true
+          description: Must be `query`.
+        - name: prop
+          in: query
+          type: string
+          required: true
+          description: Must be `revisions`.
+        - name: rvprop
+          in: query
+          type: string
+          required: true
+          description: Revision properties to fetch (use `content` for wikitext).
+        - name: titles
+          in: query
+          type: string
+          required: true
+          description: Pipe-separated page titles.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-php-query-extracts
+      path: /api.php#query-extracts
+      operations:
+      - name: queryExtracts
+        method: GET
+        description: Wiktionary Query Extracts
+        inputParameters:
+        - name: action
+          in: query
+          type: string
+          required: true
+          description: Must be `query`.
+        - name: prop
+          in: query
+          type: string
+          required: true
+          description: Must be `extracts`.
+        - name: titles
+          in: query
+          type: string
+          required: true
+          description: Pipe-separated page titles.
+        - name: exintro
+          in: query
+          type: boolean
+          required: false
+          description: Return only the lead section.
+        - name: explaintext
+          in: query
+          type: boolean
+          required: false
+          description: Return plain text instead of limited HTML.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-php-query-search
+      path: /api.php#query-search
+      operations:
+      - name: querySearch
+        method: GET
+        description: Wiktionary Query Search
+        inputParameters:
+        - name: action
+          in: query
+          type: string
+          required: true
+          description: Must be `query`.
+        - name: list
+          in: query
+          type: string
+          required: true
+          description: Must be `search`.
+        - name: srsearch
+          in: query
+          type: string
+          required: true
+          description: Search query string.
+        - name: srlimit
+          in: query
+          type: integer
+          required: false
+          description: Number of results to return (max 500).
+        - name: sroffset
+          in: query
+          type: integer
+          required: false
+          description: Offset into the result set for paging.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: mediawiki-action-api-query-rest
+    port: 8080
+    description: REST adapter for Wiktionary MediaWiki Action API — Query. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/api-php
+      name: api-php
+      description: REST surface for Wiktionary Query Action.
+      operations:
+      - method: GET
+        name: queryAction
+        description: Wiktionary Query Action
+        call: mediawiki-action-api-query.queryAction
+        with:
+          titles: rest.titles
+          prop: rest.prop
+          list: rest.list
+          meta: rest.meta
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api-php-query-wikitext
+      name: api-php-query-wikitext
+      description: REST surface for Wiktionary Query Wikitext.
+      operations:
+      - method: GET
+        name: queryWikitext
+        description: Wiktionary Query Wikitext
+        call: mediawiki-action-api-query.queryWikitext
+        with:
+          action: rest.action
+          prop: rest.prop
+          rvprop: rest.rvprop
+          titles: rest.titles
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api-php-query-extracts
+      name: api-php-query-extracts
+      description: REST surface for Wiktionary Query Extracts.
+      operations:
+      - method: GET
+        name: queryExtracts
+        description: Wiktionary Query Extracts
+        call: mediawiki-action-api-query.queryExtracts
+        with:
+          action: rest.action
+          prop: rest.prop
+          titles: rest.titles
+          exintro: rest.exintro
+          explaintext: rest.explaintext
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api-php-query-search
+      name: api-php-query-search
+      description: REST surface for Wiktionary Query Search.
+      operations:
+      - method: GET
+        name: querySearch
+        description: Wiktionary Query Search
+        call: mediawiki-action-api-query.querySearch
+        with:
+          action: rest.action
+          list: rest.list
+          srsearch: rest.srsearch
+          srlimit: rest.srlimit
+          sroffset: rest.sroffset
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: mediawiki-action-api-query-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Wiktionary MediaWiki Action API — Query. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: query-action
+      description: Wiktionary Query Action
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: mediawiki-action-api-query.queryAction
+      with:
+        titles: tools.titles
+        prop: tools.prop
+        list: tools.list
+        meta: tools.meta
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: query-wikitext
+      description: Wiktionary Query Wikitext
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: mediawiki-action-api-query.queryWikitext
+      with:
+        action: tools.action
+        prop: tools.prop
+        rvprop: tools.rvprop
+        titles: tools.titles
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: query-extracts
+      description: Wiktionary Query Extracts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: mediawiki-action-api-query.queryExtracts
+      with:
+        action: tools.action
+        prop: tools.prop
+        titles: tools.titles
+        exintro: tools.exintro
+        explaintext: tools.explaintext
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: query-search
+      description: Wiktionary Query Search
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: mediawiki-action-api-query.querySearch
+      with:
+        action: tools.action
+        list: tools.list
+        srsearch: tools.srsearch
+        srlimit: tools.srlimit
+        sroffset: tools.sroffset
+      outputParameters:
+      - type: object
+        mapping: $.

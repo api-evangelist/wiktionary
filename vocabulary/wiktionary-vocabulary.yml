@@ -1,0 +1,486 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: Wiktionary
+  description: >-
+    Unified vocabulary for Wiktionary, the Wikimedia Foundation's collaborative
+    multilingual dictionary. Captures the operational dimension (three OpenAPI
+    surfaces — MediaWiki Action API, Wikimedia REST API, MediaWiki Core REST
+    API) and the capability dimension (Naftiko workflows that expose them as
+    REST and MCP tools), with cross-references for personas, domains, and
+    binds.
+  created: "2026-05-30"
+  modified: "2026-05-30"
+
+# ──────────────────────────────────────────────────────────────────────
+# OPERATIONAL DIMENSION (from OpenAPI)
+# ──────────────────────────────────────────────────────────────────────
+operational:
+
+  apis:
+    - name: MediaWiki Action API (Wiktionary)
+      namespace: mediawiki-action-api
+      version: "1.0"
+      baseUrl: https://en.wiktionary.org/w/api.php
+      status: active
+      description: Original Wikimedia query/edit API exposed at /w/api.php on every project.
+    - name: Wikimedia REST API (Wiktionary)
+      namespace: rest-api
+      version: "1.0.0"
+      baseUrl: https://en.wiktionary.org/api/rest_v1
+      status: active
+      description: RESTBase-backed per-project REST API including the Wiktionary-specific /page/definition endpoint.
+    - name: MediaWiki Core REST API (Wiktionary)
+      namespace: core-rest-api
+      version: "1.0.0"
+      baseUrl: https://en.wiktionary.org/w/rest.php
+      status: active
+      description: Streamlined newer REST API at /w/rest.php for page content, history, search, and files.
+
+  resources:
+    - name: definition
+      apis: [rest-api]
+      domain: Definitions
+      description: Multilingual structured dictionary definition for a term, broken down by language and part of speech.
+      actions: [get]
+    - name: page
+      apis: [core-rest-api, rest-api]
+      domain: Content
+      description: A Wiktionary page (source wikitext, rendered HTML, summary, mobile HTML).
+      actions: [get, search]
+    - name: pageHistory
+      apis: [core-rest-api]
+      domain: History
+      description: Revision history for a page, optionally filtered by type (bot, anonymous, minor, reverted).
+      actions: [get, count]
+    - name: revision
+      apis: [core-rest-api, rest-api]
+      domain: History
+      description: A single revision of a page with author, timestamp, byte delta.
+      actions: [get]
+    - name: search
+      apis: [mediawiki-action-api, core-rest-api]
+      domain: Search
+      description: Full-text and title-prefix search across Wiktionary pages.
+      actions: [search, suggest]
+    - name: file
+      apis: [core-rest-api]
+      domain: Media
+      description: File and media metadata (pronunciation audio, images) hosted on Wiktionary or Commons.
+      actions: [get]
+    - name: parserOutput
+      apis: [mediawiki-action-api]
+      domain: Content
+      description: Parser output for wikitext — rendered HTML, sections, links, categories.
+      actions: [parse]
+    - name: expansion
+      apis: [mediawiki-action-api]
+      domain: Content
+      description: Wikitext after server-side template expansion.
+      actions: [expand]
+    - name: wikitextTransform
+      apis: [rest-api]
+      domain: Transform
+      description: Parsoid round-trip transform between wikitext and HTML, plus lint.
+      actions: [transform, lint]
+
+  actions:
+    - name: get
+      httpMethods: [GET]
+      pattern: read
+      description: Retrieve a single resource by identifier.
+    - name: search
+      httpMethods: [GET]
+      pattern: query
+      description: Full-text search across pages with paged results.
+    - name: suggest
+      httpMethods: [GET]
+      pattern: query
+      description: OpenSearch / title-prefix autocomplete.
+    - name: parse
+      httpMethods: [GET]
+      pattern: read
+      description: Render wikitext to HTML and parser output structures.
+    - name: expand
+      httpMethods: [GET]
+      pattern: read
+      description: Server-side template expansion.
+    - name: transform
+      httpMethods: [POST]
+      pattern: write
+      description: Convert wikitext ↔ HTML round-trip via Parsoid.
+    - name: lint
+      httpMethods: [POST]
+      pattern: query
+      description: Detect lint errors in wikitext.
+    - name: count
+      httpMethods: [GET]
+      pattern: query
+      description: Return a single numeric count (e.g. revisions by filter).
+
+  schemas:
+    core:
+      - PageSummary
+      - PageSourceResponse
+      - PageWithHtmlResponse
+      - DefinitionResponse
+      - LanguageEntry
+      - DefinitionEntry
+    history:
+      - RevisionDetail
+      - RevisionMetadata
+      - RevisionItem
+      - HistoryResponse
+      - HistoryCountResponse
+      - LatestRevision
+      - Revision
+      - RevisionPage
+    search:
+      - SearchResponse
+      - SearchPage
+      - SearchHit
+      - QuerySearchResponse
+      - OpenSearchResponse
+    content:
+      - ParseResponse
+      - ParseSection
+      - QueryRevisionsResponse
+      - QueryExtractsResponse
+      - ExtractPage
+      - ExpandTemplatesResponse
+      - ActionApiResponse
+    transform:
+      - WikitextTransformRequest
+      - HtmlTransformRequest
+      - LintError
+    media:
+      - FileMetadata
+      - ContentUrls
+    licensing:
+      - LicenseInfo
+    errors:
+      - ApiError
+      - ProblemDetails
+
+  parameters:
+    pagination:
+      - srlimit
+      - sroffset
+      - limit
+      - older_than
+      - newer_than
+    identifiers:
+      - term
+      - title
+      - titles
+      - id
+      - revision
+      - page
+    filters:
+      - filter
+      - namespace
+      - prop
+      - list
+      - meta
+      - rvprop
+      - exintro
+      - explaintext
+    query:
+      - srsearch
+      - q
+      - search
+      - text
+      - wikitext
+      - html
+    format:
+      - format
+      - Accept-Language
+      - If-Match
+      - body_only
+      - stash
+      - scrub_wikitext
+
+  enums:
+    httpMethods: [GET, POST]
+    contentModels: [wikitext]
+    formats: [json, jsonfm, xml, xmlfm, php, phpfm, none]
+    historyFilters: [reverted, anonymous, bot, minor]
+    historyCountTypes: [anonymous, bot, editors, edits, minor, reverted]
+    partsOfSpeech: [Interjection, Noun, Verb, Adjective, Adverb, Pronoun, Preposition, Conjunction]
+    mediaTypes: [AUDIO, BITMAP, DRAWING, VIDEO]
+
+  authentication:
+    schemes:
+      - name: anonymous
+        type: none
+        description: Most read endpoints are usable anonymously, subject to the 200 req/s shared cap.
+        appliesTo: [mediawiki-action-api, rest-api, core-rest-api]
+      - name: oauth2
+        type: oauth2
+        flow: authorizationCode
+        description: OAuth 2.0 access tokens issued via api.wikimedia.org (and meta.wikimedia.org).
+        scopes: [basic, createeditmovepage, highvolume]
+        appliesTo: [mediawiki-action-api, core-rest-api]
+      - name: botPassword
+        type: http-basic
+        description: Legacy scoped credentials for bot accounts.
+        appliesTo: [mediawiki-action-api]
+
+# ──────────────────────────────────────────────────────────────────────
+# CAPABILITY DIMENSION (from Naftiko)
+# ──────────────────────────────────────────────────────────────────────
+capability:
+
+  workflows:
+    - name: mediawiki-action-api-query
+      file: capabilities/mediawiki-action-api-query.yaml
+      description: Read-only Action API queries — wikitext, extracts, full-text search.
+      apis: [mediawiki-action-api]
+      tools: 4
+      personas: [DictionaryClientDeveloper, NLPResearcher]
+      domains: [Search, Content]
+    - name: mediawiki-action-api-parse
+      file: capabilities/mediawiki-action-api-parse.yaml
+      description: Render wikitext to HTML and parser output via action=parse.
+      apis: [mediawiki-action-api]
+      tools: 1
+      personas: [ContentRenderer]
+      domains: [Content]
+    - name: mediawiki-action-api-opensearch
+      file: capabilities/mediawiki-action-api-opensearch.yaml
+      description: OpenSearch autocomplete suggestions.
+      apis: [mediawiki-action-api]
+      tools: 1
+      personas: [DictionaryClientDeveloper]
+      domains: [Search]
+    - name: mediawiki-action-api-expandtemplates
+      file: capabilities/mediawiki-action-api-expandtemplates.yaml
+      description: Server-side template expansion.
+      apis: [mediawiki-action-api]
+      tools: 1
+      personas: [BotOperator]
+      domains: [Content]
+    - name: rest-api-definition
+      file: capabilities/rest-api-definition.yaml
+      description: Wiktionary multilingual structured definitions endpoint.
+      apis: [rest-api]
+      tools: 1
+      personas: [DictionaryClientDeveloper, LanguageLearnerToolBuilder]
+      domains: [Definitions]
+    - name: rest-api-page-content
+      file: capabilities/rest-api-page-content.yaml
+      description: Page HTML, summary, title metadata, and mobile HTML via the Wikimedia REST API.
+      apis: [rest-api]
+      tools: 4
+      personas: [DictionaryClientDeveloper]
+      domains: [Content]
+    - name: rest-api-transform
+      file: capabilities/rest-api-transform.yaml
+      description: Parsoid wikitext ↔ HTML transforms and lint.
+      apis: [rest-api]
+      tools: 3
+      personas: [BotOperator, VisualEditorIntegrator]
+      domains: [Transform]
+    - name: core-rest-api-page
+      file: capabilities/core-rest-api-page.yaml
+      description: Page source, HTML, and combined source+HTML via the MediaWiki Core REST API.
+      apis: [core-rest-api]
+      tools: 3
+      personas: [DictionaryClientDeveloper]
+      domains: [Content]
+    - name: core-rest-api-history
+      file: capabilities/core-rest-api-history.yaml
+      description: Page history, revision counts, and revision detail.
+      apis: [core-rest-api]
+      tools: 3
+      personas: [LinguisticsResearcher, BotOperator]
+      domains: [History]
+    - name: core-rest-api-search
+      file: capabilities/core-rest-api-search.yaml
+      description: Full-text and title-prefix search via the MediaWiki Core REST API.
+      apis: [core-rest-api]
+      tools: 2
+      personas: [DictionaryClientDeveloper]
+      domains: [Search]
+    - name: core-rest-api-file
+      file: capabilities/core-rest-api-file.yaml
+      description: File metadata (pronunciation audio, images) hosted on Wiktionary or Commons.
+      apis: [core-rest-api]
+      tools: 1
+      personas: [MediaIntegrator]
+      domains: [Media]
+
+  personas:
+    - id: DictionaryClientDeveloper
+      name: Dictionary Client Developer
+      description: Builds end-user dictionary apps (mobile, desktop, browser extensions) that look up terms and render definitions.
+      workflows:
+        - rest-api-definition
+        - rest-api-page-content
+        - core-rest-api-page
+        - core-rest-api-search
+        - mediawiki-action-api-query
+        - mediawiki-action-api-opensearch
+    - id: LanguageLearnerToolBuilder
+      name: Language-Learner Tool Builder
+      description: Builds vocabulary, reading-assistance, and flashcard tools for language learners.
+      workflows:
+        - rest-api-definition
+    - id: NLPResearcher
+      name: NLP / Corpus Researcher
+      description: Extracts wikitext, definitions, and search results for building NLP datasets.
+      workflows:
+        - mediawiki-action-api-query
+    - id: LinguisticsResearcher
+      name: Linguistics Researcher
+      description: Analyzes etymologies, declensions, and historical usage across many languages.
+      workflows:
+        - core-rest-api-history
+        - rest-api-definition
+    - id: BotOperator
+      name: Bot Operator
+      description: Operates Pywikibot-style automation for maintenance edits, dumps, and transforms.
+      workflows:
+        - rest-api-transform
+        - mediawiki-action-api-expandtemplates
+        - core-rest-api-history
+    - id: VisualEditorIntegrator
+      name: Visual Editor Integrator
+      description: Builds WYSIWYG editing surfaces that round-trip wikitext through Parsoid.
+      workflows:
+        - rest-api-transform
+    - id: ContentRenderer
+      name: Content Renderer
+      description: Renders wikitext to HTML for embedding in third-party UIs.
+      workflows:
+        - mediawiki-action-api-parse
+    - id: MediaIntegrator
+      name: Media Integrator
+      description: Embeds pronunciation audio and images from Wiktionary/Commons into apps.
+      workflows:
+        - core-rest-api-file
+
+  domains:
+    - name: Definitions
+      description: Multilingual structured definitions parsed from wikitext.
+      resources: [definition]
+    - name: Content
+      description: Page source, rendered HTML, summaries, and parser output.
+      resources: [page, parserOutput, expansion]
+    - name: History
+      description: Page revisions, edit history, and revision counts.
+      resources: [pageHistory, revision]
+    - name: Search
+      description: Full-text and title-prefix search across Wiktionary.
+      resources: [search]
+    - name: Media
+      description: File metadata for audio, image, and video assets.
+      resources: [file]
+    - name: Transform
+      description: Parsoid wikitext ↔ HTML transforms and lint.
+      resources: [wikitextTransform]
+
+  namespaces:
+    consumed:
+      - mediawiki-action-api-query
+      - mediawiki-action-api-parse
+      - mediawiki-action-api-opensearch
+      - mediawiki-action-api-expandtemplates
+      - rest-api-definition
+      - rest-api-page-content
+      - rest-api-transform
+      - core-rest-api-page
+      - core-rest-api-history
+      - core-rest-api-search
+      - core-rest-api-file
+    rest:
+      port: 8080
+      namespaces:
+        - mediawiki-action-api-query-rest
+        - mediawiki-action-api-parse-rest
+        - mediawiki-action-api-opensearch-rest
+        - mediawiki-action-api-expandtemplates-rest
+        - rest-api-definition-rest
+        - rest-api-page-content-rest
+        - rest-api-transform-rest
+        - core-rest-api-page-rest
+        - core-rest-api-history-rest
+        - core-rest-api-search-rest
+        - core-rest-api-file-rest
+    mcp:
+      port: 9090
+      namespaces:
+        - mediawiki-action-api-query-mcp
+        - mediawiki-action-api-parse-mcp
+        - mediawiki-action-api-opensearch-mcp
+        - mediawiki-action-api-expandtemplates-mcp
+        - rest-api-definition-mcp
+        - rest-api-page-content-mcp
+        - rest-api-transform-mcp
+        - core-rest-api-page-mcp
+        - core-rest-api-history-mcp
+        - core-rest-api-search-mcp
+        - core-rest-api-file-mcp
+
+  binds:
+    - name: WIKTIONARY_MEDIAWIKI_TOKEN
+      description: Bearer token for the MediaWiki Action API (OAuth 2.0 access token or BotPassword token).
+      usedBy:
+        - mediawiki-action-api-query
+        - mediawiki-action-api-parse
+        - mediawiki-action-api-opensearch
+        - mediawiki-action-api-expandtemplates
+    - name: WIKTIONARY_WIKIMEDIA_TOKEN
+      description: Bearer token for the Wikimedia REST API (only required for authenticated access; reads are open).
+      usedBy:
+        - rest-api-definition
+        - rest-api-page-content
+        - rest-api-transform
+    - name: WIKTIONARY_MEDIAWIKI_CORE_TOKEN
+      description: Bearer token for the MediaWiki Core REST API (OAuth 2.0 access token).
+      usedBy:
+        - core-rest-api-page
+        - core-rest-api-history
+        - core-rest-api-search
+        - core-rest-api-file
+
+# ──────────────────────────────────────────────────────────────────────
+# CROSS-REFERENCE
+# ──────────────────────────────────────────────────────────────────────
+crossReference:
+  - resource: definition
+    operations: [getDefinition]
+    workflows: [rest-api-definition]
+    personas: [DictionaryClientDeveloper, LanguageLearnerToolBuilder]
+  - resource: page
+    operations: [getPage, getPageHtml, getPageWithHtml, getPageSummary, getPageHtmlRest, getPageMobileHtml]
+    workflows: [core-rest-api-page, rest-api-page-content]
+    personas: [DictionaryClientDeveloper]
+  - resource: pageHistory
+    operations: [getPageHistory, getPageHistoryCount]
+    workflows: [core-rest-api-history]
+    personas: [LinguisticsResearcher, BotOperator]
+  - resource: revision
+    operations: [getRevisionBare, getPageTitle]
+    workflows: [core-rest-api-history]
+    personas: [LinguisticsResearcher]
+  - resource: search
+    operations: [searchPage, searchTitle, openSearchSuggest, querySearch]
+    workflows: [core-rest-api-search, mediawiki-action-api-query, mediawiki-action-api-opensearch]
+    personas: [DictionaryClientDeveloper, NLPResearcher]
+  - resource: file
+    operations: [getFile]
+    workflows: [core-rest-api-file]
+    personas: [MediaIntegrator]
+  - resource: parserOutput
+    operations: [parsePage]
+    workflows: [mediawiki-action-api-parse]
+    personas: [ContentRenderer]
+  - resource: expansion
+    operations: [expandTemplates]
+    workflows: [mediawiki-action-api-expandtemplates]
+    personas: [BotOperator]
+  - resource: wikitextTransform
+    operations: [transformWikitextToHtml, transformHtmlToWikitext, transformWikitextToLint]
+    workflows: [rest-api-transform]
+    personas: [BotOperator, VisualEditorIntegrator]

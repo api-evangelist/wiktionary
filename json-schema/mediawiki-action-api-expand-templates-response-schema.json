@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wiktionary/refs/heads/main/json-schema/mediawiki-action-api-expand-templates-response-schema.json",
+  "title": "ExpandTemplatesResponse",
+  "description": "action=expandtemplates result.",
+  "type": "object",
+  "properties": {
+    "expandtemplates": {
+      "type": "object",
+      "properties": {
+        "wikitext": {
+          "type": "string",
+          "description": "Wikitext after template expansion.",
+          "example": "A standard greeting."
+        }
+      }
+    }
+  }
+}

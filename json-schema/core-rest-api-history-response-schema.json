@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wiktionary/refs/heads/main/json-schema/core-rest-api-history-response-schema.json",
+  "title": "HistoryResponse",
+  "description": "HistoryResponse schema from Wiktionary MediaWiki Core REST API",
+  "type": "object",
+  "properties": {
+    "revisions": {
+      "type": "array",
+      "items": {
+        "title": "RevisionDetail",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 7654321
+          },
+          "page": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "example": 12345
+              },
+              "title": {
+                "type": "string",
+                "example": "hello"
+              }
+            }
+          },
+          "size": {
+            "type": "integer",
+            "example": 4321
+          },
+          "minor": {
+            "type": "boolean",
+            "example": false
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-03-15T14:30:00Z"
+          },
+          "content_model": {
+            "type": "string",
+            "example": "wikitext"
+          },
+          "license": {
+            "$ref": "#/components/schemas/LicenseInfo"
+          },
+          "user": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "example": 1
+              },
+              "name": {
+                "type": "string",
+                "example": "ExampleEditor"
+              }
+            }
+          },
+          "comment": {
+            "type": "string",
+            "example": "typo fix"
+          },
+          "delta": {
+            "type": "integer",
+            "description": "Byte delta from the parent revision.",
+            "example": 12
+          }
+        }
+      }
+    },
+    "latest": {
+      "type": "string",
+      "format": "uri",
+      "example": "https://en.wiktionary.org/w/rest.php/v1/page/hello/history"
+    },
+    "older": {
+      "type": "string",
+      "format": "uri",
+      "example": "https://en.wiktionary.org/w/rest.php/v1/page/hello/history?older_than=7654321"
+    },
+    "newer": {
+      "type": "string",
+      "format": "uri",
+      "example": "https://en.wiktionary.org/w/rest.php/v1/page/hello/history?newer_than=7654321"
+    }
+  }
+}

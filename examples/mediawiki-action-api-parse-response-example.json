@@ -1,0 +1,18 @@
+{
+  "parse": {
+    "title": "hello",
+    "pageid": 12345,
+    "text": {
+      "*": "==English==\n===Interjection===\n# A standard greeting."
+    },
+    "sections": [
+      null
+    ],
+    "links": [
+      {}
+    ],
+    "categories": [
+      {}
+    ]
+  }
+}

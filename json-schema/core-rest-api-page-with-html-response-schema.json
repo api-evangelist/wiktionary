@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wiktionary/refs/heads/main/json-schema/core-rest-api-page-with-html-response-schema.json",
+  "title": "PageWithHtmlResponse",
+  "description": "PageWithHtmlResponse schema from Wiktionary MediaWiki Core REST API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "example": 12345
+    },
+    "key": {
+      "type": "string",
+      "example": "hello"
+    },
+    "title": {
+      "type": "string",
+      "example": "hello"
+    },
+    "latest": {
+      "title": "LatestRevision",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "example": 7654321
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2025-03-15T14:30:00Z"
+        }
+      }
+    },
+    "content_model": {
+      "type": "string",
+      "example": "wikitext"
+    },
+    "license": {
+      "title": "LicenseInfo",
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "example": "https://creativecommons.org/licenses/by-sa/4.0/"
+        },
+        "title": {
+          "type": "string",
+          "example": "Creative Commons Attribution-Share Alike 4.0 International"
+        }
+      }
+    },
+    "source": {
+      "type": "string",
+      "example": "==English==\n===Interjection===\n# A standard greeting."
+    },
+    "html": {
+      "type": "string",
+      "example": "<p>A standard greeting.</p>"
+    }
+  }
+}

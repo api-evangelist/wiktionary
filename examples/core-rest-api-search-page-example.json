@@ -1,0 +1,13 @@
+{
+  "id": 12345,
+  "key": "hello",
+  "title": "hello",
+  "excerpt": "A standard <span class=\"searchmatch\">greeting</span>.",
+  "matched_title": null,
+  "description": "English interjection.",
+  "thumbnail": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/example.png",
+    "width": 60,
+    "height": 60
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wiktionary/refs/heads/main/json-structure/core-rest-api-history-response-structure.json",
+  "description": "HistoryResponse schema from Wiktionary MediaWiki Core REST API",
+  "type": "object",
+  "properties": {
+    "revisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "int32",
+            "example": 7654321
+          },
+          "page": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "int32",
+                "example": 12345
+              },
+              "title": {
+                "type": "string",
+                "example": "hello"
+              }
+            }
+          },
+          "size": {
+            "type": "int32",
+            "example": 4321
+          },
+          "minor": {
+            "type": "boolean",
+            "example": false
+          },
+          "timestamp": {
+            "type": "datetime",
+            "example": "2025-03-15T14:30:00Z"
+          },
+          "content_model": {
+            "type": "string",
+            "example": "wikitext"
+          },
+          "license": {
+            "$ref": "#/components/schemas/LicenseInfo"
+          },
+          "user": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "int32",
+                "example": 1
+              },
+              "name": {
+                "type": "string",
+                "example": "ExampleEditor"
+              }
+            }
+          },
+          "comment": {
+            "type": "string",
+            "example": "typo fix"
+          },
+          "delta": {
+            "type": "int32",
+            "description": "Byte delta from the parent revision.",
+            "example": 12
+          }
+        },
+        "name": "RevisionDetail"
+      }
+    },
+    "latest": {
+      "type": "uri",
+      "example": "https://en.wiktionary.org/w/rest.php/v1/page/hello/history"
+    },
+    "older": {
+      "type": "uri",
+      "example": "https://en.wiktionary.org/w/rest.php/v1/page/hello/history?older_than=7654321"
+    },
+    "newer": {
+      "type": "uri",
+      "example": "https://en.wiktionary.org/w/rest.php/v1/page/hello/history?newer_than=7654321"
+    }
+  },
+  "name": "HistoryResponse"
+}

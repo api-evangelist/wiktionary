@@ -1,0 +1,99 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Wiktionary MediaWiki Action API — ExpandTemplates
+  description: 'MediaWiki Action API — ExpandTemplates. 1 operations. Lead operation: Wiktionary Expand Templates. Self-contained Naftiko capability covering one Wiktionary business surface.'
+  tags:
+  - Wiktionary
+  - MediaWiki Action API
+  - ExpandTemplates
+  created: '2026-05-30'
+  modified: '2026-05-30'
+binds:
+- namespace: env
+  keys:
+    WIKTIONARY_MEDIAWIKI_TOKEN: WIKTIONARY_MEDIAWIKI_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: mediawiki-action-api-expandtemplates
+    baseUri: https://en.wiktionary.org/w
+    description: Wiktionary MediaWiki Action API — ExpandTemplates business capability. Self-contained, no shared references.
+    authentication:
+      type: bearer
+      token: '{{env.WIKTIONARY_MEDIAWIKI_TOKEN}}'
+    resources:
+    - name: api-php-expandtemplates
+      path: /api.php#expandtemplates
+      operations:
+      - name: expandTemplates
+        method: GET
+        description: Wiktionary Expand Templates
+        inputParameters:
+        - name: action
+          in: query
+          type: string
+          required: true
+          description: Must be `expandtemplates`.
+        - name: text
+          in: query
+          type: string
+          required: true
+          description: Wikitext containing templates to expand.
+        - name: title
+          in: query
+          type: string
+          required: false
+          description: Page title context for the expansion.
+        - name: prop
+          in: query
+          type: string
+          required: false
+          description: Which expansion properties to return.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: mediawiki-action-api-expandtemplates-rest
+    port: 8080
+    description: REST adapter for Wiktionary MediaWiki Action API — ExpandTemplates. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/api-php-expandtemplates
+      name: api-php-expandtemplates
+      description: REST surface for Wiktionary Expand Templates.
+      operations:
+      - method: GET
+        name: expandTemplates
+        description: Wiktionary Expand Templates
+        call: mediawiki-action-api-expandtemplates.expandTemplates
+        with:
+          action: rest.action
+          text: rest.text
+          title: rest.title
+          prop: rest.prop
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: mediawiki-action-api-expandtemplates-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Wiktionary MediaWiki Action API — ExpandTemplates. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: expand-templates
+      description: Wiktionary Expand Templates
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: mediawiki-action-api-expandtemplates.expandTemplates
+      with:
+        action: tools.action
+        text: tools.text
+        title: tools.title
+        prop: tools.prop
+      outputParameters:
+      - type: object
+        mapping: $.

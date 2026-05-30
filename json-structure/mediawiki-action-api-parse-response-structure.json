@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wiktionary/refs/heads/main/json-structure/mediawiki-action-api-parse-response-structure.json",
+  "description": "action=parse result containing parser output for a page or text.",
+  "type": "object",
+  "properties": {
+    "parse": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "example": "hello"
+        },
+        "pageid": {
+          "type": "int32",
+          "example": 12345
+        },
+        "text": {
+          "type": "object",
+          "properties": {
+            "*": {
+              "type": "string",
+              "description": "Rendered HTML.",
+              "example": "<p><b>hello</b> \u2014 a standard greeting.</p>"
+            }
+          }
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ParseSection"
+          }
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        },
+        "categories": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        }
+      }
+    }
+  },
+  "name": "ParseResponse"
+}

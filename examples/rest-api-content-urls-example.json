@@ -1,0 +1,8 @@
+{
+  "desktop": {
+    "page": "https://en.wiktionary.org/wiki/hello"
+  },
+  "mobile": {
+    "page": "https://en.m.wiktionary.org/wiki/hello"
+  }
+}

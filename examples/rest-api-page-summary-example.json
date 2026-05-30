@@ -1,0 +1,17 @@
+{
+  "type": "standard",
+  "title": "hello",
+  "displaytitle": "hello",
+  "pageid": 12345,
+  "extract": "A standard greeting; an expression of puzzlement.",
+  "extract_html": "<p>A standard greeting.</p>",
+  "content_urls": {
+    "desktop": {
+      "page": "https://en.wiktionary.org/wiki/hello"
+    },
+    "mobile": {
+      "page": "https://en.m.wiktionary.org/wiki/hello"
+    }
+  },
+  "timestamp": "2025-03-15T14:30:00Z"
+}

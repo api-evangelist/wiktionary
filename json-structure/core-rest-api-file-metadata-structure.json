@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wiktionary/refs/heads/main/json-structure/core-rest-api-file-metadata-structure.json",
+  "description": "FileMetadata schema from Wiktionary MediaWiki Core REST API",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "example": "File:En-us-hello.ogg"
+    },
+    "file_description_url": {
+      "type": "uri",
+      "example": "https://commons.wikimedia.org/wiki/File:En-us-hello.ogg"
+    },
+    "latest": {
+      "type": "object",
+      "properties": {
+        "timestamp": {
+          "type": "datetime",
+          "example": "2025-03-15T14:30:00Z"
+        },
+        "user": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "int32",
+              "example": 1
+            },
+            "name": {
+              "type": "string",
+              "example": "ExampleUploader"
+            }
+          }
+        }
+      }
+    },
+    "preferred": {
+      "type": "object",
+      "properties": {
+        "mediatype": {
+          "type": "string",
+          "example": "AUDIO"
+        },
+        "size": {
+          "type": "int32",
+          "example": 8192
+        },
+        "width": {
+          "type": "int32",
+          "nullable": true,
+          "example": null
+        },
+        "height": {
+          "type": "int32",
+          "nullable": true,
+          "example": null
+        },
+        "duration": {
+          "type": "double",
+          "example": 1.4
+        },
+        "url": {
+          "type": "uri",
+          "example": "https://upload.wikimedia.org/wikipedia/commons/example/En-us-hello.ogg"
+        }
+      }
+    },
+    "original": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "name": "FileMetadata"
+}

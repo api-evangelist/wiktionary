@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wiktionary/refs/heads/main/json-structure/rest-api-lint-error-structure.json",
+  "description": "One Parsoid lint error found in supplied wikitext.",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "Lint error category.",
+      "example": "missing-end-tag"
+    },
+    "dsr": {
+      "type": "array",
+      "description": "Source range [start, end, openWidth, closeWidth].",
+      "items": {
+        "type": "int32"
+      },
+      "example": [
+        0,
+        12,
+        0,
+        0
+      ]
+    },
+    "templateInfo": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "If the error originates inside a template, info about it."
+    },
+    "params": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Error-specific parameters."
+    }
+  },
+  "name": "LintError"
+}

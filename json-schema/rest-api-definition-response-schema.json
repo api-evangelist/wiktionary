@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wiktionary/refs/heads/main/json-schema/rest-api-definition-response-schema.json",
+  "title": "DefinitionResponse",
+  "description": "Multilingual structured definitions keyed by ISO language code. Each value is a list of language-grouped entries describing the term in that language.",
+  "type": "object",
+  "additionalProperties": {
+    "type": "array",
+    "items": {
+      "title": "LanguageEntry",
+      "description": "One language's worth of definitions for the term.",
+      "type": "object",
+      "required": [
+        "partOfSpeech",
+        "language",
+        "definitions"
+      ],
+      "properties": {
+        "partOfSpeech": {
+          "type": "string",
+          "description": "Grammatical part of speech for this entry.",
+          "example": "Interjection"
+        },
+        "language": {
+          "type": "string",
+          "description": "Human-readable language name.",
+          "example": "English"
+        },
+        "definitions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/DefinitionEntry"
+          }
+        }
+      }
+    }
+  },
+  "example": {
+    "en": [
+      {
+        "partOfSpeech": "Interjection",
+        "language": "English",
+        "definitions": [
+          {
+            "definition": "A standard greeting.",
+            "examples": [
+              "Hello, world!"
+            ],
+            "parsedExamples": []
+          }
+        ]
+      }
+    ]
+  }
+}

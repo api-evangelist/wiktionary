@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wiktionary/refs/heads/main/json-schema/mediawiki-action-api-query-extracts-response-schema.json",
+  "title": "QueryExtractsResponse",
+  "description": "action=query&prop=extracts result.",
+  "type": "object",
+  "properties": {
+    "query": {
+      "type": "object",
+      "properties": {
+        "pages": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/components/schemas/ExtractPage"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wiktionary/refs/heads/main/json-schema/mediawiki-action-api-action-api-response-schema.json",
+  "title": "ActionApiResponse",
+  "description": "Generic envelope for any Action API response.",
+  "type": "object",
+  "properties": {
+    "batchcomplete": {
+      "type": "string",
+      "description": "Present when all sub-queries completed in one batch.",
+      "example": ""
+    },
+    "continue": {
+      "type": "object",
+      "description": "Continuation cursor for paged result sets.",
+      "additionalProperties": true
+    },
+    "query": {
+      "type": "object",
+      "description": "Container for `prop`/`list`/`meta` results when action=query.",
+      "additionalProperties": true
+    },
+    "parse": {
+      "type": "object",
+      "description": "Container for action=parse output.",
+      "additionalProperties": true
+    },
+    "warnings": {
+      "type": "object",
+      "description": "Per-module warning messages.",
+      "additionalProperties": true
+    },
+    "error": {
+      "title": "ApiError",
+      "description": "Standard MediaWiki Action API error envelope.",
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "badvalue"
+        },
+        "info": {
+          "type": "string",
+          "example": "Unrecognized value for parameter \"action\"."
+        },
+        "*": {
+          "type": "string",
+          "description": "Additional error context.",
+          "example": "See https://en.wiktionary.org/w/api.php for help."
+        }
+      }
+    }
+  }
+}

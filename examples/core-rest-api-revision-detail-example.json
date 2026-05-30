@@ -1,0 +1,21 @@
+{
+  "id": 7654321,
+  "page": {
+    "id": 12345,
+    "title": "hello"
+  },
+  "size": 4321,
+  "minor": false,
+  "timestamp": "2025-03-15T14:30:00Z",
+  "content_model": "wikitext",
+  "license": {
+    "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "title": "Creative Commons Attribution-Share Alike 4.0 International"
+  },
+  "user": {
+    "id": 1,
+    "name": "ExampleEditor"
+  },
+  "comment": "typo fix",
+  "delta": 12
+}

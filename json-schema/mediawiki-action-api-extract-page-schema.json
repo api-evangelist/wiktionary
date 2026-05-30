@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wiktionary/refs/heads/main/json-schema/mediawiki-action-api-extract-page-schema.json",
+  "title": "ExtractPage",
+  "description": "ExtractPage schema from Wiktionary MediaWiki Action API",
+  "type": "object",
+  "properties": {
+    "pageid": {
+      "type": "integer",
+      "example": 12345
+    },
+    "ns": {
+      "type": "integer",
+      "example": 0
+    },
+    "title": {
+      "type": "string",
+      "example": "hello"
+    },
+    "extract": {
+      "type": "string",
+      "description": "Plain-text or limited-HTML extract.",
+      "example": "A standard greeting; an expression of puzzlement or discovery."
+    }
+  }
+}

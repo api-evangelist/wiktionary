@@ -1,0 +1,134 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "wikt": "https://en.wiktionary.org/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "ActionApiResponse": "wikt:ActionApiResponse",
+    "ApiError": "wikt:ApiError",
+    "ExpandTemplatesResponse": "wikt:ExpandTemplatesResponse",
+    "ExtractPage": "wikt:ExtractPage",
+    "ParseResponse": "wikt:ParseResponse",
+    "ParseSection": "wikt:ParseSection",
+    "QueryExtractsResponse": "wikt:QueryExtractsResponse",
+    "QueryRevisionsResponse": "wikt:QueryRevisionsResponse",
+    "QuerySearchResponse": "wikt:QuerySearchResponse",
+    "Revision": "wikt:Revision",
+    "RevisionPage": "wikt:RevisionPage",
+    "SearchHit": "wikt:SearchHit",
+    "anchor": {
+      "@id": "wikt:anchor",
+      "@type": "xsd:string"
+    },
+    "batchcomplete": {
+      "@id": "wikt:batchcomplete",
+      "@type": "xsd:string"
+    },
+    "code": {
+      "@id": "wikt:code",
+      "@type": "xsd:string"
+    },
+    "contentformat": {
+      "@id": "wikt:contentformat",
+      "@type": "xsd:string"
+    },
+    "contentmodel": {
+      "@id": "wikt:contentmodel",
+      "@type": "xsd:string"
+    },
+    "continue": {
+      "@id": "wikt:continue",
+      "@type": "@id"
+    },
+    "error": {
+      "@id": "wikt:error",
+      "@type": "@id"
+    },
+    "expandtemplates": {
+      "@id": "wikt:expandtemplates",
+      "@type": "@id"
+    },
+    "extract": {
+      "@id": "wikt:extract",
+      "@type": "xsd:string"
+    },
+    "fromtitle": {
+      "@id": "wikt:fromtitle",
+      "@type": "xsd:string"
+    },
+    "index": {
+      "@id": "wikt:index",
+      "@type": "xsd:string"
+    },
+    "info": {
+      "@id": "wikt:info",
+      "@type": "xsd:string"
+    },
+    "level": {
+      "@id": "wikt:level",
+      "@type": "xsd:string"
+    },
+    "line": {
+      "@id": "wikt:line",
+      "@type": "xsd:string"
+    },
+    "ns": {
+      "@id": "wikt:ns",
+      "@type": "xsd:integer"
+    },
+    "number": {
+      "@id": "wikt:number",
+      "@type": "xsd:string"
+    },
+    "pageid": {
+      "@id": "wikt:pageid",
+      "@type": "xsd:integer"
+    },
+    "parse": {
+      "@id": "wikt:parse",
+      "@type": "@id"
+    },
+    "query": {
+      "@id": "wikt:query",
+      "@type": "@id"
+    },
+    "revisions": {
+      "@id": "wikt:revisions",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "size": {
+      "@id": "wikt:size",
+      "@type": "xsd:integer"
+    },
+    "snippet": {
+      "@id": "wikt:snippet",
+      "@type": "xsd:string"
+    },
+    "timestamp": {
+      "@id": "wikt:timestamp",
+      "@type": "xsd:dateTime"
+    },
+    "title": {
+      "@id": "wikt:title",
+      "@type": "xsd:string"
+    },
+    "toclevel": {
+      "@id": "wikt:toclevel",
+      "@type": "xsd:integer"
+    },
+    "warnings": {
+      "@id": "wikt:warnings",
+      "@type": "@id"
+    },
+    "wikitext": {
+      "@id": "wikt:wikitext",
+      "@type": "xsd:string"
+    },
+    "wordcount": {
+      "@id": "wikt:wordcount",
+      "@type": "xsd:integer"
+    }
+  }
+}

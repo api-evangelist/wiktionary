@@ -1,32 +1,544 @@
 aid: wiktionary
 name: Wiktionary
-description: "Collaborative dictionary data"
+description: >-
+  Wiktionary is the free, collaborative multilingual dictionary project of the
+  Wikimedia Foundation, the dictionary sibling of Wikipedia. Programmatic access
+  is exposed through the MediaWiki Action API at en.wiktionary.org/w/api.php,
+  the older Wikimedia REST API at en.wiktionary.org/api/rest_v1/ (which provides
+  Wiktionary-specific endpoints like /page/definition/{term}), and the newer
+  MediaWiki Core REST API at en.wiktionary.org/w/rest.php. All Wiktionary
+  content is licensed CC BY-SA 4.0 (and GFDL) and hosted by the Wikimedia
+  Foundation.
 url: https://en.wiktionary.org/w/api.php
 specificationVersion: '0.20'
 created: '2026-05-28'
-modified: '2026-05-28'
+modified: '2026-05-30'
+x-type: opensource
+x-tier: 1
+x-tier-reason: enriched-full-pipeline-2026-05-30
 x-source: public-apis/public-apis
-x-category: "Dictionaries"
-x-tier: 3
-x-tier-reason: bulk-registered-from-public-apis
+x-category: Dictionaries
+x-license: CC BY-SA 4.0
+x-host: Wikimedia Foundation
 tags:
   - Dictionaries
+  - Open Source
+  - Wikimedia
+  - MediaWiki
+  - Linguistics
+  - Open Data
   - Public APIs
 apis:
-  - name: Wiktionary
-    description: "Collaborative dictionary data"
+  - name: MediaWiki Action API (Wiktionary)
+    description: >-
+      The MediaWiki Action API is the original Wikimedia query/edit API exposed
+      at /w/api.php on every Wikimedia project. For Wiktionary it provides
+      access to wikitext definitions, page parsing, full-text search, and
+      OpenSearch suggestions. Actions include action=query (prop=wikitext,
+      prop=extracts, prop=revisions, list=search), action=parse (rendered
+      wikitext HTML and section trees), action=opensearch (suggestions), and
+      action=expandtemplates. Supports both GET and POST with format=json|xml.
     humanURL: https://en.wiktionary.org/w/api.php
     baseURL: https://en.wiktionary.org/w/api.php
     tags:
       - Dictionaries
+      - MediaWiki
+      - Wikitext
     properties:
       - type: Documentation
         url: https://en.wiktionary.org/w/api.php
+      - type: APIReference
+        url: https://www.mediawiki.org/wiki/API:Main_page
+      - type: GettingStarted
+        url: https://www.mediawiki.org/wiki/API:Tutorial
+      - type: Authentication
+        url: https://www.mediawiki.org/wiki/API:Authentication
+      - type: RateLimits
+        url: https://www.mediawiki.org/wiki/API:Etiquette
+      - type: Sandbox
+        url: https://en.wiktionary.org/wiki/Special:ApiSandbox
+      - type: OpenAPI
+        url: openapi/wiktionary-mediawiki-action-api-openapi-original.yml
+      - type: JSONSchema
+        url: json-schema/mediawiki-action-api-action-api-response-schema.json
+      - type: JSONSchema
+        url: json-schema/mediawiki-action-api-expand-templates-response-schema.json
+      - type: JSONSchema
+        url: json-schema/mediawiki-action-api-extract-page-schema.json
+      - type: JSONSchema
+        url: json-schema/mediawiki-action-api-open-search-response-schema.json
+      - type: JSONSchema
+        url: json-schema/mediawiki-action-api-parse-response-schema.json
+      - type: JSONSchema
+        url: json-schema/mediawiki-action-api-parse-section-schema.json
+      - type: JSONSchema
+        url: json-schema/mediawiki-action-api-query-extracts-response-schema.json
+      - type: JSONSchema
+        url: json-schema/mediawiki-action-api-query-revisions-response-schema.json
+      - type: JSONSchema
+        url: json-schema/mediawiki-action-api-query-search-response-schema.json
+      - type: JSONSchema
+        url: json-schema/mediawiki-action-api-revision-page-schema.json
+      - type: JSONSchema
+        url: json-schema/mediawiki-action-api-revision-schema.json
+      - type: JSONSchema
+        url: json-schema/mediawiki-action-api-search-hit-schema.json
+      - type: JSONStructure
+        url: json-structure/mediawiki-action-api-action-api-response-structure.json
+      - type: JSONStructure
+        url: json-structure/mediawiki-action-api-expand-templates-response-structure.json
+      - type: JSONStructure
+        url: json-structure/mediawiki-action-api-extract-page-structure.json
+      - type: JSONStructure
+        url: json-structure/mediawiki-action-api-open-search-response-structure.json
+      - type: JSONStructure
+        url: json-structure/mediawiki-action-api-parse-response-structure.json
+      - type: JSONStructure
+        url: json-structure/mediawiki-action-api-parse-section-structure.json
+      - type: JSONStructure
+        url: json-structure/mediawiki-action-api-query-extracts-response-structure.json
+      - type: JSONStructure
+        url: json-structure/mediawiki-action-api-query-revisions-response-structure.json
+      - type: JSONStructure
+        url: json-structure/mediawiki-action-api-query-search-response-structure.json
+      - type: JSONStructure
+        url: json-structure/mediawiki-action-api-revision-page-structure.json
+      - type: JSONStructure
+        url: json-structure/mediawiki-action-api-revision-structure.json
+      - type: JSONStructure
+        url: json-structure/mediawiki-action-api-search-hit-structure.json
+      - type: JSONLD
+        url: json-ld/wiktionary-mediawiki-action-api-context.jsonld
+      - type: Example
+        url: examples/mediawiki-action-api-action-api-response-example.json
+      - type: Example
+        url: examples/mediawiki-action-api-expand-templates-response-example.json
+      - type: Example
+        url: examples/mediawiki-action-api-extract-page-example.json
+      - type: Example
+        url: examples/mediawiki-action-api-open-search-response-example.json
+      - type: Example
+        url: examples/mediawiki-action-api-parse-response-example.json
+      - type: Example
+        url: examples/mediawiki-action-api-parse-section-example.json
+      - type: Example
+        url: examples/mediawiki-action-api-query-extracts-response-example.json
+      - type: Example
+        url: examples/mediawiki-action-api-query-revisions-response-example.json
+      - type: Example
+        url: examples/mediawiki-action-api-query-search-response-example.json
+      - type: Example
+        url: examples/mediawiki-action-api-revision-example.json
+      - type: Example
+        url: examples/mediawiki-action-api-revision-page-example.json
+      - type: Example
+        url: examples/mediawiki-action-api-search-hit-example.json
+      - type: NaftikoCapability
+        url: capabilities/mediawiki-action-api-expandtemplates.yaml
+      - type: NaftikoCapability
+        url: capabilities/mediawiki-action-api-opensearch.yaml
+      - type: NaftikoCapability
+        url: capabilities/mediawiki-action-api-parse.yaml
+      - type: NaftikoCapability
+        url: capabilities/mediawiki-action-api-query.yaml
+  - name: Wikimedia REST API (Wiktionary)
+    description: >-
+      The Wikimedia REST API (the older "RESTBase" service) is hosted per
+      project at /api/rest_v1/ and includes Wiktionary-specific endpoints such
+      as /page/definition/{term} which returns multilingual structured
+      definitions parsed from wikitext, plus generic page endpoints
+      (/page/html/{title}, /page/summary/{title}, /page/title/{title},
+      /page/mobile-html/{title}) and Parsoid transform endpoints
+      (/transform/html/to/wikitext, /transform/wikitext/to/html,
+      /transform/wikitext/to/lint). Capped at ~200 req/s, requires a unique
+      User-Agent.
+    humanURL: https://en.wiktionary.org/api/rest_v1/
+    baseURL: https://en.wiktionary.org/api/rest_v1
+    tags:
+      - Dictionaries
+      - Definitions
+      - REST
+      - Parsoid
+    properties:
+      - type: Documentation
+        url: https://en.wiktionary.org/api/rest_v1/
+      - type: APIReference
+        url: https://en.wiktionary.org/api/rest_v1/?spec
+      - type: Sandbox
+        url: https://en.wiktionary.org/api/rest_v1/?doc
+      - type: RateLimits
+        url: https://api.wikimedia.org/wiki/Rate_limits
+      - type: OpenAPI
+        url: openapi/wiktionary-rest-api-openapi-original.yml
+      - type: JSONSchema
+        url: json-schema/rest-api-content-urls-schema.json
+      - type: JSONSchema
+        url: json-schema/rest-api-definition-entry-schema.json
+      - type: JSONSchema
+        url: json-schema/rest-api-definition-response-schema.json
+      - type: JSONSchema
+        url: json-schema/rest-api-html-transform-request-schema.json
+      - type: JSONSchema
+        url: json-schema/rest-api-language-entry-schema.json
+      - type: JSONSchema
+        url: json-schema/rest-api-lint-error-schema.json
+      - type: JSONSchema
+        url: json-schema/rest-api-page-summary-schema.json
+      - type: JSONSchema
+        url: json-schema/rest-api-revision-item-schema.json
+      - type: JSONSchema
+        url: json-schema/rest-api-revision-metadata-schema.json
+      - type: JSONSchema
+        url: json-schema/rest-api-wikitext-transform-request-schema.json
+      - type: JSONStructure
+        url: json-structure/rest-api-content-urls-structure.json
+      - type: JSONStructure
+        url: json-structure/rest-api-definition-entry-structure.json
+      - type: JSONStructure
+        url: json-structure/rest-api-definition-response-structure.json
+      - type: JSONStructure
+        url: json-structure/rest-api-html-transform-request-structure.json
+      - type: JSONStructure
+        url: json-structure/rest-api-language-entry-structure.json
+      - type: JSONStructure
+        url: json-structure/rest-api-lint-error-structure.json
+      - type: JSONStructure
+        url: json-structure/rest-api-page-summary-structure.json
+      - type: JSONStructure
+        url: json-structure/rest-api-revision-item-structure.json
+      - type: JSONStructure
+        url: json-structure/rest-api-revision-metadata-structure.json
+      - type: JSONStructure
+        url: json-structure/rest-api-wikitext-transform-request-structure.json
+      - type: JSONLD
+        url: json-ld/wiktionary-rest-api-context.jsonld
+      - type: Example
+        url: examples/rest-api-content-urls-example.json
+      - type: Example
+        url: examples/rest-api-definition-entry-example.json
+      - type: Example
+        url: examples/rest-api-definition-response-example.json
+      - type: Example
+        url: examples/rest-api-html-transform-request-example.json
+      - type: Example
+        url: examples/rest-api-language-entry-example.json
+      - type: Example
+        url: examples/rest-api-lint-error-example.json
+      - type: Example
+        url: examples/rest-api-page-summary-example.json
+      - type: Example
+        url: examples/rest-api-revision-item-example.json
+      - type: Example
+        url: examples/rest-api-revision-metadata-example.json
+      - type: Example
+        url: examples/rest-api-wikitext-transform-request-example.json
+      - type: NaftikoCapability
+        url: capabilities/rest-api-definition.yaml
+      - type: NaftikoCapability
+        url: capabilities/rest-api-page-content.yaml
+      - type: NaftikoCapability
+        url: capabilities/rest-api-transform.yaml
+  - name: MediaWiki Core REST API (Wiktionary)
+    description: >-
+      The newer MediaWiki Core REST API is exposed at /w/rest.php on every
+      wiki. It offers a smaller, more streamlined surface than the Action API
+      for fetching pages, history, search, files, and revisions. On Wiktionary
+      it serves the same content as the Action API in a more developer-friendly
+      JSON shape. Endpoints include /v1/page/{title}, /v1/page/{title}/html,
+      /v1/page/{title}/history, /v1/search/page, /v1/search/title,
+      /v1/file/{title}.
+    humanURL: https://en.wiktionary.org/w/rest.php/v1
+    baseURL: https://en.wiktionary.org/w/rest.php
+    tags:
+      - Dictionaries
+      - REST
+      - MediaWiki Core
+    properties:
+      - type: Documentation
+        url: https://www.mediawiki.org/wiki/API:REST_API
+      - type: APIReference
+        url: https://www.mediawiki.org/wiki/API:REST_API/Reference
+      - type: Sandbox
+        url: https://en.wiktionary.org/wiki/Special:RestSandbox
+      - type: OpenAPI
+        url: openapi/wiktionary-core-rest-api-openapi-original.yml
+      - type: JSONSchema
+        url: json-schema/core-rest-api-file-metadata-schema.json
+      - type: JSONSchema
+        url: json-schema/core-rest-api-history-count-response-schema.json
+      - type: JSONSchema
+        url: json-schema/core-rest-api-history-response-schema.json
+      - type: JSONSchema
+        url: json-schema/core-rest-api-latest-revision-schema.json
+      - type: JSONSchema
+        url: json-schema/core-rest-api-license-info-schema.json
+      - type: JSONSchema
+        url: json-schema/core-rest-api-page-source-response-schema.json
+      - type: JSONSchema
+        url: json-schema/core-rest-api-page-with-html-response-schema.json
+      - type: JSONSchema
+        url: json-schema/core-rest-api-revision-detail-schema.json
+      - type: JSONSchema
+        url: json-schema/core-rest-api-search-page-schema.json
+      - type: JSONSchema
+        url: json-schema/core-rest-api-search-response-schema.json
+      - type: JSONStructure
+        url: json-structure/core-rest-api-file-metadata-structure.json
+      - type: JSONStructure
+        url: json-structure/core-rest-api-history-count-response-structure.json
+      - type: JSONStructure
+        url: json-structure/core-rest-api-history-response-structure.json
+      - type: JSONStructure
+        url: json-structure/core-rest-api-latest-revision-structure.json
+      - type: JSONStructure
+        url: json-structure/core-rest-api-license-info-structure.json
+      - type: JSONStructure
+        url: json-structure/core-rest-api-page-source-response-structure.json
+      - type: JSONStructure
+        url: json-structure/core-rest-api-page-with-html-response-structure.json
+      - type: JSONStructure
+        url: json-structure/core-rest-api-revision-detail-structure.json
+      - type: JSONStructure
+        url: json-structure/core-rest-api-search-page-structure.json
+      - type: JSONStructure
+        url: json-structure/core-rest-api-search-response-structure.json
+      - type: JSONLD
+        url: json-ld/wiktionary-core-rest-api-context.jsonld
+      - type: Example
+        url: examples/core-rest-api-file-metadata-example.json
+      - type: Example
+        url: examples/core-rest-api-history-count-response-example.json
+      - type: Example
+        url: examples/core-rest-api-history-response-example.json
+      - type: Example
+        url: examples/core-rest-api-latest-revision-example.json
+      - type: Example
+        url: examples/core-rest-api-license-info-example.json
+      - type: Example
+        url: examples/core-rest-api-page-source-response-example.json
+      - type: Example
+        url: examples/core-rest-api-page-with-html-response-example.json
+      - type: Example
+        url: examples/core-rest-api-revision-detail-example.json
+      - type: Example
+        url: examples/core-rest-api-search-page-example.json
+      - type: Example
+        url: examples/core-rest-api-search-response-example.json
+      - type: NaftikoCapability
+        url: capabilities/core-rest-api-file.yaml
+      - type: NaftikoCapability
+        url: capabilities/core-rest-api-history.yaml
+      - type: NaftikoCapability
+        url: capabilities/core-rest-api-page.yaml
+      - type: NaftikoCapability
+        url: capabilities/core-rest-api-search.yaml
 common:
   - type: Website
-    url: https://en.wiktionary.org/w/api.php
-  - type: PublicAPIsListing
-    url: https://github.com/public-apis/public-apis
+    url: https://en.wiktionary.org/
+  - type: DeveloperPortal
+    url: https://api.wikimedia.org/
+  - type: Documentation
+    url: https://www.mediawiki.org/wiki/API
+  - type: APIReference
+    url: https://www.mediawiki.org/wiki/API:Main_page
+  - type: GitHubOrganization
+    url: https://github.com/wikimedia
+    title: Wikimedia GitHub Mirror
+  - type: GitHubOrganization
+    url: https://gerrit.wikimedia.org/
+    title: Wikimedia Gerrit (Canonical)
+  - type: Authentication
+    url: https://api.wikimedia.org/wiki/Authentication
+  - type: RateLimits
+    url: https://api.wikimedia.org/wiki/Rate_limits
+  - type: TermsOfService
+    url: https://foundation.wikimedia.org/wiki/Terms_of_Use
+  - type: PrivacyPolicy
+    url: https://foundation.wikimedia.org/wiki/Privacy_policy
+  - type: Pricing
+    url: https://en.wiktionary.org/wiki/Wiktionary:About
+    title: Free (CC BY-SA 4.0)
+  - type: StatusPage
+    url: https://www.wikimediastatus.net/
+  - type: Blog
+    url: https://diff.wikimedia.org/
+  - type: Support
+    url: https://www.mediawiki.org/wiki/Project:Support_desk
+  - type: ChangeLog
+    url: https://www.mediawiki.org/wiki/MediaWiki_1.42
+  - type: SDK
+    url: https://www.mediawiki.org/wiki/Manual:Pywikibot
+    title: Pywikibot (Python)
+  - type: SDK
+    url: https://github.com/mwclient/mwclient
+    title: mwclient (Python)
+  - type: SDK
+    url: https://github.com/siddharthvp/mwn
+    title: mwn (TypeScript/Node.js)
+  - type: SDK
+    url: https://github.com/nodemw/nodemw
+    title: nodemw (Node.js)
+  - type: SDK
+    url: https://github.com/dmwilcox/wikitools3
+    title: wikitools3 (Python)
+  - type: SDK
+    url: https://github.com/MER-C/wiki-java
+    title: wiki-java (Java)
+  - type: SDK
+    url: https://github.com/Fastily/jwiki
+    title: jwiki (Java)
+  - type: SDK
+    url: https://github.com/addshore/mediawiki-api-base
+    title: mediawiki-api-base (PHP)
+  - type: SDK
+    url: https://github.com/wikimedia/mediawiki-ruby-api
+    title: mediawiki-ruby-api (Ruby)
+  - type: SDK
+    url: https://github.com/sadnub/mwparserfromhell
+    title: mwparserfromhell (Python wikitext parser)
+  - type: CLI
+    url: https://www.mediawiki.org/wiki/Manual:Pywikibot
+    title: Pywikibot CLI
+  - type: Tools
+    url: https://github.com/Professor-G/MediaWikiAPI
+    title: Wikidata Query Service
+  - type: GitHubRepository
+    url: https://github.com/wikimedia/mediawiki
+    title: MediaWiki Core
+  - type: GitHubRepository
+    url: https://github.com/wikimedia/restbase
+    title: RESTBase
+  - type: GitHubRepository
+    url: https://github.com/wikimedia/parsoid
+    title: Parsoid (Wikitext ↔ HTML)
+  - type: GitHubRepository
+    url: https://github.com/wikimedia/pywikibot
+    title: Pywikibot
+  - type: SpectralRules
+    url: rules/wiktionary-spectral-rules.yml
+  - type: Vocabulary
+    url: vocabulary/wiktionary-vocabulary.yml
+  - type: Features
+    data:
+      - name: Multilingual Definitions
+        description: >-
+          /page/definition/{term} returns dictionary entries broken down by
+          source language, part of speech, definitions, and usage examples in
+          structured JSON.
+      - name: Wikitext Access
+        description: >-
+          action=query&prop=wikitext returns raw wikitext for any page,
+          enabling clients to build their own parsers and extractors.
+      - name: Rendered HTML
+        description: >-
+          /page/html/{title} and action=parse return Parsoid-generated HTML
+          suitable for direct rendering in client apps.
+      - name: OpenSearch Suggestions
+        description: >-
+          action=opensearch implements the OpenSearch suggestions protocol so
+          Wiktionary can power autocomplete in any search UI.
+      - name: Full-Text Search
+        description: >-
+          action=query&list=search and /v1/search/page expose the same
+          ElasticSearch-backed full-text search Wiktionary uses internally.
+      - name: Page Revisions and History
+        description: >-
+          Both APIs expose full revision history, supporting time-travel reads
+          and change-detection workflows.
+      - name: Wikitext ↔ HTML Transforms
+        description: >-
+          Parsoid /transform/* endpoints convert between wikitext and HTML
+          round-trip-safely, useful for visual editors and bots.
+      - name: OAuth 2.0 and BotPasswords
+        description: >-
+          Authenticated calls support OAuth 2.0 (via api.wikimedia.org), legacy
+          OAuth 1.0a, and BotPassword scoped credentials.
+      - name: CC BY-SA 4.0 License
+        description: >-
+          All Wiktionary content can be reused for any purpose with attribution
+          and share-alike, including in commercial AI training corpora.
+  - type: UseCases
+    data:
+      - name: Dictionary Apps
+        description: >-
+          Embed definitions, etymologies, pronunciations, and translations
+          directly into mobile or desktop dictionary apps.
+      - name: Language-Learning Tools
+        description: >-
+          Power vocabulary lookups, flashcards, and reading-assistance browser
+          extensions for learners of any language.
+      - name: NLP and Linguistics Datasets
+        description: >-
+          Use bulk wikitext dumps and the definition API to build morphology,
+          inflection, and word-sense datasets for NLP research.
+      - name: Translation Memory
+        description: >-
+          Mine cross-language Wiktionary translation tables to seed bilingual
+          dictionaries and translation memories.
+      - name: Spell-Checkers and Tokenizers
+        description: >-
+          Use the OpenSearch and search endpoints to validate word existence
+          and segment text in tokenizers.
+      - name: AI Grounding and RAG
+        description: >-
+          Retrieve authoritative definitions to ground LLM responses about word
+          meaning, etymology, and usage.
+      - name: Crossword and Game Generation
+        description: >-
+          Generate clues, anagrams, and puzzle answers from Wiktionary's
+          definitions and word lists.
+      - name: Linguistic Research
+        description: >-
+          Query etymologies, declensions, pronunciations, and historical usage
+          across hundreds of languages.
+  - type: Integrations
+    data:
+      - name: Wikipedia
+        description: >-
+          Shares infrastructure, accounts, and most APIs with Wikipedia; both
+          run on MediaWiki under the Wikimedia Foundation.
+      - name: Wikidata
+        description: >-
+          Wiktionary lexemes are increasingly linked to structured Wikidata
+          lexeme entities (Lexeme namespace, Q-IDs, L-IDs).
+      - name: Wikimedia Commons
+        description: >-
+          Pronunciation audio files and images embedded in Wiktionary pages
+          live on Commons and are reachable via the same APIs.
+      - name: Pywikibot
+        description: >-
+          The reference bot framework for automated edits, dumps, and
+          maintenance scripts against Wiktionary.
+      - name: Wikimedia Enterprise
+        description: >-
+          Commercial high-volume snapshots of Wikimedia content (Wikipedia
+          first, with broader project coverage expanding); useful when REST
+          rate limits are insufficient.
+      - name: Toolforge
+        description: >-
+          Wikimedia-hosted PaaS for community tools that consume the
+          Wiktionary APIs at scale without bringing your own infrastructure.
+      - name: Hugging Face Datasets
+        description: >-
+          Pre-processed Wiktionary dumps are available on Hugging Face for
+          immediate use in ML training pipelines.
+  - type: Solutions
+    data:
+      - name: Free Public APIs
+        description: >-
+          The MediaWiki Action API, Wikimedia REST API, and MediaWiki Core
+          REST API are all free to use without registration, subject to the
+          200 req/s shared limit and User-Agent requirement.
+      - name: Bulk Dumps
+        description: >-
+          dumps.wikimedia.org provides full XML and SQL exports of every
+          Wikimedia project, refreshed at least monthly; the preferred channel
+          for whole-corpus processing.
+      - name: Wikimedia Enterprise
+        description: >-
+          Paid SLA-backed snapshots and streaming APIs for commercial reusers
+          who need throughput, freshness, or attribution guarantees beyond
+          what the free APIs provide.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wiktionary/refs/heads/main/json-schema/core-rest-api-latest-revision-schema.json",
+  "title": "LatestRevision",
+  "description": "LatestRevision schema from Wiktionary MediaWiki Core REST API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "example": 7654321
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2025-03-15T14:30:00Z"
+    }
+  }
+}

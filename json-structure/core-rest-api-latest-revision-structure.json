@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wiktionary/refs/heads/main/json-structure/core-rest-api-latest-revision-structure.json",
+  "description": "LatestRevision schema from Wiktionary MediaWiki Core REST API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "int32",
+      "example": 7654321
+    },
+    "timestamp": {
+      "type": "datetime",
+      "example": "2025-03-15T14:30:00Z"
+    }
+  },
+  "name": "LatestRevision"
+}

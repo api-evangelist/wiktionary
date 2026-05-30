@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wiktionary/refs/heads/main/json-structure/rest-api-html-transform-request-structure.json",
+  "description": "HtmlTransformRequest schema from Wiktionary Wikimedia REST API",
+  "type": "object",
+  "properties": {
+    "html": {
+      "type": "string",
+      "description": "Parsoid HTML to convert back to wikitext.",
+      "example": "<section><h2>English</h2><p>A standard greeting.</p></section>"
+    },
+    "scrub_wikitext": {
+      "type": "boolean",
+      "description": "Whether to clean up the resulting wikitext.",
+      "example": true
+    }
+  },
+  "required": [
+    "html"
+  ],
+  "name": "HtmlTransformRequest"
+}

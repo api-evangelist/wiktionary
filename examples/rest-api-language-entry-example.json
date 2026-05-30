@@ -1,0 +1,15 @@
+{
+  "partOfSpeech": "Interjection",
+  "language": "English",
+  "definitions": [
+    {
+      "definition": "A standard greeting.",
+      "examples": [
+        "Hello, world!"
+      ],
+      "parsedExamples": [
+        {}
+      ]
+    }
+  ]
+}

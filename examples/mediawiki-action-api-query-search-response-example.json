@@ -1,0 +1,12 @@
+{
+  "batchcomplete": "",
+  "continue": {},
+  "query": {
+    "searchinfo": {
+      "totalhits": 1234
+    },
+    "search": [
+      null
+    ]
+  }
+}

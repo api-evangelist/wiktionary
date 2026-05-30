@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wiktionary/refs/heads/main/json-structure/mediawiki-action-api-search-hit-structure.json",
+  "description": "SearchHit schema from Wiktionary MediaWiki Action API",
+  "type": "object",
+  "properties": {
+    "ns": {
+      "type": "int32",
+      "example": 0
+    },
+    "title": {
+      "type": "string",
+      "example": "hello"
+    },
+    "pageid": {
+      "type": "int32",
+      "example": 12345
+    },
+    "size": {
+      "type": "int32",
+      "example": 4321
+    },
+    "wordcount": {
+      "type": "int32",
+      "example": 412
+    },
+    "snippet": {
+      "type": "string",
+      "description": "HTML snippet of the matching excerpt.",
+      "example": "A standard <span class=\"searchmatch\">greeting</span>."
+    },
+    "timestamp": {
+      "type": "datetime",
+      "example": "2025-03-15T14:30:00Z"
+    }
+  },
+  "name": "SearchHit"
+}

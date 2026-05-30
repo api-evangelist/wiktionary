@@ -1,0 +1,85 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Wiktionary Wikimedia REST API — Definition
+  description: 'Wikimedia REST API — Definition. 1 operations. Lead operation: Wiktionary Get Definition. Self-contained Naftiko capability covering one Wiktionary business surface.'
+  tags:
+  - Wiktionary
+  - Wikimedia REST API
+  - Definition
+  created: '2026-05-30'
+  modified: '2026-05-30'
+binds:
+- namespace: env
+  keys:
+    WIKTIONARY_WIKIMEDIA_TOKEN: WIKTIONARY_WIKIMEDIA_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: rest-api-definition
+    baseUri: https://en.wiktionary.org/api/rest_v1
+    description: Wiktionary Wikimedia REST API — Definition business capability. Self-contained, no shared references.
+    authentication:
+      type: bearer
+      token: '{{env.WIKTIONARY_WIKIMEDIA_TOKEN}}'
+    resources:
+    - name: page-definition-term
+      path: /page/definition/{term}
+      operations:
+      - name: getDefinition
+        method: GET
+        description: Wiktionary Get Definition
+        inputParameters:
+        - name: term
+          in: path
+          type: string
+          required: true
+          description: The dictionary term (URL-encoded; case-sensitive on Wiktionary).
+        - name: redirect
+          in: query
+          type: boolean
+          required: false
+          description: Whether to follow page redirects (defaults to true).
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: rest-api-definition-rest
+    port: 8080
+    description: REST adapter for Wiktionary Wikimedia REST API — Definition. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/page/definition/{term}
+      name: page-definition-term
+      description: REST surface for Wiktionary Get Definition.
+      operations:
+      - method: GET
+        name: getDefinition
+        description: Wiktionary Get Definition
+        call: rest-api-definition.getDefinition
+        with:
+          term: rest.term
+          redirect: rest.redirect
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rest-api-definition-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Wiktionary Wikimedia REST API — Definition. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: get-definition
+      description: Wiktionary Get Definition
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-api-definition.getDefinition
+      with:
+        term: tools.term
+        redirect: tools.redirect
+      outputParameters:
+      - type: object
+        mapping: $.

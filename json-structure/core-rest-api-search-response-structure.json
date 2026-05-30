@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wiktionary/refs/heads/main/json-structure/core-rest-api-search-response-structure.json",
+  "description": "SearchResponse schema from Wiktionary MediaWiki Core REST API",
+  "type": "object",
+  "properties": {
+    "pages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "int32",
+            "example": 12345
+          },
+          "key": {
+            "type": "string",
+            "example": "hello"
+          },
+          "title": {
+            "type": "string",
+            "example": "hello"
+          },
+          "excerpt": {
+            "type": "string",
+            "example": "A standard <span class=\"searchmatch\">greeting</span>."
+          },
+          "matched_title": {
+            "type": "string",
+            "nullable": true,
+            "example": null
+          },
+          "description": {
+            "type": "string",
+            "example": "English interjection."
+          },
+          "thumbnail": {
+            "type": "object",
+            "nullable": true,
+            "properties": {
+              "url": {
+                "type": "uri",
+                "example": "https://upload.wikimedia.org/wikipedia/commons/thumb/example.png"
+              },
+              "width": {
+                "type": "int32",
+                "example": 60
+              },
+              "height": {
+                "type": "int32",
+                "example": 60
+              }
+            }
+          }
+        },
+        "name": "SearchPage"
+      }
+    }
+  },
+  "name": "SearchResponse"
+}

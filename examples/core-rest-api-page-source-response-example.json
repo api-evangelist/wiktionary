@@ -1,0 +1,15 @@
+{
+  "id": 12345,
+  "key": "hello",
+  "title": "hello",
+  "latest": {
+    "id": 7654321,
+    "timestamp": "2025-03-15T14:30:00Z"
+  },
+  "content_model": "wikitext",
+  "license": {
+    "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "title": "Creative Commons Attribution-Share Alike 4.0 International"
+  },
+  "source": "==English==\n===Interjection===\n# A standard greeting."
+}

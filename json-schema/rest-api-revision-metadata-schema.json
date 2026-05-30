@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wiktionary/refs/heads/main/json-schema/rest-api-revision-metadata-schema.json",
+  "title": "RevisionMetadata",
+  "description": "Metadata about the latest revision of a page.",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "title": "RevisionItem",
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "example": "hello"
+          },
+          "page_id": {
+            "type": "integer",
+            "example": 12345
+          },
+          "rev": {
+            "type": "integer",
+            "description": "Revision id.",
+            "example": 7654321
+          },
+          "tid": {
+            "type": "string",
+            "example": "1c2d3e4f-aaaa-bbbb-cccc-ddddeeeeffff"
+          },
+          "namespace": {
+            "type": "integer",
+            "example": 0
+          },
+          "user_id": {
+            "type": "integer",
+            "example": 1
+          },
+          "user_text": {
+            "type": "string",
+            "example": "ExampleEditor"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-03-15T14:30:00Z"
+          },
+          "comment": {
+            "type": "string",
+            "example": "typo fix"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": []
+          },
+          "restrictions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": []
+          },
+          "page_language": {
+            "type": "string",
+            "example": "en"
+          }
+        }
+      }
+    }
+  }
+}

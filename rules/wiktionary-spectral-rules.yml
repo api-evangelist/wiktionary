@@ -1,0 +1,440 @@
+# Wiktionary Spectral Ruleset
+#
+# Opinionated Spectral rules enforcing the Wiktionary / Wikimedia API
+# conventions observed across the three OpenAPI specs in this repo:
+# the MediaWiki Action API, the Wikimedia REST API, and the MediaWiki
+# Core REST API.
+
+extends:
+  - spectral:oas
+
+functions: []
+
+rules:
+
+  # ──────────────────────────────────────────────────────────────────
+  # INFO / METADATA
+  # ──────────────────────────────────────────────────────────────────
+
+  info-title-wiktionary-prefix:
+    description: Info title must begin with "Wiktionary".
+    message: '{{property}} must start with "Wiktionary".'
+    severity: error
+    given: $.info
+    then:
+      field: title
+      function: pattern
+      functionOptions:
+        match: '^Wiktionary'
+
+  info-description-required:
+    description: Info description must be present and at least 60 characters.
+    message: Info description must be at least 60 characters.
+    severity: error
+    given: $.info
+    then:
+      field: description
+      function: length
+      functionOptions:
+        min: 60
+
+  info-license-cc-by-sa:
+    description: License must be CC BY-SA 4.0 — Wiktionary content is CC BY-SA.
+    message: 'License name should be "CC BY-SA 4.0".'
+    severity: error
+    given: $.info.license
+    then:
+      field: name
+      function: pattern
+      functionOptions:
+        match: '^CC BY-SA'
+
+  info-contact-required:
+    description: Info contact block must include name and url.
+    severity: warn
+    given: $.info.contact
+    then:
+      - field: name
+        function: truthy
+      - field: url
+        function: truthy
+
+  # ──────────────────────────────────────────────────────────────────
+  # OPENAPI VERSION
+  # ──────────────────────────────────────────────────────────────────
+
+  openapi-version-3:
+    description: All Wiktionary specs must use OpenAPI 3.0.x.
+    message: 'OpenAPI version must be 3.0.x.'
+    severity: error
+    given: $.openapi
+    then:
+      function: pattern
+      functionOptions:
+        match: '^3\.0\.'
+
+  # ──────────────────────────────────────────────────────────────────
+  # SERVERS
+  # ──────────────────────────────────────────────────────────────────
+
+  servers-defined:
+    description: At least one server must be defined.
+    severity: error
+    given: $
+    then:
+      field: servers
+      function: truthy
+
+  servers-https-only:
+    description: All server URLs must use HTTPS.
+    severity: error
+    given: $.servers[*]
+    then:
+      field: url
+      function: pattern
+      functionOptions:
+        match: '^https://'
+
+  servers-wikimedia-host:
+    description: Server URLs must point to en.wiktionary.org.
+    severity: warn
+    given: $.servers[*]
+    then:
+      field: url
+      function: pattern
+      functionOptions:
+        match: 'en\.wiktionary\.org'
+
+  # ──────────────────────────────────────────────────────────────────
+  # PATHS — NAMING CONVENTIONS
+  # ──────────────────────────────────────────────────────────────────
+
+  paths-kebab-case:
+    description: Path segments should use lowercase kebab-case (allowing wikitext fragments).
+    message: Path segments should be lowercase with hyphens or underscores.
+    severity: warn
+    given: $.paths.*~
+    then:
+      function: pattern
+      functionOptions:
+        match: '^/[a-z0-9_/{}.-]+$'
+
+  paths-no-trailing-slash:
+    description: Paths must not end with a trailing slash.
+    severity: error
+    given: $.paths.*~
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: '/$'
+
+  paths-no-query-strings:
+    description: Paths must not contain query strings.
+    severity: error
+    given: $.paths.*~
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: '\?'
+
+  paths-v1-prefix-for-rest:
+    description: REST endpoints (not /api.php) should be versioned with /v1/ or /page/ or /transform/.
+    severity: info
+    given: $.paths.*~
+    then:
+      function: pattern
+      functionOptions:
+        match: '^/(v[0-9]+|page|transform|api\.php)'
+
+  # ──────────────────────────────────────────────────────────────────
+  # OPERATIONS
+  # ──────────────────────────────────────────────────────────────────
+
+  operation-operationId-required:
+    description: Every operation must have an operationId.
+    severity: error
+    given: $.paths.*.[get,post,put,patch,delete]
+    then:
+      field: operationId
+      function: truthy
+
+  operation-operationId-camelcase:
+    description: operationId must use camelCase.
+    severity: warn
+    given: $.paths.*.[get,post,put,patch,delete]
+    then:
+      field: operationId
+      function: pattern
+      functionOptions:
+        match: '^[a-z][a-zA-Z0-9]*$'
+
+  operation-summary-required:
+    description: Every operation must have a summary.
+    severity: error
+    given: $.paths.*.[get,post,put,patch,delete]
+    then:
+      field: summary
+      function: truthy
+
+  operation-summary-wiktionary-prefix:
+    description: Every operation summary must start with "Wiktionary".
+    severity: warn
+    given: $.paths.*.[get,post,put,patch,delete]
+    then:
+      field: summary
+      function: pattern
+      functionOptions:
+        match: '^Wiktionary '
+
+  operation-description-required:
+    description: Every operation must have a description.
+    severity: warn
+    given: $.paths.*.[get,post,put,patch,delete]
+    then:
+      field: description
+      function: truthy
+
+  operation-tags-required:
+    description: Every operation must have at least one tag.
+    severity: error
+    given: $.paths.*.[get,post,put,patch,delete]
+    then:
+      field: tags
+      function: schema
+      functionOptions:
+        schema:
+          type: array
+          minItems: 1
+
+  operation-microcks-extension:
+    description: Every operation should declare x-microcks-operation for mock-server compatibility.
+    severity: info
+    given: $.paths.*.[get,post,put,patch,delete]
+    then:
+      field: x-microcks-operation
+      function: truthy
+
+  # ──────────────────────────────────────────────────────────────────
+  # TAGS
+  # ──────────────────────────────────────────────────────────────────
+
+  tags-global-defined:
+    description: Global tags array must be defined.
+    severity: warn
+    given: $
+    then:
+      field: tags
+      function: truthy
+
+  tag-description-required:
+    description: Every global tag must have a description.
+    severity: warn
+    given: $.tags[*]
+    then:
+      field: description
+      function: truthy
+
+  tag-title-case:
+    description: Global tag names should use Title Case (e.g. "Page Content", "Transform").
+    severity: info
+    given: $.tags[*]
+    then:
+      field: name
+      function: pattern
+      functionOptions:
+        match: '^[A-Z][A-Za-z0-9 ]+$'
+
+  # ──────────────────────────────────────────────────────────────────
+  # PARAMETERS
+  # ──────────────────────────────────────────────────────────────────
+
+  parameter-description-required:
+    description: Every parameter must have a description.
+    severity: warn
+    given: $.paths.*.[get,post,put,patch,delete].parameters[*]
+    then:
+      field: description
+      function: truthy
+
+  parameter-schema-required:
+    description: Every parameter must have a schema with a type.
+    severity: warn
+    given: $.paths.*.[get,post,put,patch,delete].parameters[*]
+    then:
+      field: schema
+      function: truthy
+
+  parameter-name-snake-or-kebab:
+    description: Parameter names should use snake_case or kebab-case (MediaWiki convention).
+    severity: info
+    given: $.paths.*.[get,post,put,patch,delete].parameters[?(@.in=='query' || @.in=='path')]
+    then:
+      field: name
+      function: pattern
+      functionOptions:
+        match: '^[a-z][a-z0-9_-]*$'
+
+  # ──────────────────────────────────────────────────────────────────
+  # REQUEST BODIES
+  # ──────────────────────────────────────────────────────────────────
+
+  request-body-description:
+    description: Request bodies should have a description.
+    severity: warn
+    given: $.paths.*.[post,put,patch].requestBody
+    then:
+      field: description
+      function: truthy
+
+  request-body-json-content:
+    description: Request bodies should support application/json.
+    severity: info
+    given: $.paths.*.[post,put,patch].requestBody
+    then:
+      field: content
+      function: truthy
+
+  # ──────────────────────────────────────────────────────────────────
+  # RESPONSES
+  # ──────────────────────────────────────────────────────────────────
+
+  response-2xx-required:
+    description: Every operation must define at least one 2xx response.
+    severity: error
+    given: $.paths.*.[get,post,put,patch,delete].responses
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          patternProperties:
+            '^2\d\d$': {}
+          required: []
+
+  response-200-description:
+    description: 2xx responses must have a description.
+    severity: warn
+    given: $.paths.*.[get,post,put,patch,delete].responses[?(@property.match(/^2/))]
+    then:
+      field: description
+      function: truthy
+
+  response-404-on-page-endpoints:
+    description: Page-content endpoints should document a 404 response.
+    severity: info
+    given: $.paths[?(@property.match(/page|definition|file/))][get,post,put,patch,delete].responses
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          patternProperties:
+            '^404$': {}
+
+  response-problem-details:
+    description: Error responses (4xx, 5xx) should use application/problem+json (RFC 7807) on the REST APIs.
+    severity: info
+    given: $.paths[?(@property.match(/page|transform|definition|file/))][get,post,put,patch,delete].responses[?(@property.match(/^[45]/))].content
+    then:
+      field: application/problem+json
+      function: truthy
+
+  # ──────────────────────────────────────────────────────────────────
+  # SCHEMAS — PROPERTY NAMING
+  # ──────────────────────────────────────────────────────────────────
+
+  schema-title-required:
+    description: Top-level schemas should have a title.
+    severity: warn
+    given: $.components.schemas.*
+    then:
+      field: title
+      function: truthy
+
+  schema-description-required:
+    description: Top-level schemas should have a description.
+    severity: info
+    given: $.components.schemas.*
+    then:
+      field: description
+      function: truthy
+
+  schema-type-required:
+    description: Top-level schemas must declare a type.
+    severity: warn
+    given: $.components.schemas.*
+    then:
+      field: type
+      function: truthy
+
+  schema-property-snake-case:
+    description: Schema property names should use snake_case to match MediaWiki JSON conventions.
+    severity: info
+    given: $.components.schemas.*.properties.*~
+    then:
+      function: pattern
+      functionOptions:
+        match: '^([a-z][a-z0-9_]*|\*)$'
+
+  # ──────────────────────────────────────────────────────────────────
+  # SECURITY
+  # ──────────────────────────────────────────────────────────────────
+
+  security-global-defined:
+    description: Global security array must be present (empty {} is allowed for public read).
+    severity: warn
+    given: $
+    then:
+      field: security
+      function: truthy
+
+  security-schemes-oauth2-bot:
+    description: securitySchemes should include OAuth2 (and optionally botPassword) where authenticated access is supported.
+    severity: info
+    given: $.components
+    then:
+      field: securitySchemes
+      function: truthy
+
+  # ──────────────────────────────────────────────────────────────────
+  # HTTP METHOD CONVENTIONS
+  # ──────────────────────────────────────────────────────────────────
+
+  get-no-request-body:
+    description: GET operations must not have a request body.
+    severity: error
+    given: $.paths.*.get
+    then:
+      field: requestBody
+      function: falsy
+
+  delete-no-request-body:
+    description: DELETE operations must not have a request body.
+    severity: error
+    given: $.paths.*.delete
+    then:
+      field: requestBody
+      function: falsy
+
+  # ──────────────────────────────────────────────────────────────────
+  # GENERAL QUALITY
+  # ──────────────────────────────────────────────────────────────────
+
+  no-empty-descriptions:
+    description: Descriptions must not be empty when present.
+    severity: warn
+    given: "$..description"
+    then:
+      function: truthy
+
+  user-agent-rate-limit-note:
+    description: >-
+      The Wikimedia REST API requires a unique User-Agent or Api-User-Agent
+      header. info.description should mention this requirement (rate-limit hint).
+    severity: info
+    given: $.info
+    then:
+      field: description
+      function: pattern
+      functionOptions:
+        match: '(User-Agent|rate|req/s|200)'

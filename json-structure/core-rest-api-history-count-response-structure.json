@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wiktionary/refs/heads/main/json-structure/core-rest-api-history-count-response-structure.json",
+  "description": "HistoryCountResponse schema from Wiktionary MediaWiki Core REST API",
+  "type": "object",
+  "properties": {
+    "count": {
+      "type": "int32",
+      "example": 412
+    },
+    "limit": {
+      "type": "boolean",
+      "description": "True if the count was capped (e.g., >10000).",
+      "example": false
+    }
+  },
+  "name": "HistoryCountResponse"
+}

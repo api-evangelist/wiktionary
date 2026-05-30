@@ -1,0 +1,25 @@
+{
+  "revisions": [
+    {
+      "id": 7654321,
+      "page": {
+        "id": {},
+        "title": {}
+      },
+      "size": 4321,
+      "minor": false,
+      "timestamp": "2025-03-15T14:30:00Z",
+      "content_model": "wikitext",
+      "license": null,
+      "user": {
+        "id": {},
+        "name": {}
+      },
+      "comment": "typo fix",
+      "delta": 12
+    }
+  ],
+  "latest": "https://en.wiktionary.org/w/rest.php/v1/page/hello/history",
+  "older": "https://en.wiktionary.org/w/rest.php/v1/page/hello/history?older_than=7654321",
+  "newer": "https://en.wiktionary.org/w/rest.php/v1/page/hello/history?newer_than=7654321"
+}

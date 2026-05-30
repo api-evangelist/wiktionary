@@ -1,0 +1,12 @@
+{
+  "batchcomplete": "",
+  "continue": {},
+  "query": {},
+  "parse": {},
+  "warnings": {},
+  "error": {
+    "code": "badvalue",
+    "info": "Unrecognized value for parameter \"action\".",
+    "*": "==English==\n===Interjection===\n# A standard greeting."
+  }
+}

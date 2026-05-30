@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wiktionary/refs/heads/main/json-structure/mediawiki-action-api-revision-page-structure.json",
+  "description": "RevisionPage schema from Wiktionary MediaWiki Action API",
+  "type": "object",
+  "properties": {
+    "pageid": {
+      "type": "int32",
+      "example": 12345
+    },
+    "ns": {
+      "type": "int32",
+      "example": 0
+    },
+    "title": {
+      "type": "string",
+      "example": "hello"
+    },
+    "revisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "contentformat": {
+            "type": "string",
+            "example": "text/x-wiki"
+          },
+          "contentmodel": {
+            "type": "string",
+            "example": "wikitext"
+          },
+          "*": {
+            "type": "string",
+            "description": "Raw wikitext body.",
+            "example": "==English==\n===Interjection===\n# A standard greeting."
+          }
+        },
+        "name": "Revision"
+      }
+    }
+  },
+  "name": "RevisionPage"
+}

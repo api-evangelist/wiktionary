@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wiktionary/refs/heads/main/json-schema/mediawiki-action-api-open-search-response-schema.json",
+  "title": "OpenSearchResponse",
+  "description": "OpenSearch suggestions protocol 4-tuple: [query, titles, descriptions, urls].",
+  "type": "array",
+  "items": {
+    "oneOf": [
+      {
+        "type": "string"
+      },
+      {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    ]
+  },
+  "minItems": 4,
+  "maxItems": 4,
+  "example": [
+    "hel",
+    [
+      "hello",
+      "help",
+      "helmet"
+    ],
+    [
+      "",
+      "",
+      ""
+    ],
+    [
+      "https://en.wiktionary.org/wiki/hello",
+      "https://en.wiktionary.org/wiki/help",
+      "https://en.wiktionary.org/wiki/helmet"
+    ]
+  ]
+}

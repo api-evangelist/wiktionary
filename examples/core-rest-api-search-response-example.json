@@ -1,0 +1,17 @@
+{
+  "pages": [
+    {
+      "id": 12345,
+      "key": "hello",
+      "title": "hello",
+      "excerpt": "A standard <span class=\"searchmatch\">greeting</span>.",
+      "matched_title": null,
+      "description": "English interjection.",
+      "thumbnail": {
+        "url": {},
+        "width": {},
+        "height": {}
+      }
+    }
+  ]
+}

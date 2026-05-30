@@ -1,0 +1,20 @@
+{
+  "title": "File:En-us-hello.ogg",
+  "file_description_url": "https://commons.wikimedia.org/wiki/File:En-us-hello.ogg",
+  "latest": {
+    "timestamp": "2025-03-15T14:30:00Z",
+    "user": {
+      "id": 1,
+      "name": "ExampleUploader"
+    }
+  },
+  "preferred": {
+    "mediatype": "AUDIO",
+    "size": 8192,
+    "width": null,
+    "height": null,
+    "duration": 1.4,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/example/En-us-hello.ogg"
+  },
+  "original": {}
+}

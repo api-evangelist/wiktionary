@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wiktionary/refs/heads/main/json-schema/mediawiki-action-api-query-revisions-response-schema.json",
+  "title": "QueryRevisionsResponse",
+  "description": "action=query&prop=revisions result containing page wikitext.",
+  "type": "object",
+  "properties": {
+    "batchcomplete": {
+      "type": "string",
+      "example": ""
+    },
+    "query": {
+      "type": "object",
+      "properties": {
+        "pages": {
+          "type": "object",
+          "description": "Map of pageid \u2192 page object.",
+          "additionalProperties": {
+            "$ref": "#/components/schemas/RevisionPage"
+          }
+        }
+      }
+    }
+  }
+}

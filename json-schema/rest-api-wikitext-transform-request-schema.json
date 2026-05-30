@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wiktionary/refs/heads/main/json-schema/rest-api-wikitext-transform-request-schema.json",
+  "title": "WikitextTransformRequest",
+  "description": "WikitextTransformRequest schema from Wiktionary Wikimedia REST API",
+  "type": "object",
+  "properties": {
+    "wikitext": {
+      "type": "string",
+      "description": "Wikitext content to transform.",
+      "example": "==English==\n===Interjection===\n# A standard greeting."
+    },
+    "body_only": {
+      "type": "boolean",
+      "description": "If true, only return the body fragment instead of a full HTML document.",
+      "example": true
+    },
+    "stash": {
+      "type": "boolean",
+      "description": "If true, server-side stash for later /transform calls.",
+      "example": false
+    }
+  },
+  "required": [
+    "wikitext"
+  ]
+}

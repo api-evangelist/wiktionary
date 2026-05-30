@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wiktionary/refs/heads/main/json-schema/rest-api-content-urls-schema.json",
+  "title": "ContentUrls",
+  "description": "ContentUrls schema from Wiktionary Wikimedia REST API",
+  "type": "object",
+  "properties": {
+    "desktop": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "type": "string",
+          "format": "uri",
+          "example": "https://en.wiktionary.org/wiki/hello"
+        }
+      }
+    },
+    "mobile": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "type": "string",
+          "format": "uri",
+          "example": "https://en.m.wiktionary.org/wiki/hello"
+        }
+      }
+    }
+  }
+}

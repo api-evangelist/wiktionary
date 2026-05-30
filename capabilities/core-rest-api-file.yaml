@@ -1,0 +1,78 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Wiktionary MediaWiki Core REST API — File
+  description: 'MediaWiki Core REST API — File. 1 operations. Lead operation: Wiktionary Get File. Self-contained Naftiko capability covering one Wiktionary business surface.'
+  tags:
+  - Wiktionary
+  - MediaWiki Core REST API
+  - File
+  created: '2026-05-30'
+  modified: '2026-05-30'
+binds:
+- namespace: env
+  keys:
+    WIKTIONARY_MEDIAWIKI_CORE_TOKEN: WIKTIONARY_MEDIAWIKI_CORE_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: core-rest-api-file
+    baseUri: https://en.wiktionary.org/w/rest.php
+    description: Wiktionary MediaWiki Core REST API — File business capability. Self-contained, no shared references.
+    authentication:
+      type: bearer
+      token: '{{env.WIKTIONARY_MEDIAWIKI_CORE_TOKEN}}'
+    resources:
+    - name: v1-file-title
+      path: /v1/file/{title}
+      operations:
+      - name: getFile
+        method: GET
+        description: Wiktionary Get File
+        inputParameters:
+        - name: title
+          in: path
+          type: string
+          required: true
+          description: URL-encoded file title (e.g. `File:Hello.ogg`).
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: core-rest-api-file-rest
+    port: 8080
+    description: REST adapter for Wiktionary MediaWiki Core REST API — File. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/file/{title}
+      name: v1-file-title
+      description: REST surface for Wiktionary Get File.
+      operations:
+      - method: GET
+        name: getFile
+        description: Wiktionary Get File
+        call: core-rest-api-file.getFile
+        with:
+          title: rest.title
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: core-rest-api-file-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Wiktionary MediaWiki Core REST API — File. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: get-file
+      description: Wiktionary Get File
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: core-rest-api-file.getFile
+      with:
+        title: tools.title
+      outputParameters:
+      - type: object
+        mapping: $.
