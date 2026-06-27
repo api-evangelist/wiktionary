@@ -109,37 +109,37 @@ apis:
         url: json-structure/mediawiki-action-api-search-hit-structure.json
       - type: JSONLD
         url: json-ld/wiktionary-mediawiki-action-api-context.jsonld
-      - type: Example
+      - type: Examples
         url: examples/mediawiki-action-api-action-api-response-example.json
-      - type: Example
+      - type: Examples
         url: examples/mediawiki-action-api-expand-templates-response-example.json
-      - type: Example
+      - type: Examples
         url: examples/mediawiki-action-api-extract-page-example.json
-      - type: Example
+      - type: Examples
         url: examples/mediawiki-action-api-open-search-response-example.json
-      - type: Example
+      - type: Examples
         url: examples/mediawiki-action-api-parse-response-example.json
-      - type: Example
+      - type: Examples
         url: examples/mediawiki-action-api-parse-section-example.json
-      - type: Example
+      - type: Examples
         url: examples/mediawiki-action-api-query-extracts-response-example.json
-      - type: Example
+      - type: Examples
         url: examples/mediawiki-action-api-query-revisions-response-example.json
-      - type: Example
+      - type: Examples
         url: examples/mediawiki-action-api-query-search-response-example.json
-      - type: Example
+      - type: Examples
         url: examples/mediawiki-action-api-revision-example.json
-      - type: Example
+      - type: Examples
         url: examples/mediawiki-action-api-revision-page-example.json
-      - type: Example
+      - type: Examples
         url: examples/mediawiki-action-api-search-hit-example.json
-      - type: NaftikoCapability
+      - type: X-NaftikoCapability
         url: capabilities/mediawiki-action-api-expandtemplates.yaml
-      - type: NaftikoCapability
+      - type: X-NaftikoCapability
         url: capabilities/mediawiki-action-api-opensearch.yaml
-      - type: NaftikoCapability
+      - type: X-NaftikoCapability
         url: capabilities/mediawiki-action-api-parse.yaml
-      - type: NaftikoCapability
+      - type: X-NaftikoCapability
         url: capabilities/mediawiki-action-api-query.yaml
   - name: Wikimedia REST API (Wiktionary)
     description: >-
@@ -212,31 +212,31 @@ apis:
         url: json-structure/rest-api-wikitext-transform-request-structure.json
       - type: JSONLD
         url: json-ld/wiktionary-rest-api-context.jsonld
-      - type: Example
+      - type: Examples
         url: examples/rest-api-content-urls-example.json
-      - type: Example
+      - type: Examples
         url: examples/rest-api-definition-entry-example.json
-      - type: Example
+      - type: Examples
         url: examples/rest-api-definition-response-example.json
-      - type: Example
+      - type: Examples
         url: examples/rest-api-html-transform-request-example.json
-      - type: Example
+      - type: Examples
         url: examples/rest-api-language-entry-example.json
-      - type: Example
+      - type: Examples
         url: examples/rest-api-lint-error-example.json
-      - type: Example
+      - type: Examples
         url: examples/rest-api-page-summary-example.json
-      - type: Example
+      - type: Examples
         url: examples/rest-api-revision-item-example.json
-      - type: Example
+      - type: Examples
         url: examples/rest-api-revision-metadata-example.json
-      - type: Example
+      - type: Examples
         url: examples/rest-api-wikitext-transform-request-example.json
-      - type: NaftikoCapability
+      - type: X-NaftikoCapability
         url: capabilities/rest-api-definition.yaml
-      - type: NaftikoCapability
+      - type: X-NaftikoCapability
         url: capabilities/rest-api-page-content.yaml
-      - type: NaftikoCapability
+      - type: X-NaftikoCapability
         url: capabilities/rest-api-transform.yaml
   - name: MediaWiki Core REST API (Wiktionary)
     description: >-
@@ -304,33 +304,33 @@ apis:
         url: json-structure/core-rest-api-search-response-structure.json
       - type: JSONLD
         url: json-ld/wiktionary-core-rest-api-context.jsonld
-      - type: Example
+      - type: Examples
         url: examples/core-rest-api-file-metadata-example.json
-      - type: Example
+      - type: Examples
         url: examples/core-rest-api-history-count-response-example.json
-      - type: Example
+      - type: Examples
         url: examples/core-rest-api-history-response-example.json
-      - type: Example
+      - type: Examples
         url: examples/core-rest-api-latest-revision-example.json
-      - type: Example
+      - type: Examples
         url: examples/core-rest-api-license-info-example.json
-      - type: Example
+      - type: Examples
         url: examples/core-rest-api-page-source-response-example.json
-      - type: Example
+      - type: Examples
         url: examples/core-rest-api-page-with-html-response-example.json
-      - type: Example
+      - type: Examples
         url: examples/core-rest-api-revision-detail-example.json
-      - type: Example
+      - type: Examples
         url: examples/core-rest-api-search-page-example.json
-      - type: Example
+      - type: Examples
         url: examples/core-rest-api-search-response-example.json
-      - type: NaftikoCapability
+      - type: X-NaftikoCapability
         url: capabilities/core-rest-api-file.yaml
-      - type: NaftikoCapability
+      - type: X-NaftikoCapability
         url: capabilities/core-rest-api-history.yaml
-      - type: NaftikoCapability
+      - type: X-NaftikoCapability
         url: capabilities/core-rest-api-page.yaml
-      - type: NaftikoCapability
+      - type: X-NaftikoCapability
         url: capabilities/core-rest-api-search.yaml
 common:
   - type: Website
@@ -366,34 +366,34 @@ common:
     url: https://www.mediawiki.org/wiki/Project:Support_desk
   - type: ChangeLog
     url: https://www.mediawiki.org/wiki/MediaWiki_1.42
-  - type: SDK
+  - type: SDKs
     url: https://www.mediawiki.org/wiki/Manual:Pywikibot
     title: Pywikibot (Python)
-  - type: SDK
+  - type: SDKs
     url: https://github.com/mwclient/mwclient
     title: mwclient (Python)
-  - type: SDK
+  - type: SDKs
     url: https://github.com/siddharthvp/mwn
     title: mwn (TypeScript/Node.js)
-  - type: SDK
+  - type: SDKs
     url: https://github.com/nodemw/nodemw
     title: nodemw (Node.js)
-  - type: SDK
+  - type: SDKs
     url: https://github.com/dmwilcox/wikitools3
     title: wikitools3 (Python)
-  - type: SDK
+  - type: SDKs
     url: https://github.com/MER-C/wiki-java
     title: wiki-java (Java)
-  - type: SDK
+  - type: SDKs
     url: https://github.com/Fastily/jwiki
     title: jwiki (Java)
-  - type: SDK
+  - type: SDKs
     url: https://github.com/addshore/mediawiki-api-base
     title: mediawiki-api-base (PHP)
-  - type: SDK
+  - type: SDKs
     url: https://github.com/wikimedia/mediawiki-ruby-api
     title: mediawiki-ruby-api (Ruby)
-  - type: SDK
+  - type: SDKs
     url: https://github.com/sadnub/mwparserfromhell
     title: mwparserfromhell (Python wikitext parser)
   - type: CLI
