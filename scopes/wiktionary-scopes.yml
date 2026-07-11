@@ -1,0 +1,38 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/wiktionary-core-rest-api-openapi-original.yml, openapi/wiktionary-mediawiki-action-api-openapi-original.yml
+schemes:
+- name: oauth2
+  source: openapi/wiktionary-core-rest-api-openapi-original.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://meta.wikimedia.org/w/rest.php/oauth2/authorize
+    tokenUrl: https://meta.wikimedia.org/w/rest.php/oauth2/access_token
+  description: OAuth 2.0 access tokens issued via api.wikimedia.org.
+- name: oauth2
+  source: openapi/wiktionary-mediawiki-action-api-openapi-original.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://meta.wikimedia.org/w/rest.php/oauth2/authorize
+    tokenUrl: https://meta.wikimedia.org/w/rest.php/oauth2/access_token
+  description: OAuth 2.0 access tokens issued via api.wikimedia.org.
+scopes:
+- scope: basic
+  description: Basic read access to user identity
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/wiktionary-core-rest-api-openapi-original.yml
+  - openapi/wiktionary-mediawiki-action-api-openapi-original.yml
+- scope: createeditmovepage
+  description: Create, edit, and move pages
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/wiktionary-mediawiki-action-api-openapi-original.yml
+- scope: highvolume
+  description: Higher rate limits for bot use
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/wiktionary-mediawiki-action-api-openapi-original.yml

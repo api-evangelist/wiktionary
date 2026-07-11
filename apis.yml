@@ -333,6 +333,10 @@ apis:
       - type: X-NaftikoCapability
         url: capabilities/core-rest-api-search.yaml
 common:
+  - type: Authentication
+    url: authentication/wiktionary-authentication.yml
+  - type: OAuthScopes
+    url: scopes/wiktionary-scopes.yml
   - type: Website
     url: https://en.wiktionary.org/
   - type: DeveloperPortal
