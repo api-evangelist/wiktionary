@@ -333,6 +333,8 @@ apis:
       - type: X-NaftikoCapability
         url: capabilities/core-rest-api-search.yaml
 common:
+  - type: AgenticAccess
+    url: agentic-access/wiktionary-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/wiktionary-vulnerability-disclosure.yml
   - type: DomainSecurity
