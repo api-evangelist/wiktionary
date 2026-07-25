@@ -1,0 +1,145 @@
+openapi: 3.0.3
+info:
+  title: Wiktionary MediaWiki Core REST Definition File API
+  description: The newer MediaWiki Core REST API, exposed per wiki at /w/rest.php. It offers a smaller, streamlined surface than the Action API for fetching page content, history, search, files, and revisions. On Wiktionary it serves the same content as the Action API in a more developer-friendly JSON shape. All content is CC BY-SA 4.0.
+  version: 1.0.0
+  termsOfService: https://foundation.wikimedia.org/wiki/Terms_of_Use
+  contact:
+    name: Wikimedia Foundation
+    url: https://www.mediawiki.org/wiki/API:REST_API
+  license:
+    name: CC BY-SA 4.0
+    url: https://creativecommons.org/licenses/by-sa/4.0/
+  x-generated-from: documentation
+  x-last-validated: '2026-05-30'
+servers:
+- url: https://en.wiktionary.org/w/rest.php
+  description: English Wiktionary Core REST endpoint
+security:
+- {}
+- oauth2: []
+tags:
+- name: File
+  description: File and media metadata
+paths:
+  /v1/file/{title}:
+    get:
+      operationId: getFile
+      summary: Wiktionary Get File
+      description: Fetch metadata for a file (image, audio, video) hosted on Wiktionary or Commons.
+      tags:
+      - File
+      parameters:
+      - name: title
+        in: path
+        required: true
+        description: URL-encoded file title (e.g. `File:Hello.ogg`).
+        schema:
+          type: string
+        example: File:En-us-hello.ogg
+      responses:
+        '200':
+          description: File metadata.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileMetadata'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetails'
+  schemas:
+    FileMetadata:
+      title: FileMetadata
+      type: object
+      properties:
+        title:
+          type: string
+          example: File:En-us-hello.ogg
+        file_description_url:
+          type: string
+          format: uri
+          example: https://commons.wikimedia.org/wiki/File:En-us-hello.ogg
+        latest:
+          type: object
+          properties:
+            timestamp:
+              type: string
+              format: date-time
+              example: '2025-03-15T14:30:00Z'
+            user:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 1
+                name:
+                  type: string
+                  example: ExampleUploader
+        preferred:
+          type: object
+          properties:
+            mediatype:
+              type: string
+              example: AUDIO
+            size:
+              type: integer
+              example: 8192
+            width:
+              type: integer
+              nullable: true
+              example: null
+            height:
+              type: integer
+              nullable: true
+              example: null
+            duration:
+              type: number
+              example: 1.4
+            url:
+              type: string
+              format: uri
+              example: https://upload.wikimedia.org/wikipedia/commons/example/En-us-hello.ogg
+        original:
+          type: object
+          additionalProperties: true
+    ProblemDetails:
+      title: ProblemDetails
+      description: RFC 7807 problem-details error envelope.
+      type: object
+      properties:
+        type:
+          type: string
+          format: uri
+          example: https://mediawiki.org/wiki/HyperSwitch/errors/not_found
+        title:
+          type: string
+          example: Not found.
+        detail:
+          type: string
+          example: Page not found.
+        instance:
+          type: string
+          example: /v1/page/nonexistentword
+        status:
+          type: integer
+          example: 404
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 access tokens issued via api.wikimedia.org.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://meta.wikimedia.org/w/rest.php/oauth2/authorize
+          tokenUrl: https://meta.wikimedia.org/w/rest.php/oauth2/access_token
+          scopes:
+            basic: Basic read access to user identity

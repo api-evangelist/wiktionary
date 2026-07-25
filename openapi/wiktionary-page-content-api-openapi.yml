@@ -1,0 +1,315 @@
+openapi: 3.0.3
+info:
+  title: Wiktionary MediaWiki Core REST Definition Page Content API
+  description: The newer MediaWiki Core REST API, exposed per wiki at /w/rest.php. It offers a smaller, streamlined surface than the Action API for fetching page content, history, search, files, and revisions. On Wiktionary it serves the same content as the Action API in a more developer-friendly JSON shape. All content is CC BY-SA 4.0.
+  version: 1.0.0
+  termsOfService: https://foundation.wikimedia.org/wiki/Terms_of_Use
+  contact:
+    name: Wikimedia Foundation
+    url: https://www.mediawiki.org/wiki/API:REST_API
+  license:
+    name: CC BY-SA 4.0
+    url: https://creativecommons.org/licenses/by-sa/4.0/
+  x-generated-from: documentation
+  x-last-validated: '2026-05-30'
+servers:
+- url: https://en.wiktionary.org/w/rest.php
+  description: English Wiktionary Core REST endpoint
+security:
+- {}
+- oauth2: []
+tags:
+- name: Page Content
+  description: Page HTML, summary, title metadata, and mobile-optimised HTML
+paths:
+  /page/summary/{title}:
+    get:
+      operationId: getPageSummary
+      summary: Wiktionary Get Page Summary
+      description: Return a short structured summary of a Wiktionary page, including the leading extract and metadata. Useful for previews and tooltips.
+      tags:
+      - Page Content
+      parameters:
+      - name: title
+        in: path
+        required: true
+        description: URL-encoded page title.
+        schema:
+          type: string
+        example: hello
+      - name: redirect
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: true
+        description: Whether to follow redirects.
+      responses:
+        '200':
+          description: Page summary response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageSummary'
+        '404':
+          description: Page not found.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /page/html/{title}:
+    get:
+      operationId: getPageHtml
+      summary: Wiktionary Get Page HTML
+      description: Return the latest Parsoid HTML for a page title. Suitable for direct rendering in client applications.
+      tags:
+      - Page Content
+      parameters:
+      - name: title
+        in: path
+        required: true
+        description: URL-encoded page title.
+        schema:
+          type: string
+        example: hello
+      - name: redirect
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: true
+        description: Whether to follow redirects.
+      - name: stash
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+        description: Whether to stash the result for later transform calls.
+      - name: Accept-Language
+        in: header
+        required: false
+        schema:
+          type: string
+        description: BCP-47 language tag for content-language negotiation.
+      responses:
+        '200':
+          description: Parsoid HTML.
+          content:
+            text/html:
+              schema:
+                type: string
+                description: Parsoid HTML for the requested page.
+        '404':
+          description: Page not found.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /page/title/{title}:
+    get:
+      operationId: getPageTitle
+      summary: Wiktionary Get Page Title Metadata
+      description: Return revision metadata for a page title — latest revision id, timestamp, comment, and user.
+      tags:
+      - Page Content
+      parameters:
+      - name: title
+        in: path
+        required: true
+        description: URL-encoded page title.
+        schema:
+          type: string
+        example: hello
+      responses:
+        '200':
+          description: Revision metadata.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RevisionMetadata'
+        '404':
+          description: Page not found.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /page/mobile-html/{title}:
+    get:
+      operationId: getPageMobileHtml
+      summary: Wiktionary Get Page Mobile HTML
+      description: Return mobile-optimised HTML for a page (lazy-loadable images, collapsed tables, theme support). Experimental stability.
+      tags:
+      - Page Content
+      parameters:
+      - name: title
+        in: path
+        required: true
+        description: URL-encoded page title.
+        schema:
+          type: string
+        example: hello
+      - name: redirect
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: true
+        description: Whether to follow redirects.
+      responses:
+        '200':
+          description: Mobile-optimised HTML.
+          content:
+            text/html:
+              schema:
+                type: string
+                description: Mobile HTML.
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ContentUrls:
+      title: ContentUrls
+      type: object
+      properties:
+        desktop:
+          type: object
+          properties:
+            page:
+              type: string
+              format: uri
+              example: https://en.wiktionary.org/wiki/hello
+        mobile:
+          type: object
+          properties:
+            page:
+              type: string
+              format: uri
+              example: https://en.m.wiktionary.org/wiki/hello
+    RevisionMetadata:
+      title: RevisionMetadata
+      description: Metadata about the latest revision of a page.
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/RevisionItem'
+    RevisionItem:
+      title: RevisionItem
+      type: object
+      properties:
+        title:
+          type: string
+          example: hello
+        page_id:
+          type: integer
+          example: 12345
+        rev:
+          type: integer
+          description: Revision id.
+          example: 7654321
+        tid:
+          type: string
+          example: 1c2d3e4f-aaaa-bbbb-cccc-ddddeeeeffff
+        namespace:
+          type: integer
+          example: 0
+        user_id:
+          type: integer
+          example: 1
+        user_text:
+          type: string
+          example: ExampleEditor
+        timestamp:
+          type: string
+          format: date-time
+          example: '2025-03-15T14:30:00Z'
+        comment:
+          type: string
+          example: typo fix
+        tags:
+          type: array
+          items:
+            type: string
+          example: []
+        restrictions:
+          type: array
+          items:
+            type: string
+          example: []
+        page_language:
+          type: string
+          example: en
+    PageSummary:
+      title: PageSummary
+      description: Short structured summary of a page.
+      type: object
+      properties:
+        type:
+          type: string
+          example: standard
+        title:
+          type: string
+          example: hello
+        displaytitle:
+          type: string
+          example: hello
+        pageid:
+          type: integer
+          example: 12345
+        extract:
+          type: string
+          description: Plain-text extract.
+          example: A standard greeting; an expression of puzzlement.
+        extract_html:
+          type: string
+          description: HTML extract.
+          example: <p>A standard greeting.</p>
+        content_urls:
+          $ref: '#/components/schemas/ContentUrls'
+        timestamp:
+          type: string
+          format: date-time
+          example: '2025-03-15T14:30:00Z'
+    ProblemDetails:
+      title: ProblemDetails
+      description: RFC 7807 problem-details error envelope.
+      type: object
+      properties:
+        type:
+          type: string
+          format: uri
+          example: https://mediawiki.org/wiki/HyperSwitch/errors/not_found
+        title:
+          type: string
+          example: Not found.
+        method:
+          type: string
+          example: get
+        detail:
+          type: string
+          example: Page or revision not found.
+        uri:
+          type: string
+          example: /en.wiktionary.org/v1/page/definition/nonexistentword
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 access tokens issued via api.wikimedia.org.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://meta.wikimedia.org/w/rest.php/oauth2/authorize
+          tokenUrl: https://meta.wikimedia.org/w/rest.php/oauth2/access_token
+          scopes:
+            basic: Basic read access to user identity

@@ -1,0 +1,126 @@
+openapi: 3.0.3
+info:
+  title: Wiktionary MediaWiki Core REST Definition OpenSearch API
+  description: The newer MediaWiki Core REST API, exposed per wiki at /w/rest.php. It offers a smaller, streamlined surface than the Action API for fetching page content, history, search, files, and revisions. On Wiktionary it serves the same content as the Action API in a more developer-friendly JSON shape. All content is CC BY-SA 4.0.
+  version: 1.0.0
+  termsOfService: https://foundation.wikimedia.org/wiki/Terms_of_Use
+  contact:
+    name: Wikimedia Foundation
+    url: https://www.mediawiki.org/wiki/API:REST_API
+  license:
+    name: CC BY-SA 4.0
+    url: https://creativecommons.org/licenses/by-sa/4.0/
+  x-generated-from: documentation
+  x-last-validated: '2026-05-30'
+servers:
+- url: https://en.wiktionary.org/w/rest.php
+  description: English Wiktionary Core REST endpoint
+security:
+- {}
+- oauth2: []
+tags:
+- name: OpenSearch
+  description: action=opensearch — OpenSearch suggestions protocol
+paths:
+  /api.php#opensearch:
+    get:
+      operationId: openSearchSuggest
+      summary: Wiktionary OpenSearch Suggest
+      description: Return autocomplete suggestions following the OpenSearch suggestions protocol. Response is a 4-element array (query, titles, descriptions, urls).
+      tags:
+      - OpenSearch
+      parameters:
+      - name: action
+        in: query
+        required: true
+        schema:
+          type: string
+          enum:
+          - opensearch
+          default: opensearch
+        description: Must be `opensearch`.
+      - name: search
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Prefix to autocomplete.
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 500
+          default: 10
+        description: Maximum number of suggestions to return.
+      - name: namespace
+        in: query
+        required: false
+        schema:
+          type: string
+          default: '0'
+        description: Pipe-separated namespace numbers to search within.
+      - $ref: '#/components/parameters/Format'
+      responses:
+        '200':
+          description: OpenSearch suggestions response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OpenSearchResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    OpenSearchResponse:
+      title: OpenSearchResponse
+      description: 'OpenSearch suggestions protocol 4-tuple: [query, titles, descriptions, urls].'
+      type: array
+      minItems: 4
+      maxItems: 4
+      items:
+        oneOf:
+        - type: string
+        - type: array
+          items:
+            type: string
+      example:
+      - hel
+      - - hello
+        - help
+        - helmet
+      - - ''
+        - ''
+        - ''
+      - - https://en.wiktionary.org/wiki/hello
+        - https://en.wiktionary.org/wiki/help
+        - https://en.wiktionary.org/wiki/helmet
+  parameters:
+    Format:
+      name: format
+      in: query
+      required: false
+      description: Response format.
+      schema:
+        type: string
+        enum:
+        - json
+        - jsonfm
+        - xml
+        - xmlfm
+        - php
+        - phpfm
+        - none
+        default: json
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 access tokens issued via api.wikimedia.org.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://meta.wikimedia.org/w/rest.php/oauth2/authorize
+          tokenUrl: https://meta.wikimedia.org/w/rest.php/oauth2/access_token
+          scopes:
+            basic: Basic read access to user identity

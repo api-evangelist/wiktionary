@@ -1,0 +1,112 @@
+openapi: 3.0.3
+info:
+  title: Wiktionary MediaWiki Core REST Definition ExpandTemplates API
+  description: The newer MediaWiki Core REST API, exposed per wiki at /w/rest.php. It offers a smaller, streamlined surface than the Action API for fetching page content, history, search, files, and revisions. On Wiktionary it serves the same content as the Action API in a more developer-friendly JSON shape. All content is CC BY-SA 4.0.
+  version: 1.0.0
+  termsOfService: https://foundation.wikimedia.org/wiki/Terms_of_Use
+  contact:
+    name: Wikimedia Foundation
+    url: https://www.mediawiki.org/wiki/API:REST_API
+  license:
+    name: CC BY-SA 4.0
+    url: https://creativecommons.org/licenses/by-sa/4.0/
+  x-generated-from: documentation
+  x-last-validated: '2026-05-30'
+servers:
+- url: https://en.wiktionary.org/w/rest.php
+  description: English Wiktionary Core REST endpoint
+security:
+- {}
+- oauth2: []
+tags:
+- name: ExpandTemplates
+  description: action=expandtemplates — Expand wikitext templates server-side
+paths:
+  /api.php#expandtemplates:
+    get:
+      operationId: expandTemplates
+      summary: Wiktionary Expand Templates
+      description: Expand templates and parser functions in supplied wikitext and return the result.
+      tags:
+      - ExpandTemplates
+      parameters:
+      - name: action
+        in: query
+        required: true
+        schema:
+          type: string
+          enum:
+          - expandtemplates
+          default: expandtemplates
+        description: Must be `expandtemplates`.
+      - name: text
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Wikitext containing templates to expand.
+      - name: title
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Page title context for the expansion.
+      - name: prop
+        in: query
+        required: false
+        schema:
+          type: string
+          default: wikitext
+        description: Which expansion properties to return.
+      - $ref: '#/components/parameters/Format'
+      responses:
+        '200':
+          description: Expanded templates response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExpandTemplatesResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  parameters:
+    Format:
+      name: format
+      in: query
+      required: false
+      description: Response format.
+      schema:
+        type: string
+        enum:
+        - json
+        - jsonfm
+        - xml
+        - xmlfm
+        - php
+        - phpfm
+        - none
+        default: json
+  schemas:
+    ExpandTemplatesResponse:
+      title: ExpandTemplatesResponse
+      description: action=expandtemplates result.
+      type: object
+      properties:
+        expandtemplates:
+          type: object
+          properties:
+            wikitext:
+              type: string
+              description: Wikitext after template expansion.
+              example: A standard greeting.
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 access tokens issued via api.wikimedia.org.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://meta.wikimedia.org/w/rest.php/oauth2/authorize
+          tokenUrl: https://meta.wikimedia.org/w/rest.php/oauth2/access_token
+          scopes:
+            basic: Basic read access to user identity

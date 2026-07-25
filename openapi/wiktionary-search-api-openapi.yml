@@ -1,0 +1,149 @@
+openapi: 3.0.3
+info:
+  title: Wiktionary MediaWiki Core REST Definition Search API
+  description: The newer MediaWiki Core REST API, exposed per wiki at /w/rest.php. It offers a smaller, streamlined surface than the Action API for fetching page content, history, search, files, and revisions. On Wiktionary it serves the same content as the Action API in a more developer-friendly JSON shape. All content is CC BY-SA 4.0.
+  version: 1.0.0
+  termsOfService: https://foundation.wikimedia.org/wiki/Terms_of_Use
+  contact:
+    name: Wikimedia Foundation
+    url: https://www.mediawiki.org/wiki/API:REST_API
+  license:
+    name: CC BY-SA 4.0
+    url: https://creativecommons.org/licenses/by-sa/4.0/
+  x-generated-from: documentation
+  x-last-validated: '2026-05-30'
+servers:
+- url: https://en.wiktionary.org/w/rest.php
+  description: English Wiktionary Core REST endpoint
+security:
+- {}
+- oauth2: []
+tags:
+- name: Search
+  description: Title-prefix and full-text search
+paths:
+  /v1/search/page:
+    get:
+      operationId: searchPage
+      summary: Wiktionary Search Page
+      description: Full-text search across Wiktionary pages.
+      tags:
+      - Search
+      parameters:
+      - name: q
+        in: query
+        required: true
+        description: Search query string.
+        schema:
+          type: string
+        example: greeting
+      - name: limit
+        in: query
+        required: false
+        description: Maximum results to return (1-100, default 50).
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+          default: 50
+      responses:
+        '200':
+          description: Search results.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /v1/search/title:
+    get:
+      operationId: searchTitle
+      summary: Wiktionary Search Title
+      description: Title-prefix autocomplete search for Wiktionary pages.
+      tags:
+      - Search
+      parameters:
+      - name: q
+        in: query
+        required: true
+        description: Title prefix to autocomplete.
+        schema:
+          type: string
+        example: hel
+      - name: limit
+        in: query
+        required: false
+        description: Maximum results to return.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+          default: 50
+      responses:
+        '200':
+          description: Title autocomplete results.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    SearchResponse:
+      title: SearchResponse
+      type: object
+      properties:
+        pages:
+          type: array
+          items:
+            $ref: '#/components/schemas/SearchPage'
+    SearchPage:
+      title: SearchPage
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 12345
+        key:
+          type: string
+          example: hello
+        title:
+          type: string
+          example: hello
+        excerpt:
+          type: string
+          example: A standard <span class="searchmatch">greeting</span>.
+        matched_title:
+          type: string
+          nullable: true
+          example: null
+        description:
+          type: string
+          example: English interjection.
+        thumbnail:
+          type: object
+          nullable: true
+          properties:
+            url:
+              type: string
+              format: uri
+              example: https://upload.wikimedia.org/wikipedia/commons/thumb/example.png
+            width:
+              type: integer
+              example: 60
+            height:
+              type: integer
+              example: 60
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 access tokens issued via api.wikimedia.org.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://meta.wikimedia.org/w/rest.php/oauth2/authorize
+          tokenUrl: https://meta.wikimedia.org/w/rest.php/oauth2/access_token
+          scopes:
+            basic: Basic read access to user identity

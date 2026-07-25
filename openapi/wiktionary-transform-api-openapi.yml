@@ -1,0 +1,224 @@
+openapi: 3.0.3
+info:
+  title: Wiktionary MediaWiki Core REST Definition Transform API
+  description: The newer MediaWiki Core REST API, exposed per wiki at /w/rest.php. It offers a smaller, streamlined surface than the Action API for fetching page content, history, search, files, and revisions. On Wiktionary it serves the same content as the Action API in a more developer-friendly JSON shape. All content is CC BY-SA 4.0.
+  version: 1.0.0
+  termsOfService: https://foundation.wikimedia.org/wiki/Terms_of_Use
+  contact:
+    name: Wikimedia Foundation
+    url: https://www.mediawiki.org/wiki/API:REST_API
+  license:
+    name: CC BY-SA 4.0
+    url: https://creativecommons.org/licenses/by-sa/4.0/
+  x-generated-from: documentation
+  x-last-validated: '2026-05-30'
+servers:
+- url: https://en.wiktionary.org/w/rest.php
+  description: English Wiktionary Core REST endpoint
+security:
+- {}
+- oauth2: []
+tags:
+- name: Transform
+  description: Parsoid wikitext ↔ HTML transforms and lint
+paths:
+  /transform/wikitext/to/html/{title}:
+    post:
+      operationId: transformWikitextToHtml
+      summary: Wiktionary Transform Wikitext to HTML
+      description: Convert supplied wikitext to Parsoid HTML in the context of a page title. Rate-limited to 25 req/s (5 req/s with stash=true).
+      tags:
+      - Transform
+      parameters:
+      - name: title
+        in: path
+        required: true
+        description: URL-encoded page title context.
+        schema:
+          type: string
+        example: hello
+      requestBody:
+        required: true
+        description: Wikitext payload to transform.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WikitextTransformRequest'
+      responses:
+        '200':
+          description: Parsoid HTML.
+          content:
+            text/html:
+              schema:
+                type: string
+                description: Parsoid HTML body.
+        '403':
+          description: Access restricted.
+        '404':
+          description: Page not found.
+        '410':
+          description: Page has been deleted.
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /transform/html/to/wikitext/{title}/{revision}:
+    post:
+      operationId: transformHtmlToWikitext
+      summary: Wiktionary Transform HTML to Wikitext
+      description: Convert supplied Parsoid HTML back to wikitext for a given page and revision. Requires an If-Match ETag header. Rate-limited to 25 req/s.
+      tags:
+      - Transform
+      parameters:
+      - name: title
+        in: path
+        required: true
+        description: URL-encoded page title.
+        schema:
+          type: string
+        example: hello
+      - name: revision
+        in: path
+        required: true
+        description: Revision id to anchor the round-trip against.
+        schema:
+          type: string
+        example: '12345'
+      - name: If-Match
+        in: header
+        required: true
+        description: ETag from the corresponding /page/html call.
+        schema:
+          type: string
+      requestBody:
+        required: true
+        description: HTML payload to transform back to wikitext.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HtmlTransformRequest'
+      responses:
+        '200':
+          description: Wikitext body.
+          content:
+            text/plain:
+              schema:
+                type: string
+                description: Wikitext.
+        '403':
+          description: Access restricted.
+        '404':
+          description: Page not found.
+        '410':
+          description: Page has been deleted.
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /transform/wikitext/to/lint/{title}:
+    post:
+      operationId: transformWikitextToLint
+      summary: Wiktionary Transform Wikitext to Lint
+      description: Lint supplied wikitext and return a list of structural and semantic issues. Experimental stability.
+      tags:
+      - Transform
+      parameters:
+      - name: title
+        in: path
+        required: true
+        description: URL-encoded page title context.
+        schema:
+          type: string
+        example: hello
+      requestBody:
+        required: true
+        description: Wikitext payload to lint.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WikitextTransformRequest'
+      responses:
+        '200':
+          description: Lint errors found in the wikitext.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LintError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    HtmlTransformRequest:
+      title: HtmlTransformRequest
+      type: object
+      required:
+      - html
+      properties:
+        html:
+          type: string
+          description: Parsoid HTML to convert back to wikitext.
+          example: <section><h2>English</h2><p>A standard greeting.</p></section>
+        scrub_wikitext:
+          type: boolean
+          description: Whether to clean up the resulting wikitext.
+          example: true
+    WikitextTransformRequest:
+      title: WikitextTransformRequest
+      type: object
+      required:
+      - wikitext
+      properties:
+        wikitext:
+          type: string
+          description: Wikitext content to transform.
+          example: '==English==
+
+            ===Interjection===
+
+            # A standard greeting.'
+        body_only:
+          type: boolean
+          description: If true, only return the body fragment instead of a full HTML document.
+          example: true
+        stash:
+          type: boolean
+          description: If true, server-side stash for later /transform calls.
+          example: false
+    LintError:
+      title: LintError
+      description: One Parsoid lint error found in supplied wikitext.
+      type: object
+      properties:
+        type:
+          type: string
+          description: Lint error category.
+          example: missing-end-tag
+        dsr:
+          type: array
+          description: Source range [start, end, openWidth, closeWidth].
+          items:
+            type: integer
+          example:
+          - 0
+          - 12
+          - 0
+          - 0
+        templateInfo:
+          type: object
+          additionalProperties: true
+          description: If the error originates inside a template, info about it.
+        params:
+          type: object
+          additionalProperties: true
+          description: Error-specific parameters.
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 access tokens issued via api.wikimedia.org.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://meta.wikimedia.org/w/rest.php/oauth2/authorize
+          tokenUrl: https://meta.wikimedia.org/w/rest.php/oauth2/access_token
+          scopes:
+            basic: Basic read access to user identity

@@ -1,0 +1,218 @@
+openapi: 3.0.3
+info:
+  title: Wiktionary MediaWiki Core REST Definition Page API
+  description: The newer MediaWiki Core REST API, exposed per wiki at /w/rest.php. It offers a smaller, streamlined surface than the Action API for fetching page content, history, search, files, and revisions. On Wiktionary it serves the same content as the Action API in a more developer-friendly JSON shape. All content is CC BY-SA 4.0.
+  version: 1.0.0
+  termsOfService: https://foundation.wikimedia.org/wiki/Terms_of_Use
+  contact:
+    name: Wikimedia Foundation
+    url: https://www.mediawiki.org/wiki/API:REST_API
+  license:
+    name: CC BY-SA 4.0
+    url: https://creativecommons.org/licenses/by-sa/4.0/
+  x-generated-from: documentation
+  x-last-validated: '2026-05-30'
+servers:
+- url: https://en.wiktionary.org/w/rest.php
+  description: English Wiktionary Core REST endpoint
+security:
+- {}
+- oauth2: []
+tags:
+- name: Page
+  description: Page content, source, and HTML
+paths:
+  /v1/page/{title}:
+    get:
+      operationId: getPage
+      summary: Wiktionary Get Page
+      description: Fetch the source wikitext and metadata for a Wiktionary page by title.
+      tags:
+      - Page
+      parameters:
+      - $ref: '#/components/parameters/Title'
+      responses:
+        '200':
+          description: Page source response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageSourceResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /v1/page/{title}/html:
+    get:
+      operationId: getPageHtml
+      summary: Wiktionary Get Page HTML
+      description: Fetch the rendered HTML body for a Wiktionary page.
+      tags:
+      - Page
+      parameters:
+      - $ref: '#/components/parameters/Title'
+      responses:
+        '200':
+          description: Page HTML.
+          content:
+            text/html:
+              schema:
+                type: string
+                description: Rendered HTML.
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /v1/page/{title}/with_html:
+    get:
+      operationId: getPageWithHtml
+      summary: Wiktionary Get Page with HTML
+      description: Fetch both the source and rendered HTML for a page in one response.
+      tags:
+      - Page
+      parameters:
+      - $ref: '#/components/parameters/Title'
+      responses:
+        '200':
+          description: Combined source + HTML response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageWithHtmlResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetails'
+  schemas:
+    PageSourceResponse:
+      title: PageSourceResponse
+      description: Source representation of a Wiktionary page.
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 12345
+        key:
+          type: string
+          example: hello
+        title:
+          type: string
+          example: hello
+        latest:
+          $ref: '#/components/schemas/LatestRevision'
+        content_model:
+          type: string
+          example: wikitext
+        license:
+          $ref: '#/components/schemas/LicenseInfo'
+        source:
+          type: string
+          description: Raw wikitext source.
+          example: '==English==
+
+            ===Interjection===
+
+            # A standard greeting.'
+    LicenseInfo:
+      title: LicenseInfo
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+          example: https://creativecommons.org/licenses/by-sa/4.0/
+        title:
+          type: string
+          example: Creative Commons Attribution-Share Alike 4.0 International
+    LatestRevision:
+      title: LatestRevision
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 7654321
+        timestamp:
+          type: string
+          format: date-time
+          example: '2025-03-15T14:30:00Z'
+    PageWithHtmlResponse:
+      title: PageWithHtmlResponse
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 12345
+        key:
+          type: string
+          example: hello
+        title:
+          type: string
+          example: hello
+        latest:
+          $ref: '#/components/schemas/LatestRevision'
+        content_model:
+          type: string
+          example: wikitext
+        license:
+          $ref: '#/components/schemas/LicenseInfo'
+        source:
+          type: string
+          example: '==English==
+
+            ===Interjection===
+
+            # A standard greeting.'
+        html:
+          type: string
+          example: <p>A standard greeting.</p>
+    ProblemDetails:
+      title: ProblemDetails
+      description: RFC 7807 problem-details error envelope.
+      type: object
+      properties:
+        type:
+          type: string
+          format: uri
+          example: https://mediawiki.org/wiki/HyperSwitch/errors/not_found
+        title:
+          type: string
+          example: Not found.
+        detail:
+          type: string
+          example: Page not found.
+        instance:
+          type: string
+          example: /v1/page/nonexistentword
+        status:
+          type: integer
+          example: 404
+  parameters:
+    Title:
+      name: title
+      in: path
+      required: true
+      description: URL-encoded page title.
+      schema:
+        type: string
+      example: hello
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 access tokens issued via api.wikimedia.org.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://meta.wikimedia.org/w/rest.php/oauth2/authorize
+          tokenUrl: https://meta.wikimedia.org/w/rest.php/oauth2/access_token
+          scopes:
+            basic: Basic read access to user identity

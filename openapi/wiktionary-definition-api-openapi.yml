@@ -1,0 +1,166 @@
+openapi: 3.0.3
+info:
+  title: Wiktionary MediaWiki Core REST Definition API
+  description: The newer MediaWiki Core REST API, exposed per wiki at /w/rest.php. It offers a smaller, streamlined surface than the Action API for fetching page content, history, search, files, and revisions. On Wiktionary it serves the same content as the Action API in a more developer-friendly JSON shape. All content is CC BY-SA 4.0.
+  version: 1.0.0
+  termsOfService: https://foundation.wikimedia.org/wiki/Terms_of_Use
+  contact:
+    name: Wikimedia Foundation
+    url: https://www.mediawiki.org/wiki/API:REST_API
+  license:
+    name: CC BY-SA 4.0
+    url: https://creativecommons.org/licenses/by-sa/4.0/
+  x-generated-from: documentation
+  x-last-validated: '2026-05-30'
+servers:
+- url: https://en.wiktionary.org/w/rest.php
+  description: English Wiktionary Core REST endpoint
+security:
+- {}
+- oauth2: []
+tags:
+- name: Definition
+  description: Wiktionary-specific structured multilingual definition endpoint
+paths:
+  /page/definition/{term}:
+    get:
+      operationId: getDefinition
+      summary: Wiktionary Get Definition
+      description: Return a multilingual structured definition for a term, broken down by source language code (en, fr, de, …) and then by part of speech. Wiktionary-specific endpoint built on top of Parsoid parsing.
+      tags:
+      - Definition
+      parameters:
+      - name: term
+        in: path
+        required: true
+        description: The dictionary term (URL-encoded; case-sensitive on Wiktionary).
+        schema:
+          type: string
+        example: hello
+      - name: redirect
+        in: query
+        required: false
+        description: Whether to follow page redirects (defaults to true).
+        schema:
+          type: boolean
+          default: true
+      responses:
+        '200':
+          description: Multilingual definition response keyed by language code.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefinitionResponse'
+        '301':
+          description: Permanent redirect to the canonical term page.
+        '302':
+          description: Temporary redirect to a different term page.
+        '404':
+          description: Term not found.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '501':
+          description: Unsupported language for structured definitions.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    LanguageEntry:
+      title: LanguageEntry
+      description: One language's worth of definitions for the term.
+      type: object
+      required:
+      - partOfSpeech
+      - language
+      - definitions
+      properties:
+        partOfSpeech:
+          type: string
+          description: Grammatical part of speech for this entry.
+          example: Interjection
+        language:
+          type: string
+          description: Human-readable language name.
+          example: English
+        definitions:
+          type: array
+          items:
+            $ref: '#/components/schemas/DefinitionEntry'
+    DefinitionResponse:
+      title: DefinitionResponse
+      description: Multilingual structured definitions keyed by ISO language code. Each value is a list of language-grouped entries describing the term in that language.
+      type: object
+      additionalProperties:
+        type: array
+        items:
+          $ref: '#/components/schemas/LanguageEntry'
+      example:
+        en:
+        - partOfSpeech: Interjection
+          language: English
+          definitions:
+          - definition: A standard greeting.
+            examples:
+            - Hello, world!
+            parsedExamples: []
+    DefinitionEntry:
+      title: DefinitionEntry
+      type: object
+      required:
+      - definition
+      properties:
+        definition:
+          type: string
+          description: HTML/wikitext definition body for one sense.
+          example: A standard greeting.
+        examples:
+          type: array
+          description: Raw usage example strings.
+          items:
+            type: string
+          example:
+          - Hello, world!
+        parsedExamples:
+          type: array
+          description: Structured usage examples (HTML or translation pairs).
+          items:
+            type: object
+            additionalProperties: true
+    ProblemDetails:
+      title: ProblemDetails
+      description: RFC 7807 problem-details error envelope.
+      type: object
+      properties:
+        type:
+          type: string
+          format: uri
+          example: https://mediawiki.org/wiki/HyperSwitch/errors/not_found
+        title:
+          type: string
+          example: Not found.
+        method:
+          type: string
+          example: get
+        detail:
+          type: string
+          example: Page or revision not found.
+        uri:
+          type: string
+          example: /en.wiktionary.org/v1/page/definition/nonexistentword
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 access tokens issued via api.wikimedia.org.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://meta.wikimedia.org/w/rest.php/oauth2/authorize
+          tokenUrl: https://meta.wikimedia.org/w/rest.php/oauth2/access_token
+          scopes:
+            basic: Basic read access to user identity

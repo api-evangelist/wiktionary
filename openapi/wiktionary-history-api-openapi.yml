@@ -1,0 +1,233 @@
+openapi: 3.0.3
+info:
+  title: Wiktionary MediaWiki Core REST Definition History API
+  description: The newer MediaWiki Core REST API, exposed per wiki at /w/rest.php. It offers a smaller, streamlined surface than the Action API for fetching page content, history, search, files, and revisions. On Wiktionary it serves the same content as the Action API in a more developer-friendly JSON shape. All content is CC BY-SA 4.0.
+  version: 1.0.0
+  termsOfService: https://foundation.wikimedia.org/wiki/Terms_of_Use
+  contact:
+    name: Wikimedia Foundation
+    url: https://www.mediawiki.org/wiki/API:REST_API
+  license:
+    name: CC BY-SA 4.0
+    url: https://creativecommons.org/licenses/by-sa/4.0/
+  x-generated-from: documentation
+  x-last-validated: '2026-05-30'
+servers:
+- url: https://en.wiktionary.org/w/rest.php
+  description: English Wiktionary Core REST endpoint
+security:
+- {}
+- oauth2: []
+tags:
+- name: History
+  description: Page history and revision details
+paths:
+  /v1/page/{title}/history:
+    get:
+      operationId: getPageHistory
+      summary: Wiktionary Get Page History
+      description: Return a paged list of revisions for a page.
+      tags:
+      - History
+      parameters:
+      - $ref: '#/components/parameters/Title'
+      - name: older_than
+        in: query
+        required: false
+        description: Return revisions older than this revision id.
+        schema:
+          type: integer
+      - name: newer_than
+        in: query
+        required: false
+        description: Return revisions newer than this revision id.
+        schema:
+          type: integer
+      - name: filter
+        in: query
+        required: false
+        description: Filter revisions (reverted, anonymous, bot, minor).
+        schema:
+          type: string
+          enum:
+          - reverted
+          - anonymous
+          - bot
+          - minor
+      responses:
+        '200':
+          description: Revision list.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HistoryResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /v1/page/{title}/history/counts/{type}:
+    get:
+      operationId: getPageHistoryCount
+      summary: Wiktionary Get Page History Count
+      description: Return a single numeric count of revisions for a page filtered by type.
+      tags:
+      - History
+      parameters:
+      - $ref: '#/components/parameters/Title'
+      - name: type
+        in: path
+        required: true
+        description: Which kind of revisions to count.
+        schema:
+          type: string
+          enum:
+          - anonymous
+          - bot
+          - editors
+          - edits
+          - minor
+          - reverted
+      responses:
+        '200':
+          description: Revision count response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HistoryCountResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /v1/revision/{id}/bare:
+    get:
+      operationId: getRevisionBare
+      summary: Wiktionary Get Revision Bare
+      description: Fetch the bare metadata for a single revision id.
+      tags:
+      - History
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Revision id.
+        schema:
+          type: integer
+        example: 7654321
+      responses:
+        '200':
+          description: Revision metadata.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RevisionDetail'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    HistoryResponse:
+      title: HistoryResponse
+      type: object
+      properties:
+        revisions:
+          type: array
+          items:
+            $ref: '#/components/schemas/RevisionDetail'
+        latest:
+          type: string
+          format: uri
+          example: https://en.wiktionary.org/w/rest.php/v1/page/hello/history
+        older:
+          type: string
+          format: uri
+          example: https://en.wiktionary.org/w/rest.php/v1/page/hello/history?older_than=7654321
+        newer:
+          type: string
+          format: uri
+          example: https://en.wiktionary.org/w/rest.php/v1/page/hello/history?newer_than=7654321
+    LicenseInfo:
+      title: LicenseInfo
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+          example: https://creativecommons.org/licenses/by-sa/4.0/
+        title:
+          type: string
+          example: Creative Commons Attribution-Share Alike 4.0 International
+    RevisionDetail:
+      title: RevisionDetail
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 7654321
+        page:
+          type: object
+          properties:
+            id:
+              type: integer
+              example: 12345
+            title:
+              type: string
+              example: hello
+        size:
+          type: integer
+          example: 4321
+        minor:
+          type: boolean
+          example: false
+        timestamp:
+          type: string
+          format: date-time
+          example: '2025-03-15T14:30:00Z'
+        content_model:
+          type: string
+          example: wikitext
+        license:
+          $ref: '#/components/schemas/LicenseInfo'
+        user:
+          type: object
+          properties:
+            id:
+              type: integer
+              example: 1
+            name:
+              type: string
+              example: ExampleEditor
+        comment:
+          type: string
+          example: typo fix
+        delta:
+          type: integer
+          description: Byte delta from the parent revision.
+          example: 12
+    HistoryCountResponse:
+      title: HistoryCountResponse
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 412
+        limit:
+          type: boolean
+          description: True if the count was capped (e.g., >10000).
+          example: false
+  parameters:
+    Title:
+      name: title
+      in: path
+      required: true
+      description: URL-encoded page title.
+      schema:
+        type: string
+      example: hello
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 access tokens issued via api.wikimedia.org.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://meta.wikimedia.org/w/rest.php/oauth2/authorize
+          tokenUrl: https://meta.wikimedia.org/w/rest.php/oauth2/access_token
+          scopes:
+            basic: Basic read access to user identity
