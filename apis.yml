@@ -1,4 +1,17 @@
 aid: wiktionary
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/wiktionary.png
 name: Wiktionary
 description: >-
   Wiktionary is the free, collaborative multilingual dictionary project of the
@@ -29,310 +42,2825 @@ tags:
   - Open Data
   - Public APIs
 apis:
-  - name: MediaWiki Action API (Wiktionary)
-    description: >-
-      The MediaWiki Action API is the original Wikimedia query/edit API exposed
-      at /w/api.php on every Wikimedia project. For Wiktionary it provides
-      access to wikitext definitions, page parsing, full-text search, and
-      OpenSearch suggestions. Actions include action=query (prop=wikitext,
-      prop=extracts, prop=revisions, list=search), action=parse (rendered
-      wikitext HTML and section trees), action=opensearch (suggestions), and
-      action=expandtemplates. Supports both GET and POST with format=json|xml.
-    humanURL: https://en.wiktionary.org/w/api.php
-    baseURL: https://en.wiktionary.org/w/api.php
-    tags:
-      - Dictionaries
-      - MediaWiki
-      - Wikitext
-    properties:
-      - type: Documentation
-        url: https://en.wiktionary.org/w/api.php
-      - type: APIReference
-        url: https://www.mediawiki.org/wiki/API:Main_page
-      - type: GettingStarted
-        url: https://www.mediawiki.org/wiki/API:Tutorial
-      - type: Authentication
-        url: https://www.mediawiki.org/wiki/API:Authentication
-      - type: RateLimits
-        url: https://www.mediawiki.org/wiki/API:Etiquette
-      - type: Sandbox
-        url: https://en.wiktionary.org/wiki/Special:ApiSandbox
-      - type: OpenAPI
-        url: openapi/wiktionary-mediawiki-action-api-openapi-original.yml
-      - type: JSONSchema
-        url: json-schema/mediawiki-action-api-action-api-response-schema.json
-      - type: JSONSchema
-        url: json-schema/mediawiki-action-api-expand-templates-response-schema.json
-      - type: JSONSchema
-        url: json-schema/mediawiki-action-api-extract-page-schema.json
-      - type: JSONSchema
-        url: json-schema/mediawiki-action-api-open-search-response-schema.json
-      - type: JSONSchema
-        url: json-schema/mediawiki-action-api-parse-response-schema.json
-      - type: JSONSchema
-        url: json-schema/mediawiki-action-api-parse-section-schema.json
-      - type: JSONSchema
-        url: json-schema/mediawiki-action-api-query-extracts-response-schema.json
-      - type: JSONSchema
-        url: json-schema/mediawiki-action-api-query-revisions-response-schema.json
-      - type: JSONSchema
-        url: json-schema/mediawiki-action-api-query-search-response-schema.json
-      - type: JSONSchema
-        url: json-schema/mediawiki-action-api-revision-page-schema.json
-      - type: JSONSchema
-        url: json-schema/mediawiki-action-api-revision-schema.json
-      - type: JSONSchema
-        url: json-schema/mediawiki-action-api-search-hit-schema.json
-      - type: JSONStructure
-        url: json-structure/mediawiki-action-api-action-api-response-structure.json
-      - type: JSONStructure
-        url: json-structure/mediawiki-action-api-expand-templates-response-structure.json
-      - type: JSONStructure
-        url: json-structure/mediawiki-action-api-extract-page-structure.json
-      - type: JSONStructure
-        url: json-structure/mediawiki-action-api-open-search-response-structure.json
-      - type: JSONStructure
-        url: json-structure/mediawiki-action-api-parse-response-structure.json
-      - type: JSONStructure
-        url: json-structure/mediawiki-action-api-parse-section-structure.json
-      - type: JSONStructure
-        url: json-structure/mediawiki-action-api-query-extracts-response-structure.json
-      - type: JSONStructure
-        url: json-structure/mediawiki-action-api-query-revisions-response-structure.json
-      - type: JSONStructure
-        url: json-structure/mediawiki-action-api-query-search-response-structure.json
-      - type: JSONStructure
-        url: json-structure/mediawiki-action-api-revision-page-structure.json
-      - type: JSONStructure
-        url: json-structure/mediawiki-action-api-revision-structure.json
-      - type: JSONStructure
-        url: json-structure/mediawiki-action-api-search-hit-structure.json
-      - type: JSONLD
-        url: json-ld/wiktionary-mediawiki-action-api-context.jsonld
-      - type: Examples
-        url: examples/mediawiki-action-api-action-api-response-example.json
-      - type: Examples
-        url: examples/mediawiki-action-api-expand-templates-response-example.json
-      - type: Examples
-        url: examples/mediawiki-action-api-extract-page-example.json
-      - type: Examples
-        url: examples/mediawiki-action-api-open-search-response-example.json
-      - type: Examples
-        url: examples/mediawiki-action-api-parse-response-example.json
-      - type: Examples
-        url: examples/mediawiki-action-api-parse-section-example.json
-      - type: Examples
-        url: examples/mediawiki-action-api-query-extracts-response-example.json
-      - type: Examples
-        url: examples/mediawiki-action-api-query-revisions-response-example.json
-      - type: Examples
-        url: examples/mediawiki-action-api-query-search-response-example.json
-      - type: Examples
-        url: examples/mediawiki-action-api-revision-example.json
-      - type: Examples
-        url: examples/mediawiki-action-api-revision-page-example.json
-      - type: Examples
-        url: examples/mediawiki-action-api-search-hit-example.json
-      - type: X-NaftikoCapability
-        url: capabilities/mediawiki-action-api-expandtemplates.yaml
-      - type: X-NaftikoCapability
-        url: capabilities/mediawiki-action-api-opensearch.yaml
-      - type: X-NaftikoCapability
-        url: capabilities/mediawiki-action-api-parse.yaml
-      - type: X-NaftikoCapability
-        url: capabilities/mediawiki-action-api-query.yaml
-  - name: Wikimedia REST API (Wiktionary)
-    description: >-
-      The Wikimedia REST API (the older "RESTBase" service) is hosted per
-      project at /api/rest_v1/ and includes Wiktionary-specific endpoints such
-      as /page/definition/{term} which returns multilingual structured
-      definitions parsed from wikitext, plus generic page endpoints
-      (/page/html/{title}, /page/summary/{title}, /page/title/{title},
-      /page/mobile-html/{title}) and Parsoid transform endpoints
-      (/transform/html/to/wikitext, /transform/wikitext/to/html,
-      /transform/wikitext/to/lint). Capped at ~200 req/s, requires a unique
-      User-Agent.
-    humanURL: https://en.wiktionary.org/api/rest_v1/
-    baseURL: https://en.wiktionary.org/api/rest_v1
-    tags:
-      - Dictionaries
-      - Definitions
-      - REST
-      - Parsoid
-    properties:
-      - type: Documentation
-        url: https://en.wiktionary.org/api/rest_v1/
-      - type: APIReference
-        url: https://en.wiktionary.org/api/rest_v1/?spec
-      - type: Sandbox
-        url: https://en.wiktionary.org/api/rest_v1/?doc
-      - type: RateLimits
-        url: https://api.wikimedia.org/wiki/Rate_limits
-      - type: OpenAPI
-        url: openapi/wiktionary-rest-api-openapi-original.yml
-      - type: JSONSchema
-        url: json-schema/rest-api-content-urls-schema.json
-      - type: JSONSchema
-        url: json-schema/rest-api-definition-entry-schema.json
-      - type: JSONSchema
-        url: json-schema/rest-api-definition-response-schema.json
-      - type: JSONSchema
-        url: json-schema/rest-api-html-transform-request-schema.json
-      - type: JSONSchema
-        url: json-schema/rest-api-language-entry-schema.json
-      - type: JSONSchema
-        url: json-schema/rest-api-lint-error-schema.json
-      - type: JSONSchema
-        url: json-schema/rest-api-page-summary-schema.json
-      - type: JSONSchema
-        url: json-schema/rest-api-revision-item-schema.json
-      - type: JSONSchema
-        url: json-schema/rest-api-revision-metadata-schema.json
-      - type: JSONSchema
-        url: json-schema/rest-api-wikitext-transform-request-schema.json
-      - type: JSONStructure
-        url: json-structure/rest-api-content-urls-structure.json
-      - type: JSONStructure
-        url: json-structure/rest-api-definition-entry-structure.json
-      - type: JSONStructure
-        url: json-structure/rest-api-definition-response-structure.json
-      - type: JSONStructure
-        url: json-structure/rest-api-html-transform-request-structure.json
-      - type: JSONStructure
-        url: json-structure/rest-api-language-entry-structure.json
-      - type: JSONStructure
-        url: json-structure/rest-api-lint-error-structure.json
-      - type: JSONStructure
-        url: json-structure/rest-api-page-summary-structure.json
-      - type: JSONStructure
-        url: json-structure/rest-api-revision-item-structure.json
-      - type: JSONStructure
-        url: json-structure/rest-api-revision-metadata-structure.json
-      - type: JSONStructure
-        url: json-structure/rest-api-wikitext-transform-request-structure.json
-      - type: JSONLD
-        url: json-ld/wiktionary-rest-api-context.jsonld
-      - type: Examples
-        url: examples/rest-api-content-urls-example.json
-      - type: Examples
-        url: examples/rest-api-definition-entry-example.json
-      - type: Examples
-        url: examples/rest-api-definition-response-example.json
-      - type: Examples
-        url: examples/rest-api-html-transform-request-example.json
-      - type: Examples
-        url: examples/rest-api-language-entry-example.json
-      - type: Examples
-        url: examples/rest-api-lint-error-example.json
-      - type: Examples
-        url: examples/rest-api-page-summary-example.json
-      - type: Examples
-        url: examples/rest-api-revision-item-example.json
-      - type: Examples
-        url: examples/rest-api-revision-metadata-example.json
-      - type: Examples
-        url: examples/rest-api-wikitext-transform-request-example.json
-      - type: X-NaftikoCapability
-        url: capabilities/rest-api-definition.yaml
-      - type: X-NaftikoCapability
-        url: capabilities/rest-api-page-content.yaml
-      - type: X-NaftikoCapability
-        url: capabilities/rest-api-transform.yaml
-  - name: MediaWiki Core REST API (Wiktionary)
-    description: >-
-      The newer MediaWiki Core REST API is exposed at /w/rest.php on every
-      wiki. It offers a smaller, more streamlined surface than the Action API
-      for fetching pages, history, search, files, and revisions. On Wiktionary
-      it serves the same content as the Action API in a more developer-friendly
-      JSON shape. Endpoints include /v1/page/{title}, /v1/page/{title}/html,
-      /v1/page/{title}/history, /v1/search/page, /v1/search/title,
-      /v1/file/{title}.
-    humanURL: https://en.wiktionary.org/w/rest.php/v1
-    baseURL: https://en.wiktionary.org/w/rest.php
-    tags:
-      - Dictionaries
-      - REST
-      - MediaWiki Core
-    properties:
-      - type: Documentation
-        url: https://www.mediawiki.org/wiki/API:REST_API
-      - type: APIReference
-        url: https://www.mediawiki.org/wiki/API:REST_API/Reference
-      - type: Sandbox
-        url: https://en.wiktionary.org/wiki/Special:RestSandbox
-      - type: OpenAPI
-        url: openapi/wiktionary-core-rest-api-openapi-original.yml
-      - type: JSONSchema
-        url: json-schema/core-rest-api-file-metadata-schema.json
-      - type: JSONSchema
-        url: json-schema/core-rest-api-history-count-response-schema.json
-      - type: JSONSchema
-        url: json-schema/core-rest-api-history-response-schema.json
-      - type: JSONSchema
-        url: json-schema/core-rest-api-latest-revision-schema.json
-      - type: JSONSchema
-        url: json-schema/core-rest-api-license-info-schema.json
-      - type: JSONSchema
-        url: json-schema/core-rest-api-page-source-response-schema.json
-      - type: JSONSchema
-        url: json-schema/core-rest-api-page-with-html-response-schema.json
-      - type: JSONSchema
-        url: json-schema/core-rest-api-revision-detail-schema.json
-      - type: JSONSchema
-        url: json-schema/core-rest-api-search-page-schema.json
-      - type: JSONSchema
-        url: json-schema/core-rest-api-search-response-schema.json
-      - type: JSONStructure
-        url: json-structure/core-rest-api-file-metadata-structure.json
-      - type: JSONStructure
-        url: json-structure/core-rest-api-history-count-response-structure.json
-      - type: JSONStructure
-        url: json-structure/core-rest-api-history-response-structure.json
-      - type: JSONStructure
-        url: json-structure/core-rest-api-latest-revision-structure.json
-      - type: JSONStructure
-        url: json-structure/core-rest-api-license-info-structure.json
-      - type: JSONStructure
-        url: json-structure/core-rest-api-page-source-response-structure.json
-      - type: JSONStructure
-        url: json-structure/core-rest-api-page-with-html-response-structure.json
-      - type: JSONStructure
-        url: json-structure/core-rest-api-revision-detail-structure.json
-      - type: JSONStructure
-        url: json-structure/core-rest-api-search-page-structure.json
-      - type: JSONStructure
-        url: json-structure/core-rest-api-search-response-structure.json
-      - type: JSONLD
-        url: json-ld/wiktionary-core-rest-api-context.jsonld
-      - type: Examples
-        url: examples/core-rest-api-file-metadata-example.json
-      - type: Examples
-        url: examples/core-rest-api-history-count-response-example.json
-      - type: Examples
-        url: examples/core-rest-api-history-response-example.json
-      - type: Examples
-        url: examples/core-rest-api-latest-revision-example.json
-      - type: Examples
-        url: examples/core-rest-api-license-info-example.json
-      - type: Examples
-        url: examples/core-rest-api-page-source-response-example.json
-      - type: Examples
-        url: examples/core-rest-api-page-with-html-response-example.json
-      - type: Examples
-        url: examples/core-rest-api-revision-detail-example.json
-      - type: Examples
-        url: examples/core-rest-api-search-page-example.json
-      - type: Examples
-        url: examples/core-rest-api-search-response-example.json
-      - type: X-NaftikoCapability
-        url: capabilities/core-rest-api-file.yaml
-      - type: X-NaftikoCapability
-        url: capabilities/core-rest-api-history.yaml
-      - type: X-NaftikoCapability
-        url: capabilities/core-rest-api-page.yaml
-      - type: X-NaftikoCapability
-        url: capabilities/core-rest-api-search.yaml
+- aid: wiktionary:wiktionary-definition-api
+  name: Wiktionary Definition API
+  description: Wiktionary-specific structured multilingual definition endpoint
+  humanURL: https://en.wiktionary.org/w/api.php
+  baseURL: https://en.wiktionary.org/w/api.php
+  tags:
+  - Definition
+  properties:
+  - type: OpenAPI
+    url: openapi/wiktionary-definition-api-openapi.yml
+  - type: Documentation
+    url: https://en.wiktionary.org/w/api.php
+  - type: APIReference
+    url: https://www.mediawiki.org/wiki/API:Main_page
+  - type: GettingStarted
+    url: https://www.mediawiki.org/wiki/API:Tutorial
+  - type: Authentication
+    url: https://www.mediawiki.org/wiki/API:Authentication
+  - type: RateLimits
+    url: https://www.mediawiki.org/wiki/API:Etiquette
+  - type: Sandbox
+    url: https://en.wiktionary.org/wiki/Special:ApiSandbox
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-action-api-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-expand-templates-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-extract-page-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-open-search-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-parse-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-parse-section-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-query-extracts-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-query-revisions-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-query-search-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-revision-page-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-revision-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-search-hit-schema.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-action-api-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-expand-templates-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-extract-page-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-open-search-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-parse-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-parse-section-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-query-extracts-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-query-revisions-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-query-search-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-revision-page-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-revision-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-search-hit-structure.json
+  - type: JSONLD
+    url: json-ld/wiktionary-mediawiki-action-api-context.jsonld
+  - type: Examples
+    url: examples/mediawiki-action-api-action-api-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-expand-templates-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-extract-page-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-open-search-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-parse-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-parse-section-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-query-extracts-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-query-revisions-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-query-search-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-revision-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-revision-page-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-search-hit-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-expandtemplates.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-opensearch.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-parse.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-query.yaml
+  - type: Documentation
+    url: https://en.wiktionary.org/api/rest_v1/
+  - type: APIReference
+    url: https://en.wiktionary.org/api/rest_v1/?spec
+  - type: Sandbox
+    url: https://en.wiktionary.org/api/rest_v1/?doc
+  - type: RateLimits
+    url: https://api.wikimedia.org/wiki/Rate_limits
+  - type: JSONSchema
+    url: json-schema/rest-api-content-urls-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-definition-entry-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-definition-response-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-html-transform-request-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-language-entry-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-lint-error-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-page-summary-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-revision-item-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-revision-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-wikitext-transform-request-schema.json
+  - type: JSONStructure
+    url: json-structure/rest-api-content-urls-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-definition-entry-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-definition-response-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-html-transform-request-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-language-entry-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-lint-error-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-page-summary-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-revision-item-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-revision-metadata-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-wikitext-transform-request-structure.json
+  - type: JSONLD
+    url: json-ld/wiktionary-rest-api-context.jsonld
+  - type: Examples
+    url: examples/rest-api-content-urls-example.json
+  - type: Examples
+    url: examples/rest-api-definition-entry-example.json
+  - type: Examples
+    url: examples/rest-api-definition-response-example.json
+  - type: Examples
+    url: examples/rest-api-html-transform-request-example.json
+  - type: Examples
+    url: examples/rest-api-language-entry-example.json
+  - type: Examples
+    url: examples/rest-api-lint-error-example.json
+  - type: Examples
+    url: examples/rest-api-page-summary-example.json
+  - type: Examples
+    url: examples/rest-api-revision-item-example.json
+  - type: Examples
+    url: examples/rest-api-revision-metadata-example.json
+  - type: Examples
+    url: examples/rest-api-wikitext-transform-request-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/rest-api-definition.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-api-page-content.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-api-transform.yaml
+  - type: Documentation
+    url: https://www.mediawiki.org/wiki/API:REST_API
+  - type: APIReference
+    url: https://www.mediawiki.org/wiki/API:REST_API/Reference
+  - type: Sandbox
+    url: https://en.wiktionary.org/wiki/Special:RestSandbox
+  - type: JSONSchema
+    url: json-schema/core-rest-api-file-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-history-count-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-history-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-latest-revision-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-license-info-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-page-source-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-page-with-html-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-revision-detail-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-search-page-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-search-response-schema.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-file-metadata-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-history-count-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-history-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-latest-revision-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-license-info-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-page-source-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-page-with-html-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-revision-detail-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-search-page-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-search-response-structure.json
+  - type: JSONLD
+    url: json-ld/wiktionary-core-rest-api-context.jsonld
+  - type: Examples
+    url: examples/core-rest-api-file-metadata-example.json
+  - type: Examples
+    url: examples/core-rest-api-history-count-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-history-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-latest-revision-example.json
+  - type: Examples
+    url: examples/core-rest-api-license-info-example.json
+  - type: Examples
+    url: examples/core-rest-api-page-source-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-page-with-html-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-revision-detail-example.json
+  - type: Examples
+    url: examples/core-rest-api-search-page-example.json
+  - type: Examples
+    url: examples/core-rest-api-search-response-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-file.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-history.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-page.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-search.yaml
+- aid: wiktionary:wiktionary-expandtemplates-api
+  name: Wiktionary ExpandTemplates API
+  description: action=expandtemplates — Expand wikitext templates server-side
+  humanURL: https://en.wiktionary.org/w/api.php
+  baseURL: https://en.wiktionary.org/w/api.php
+  tags:
+  - ExpandTemplates
+  properties:
+  - type: OpenAPI
+    url: openapi/wiktionary-expandtemplates-api-openapi.yml
+  - type: Documentation
+    url: https://en.wiktionary.org/w/api.php
+  - type: APIReference
+    url: https://www.mediawiki.org/wiki/API:Main_page
+  - type: GettingStarted
+    url: https://www.mediawiki.org/wiki/API:Tutorial
+  - type: Authentication
+    url: https://www.mediawiki.org/wiki/API:Authentication
+  - type: RateLimits
+    url: https://www.mediawiki.org/wiki/API:Etiquette
+  - type: Sandbox
+    url: https://en.wiktionary.org/wiki/Special:ApiSandbox
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-action-api-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-expand-templates-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-extract-page-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-open-search-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-parse-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-parse-section-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-query-extracts-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-query-revisions-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-query-search-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-revision-page-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-revision-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-search-hit-schema.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-action-api-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-expand-templates-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-extract-page-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-open-search-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-parse-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-parse-section-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-query-extracts-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-query-revisions-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-query-search-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-revision-page-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-revision-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-search-hit-structure.json
+  - type: JSONLD
+    url: json-ld/wiktionary-mediawiki-action-api-context.jsonld
+  - type: Examples
+    url: examples/mediawiki-action-api-action-api-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-expand-templates-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-extract-page-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-open-search-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-parse-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-parse-section-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-query-extracts-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-query-revisions-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-query-search-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-revision-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-revision-page-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-search-hit-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-expandtemplates.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-opensearch.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-parse.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-query.yaml
+  - type: Documentation
+    url: https://en.wiktionary.org/api/rest_v1/
+  - type: APIReference
+    url: https://en.wiktionary.org/api/rest_v1/?spec
+  - type: Sandbox
+    url: https://en.wiktionary.org/api/rest_v1/?doc
+  - type: RateLimits
+    url: https://api.wikimedia.org/wiki/Rate_limits
+  - type: JSONSchema
+    url: json-schema/rest-api-content-urls-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-definition-entry-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-definition-response-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-html-transform-request-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-language-entry-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-lint-error-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-page-summary-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-revision-item-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-revision-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-wikitext-transform-request-schema.json
+  - type: JSONStructure
+    url: json-structure/rest-api-content-urls-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-definition-entry-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-definition-response-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-html-transform-request-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-language-entry-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-lint-error-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-page-summary-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-revision-item-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-revision-metadata-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-wikitext-transform-request-structure.json
+  - type: JSONLD
+    url: json-ld/wiktionary-rest-api-context.jsonld
+  - type: Examples
+    url: examples/rest-api-content-urls-example.json
+  - type: Examples
+    url: examples/rest-api-definition-entry-example.json
+  - type: Examples
+    url: examples/rest-api-definition-response-example.json
+  - type: Examples
+    url: examples/rest-api-html-transform-request-example.json
+  - type: Examples
+    url: examples/rest-api-language-entry-example.json
+  - type: Examples
+    url: examples/rest-api-lint-error-example.json
+  - type: Examples
+    url: examples/rest-api-page-summary-example.json
+  - type: Examples
+    url: examples/rest-api-revision-item-example.json
+  - type: Examples
+    url: examples/rest-api-revision-metadata-example.json
+  - type: Examples
+    url: examples/rest-api-wikitext-transform-request-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/rest-api-definition.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-api-page-content.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-api-transform.yaml
+  - type: Documentation
+    url: https://www.mediawiki.org/wiki/API:REST_API
+  - type: APIReference
+    url: https://www.mediawiki.org/wiki/API:REST_API/Reference
+  - type: Sandbox
+    url: https://en.wiktionary.org/wiki/Special:RestSandbox
+  - type: JSONSchema
+    url: json-schema/core-rest-api-file-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-history-count-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-history-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-latest-revision-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-license-info-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-page-source-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-page-with-html-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-revision-detail-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-search-page-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-search-response-schema.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-file-metadata-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-history-count-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-history-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-latest-revision-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-license-info-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-page-source-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-page-with-html-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-revision-detail-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-search-page-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-search-response-structure.json
+  - type: JSONLD
+    url: json-ld/wiktionary-core-rest-api-context.jsonld
+  - type: Examples
+    url: examples/core-rest-api-file-metadata-example.json
+  - type: Examples
+    url: examples/core-rest-api-history-count-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-history-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-latest-revision-example.json
+  - type: Examples
+    url: examples/core-rest-api-license-info-example.json
+  - type: Examples
+    url: examples/core-rest-api-page-source-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-page-with-html-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-revision-detail-example.json
+  - type: Examples
+    url: examples/core-rest-api-search-page-example.json
+  - type: Examples
+    url: examples/core-rest-api-search-response-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-file.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-history.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-page.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-search.yaml
+- aid: wiktionary:wiktionary-file-api
+  name: Wiktionary File API
+  description: File and media metadata
+  humanURL: https://en.wiktionary.org/w/api.php
+  baseURL: https://en.wiktionary.org/w/api.php
+  tags:
+  - File
+  properties:
+  - type: OpenAPI
+    url: openapi/wiktionary-file-api-openapi.yml
+  - type: Documentation
+    url: https://en.wiktionary.org/w/api.php
+  - type: APIReference
+    url: https://www.mediawiki.org/wiki/API:Main_page
+  - type: GettingStarted
+    url: https://www.mediawiki.org/wiki/API:Tutorial
+  - type: Authentication
+    url: https://www.mediawiki.org/wiki/API:Authentication
+  - type: RateLimits
+    url: https://www.mediawiki.org/wiki/API:Etiquette
+  - type: Sandbox
+    url: https://en.wiktionary.org/wiki/Special:ApiSandbox
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-action-api-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-expand-templates-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-extract-page-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-open-search-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-parse-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-parse-section-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-query-extracts-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-query-revisions-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-query-search-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-revision-page-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-revision-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-search-hit-schema.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-action-api-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-expand-templates-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-extract-page-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-open-search-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-parse-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-parse-section-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-query-extracts-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-query-revisions-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-query-search-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-revision-page-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-revision-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-search-hit-structure.json
+  - type: JSONLD
+    url: json-ld/wiktionary-mediawiki-action-api-context.jsonld
+  - type: Examples
+    url: examples/mediawiki-action-api-action-api-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-expand-templates-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-extract-page-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-open-search-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-parse-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-parse-section-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-query-extracts-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-query-revisions-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-query-search-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-revision-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-revision-page-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-search-hit-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-expandtemplates.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-opensearch.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-parse.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-query.yaml
+  - type: Documentation
+    url: https://en.wiktionary.org/api/rest_v1/
+  - type: APIReference
+    url: https://en.wiktionary.org/api/rest_v1/?spec
+  - type: Sandbox
+    url: https://en.wiktionary.org/api/rest_v1/?doc
+  - type: RateLimits
+    url: https://api.wikimedia.org/wiki/Rate_limits
+  - type: JSONSchema
+    url: json-schema/rest-api-content-urls-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-definition-entry-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-definition-response-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-html-transform-request-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-language-entry-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-lint-error-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-page-summary-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-revision-item-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-revision-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-wikitext-transform-request-schema.json
+  - type: JSONStructure
+    url: json-structure/rest-api-content-urls-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-definition-entry-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-definition-response-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-html-transform-request-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-language-entry-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-lint-error-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-page-summary-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-revision-item-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-revision-metadata-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-wikitext-transform-request-structure.json
+  - type: JSONLD
+    url: json-ld/wiktionary-rest-api-context.jsonld
+  - type: Examples
+    url: examples/rest-api-content-urls-example.json
+  - type: Examples
+    url: examples/rest-api-definition-entry-example.json
+  - type: Examples
+    url: examples/rest-api-definition-response-example.json
+  - type: Examples
+    url: examples/rest-api-html-transform-request-example.json
+  - type: Examples
+    url: examples/rest-api-language-entry-example.json
+  - type: Examples
+    url: examples/rest-api-lint-error-example.json
+  - type: Examples
+    url: examples/rest-api-page-summary-example.json
+  - type: Examples
+    url: examples/rest-api-revision-item-example.json
+  - type: Examples
+    url: examples/rest-api-revision-metadata-example.json
+  - type: Examples
+    url: examples/rest-api-wikitext-transform-request-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/rest-api-definition.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-api-page-content.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-api-transform.yaml
+  - type: Documentation
+    url: https://www.mediawiki.org/wiki/API:REST_API
+  - type: APIReference
+    url: https://www.mediawiki.org/wiki/API:REST_API/Reference
+  - type: Sandbox
+    url: https://en.wiktionary.org/wiki/Special:RestSandbox
+  - type: JSONSchema
+    url: json-schema/core-rest-api-file-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-history-count-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-history-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-latest-revision-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-license-info-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-page-source-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-page-with-html-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-revision-detail-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-search-page-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-search-response-schema.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-file-metadata-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-history-count-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-history-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-latest-revision-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-license-info-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-page-source-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-page-with-html-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-revision-detail-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-search-page-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-search-response-structure.json
+  - type: JSONLD
+    url: json-ld/wiktionary-core-rest-api-context.jsonld
+  - type: Examples
+    url: examples/core-rest-api-file-metadata-example.json
+  - type: Examples
+    url: examples/core-rest-api-history-count-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-history-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-latest-revision-example.json
+  - type: Examples
+    url: examples/core-rest-api-license-info-example.json
+  - type: Examples
+    url: examples/core-rest-api-page-source-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-page-with-html-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-revision-detail-example.json
+  - type: Examples
+    url: examples/core-rest-api-search-page-example.json
+  - type: Examples
+    url: examples/core-rest-api-search-response-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-file.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-history.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-page.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-search.yaml
+- aid: wiktionary:wiktionary-history-api
+  name: Wiktionary History API
+  description: Page history and revision details
+  humanURL: https://en.wiktionary.org/w/api.php
+  baseURL: https://en.wiktionary.org/w/api.php
+  tags:
+  - History
+  properties:
+  - type: OpenAPI
+    url: openapi/wiktionary-history-api-openapi.yml
+  - type: Documentation
+    url: https://en.wiktionary.org/w/api.php
+  - type: APIReference
+    url: https://www.mediawiki.org/wiki/API:Main_page
+  - type: GettingStarted
+    url: https://www.mediawiki.org/wiki/API:Tutorial
+  - type: Authentication
+    url: https://www.mediawiki.org/wiki/API:Authentication
+  - type: RateLimits
+    url: https://www.mediawiki.org/wiki/API:Etiquette
+  - type: Sandbox
+    url: https://en.wiktionary.org/wiki/Special:ApiSandbox
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-action-api-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-expand-templates-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-extract-page-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-open-search-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-parse-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-parse-section-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-query-extracts-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-query-revisions-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-query-search-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-revision-page-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-revision-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-search-hit-schema.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-action-api-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-expand-templates-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-extract-page-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-open-search-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-parse-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-parse-section-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-query-extracts-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-query-revisions-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-query-search-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-revision-page-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-revision-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-search-hit-structure.json
+  - type: JSONLD
+    url: json-ld/wiktionary-mediawiki-action-api-context.jsonld
+  - type: Examples
+    url: examples/mediawiki-action-api-action-api-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-expand-templates-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-extract-page-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-open-search-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-parse-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-parse-section-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-query-extracts-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-query-revisions-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-query-search-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-revision-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-revision-page-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-search-hit-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-expandtemplates.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-opensearch.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-parse.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-query.yaml
+  - type: Documentation
+    url: https://en.wiktionary.org/api/rest_v1/
+  - type: APIReference
+    url: https://en.wiktionary.org/api/rest_v1/?spec
+  - type: Sandbox
+    url: https://en.wiktionary.org/api/rest_v1/?doc
+  - type: RateLimits
+    url: https://api.wikimedia.org/wiki/Rate_limits
+  - type: JSONSchema
+    url: json-schema/rest-api-content-urls-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-definition-entry-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-definition-response-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-html-transform-request-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-language-entry-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-lint-error-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-page-summary-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-revision-item-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-revision-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-wikitext-transform-request-schema.json
+  - type: JSONStructure
+    url: json-structure/rest-api-content-urls-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-definition-entry-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-definition-response-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-html-transform-request-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-language-entry-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-lint-error-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-page-summary-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-revision-item-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-revision-metadata-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-wikitext-transform-request-structure.json
+  - type: JSONLD
+    url: json-ld/wiktionary-rest-api-context.jsonld
+  - type: Examples
+    url: examples/rest-api-content-urls-example.json
+  - type: Examples
+    url: examples/rest-api-definition-entry-example.json
+  - type: Examples
+    url: examples/rest-api-definition-response-example.json
+  - type: Examples
+    url: examples/rest-api-html-transform-request-example.json
+  - type: Examples
+    url: examples/rest-api-language-entry-example.json
+  - type: Examples
+    url: examples/rest-api-lint-error-example.json
+  - type: Examples
+    url: examples/rest-api-page-summary-example.json
+  - type: Examples
+    url: examples/rest-api-revision-item-example.json
+  - type: Examples
+    url: examples/rest-api-revision-metadata-example.json
+  - type: Examples
+    url: examples/rest-api-wikitext-transform-request-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/rest-api-definition.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-api-page-content.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-api-transform.yaml
+  - type: Documentation
+    url: https://www.mediawiki.org/wiki/API:REST_API
+  - type: APIReference
+    url: https://www.mediawiki.org/wiki/API:REST_API/Reference
+  - type: Sandbox
+    url: https://en.wiktionary.org/wiki/Special:RestSandbox
+  - type: JSONSchema
+    url: json-schema/core-rest-api-file-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-history-count-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-history-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-latest-revision-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-license-info-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-page-source-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-page-with-html-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-revision-detail-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-search-page-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-search-response-schema.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-file-metadata-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-history-count-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-history-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-latest-revision-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-license-info-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-page-source-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-page-with-html-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-revision-detail-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-search-page-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-search-response-structure.json
+  - type: JSONLD
+    url: json-ld/wiktionary-core-rest-api-context.jsonld
+  - type: Examples
+    url: examples/core-rest-api-file-metadata-example.json
+  - type: Examples
+    url: examples/core-rest-api-history-count-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-history-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-latest-revision-example.json
+  - type: Examples
+    url: examples/core-rest-api-license-info-example.json
+  - type: Examples
+    url: examples/core-rest-api-page-source-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-page-with-html-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-revision-detail-example.json
+  - type: Examples
+    url: examples/core-rest-api-search-page-example.json
+  - type: Examples
+    url: examples/core-rest-api-search-response-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-file.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-history.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-page.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-search.yaml
+- aid: wiktionary:wiktionary-opensearch-api
+  name: Wiktionary OpenSearch API
+  description: action=opensearch — OpenSearch suggestions protocol
+  humanURL: https://en.wiktionary.org/w/api.php
+  baseURL: https://en.wiktionary.org/w/api.php
+  tags:
+  - OpenSearch
+  properties:
+  - type: OpenAPI
+    url: openapi/wiktionary-opensearch-api-openapi.yml
+  - type: Documentation
+    url: https://en.wiktionary.org/w/api.php
+  - type: APIReference
+    url: https://www.mediawiki.org/wiki/API:Main_page
+  - type: GettingStarted
+    url: https://www.mediawiki.org/wiki/API:Tutorial
+  - type: Authentication
+    url: https://www.mediawiki.org/wiki/API:Authentication
+  - type: RateLimits
+    url: https://www.mediawiki.org/wiki/API:Etiquette
+  - type: Sandbox
+    url: https://en.wiktionary.org/wiki/Special:ApiSandbox
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-action-api-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-expand-templates-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-extract-page-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-open-search-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-parse-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-parse-section-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-query-extracts-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-query-revisions-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-query-search-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-revision-page-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-revision-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-search-hit-schema.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-action-api-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-expand-templates-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-extract-page-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-open-search-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-parse-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-parse-section-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-query-extracts-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-query-revisions-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-query-search-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-revision-page-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-revision-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-search-hit-structure.json
+  - type: JSONLD
+    url: json-ld/wiktionary-mediawiki-action-api-context.jsonld
+  - type: Examples
+    url: examples/mediawiki-action-api-action-api-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-expand-templates-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-extract-page-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-open-search-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-parse-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-parse-section-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-query-extracts-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-query-revisions-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-query-search-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-revision-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-revision-page-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-search-hit-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-expandtemplates.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-opensearch.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-parse.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-query.yaml
+  - type: Documentation
+    url: https://en.wiktionary.org/api/rest_v1/
+  - type: APIReference
+    url: https://en.wiktionary.org/api/rest_v1/?spec
+  - type: Sandbox
+    url: https://en.wiktionary.org/api/rest_v1/?doc
+  - type: RateLimits
+    url: https://api.wikimedia.org/wiki/Rate_limits
+  - type: JSONSchema
+    url: json-schema/rest-api-content-urls-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-definition-entry-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-definition-response-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-html-transform-request-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-language-entry-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-lint-error-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-page-summary-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-revision-item-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-revision-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-wikitext-transform-request-schema.json
+  - type: JSONStructure
+    url: json-structure/rest-api-content-urls-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-definition-entry-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-definition-response-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-html-transform-request-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-language-entry-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-lint-error-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-page-summary-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-revision-item-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-revision-metadata-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-wikitext-transform-request-structure.json
+  - type: JSONLD
+    url: json-ld/wiktionary-rest-api-context.jsonld
+  - type: Examples
+    url: examples/rest-api-content-urls-example.json
+  - type: Examples
+    url: examples/rest-api-definition-entry-example.json
+  - type: Examples
+    url: examples/rest-api-definition-response-example.json
+  - type: Examples
+    url: examples/rest-api-html-transform-request-example.json
+  - type: Examples
+    url: examples/rest-api-language-entry-example.json
+  - type: Examples
+    url: examples/rest-api-lint-error-example.json
+  - type: Examples
+    url: examples/rest-api-page-summary-example.json
+  - type: Examples
+    url: examples/rest-api-revision-item-example.json
+  - type: Examples
+    url: examples/rest-api-revision-metadata-example.json
+  - type: Examples
+    url: examples/rest-api-wikitext-transform-request-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/rest-api-definition.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-api-page-content.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-api-transform.yaml
+  - type: Documentation
+    url: https://www.mediawiki.org/wiki/API:REST_API
+  - type: APIReference
+    url: https://www.mediawiki.org/wiki/API:REST_API/Reference
+  - type: Sandbox
+    url: https://en.wiktionary.org/wiki/Special:RestSandbox
+  - type: JSONSchema
+    url: json-schema/core-rest-api-file-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-history-count-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-history-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-latest-revision-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-license-info-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-page-source-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-page-with-html-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-revision-detail-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-search-page-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-search-response-schema.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-file-metadata-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-history-count-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-history-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-latest-revision-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-license-info-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-page-source-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-page-with-html-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-revision-detail-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-search-page-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-search-response-structure.json
+  - type: JSONLD
+    url: json-ld/wiktionary-core-rest-api-context.jsonld
+  - type: Examples
+    url: examples/core-rest-api-file-metadata-example.json
+  - type: Examples
+    url: examples/core-rest-api-history-count-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-history-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-latest-revision-example.json
+  - type: Examples
+    url: examples/core-rest-api-license-info-example.json
+  - type: Examples
+    url: examples/core-rest-api-page-source-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-page-with-html-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-revision-detail-example.json
+  - type: Examples
+    url: examples/core-rest-api-search-page-example.json
+  - type: Examples
+    url: examples/core-rest-api-search-response-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-file.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-history.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-page.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-search.yaml
+- aid: wiktionary:wiktionary-page-api
+  name: Wiktionary Page API
+  description: Page content, source, and HTML
+  humanURL: https://en.wiktionary.org/w/api.php
+  baseURL: https://en.wiktionary.org/w/api.php
+  tags:
+  - Page
+  properties:
+  - type: OpenAPI
+    url: openapi/wiktionary-page-api-openapi.yml
+  - type: Documentation
+    url: https://en.wiktionary.org/w/api.php
+  - type: APIReference
+    url: https://www.mediawiki.org/wiki/API:Main_page
+  - type: GettingStarted
+    url: https://www.mediawiki.org/wiki/API:Tutorial
+  - type: Authentication
+    url: https://www.mediawiki.org/wiki/API:Authentication
+  - type: RateLimits
+    url: https://www.mediawiki.org/wiki/API:Etiquette
+  - type: Sandbox
+    url: https://en.wiktionary.org/wiki/Special:ApiSandbox
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-action-api-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-expand-templates-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-extract-page-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-open-search-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-parse-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-parse-section-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-query-extracts-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-query-revisions-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-query-search-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-revision-page-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-revision-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-search-hit-schema.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-action-api-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-expand-templates-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-extract-page-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-open-search-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-parse-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-parse-section-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-query-extracts-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-query-revisions-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-query-search-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-revision-page-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-revision-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-search-hit-structure.json
+  - type: JSONLD
+    url: json-ld/wiktionary-mediawiki-action-api-context.jsonld
+  - type: Examples
+    url: examples/mediawiki-action-api-action-api-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-expand-templates-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-extract-page-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-open-search-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-parse-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-parse-section-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-query-extracts-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-query-revisions-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-query-search-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-revision-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-revision-page-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-search-hit-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-expandtemplates.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-opensearch.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-parse.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-query.yaml
+  - type: Documentation
+    url: https://en.wiktionary.org/api/rest_v1/
+  - type: APIReference
+    url: https://en.wiktionary.org/api/rest_v1/?spec
+  - type: Sandbox
+    url: https://en.wiktionary.org/api/rest_v1/?doc
+  - type: RateLimits
+    url: https://api.wikimedia.org/wiki/Rate_limits
+  - type: JSONSchema
+    url: json-schema/rest-api-content-urls-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-definition-entry-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-definition-response-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-html-transform-request-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-language-entry-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-lint-error-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-page-summary-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-revision-item-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-revision-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-wikitext-transform-request-schema.json
+  - type: JSONStructure
+    url: json-structure/rest-api-content-urls-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-definition-entry-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-definition-response-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-html-transform-request-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-language-entry-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-lint-error-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-page-summary-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-revision-item-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-revision-metadata-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-wikitext-transform-request-structure.json
+  - type: JSONLD
+    url: json-ld/wiktionary-rest-api-context.jsonld
+  - type: Examples
+    url: examples/rest-api-content-urls-example.json
+  - type: Examples
+    url: examples/rest-api-definition-entry-example.json
+  - type: Examples
+    url: examples/rest-api-definition-response-example.json
+  - type: Examples
+    url: examples/rest-api-html-transform-request-example.json
+  - type: Examples
+    url: examples/rest-api-language-entry-example.json
+  - type: Examples
+    url: examples/rest-api-lint-error-example.json
+  - type: Examples
+    url: examples/rest-api-page-summary-example.json
+  - type: Examples
+    url: examples/rest-api-revision-item-example.json
+  - type: Examples
+    url: examples/rest-api-revision-metadata-example.json
+  - type: Examples
+    url: examples/rest-api-wikitext-transform-request-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/rest-api-definition.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-api-page-content.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-api-transform.yaml
+  - type: Documentation
+    url: https://www.mediawiki.org/wiki/API:REST_API
+  - type: APIReference
+    url: https://www.mediawiki.org/wiki/API:REST_API/Reference
+  - type: Sandbox
+    url: https://en.wiktionary.org/wiki/Special:RestSandbox
+  - type: JSONSchema
+    url: json-schema/core-rest-api-file-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-history-count-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-history-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-latest-revision-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-license-info-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-page-source-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-page-with-html-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-revision-detail-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-search-page-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-search-response-schema.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-file-metadata-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-history-count-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-history-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-latest-revision-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-license-info-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-page-source-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-page-with-html-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-revision-detail-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-search-page-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-search-response-structure.json
+  - type: JSONLD
+    url: json-ld/wiktionary-core-rest-api-context.jsonld
+  - type: Examples
+    url: examples/core-rest-api-file-metadata-example.json
+  - type: Examples
+    url: examples/core-rest-api-history-count-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-history-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-latest-revision-example.json
+  - type: Examples
+    url: examples/core-rest-api-license-info-example.json
+  - type: Examples
+    url: examples/core-rest-api-page-source-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-page-with-html-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-revision-detail-example.json
+  - type: Examples
+    url: examples/core-rest-api-search-page-example.json
+  - type: Examples
+    url: examples/core-rest-api-search-response-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-file.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-history.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-page.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-search.yaml
+- aid: wiktionary:wiktionary-page-content-api
+  name: Wiktionary Page Content API
+  description: Page HTML, summary, title metadata, and mobile-optimised HTML
+  humanURL: https://en.wiktionary.org/w/api.php
+  baseURL: https://en.wiktionary.org/w/api.php
+  tags:
+  - Page Content
+  properties:
+  - type: OpenAPI
+    url: openapi/wiktionary-page-content-api-openapi.yml
+  - type: Documentation
+    url: https://en.wiktionary.org/w/api.php
+  - type: APIReference
+    url: https://www.mediawiki.org/wiki/API:Main_page
+  - type: GettingStarted
+    url: https://www.mediawiki.org/wiki/API:Tutorial
+  - type: Authentication
+    url: https://www.mediawiki.org/wiki/API:Authentication
+  - type: RateLimits
+    url: https://www.mediawiki.org/wiki/API:Etiquette
+  - type: Sandbox
+    url: https://en.wiktionary.org/wiki/Special:ApiSandbox
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-action-api-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-expand-templates-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-extract-page-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-open-search-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-parse-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-parse-section-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-query-extracts-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-query-revisions-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-query-search-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-revision-page-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-revision-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-search-hit-schema.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-action-api-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-expand-templates-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-extract-page-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-open-search-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-parse-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-parse-section-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-query-extracts-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-query-revisions-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-query-search-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-revision-page-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-revision-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-search-hit-structure.json
+  - type: JSONLD
+    url: json-ld/wiktionary-mediawiki-action-api-context.jsonld
+  - type: Examples
+    url: examples/mediawiki-action-api-action-api-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-expand-templates-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-extract-page-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-open-search-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-parse-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-parse-section-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-query-extracts-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-query-revisions-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-query-search-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-revision-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-revision-page-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-search-hit-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-expandtemplates.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-opensearch.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-parse.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-query.yaml
+  - type: Documentation
+    url: https://en.wiktionary.org/api/rest_v1/
+  - type: APIReference
+    url: https://en.wiktionary.org/api/rest_v1/?spec
+  - type: Sandbox
+    url: https://en.wiktionary.org/api/rest_v1/?doc
+  - type: RateLimits
+    url: https://api.wikimedia.org/wiki/Rate_limits
+  - type: JSONSchema
+    url: json-schema/rest-api-content-urls-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-definition-entry-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-definition-response-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-html-transform-request-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-language-entry-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-lint-error-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-page-summary-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-revision-item-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-revision-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-wikitext-transform-request-schema.json
+  - type: JSONStructure
+    url: json-structure/rest-api-content-urls-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-definition-entry-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-definition-response-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-html-transform-request-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-language-entry-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-lint-error-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-page-summary-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-revision-item-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-revision-metadata-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-wikitext-transform-request-structure.json
+  - type: JSONLD
+    url: json-ld/wiktionary-rest-api-context.jsonld
+  - type: Examples
+    url: examples/rest-api-content-urls-example.json
+  - type: Examples
+    url: examples/rest-api-definition-entry-example.json
+  - type: Examples
+    url: examples/rest-api-definition-response-example.json
+  - type: Examples
+    url: examples/rest-api-html-transform-request-example.json
+  - type: Examples
+    url: examples/rest-api-language-entry-example.json
+  - type: Examples
+    url: examples/rest-api-lint-error-example.json
+  - type: Examples
+    url: examples/rest-api-page-summary-example.json
+  - type: Examples
+    url: examples/rest-api-revision-item-example.json
+  - type: Examples
+    url: examples/rest-api-revision-metadata-example.json
+  - type: Examples
+    url: examples/rest-api-wikitext-transform-request-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/rest-api-definition.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-api-page-content.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-api-transform.yaml
+  - type: Documentation
+    url: https://www.mediawiki.org/wiki/API:REST_API
+  - type: APIReference
+    url: https://www.mediawiki.org/wiki/API:REST_API/Reference
+  - type: Sandbox
+    url: https://en.wiktionary.org/wiki/Special:RestSandbox
+  - type: JSONSchema
+    url: json-schema/core-rest-api-file-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-history-count-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-history-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-latest-revision-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-license-info-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-page-source-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-page-with-html-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-revision-detail-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-search-page-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-search-response-schema.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-file-metadata-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-history-count-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-history-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-latest-revision-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-license-info-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-page-source-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-page-with-html-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-revision-detail-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-search-page-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-search-response-structure.json
+  - type: JSONLD
+    url: json-ld/wiktionary-core-rest-api-context.jsonld
+  - type: Examples
+    url: examples/core-rest-api-file-metadata-example.json
+  - type: Examples
+    url: examples/core-rest-api-history-count-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-history-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-latest-revision-example.json
+  - type: Examples
+    url: examples/core-rest-api-license-info-example.json
+  - type: Examples
+    url: examples/core-rest-api-page-source-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-page-with-html-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-revision-detail-example.json
+  - type: Examples
+    url: examples/core-rest-api-search-page-example.json
+  - type: Examples
+    url: examples/core-rest-api-search-response-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-file.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-history.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-page.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-search.yaml
+- aid: wiktionary:wiktionary-parse-api
+  name: Wiktionary Parse API
+  description: action=parse — Render wikitext to HTML and parse section trees
+  humanURL: https://en.wiktionary.org/w/api.php
+  baseURL: https://en.wiktionary.org/w/api.php
+  tags:
+  - Parse
+  properties:
+  - type: OpenAPI
+    url: openapi/wiktionary-parse-api-openapi.yml
+  - type: Documentation
+    url: https://en.wiktionary.org/w/api.php
+  - type: APIReference
+    url: https://www.mediawiki.org/wiki/API:Main_page
+  - type: GettingStarted
+    url: https://www.mediawiki.org/wiki/API:Tutorial
+  - type: Authentication
+    url: https://www.mediawiki.org/wiki/API:Authentication
+  - type: RateLimits
+    url: https://www.mediawiki.org/wiki/API:Etiquette
+  - type: Sandbox
+    url: https://en.wiktionary.org/wiki/Special:ApiSandbox
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-action-api-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-expand-templates-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-extract-page-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-open-search-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-parse-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-parse-section-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-query-extracts-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-query-revisions-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-query-search-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-revision-page-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-revision-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-search-hit-schema.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-action-api-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-expand-templates-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-extract-page-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-open-search-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-parse-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-parse-section-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-query-extracts-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-query-revisions-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-query-search-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-revision-page-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-revision-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-search-hit-structure.json
+  - type: JSONLD
+    url: json-ld/wiktionary-mediawiki-action-api-context.jsonld
+  - type: Examples
+    url: examples/mediawiki-action-api-action-api-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-expand-templates-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-extract-page-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-open-search-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-parse-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-parse-section-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-query-extracts-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-query-revisions-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-query-search-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-revision-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-revision-page-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-search-hit-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-expandtemplates.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-opensearch.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-parse.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-query.yaml
+  - type: Documentation
+    url: https://en.wiktionary.org/api/rest_v1/
+  - type: APIReference
+    url: https://en.wiktionary.org/api/rest_v1/?spec
+  - type: Sandbox
+    url: https://en.wiktionary.org/api/rest_v1/?doc
+  - type: RateLimits
+    url: https://api.wikimedia.org/wiki/Rate_limits
+  - type: JSONSchema
+    url: json-schema/rest-api-content-urls-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-definition-entry-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-definition-response-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-html-transform-request-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-language-entry-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-lint-error-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-page-summary-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-revision-item-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-revision-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-wikitext-transform-request-schema.json
+  - type: JSONStructure
+    url: json-structure/rest-api-content-urls-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-definition-entry-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-definition-response-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-html-transform-request-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-language-entry-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-lint-error-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-page-summary-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-revision-item-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-revision-metadata-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-wikitext-transform-request-structure.json
+  - type: JSONLD
+    url: json-ld/wiktionary-rest-api-context.jsonld
+  - type: Examples
+    url: examples/rest-api-content-urls-example.json
+  - type: Examples
+    url: examples/rest-api-definition-entry-example.json
+  - type: Examples
+    url: examples/rest-api-definition-response-example.json
+  - type: Examples
+    url: examples/rest-api-html-transform-request-example.json
+  - type: Examples
+    url: examples/rest-api-language-entry-example.json
+  - type: Examples
+    url: examples/rest-api-lint-error-example.json
+  - type: Examples
+    url: examples/rest-api-page-summary-example.json
+  - type: Examples
+    url: examples/rest-api-revision-item-example.json
+  - type: Examples
+    url: examples/rest-api-revision-metadata-example.json
+  - type: Examples
+    url: examples/rest-api-wikitext-transform-request-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/rest-api-definition.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-api-page-content.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-api-transform.yaml
+  - type: Documentation
+    url: https://www.mediawiki.org/wiki/API:REST_API
+  - type: APIReference
+    url: https://www.mediawiki.org/wiki/API:REST_API/Reference
+  - type: Sandbox
+    url: https://en.wiktionary.org/wiki/Special:RestSandbox
+  - type: JSONSchema
+    url: json-schema/core-rest-api-file-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-history-count-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-history-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-latest-revision-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-license-info-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-page-source-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-page-with-html-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-revision-detail-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-search-page-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-search-response-schema.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-file-metadata-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-history-count-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-history-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-latest-revision-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-license-info-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-page-source-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-page-with-html-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-revision-detail-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-search-page-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-search-response-structure.json
+  - type: JSONLD
+    url: json-ld/wiktionary-core-rest-api-context.jsonld
+  - type: Examples
+    url: examples/core-rest-api-file-metadata-example.json
+  - type: Examples
+    url: examples/core-rest-api-history-count-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-history-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-latest-revision-example.json
+  - type: Examples
+    url: examples/core-rest-api-license-info-example.json
+  - type: Examples
+    url: examples/core-rest-api-page-source-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-page-with-html-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-revision-detail-example.json
+  - type: Examples
+    url: examples/core-rest-api-search-page-example.json
+  - type: Examples
+    url: examples/core-rest-api-search-response-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-file.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-history.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-page.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-search.yaml
+- aid: wiktionary:wiktionary-query-api
+  name: Wiktionary Query API
+  description: action=query — Fetch wikitext, extracts, revisions, and search results
+  humanURL: https://en.wiktionary.org/w/api.php
+  baseURL: https://en.wiktionary.org/w/api.php
+  tags:
+  - Query
+  properties:
+  - type: OpenAPI
+    url: openapi/wiktionary-query-api-openapi.yml
+  - type: Documentation
+    url: https://en.wiktionary.org/w/api.php
+  - type: APIReference
+    url: https://www.mediawiki.org/wiki/API:Main_page
+  - type: GettingStarted
+    url: https://www.mediawiki.org/wiki/API:Tutorial
+  - type: Authentication
+    url: https://www.mediawiki.org/wiki/API:Authentication
+  - type: RateLimits
+    url: https://www.mediawiki.org/wiki/API:Etiquette
+  - type: Sandbox
+    url: https://en.wiktionary.org/wiki/Special:ApiSandbox
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-action-api-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-expand-templates-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-extract-page-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-open-search-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-parse-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-parse-section-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-query-extracts-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-query-revisions-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-query-search-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-revision-page-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-revision-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-search-hit-schema.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-action-api-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-expand-templates-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-extract-page-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-open-search-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-parse-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-parse-section-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-query-extracts-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-query-revisions-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-query-search-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-revision-page-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-revision-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-search-hit-structure.json
+  - type: JSONLD
+    url: json-ld/wiktionary-mediawiki-action-api-context.jsonld
+  - type: Examples
+    url: examples/mediawiki-action-api-action-api-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-expand-templates-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-extract-page-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-open-search-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-parse-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-parse-section-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-query-extracts-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-query-revisions-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-query-search-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-revision-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-revision-page-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-search-hit-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-expandtemplates.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-opensearch.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-parse.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-query.yaml
+  - type: Documentation
+    url: https://en.wiktionary.org/api/rest_v1/
+  - type: APIReference
+    url: https://en.wiktionary.org/api/rest_v1/?spec
+  - type: Sandbox
+    url: https://en.wiktionary.org/api/rest_v1/?doc
+  - type: RateLimits
+    url: https://api.wikimedia.org/wiki/Rate_limits
+  - type: JSONSchema
+    url: json-schema/rest-api-content-urls-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-definition-entry-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-definition-response-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-html-transform-request-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-language-entry-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-lint-error-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-page-summary-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-revision-item-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-revision-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-wikitext-transform-request-schema.json
+  - type: JSONStructure
+    url: json-structure/rest-api-content-urls-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-definition-entry-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-definition-response-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-html-transform-request-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-language-entry-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-lint-error-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-page-summary-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-revision-item-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-revision-metadata-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-wikitext-transform-request-structure.json
+  - type: JSONLD
+    url: json-ld/wiktionary-rest-api-context.jsonld
+  - type: Examples
+    url: examples/rest-api-content-urls-example.json
+  - type: Examples
+    url: examples/rest-api-definition-entry-example.json
+  - type: Examples
+    url: examples/rest-api-definition-response-example.json
+  - type: Examples
+    url: examples/rest-api-html-transform-request-example.json
+  - type: Examples
+    url: examples/rest-api-language-entry-example.json
+  - type: Examples
+    url: examples/rest-api-lint-error-example.json
+  - type: Examples
+    url: examples/rest-api-page-summary-example.json
+  - type: Examples
+    url: examples/rest-api-revision-item-example.json
+  - type: Examples
+    url: examples/rest-api-revision-metadata-example.json
+  - type: Examples
+    url: examples/rest-api-wikitext-transform-request-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/rest-api-definition.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-api-page-content.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-api-transform.yaml
+  - type: Documentation
+    url: https://www.mediawiki.org/wiki/API:REST_API
+  - type: APIReference
+    url: https://www.mediawiki.org/wiki/API:REST_API/Reference
+  - type: Sandbox
+    url: https://en.wiktionary.org/wiki/Special:RestSandbox
+  - type: JSONSchema
+    url: json-schema/core-rest-api-file-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-history-count-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-history-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-latest-revision-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-license-info-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-page-source-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-page-with-html-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-revision-detail-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-search-page-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-search-response-schema.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-file-metadata-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-history-count-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-history-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-latest-revision-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-license-info-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-page-source-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-page-with-html-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-revision-detail-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-search-page-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-search-response-structure.json
+  - type: JSONLD
+    url: json-ld/wiktionary-core-rest-api-context.jsonld
+  - type: Examples
+    url: examples/core-rest-api-file-metadata-example.json
+  - type: Examples
+    url: examples/core-rest-api-history-count-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-history-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-latest-revision-example.json
+  - type: Examples
+    url: examples/core-rest-api-license-info-example.json
+  - type: Examples
+    url: examples/core-rest-api-page-source-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-page-with-html-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-revision-detail-example.json
+  - type: Examples
+    url: examples/core-rest-api-search-page-example.json
+  - type: Examples
+    url: examples/core-rest-api-search-response-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-file.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-history.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-page.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-search.yaml
+- aid: wiktionary:wiktionary-search-api
+  name: Wiktionary Search API
+  description: Title-prefix and full-text search
+  humanURL: https://en.wiktionary.org/w/api.php
+  baseURL: https://en.wiktionary.org/w/api.php
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/wiktionary-search-api-openapi.yml
+  - type: Documentation
+    url: https://en.wiktionary.org/w/api.php
+  - type: APIReference
+    url: https://www.mediawiki.org/wiki/API:Main_page
+  - type: GettingStarted
+    url: https://www.mediawiki.org/wiki/API:Tutorial
+  - type: Authentication
+    url: https://www.mediawiki.org/wiki/API:Authentication
+  - type: RateLimits
+    url: https://www.mediawiki.org/wiki/API:Etiquette
+  - type: Sandbox
+    url: https://en.wiktionary.org/wiki/Special:ApiSandbox
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-action-api-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-expand-templates-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-extract-page-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-open-search-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-parse-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-parse-section-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-query-extracts-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-query-revisions-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-query-search-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-revision-page-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-revision-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-search-hit-schema.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-action-api-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-expand-templates-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-extract-page-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-open-search-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-parse-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-parse-section-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-query-extracts-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-query-revisions-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-query-search-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-revision-page-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-revision-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-search-hit-structure.json
+  - type: JSONLD
+    url: json-ld/wiktionary-mediawiki-action-api-context.jsonld
+  - type: Examples
+    url: examples/mediawiki-action-api-action-api-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-expand-templates-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-extract-page-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-open-search-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-parse-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-parse-section-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-query-extracts-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-query-revisions-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-query-search-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-revision-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-revision-page-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-search-hit-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-expandtemplates.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-opensearch.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-parse.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-query.yaml
+  - type: Documentation
+    url: https://en.wiktionary.org/api/rest_v1/
+  - type: APIReference
+    url: https://en.wiktionary.org/api/rest_v1/?spec
+  - type: Sandbox
+    url: https://en.wiktionary.org/api/rest_v1/?doc
+  - type: RateLimits
+    url: https://api.wikimedia.org/wiki/Rate_limits
+  - type: JSONSchema
+    url: json-schema/rest-api-content-urls-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-definition-entry-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-definition-response-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-html-transform-request-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-language-entry-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-lint-error-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-page-summary-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-revision-item-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-revision-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-wikitext-transform-request-schema.json
+  - type: JSONStructure
+    url: json-structure/rest-api-content-urls-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-definition-entry-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-definition-response-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-html-transform-request-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-language-entry-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-lint-error-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-page-summary-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-revision-item-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-revision-metadata-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-wikitext-transform-request-structure.json
+  - type: JSONLD
+    url: json-ld/wiktionary-rest-api-context.jsonld
+  - type: Examples
+    url: examples/rest-api-content-urls-example.json
+  - type: Examples
+    url: examples/rest-api-definition-entry-example.json
+  - type: Examples
+    url: examples/rest-api-definition-response-example.json
+  - type: Examples
+    url: examples/rest-api-html-transform-request-example.json
+  - type: Examples
+    url: examples/rest-api-language-entry-example.json
+  - type: Examples
+    url: examples/rest-api-lint-error-example.json
+  - type: Examples
+    url: examples/rest-api-page-summary-example.json
+  - type: Examples
+    url: examples/rest-api-revision-item-example.json
+  - type: Examples
+    url: examples/rest-api-revision-metadata-example.json
+  - type: Examples
+    url: examples/rest-api-wikitext-transform-request-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/rest-api-definition.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-api-page-content.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-api-transform.yaml
+  - type: Documentation
+    url: https://www.mediawiki.org/wiki/API:REST_API
+  - type: APIReference
+    url: https://www.mediawiki.org/wiki/API:REST_API/Reference
+  - type: Sandbox
+    url: https://en.wiktionary.org/wiki/Special:RestSandbox
+  - type: JSONSchema
+    url: json-schema/core-rest-api-file-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-history-count-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-history-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-latest-revision-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-license-info-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-page-source-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-page-with-html-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-revision-detail-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-search-page-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-search-response-schema.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-file-metadata-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-history-count-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-history-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-latest-revision-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-license-info-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-page-source-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-page-with-html-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-revision-detail-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-search-page-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-search-response-structure.json
+  - type: JSONLD
+    url: json-ld/wiktionary-core-rest-api-context.jsonld
+  - type: Examples
+    url: examples/core-rest-api-file-metadata-example.json
+  - type: Examples
+    url: examples/core-rest-api-history-count-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-history-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-latest-revision-example.json
+  - type: Examples
+    url: examples/core-rest-api-license-info-example.json
+  - type: Examples
+    url: examples/core-rest-api-page-source-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-page-with-html-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-revision-detail-example.json
+  - type: Examples
+    url: examples/core-rest-api-search-page-example.json
+  - type: Examples
+    url: examples/core-rest-api-search-response-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-file.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-history.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-page.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-search.yaml
+- aid: wiktionary:wiktionary-transform-api
+  name: Wiktionary Transform API
+  description: Parsoid wikitext ↔ HTML transforms and lint
+  humanURL: https://en.wiktionary.org/w/api.php
+  baseURL: https://en.wiktionary.org/w/api.php
+  tags:
+  - Transform
+  properties:
+  - type: OpenAPI
+    url: openapi/wiktionary-transform-api-openapi.yml
+  - type: Documentation
+    url: https://en.wiktionary.org/w/api.php
+  - type: APIReference
+    url: https://www.mediawiki.org/wiki/API:Main_page
+  - type: GettingStarted
+    url: https://www.mediawiki.org/wiki/API:Tutorial
+  - type: Authentication
+    url: https://www.mediawiki.org/wiki/API:Authentication
+  - type: RateLimits
+    url: https://www.mediawiki.org/wiki/API:Etiquette
+  - type: Sandbox
+    url: https://en.wiktionary.org/wiki/Special:ApiSandbox
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-action-api-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-expand-templates-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-extract-page-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-open-search-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-parse-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-parse-section-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-query-extracts-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-query-revisions-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-query-search-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-revision-page-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-revision-schema.json
+  - type: JSONSchema
+    url: json-schema/mediawiki-action-api-search-hit-schema.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-action-api-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-expand-templates-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-extract-page-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-open-search-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-parse-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-parse-section-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-query-extracts-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-query-revisions-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-query-search-response-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-revision-page-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-revision-structure.json
+  - type: JSONStructure
+    url: json-structure/mediawiki-action-api-search-hit-structure.json
+  - type: JSONLD
+    url: json-ld/wiktionary-mediawiki-action-api-context.jsonld
+  - type: Examples
+    url: examples/mediawiki-action-api-action-api-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-expand-templates-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-extract-page-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-open-search-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-parse-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-parse-section-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-query-extracts-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-query-revisions-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-query-search-response-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-revision-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-revision-page-example.json
+  - type: Examples
+    url: examples/mediawiki-action-api-search-hit-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-expandtemplates.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-opensearch.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-parse.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/mediawiki-action-api-query.yaml
+  - type: Documentation
+    url: https://en.wiktionary.org/api/rest_v1/
+  - type: APIReference
+    url: https://en.wiktionary.org/api/rest_v1/?spec
+  - type: Sandbox
+    url: https://en.wiktionary.org/api/rest_v1/?doc
+  - type: RateLimits
+    url: https://api.wikimedia.org/wiki/Rate_limits
+  - type: JSONSchema
+    url: json-schema/rest-api-content-urls-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-definition-entry-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-definition-response-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-html-transform-request-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-language-entry-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-lint-error-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-page-summary-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-revision-item-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-revision-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/rest-api-wikitext-transform-request-schema.json
+  - type: JSONStructure
+    url: json-structure/rest-api-content-urls-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-definition-entry-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-definition-response-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-html-transform-request-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-language-entry-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-lint-error-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-page-summary-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-revision-item-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-revision-metadata-structure.json
+  - type: JSONStructure
+    url: json-structure/rest-api-wikitext-transform-request-structure.json
+  - type: JSONLD
+    url: json-ld/wiktionary-rest-api-context.jsonld
+  - type: Examples
+    url: examples/rest-api-content-urls-example.json
+  - type: Examples
+    url: examples/rest-api-definition-entry-example.json
+  - type: Examples
+    url: examples/rest-api-definition-response-example.json
+  - type: Examples
+    url: examples/rest-api-html-transform-request-example.json
+  - type: Examples
+    url: examples/rest-api-language-entry-example.json
+  - type: Examples
+    url: examples/rest-api-lint-error-example.json
+  - type: Examples
+    url: examples/rest-api-page-summary-example.json
+  - type: Examples
+    url: examples/rest-api-revision-item-example.json
+  - type: Examples
+    url: examples/rest-api-revision-metadata-example.json
+  - type: Examples
+    url: examples/rest-api-wikitext-transform-request-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/rest-api-definition.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-api-page-content.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-api-transform.yaml
+  - type: Documentation
+    url: https://www.mediawiki.org/wiki/API:REST_API
+  - type: APIReference
+    url: https://www.mediawiki.org/wiki/API:REST_API/Reference
+  - type: Sandbox
+    url: https://en.wiktionary.org/wiki/Special:RestSandbox
+  - type: JSONSchema
+    url: json-schema/core-rest-api-file-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-history-count-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-history-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-latest-revision-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-license-info-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-page-source-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-page-with-html-response-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-revision-detail-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-search-page-schema.json
+  - type: JSONSchema
+    url: json-schema/core-rest-api-search-response-schema.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-file-metadata-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-history-count-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-history-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-latest-revision-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-license-info-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-page-source-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-page-with-html-response-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-revision-detail-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-search-page-structure.json
+  - type: JSONStructure
+    url: json-structure/core-rest-api-search-response-structure.json
+  - type: JSONLD
+    url: json-ld/wiktionary-core-rest-api-context.jsonld
+  - type: Examples
+    url: examples/core-rest-api-file-metadata-example.json
+  - type: Examples
+    url: examples/core-rest-api-history-count-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-history-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-latest-revision-example.json
+  - type: Examples
+    url: examples/core-rest-api-license-info-example.json
+  - type: Examples
+    url: examples/core-rest-api-page-source-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-page-with-html-response-example.json
+  - type: Examples
+    url: examples/core-rest-api-revision-detail-example.json
+  - type: Examples
+    url: examples/core-rest-api-search-page-example.json
+  - type: Examples
+    url: examples/core-rest-api-search-response-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-file.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-history.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-page.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/core-rest-api-search.yaml
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/wiktionary/overview
   - type: AgenticAccess
     url: agentic-access/wiktionary-agentic-access.yml
   - type: VulnerabilityDisclosure
