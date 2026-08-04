@@ -1,0 +1,659 @@
+{
+  "info": {
+    "_postman_id": "62a8aec1-737f-4067-a452-2083806395ae",
+    "name": "Wiktionary MediaWiki Core REST Definition Page Content API",
+    "description": "The newer MediaWiki Core REST API, exposed per wiki at /w/rest.php. It offers a smaller, streamlined surface than the Action API for fetching page content, history, search, files, and revisions. On Wiktionary it serves the same content as the Action API in a more developer-friendly JSON shape. All content is CC BY-SA 4.0.\n\nContact Support:\n Name: Wikimedia Foundation",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:29:57.000Z",
+    "updatedAt": "2026-07-28T03:29:57.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-62a8aec1-737f-4067-a452-2083806395ae"
+  },
+  "item": [
+    {
+      "name": "page",
+      "item": [
+        {
+          "name": "summary",
+          "item": [
+            {
+              "name": "{title}",
+              "item": [
+                {
+                  "name": "Wiktionary Get Page Summary",
+                  "id": "ec5ad4f8-900c-488f-9b3d-5b542d41b161",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/page/summary/:title?redirect=true",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "page",
+                        "summary",
+                        ":title"
+                      ],
+                      "query": [
+                        {
+                          "description": "Whether to follow redirects.",
+                          "key": "redirect",
+                          "value": "true"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "1a2df61a-0fdc-436e-bed5-fba8fe36d941",
+                          "key": "title",
+                          "value": "<string>",
+                          "description": "(Required) URL-encoded page title."
+                        }
+                      ]
+                    },
+                    "description": "Return a short structured summary of a Wiktionary page, including the leading extract and metadata. Useful for previews and tooltips."
+                  },
+                  "response": [
+                    {
+                      "id": "334afe4e-79ef-4a3a-a0cf-4a8423629009",
+                      "name": "Page summary response.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/page/summary/:title?redirect=true",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "page",
+                            "summary",
+                            ":title"
+                          ],
+                          "query": [
+                            {
+                              "description": "Whether to follow redirects.",
+                              "key": "redirect",
+                              "value": "true"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "title"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"displaytitle\": \"<string>\",\n  \"pageid\": \"<integer>\",\n  \"extract\": \"<string>\",\n  \"extract_html\": \"<string>\",\n  \"content_urls\": {\n    \"desktop\": {\n      \"page\": \"<uri>\"\n    },\n    \"mobile\": {\n      \"page\": \"<uri>\"\n    }\n  },\n  \"timestamp\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-07-28T03:29:57.000Z",
+                      "updatedAt": "2026-07-28T03:29:57.000Z",
+                      "uid": "35240-334afe4e-79ef-4a3a-a0cf-4a8423629009"
+                    },
+                    {
+                      "id": "d05fc517-590f-44a3-9f4f-be28a69335a9",
+                      "name": "Page not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/problem+json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/page/summary/:title?redirect=true",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "page",
+                            "summary",
+                            ":title"
+                          ],
+                          "query": [
+                            {
+                              "description": "Whether to follow redirects.",
+                              "key": "redirect",
+                              "value": "true"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "title"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/problem+json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"method\": \"<string>\",\n  \"detail\": \"<string>\",\n  \"uri\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:29:57.000Z",
+                      "updatedAt": "2026-07-28T03:29:57.000Z",
+                      "uid": "35240-d05fc517-590f-44a3-9f4f-be28a69335a9"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:29:57.000Z",
+                  "updatedAt": "2026-07-28T03:29:57.000Z",
+                  "uid": "35240-ec5ad4f8-900c-488f-9b3d-5b542d41b161"
+                }
+              ],
+              "id": "9659982b-ad09-4a87-92c6-dad4e920da61",
+              "createdAt": "2026-07-28T03:29:57.000Z",
+              "updatedAt": "2026-07-28T03:29:57.000Z",
+              "uid": "35240-9659982b-ad09-4a87-92c6-dad4e920da61"
+            }
+          ],
+          "id": "8e7e28ad-b0ed-499e-8b45-54316966f5c5",
+          "createdAt": "2026-07-28T03:29:57.000Z",
+          "updatedAt": "2026-07-28T03:29:57.000Z",
+          "uid": "35240-8e7e28ad-b0ed-499e-8b45-54316966f5c5"
+        },
+        {
+          "name": "html",
+          "item": [
+            {
+              "name": "{title}",
+              "item": [
+                {
+                  "name": "Wiktionary Get Page HTML",
+                  "id": "3e1c16c4-92a4-4b3c-924f-5c6991bb0842",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "BCP-47 language tag for content-language negotiation.",
+                        "key": "Accept-Language",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/html"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/page/html/:title?redirect=true&stash=false",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "page",
+                        "html",
+                        ":title"
+                      ],
+                      "query": [
+                        {
+                          "description": "Whether to follow redirects.",
+                          "key": "redirect",
+                          "value": "true"
+                        },
+                        {
+                          "description": "Whether to stash the result for later transform calls.",
+                          "key": "stash",
+                          "value": "false"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "bbb00a7a-a4cd-4bf0-bf1e-b432846b26f4",
+                          "key": "title",
+                          "value": "<string>",
+                          "description": "(Required) URL-encoded page title."
+                        }
+                      ]
+                    },
+                    "description": "Return the latest Parsoid HTML for a page title. Suitable for direct rendering in client applications."
+                  },
+                  "response": [
+                    {
+                      "id": "036236d3-b380-414c-ace8-875e87af57c0",
+                      "name": "Parsoid HTML.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "BCP-47 language tag for content-language negotiation.",
+                            "key": "Accept-Language",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "text/html"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/page/html/:title?redirect=true&stash=false",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "page",
+                            "html",
+                            ":title"
+                          ],
+                          "query": [
+                            {
+                              "description": "Whether to follow redirects.",
+                              "key": "redirect",
+                              "value": "true"
+                            },
+                            {
+                              "description": "Whether to stash the result for later transform calls.",
+                              "key": "stash",
+                              "value": "false"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "title"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "text/html"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-07-28T03:29:57.000Z",
+                      "updatedAt": "2026-07-28T03:29:57.000Z",
+                      "uid": "35240-036236d3-b380-414c-ace8-875e87af57c0"
+                    },
+                    {
+                      "id": "22f9f213-c453-40a1-84f4-68498b8fc13d",
+                      "name": "Page not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "BCP-47 language tag for content-language negotiation.",
+                            "key": "Accept-Language",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/problem+json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/page/html/:title?redirect=true&stash=false",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "page",
+                            "html",
+                            ":title"
+                          ],
+                          "query": [
+                            {
+                              "description": "Whether to follow redirects.",
+                              "key": "redirect",
+                              "value": "true"
+                            },
+                            {
+                              "description": "Whether to stash the result for later transform calls.",
+                              "key": "stash",
+                              "value": "false"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "title"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/problem+json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"method\": \"<string>\",\n  \"detail\": \"<string>\",\n  \"uri\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:29:57.000Z",
+                      "updatedAt": "2026-07-28T03:29:57.000Z",
+                      "uid": "35240-22f9f213-c453-40a1-84f4-68498b8fc13d"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:29:57.000Z",
+                  "updatedAt": "2026-07-28T03:29:57.000Z",
+                  "uid": "35240-3e1c16c4-92a4-4b3c-924f-5c6991bb0842"
+                }
+              ],
+              "id": "77978c90-94ff-449e-9566-152b66ce4c44",
+              "createdAt": "2026-07-28T03:29:57.000Z",
+              "updatedAt": "2026-07-28T03:29:57.000Z",
+              "uid": "35240-77978c90-94ff-449e-9566-152b66ce4c44"
+            }
+          ],
+          "id": "cb5bdbe8-a860-46e7-809a-4eb4f19116fe",
+          "createdAt": "2026-07-28T03:29:57.000Z",
+          "updatedAt": "2026-07-28T03:29:57.000Z",
+          "uid": "35240-cb5bdbe8-a860-46e7-809a-4eb4f19116fe"
+        },
+        {
+          "name": "title",
+          "item": [
+            {
+              "name": "{title}",
+              "item": [
+                {
+                  "name": "Wiktionary Get Page Title Metadata",
+                  "id": "37355dbd-12f0-450f-a6f8-c8db644606ed",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/page/title/:title",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "page",
+                        "title",
+                        ":title"
+                      ],
+                      "variable": [
+                        {
+                          "id": "d423fb75-5459-4927-a7ba-032beff42c9e",
+                          "key": "title",
+                          "value": "<string>",
+                          "description": "(Required) URL-encoded page title."
+                        }
+                      ]
+                    },
+                    "description": "Return revision metadata for a page title \u2014 latest revision id, timestamp, comment, and user."
+                  },
+                  "response": [
+                    {
+                      "id": "cea96fc6-14e8-47f8-ae9d-cae03de39055",
+                      "name": "Revision metadata.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/page/title/:title",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "page",
+                            "title",
+                            ":title"
+                          ],
+                          "variable": [
+                            {
+                              "key": "title"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"items\": [\n    {\n      \"title\": \"<string>\",\n      \"page_id\": \"<integer>\",\n      \"rev\": \"<integer>\",\n      \"tid\": \"<string>\",\n      \"namespace\": \"<integer>\",\n      \"user_id\": \"<integer>\",\n      \"user_text\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"comment\": \"<string>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"restrictions\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"page_language\": \"<string>\"\n    },\n    {\n      \"title\": \"<string>\",\n      \"page_id\": \"<integer>\",\n      \"rev\": \"<integer>\",\n      \"tid\": \"<string>\",\n      \"namespace\": \"<integer>\",\n      \"user_id\": \"<integer>\",\n      \"user_text\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"comment\": \"<string>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"restrictions\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"page_language\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T03:29:57.000Z",
+                      "updatedAt": "2026-07-28T03:29:57.000Z",
+                      "uid": "35240-cea96fc6-14e8-47f8-ae9d-cae03de39055"
+                    },
+                    {
+                      "id": "f0bbbfd9-62ca-46e3-8a8f-bbe76a16c5d9",
+                      "name": "Page not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/problem+json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/page/title/:title",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "page",
+                            "title",
+                            ":title"
+                          ],
+                          "variable": [
+                            {
+                              "key": "title"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/problem+json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"method\": \"<string>\",\n  \"detail\": \"<string>\",\n  \"uri\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:29:57.000Z",
+                      "updatedAt": "2026-07-28T03:29:57.000Z",
+                      "uid": "35240-f0bbbfd9-62ca-46e3-8a8f-bbe76a16c5d9"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:29:57.000Z",
+                  "updatedAt": "2026-07-28T03:29:57.000Z",
+                  "uid": "35240-37355dbd-12f0-450f-a6f8-c8db644606ed"
+                }
+              ],
+              "id": "a483a7f2-329f-4519-a769-1cf4d611bc45",
+              "createdAt": "2026-07-28T03:29:57.000Z",
+              "updatedAt": "2026-07-28T03:29:57.000Z",
+              "uid": "35240-a483a7f2-329f-4519-a769-1cf4d611bc45"
+            }
+          ],
+          "id": "e0c0200e-4df2-4b7f-b1e5-b82df9f7590a",
+          "createdAt": "2026-07-28T03:29:57.000Z",
+          "updatedAt": "2026-07-28T03:29:57.000Z",
+          "uid": "35240-e0c0200e-4df2-4b7f-b1e5-b82df9f7590a"
+        },
+        {
+          "name": "mobile-html",
+          "item": [
+            {
+              "name": "{title}",
+              "item": [
+                {
+                  "name": "Wiktionary Get Page Mobile HTML",
+                  "id": "fefc7fcf-4fa5-425c-bc36-9d246ef7bc2f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/html"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/page/mobile-html/:title?redirect=true",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "page",
+                        "mobile-html",
+                        ":title"
+                      ],
+                      "query": [
+                        {
+                          "description": "Whether to follow redirects.",
+                          "key": "redirect",
+                          "value": "true"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "ada77bb5-f005-4352-9683-4db51c612341",
+                          "key": "title",
+                          "value": "<string>",
+                          "description": "(Required) URL-encoded page title."
+                        }
+                      ]
+                    },
+                    "description": "Return mobile-optimised HTML for a page (lazy-loadable images, collapsed tables, theme support). Experimental stability."
+                  },
+                  "response": [
+                    {
+                      "id": "918e708c-3adb-4cb4-8c9b-b22ac03e9e96",
+                      "name": "Mobile-optimised HTML.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/html"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/page/mobile-html/:title?redirect=true",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "page",
+                            "mobile-html",
+                            ":title"
+                          ],
+                          "query": [
+                            {
+                              "description": "Whether to follow redirects.",
+                              "key": "redirect",
+                              "value": "true"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "title"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "text/html"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-07-28T03:29:57.000Z",
+                      "updatedAt": "2026-07-28T03:29:57.000Z",
+                      "uid": "35240-918e708c-3adb-4cb4-8c9b-b22ac03e9e96"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:29:57.000Z",
+                  "updatedAt": "2026-07-28T03:29:57.000Z",
+                  "uid": "35240-fefc7fcf-4fa5-425c-bc36-9d246ef7bc2f"
+                }
+              ],
+              "id": "83df0b86-902c-42c7-8b68-55502d709d47",
+              "createdAt": "2026-07-28T03:29:57.000Z",
+              "updatedAt": "2026-07-28T03:29:57.000Z",
+              "uid": "35240-83df0b86-902c-42c7-8b68-55502d709d47"
+            }
+          ],
+          "id": "d8dcfcf7-536b-4acd-832d-13b8aef0aba3",
+          "createdAt": "2026-07-28T03:29:57.000Z",
+          "updatedAt": "2026-07-28T03:29:57.000Z",
+          "uid": "35240-d8dcfcf7-536b-4acd-832d-13b8aef0aba3"
+        }
+      ],
+      "id": "a51ce135-91eb-4804-902b-b3ab1ba447a9",
+      "createdAt": "2026-07-28T03:29:57.000Z",
+      "updatedAt": "2026-07-28T03:29:57.000Z",
+      "uid": "35240-a51ce135-91eb-4804-902b-b3ab1ba447a9"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://en.wiktionary.org/w/rest.php"
+    }
+  ]
+}

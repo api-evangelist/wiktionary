@@ -1,0 +1,34 @@
+{
+  "provider": "wiktionary",
+  "sources": [
+    "wiktionary-definition-api-openapi.yml",
+    "wiktionary-expandtemplates-api-openapi.yml",
+    "wiktionary-file-api-openapi.yml",
+    "wiktionary-history-api-openapi.yml",
+    "wiktionary-opensearch-api-openapi.yml",
+    "wiktionary-page-api-openapi.yml",
+    "wiktionary-page-content-api-openapi.yml",
+    "wiktionary-parse-api-openapi.yml",
+    "wiktionary-query-api-openapi.yml",
+    "wiktionary-search-api-openapi.yml",
+    "wiktionary-transform-api-openapi.yml"
+  ],
+  "outputs": [
+    "wiktionary-definition-api-openapi.yml",
+    "wiktionary-expandtemplates-api-openapi.yml",
+    "wiktionary-file-api-openapi.yml",
+    "wiktionary-history-api-openapi.yml",
+    "wiktionary-opensearch-api-openapi.yml",
+    "wiktionary-page-api-openapi.yml",
+    "wiktionary-page-content-api-openapi.yml",
+    "wiktionary-parse-api-openapi.yml",
+    "wiktionary-query-api-openapi.yml",
+    "wiktionary-search-api-openapi.yml",
+    "wiktionary-transform-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

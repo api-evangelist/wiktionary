@@ -1,0 +1,153 @@
+{
+  "info": {
+    "_postman_id": "7f2707aa-d57f-45f8-9cc4-5119cd015439",
+    "name": "Wiktionary MediaWiki Core REST Definition Parse API",
+    "description": "The newer MediaWiki Core REST API, exposed per wiki at /w/rest.php. It offers a smaller, streamlined surface than the Action API for fetching page content, history, search, files, and revisions. On Wiktionary it serves the same content as the Action API in a more developer-friendly JSON shape. All content is CC BY-SA 4.0.\n\nContact Support:\n Name: Wikimedia Foundation",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:30:00.000Z",
+    "updatedAt": "2026-07-28T03:30:00.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7f2707aa-d57f-45f8-9cc4-5119cd015439"
+  },
+  "item": [
+    {
+      "name": "api.php#parse",
+      "item": [
+        {
+          "name": "Wiktionary Parse Page",
+          "id": "8f92b33a-e75f-4937-8619-0a61916867f3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api.php?action=parse&page=<string>&text=<string>&prop=text|sections|links|categories&format=json#parse",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api.php"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Must be `parse`.",
+                  "key": "action",
+                  "value": "parse"
+                },
+                {
+                  "description": "Title of the page to parse.",
+                  "key": "page",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Wikitext to parse instead of an existing page.",
+                  "key": "text",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Which parts of the parser output to return.",
+                  "key": "prop",
+                  "value": "text|sections|links|categories"
+                },
+                {
+                  "description": "Response format.",
+                  "key": "format",
+                  "value": "json"
+                }
+              ],
+              "hash": "parse"
+            },
+            "description": "Parse the wikitext of a page (or supplied text) and return rendered HTML, section structure, links, categories, and other parser output."
+          },
+          "response": [
+            {
+              "id": "efd077bd-73e1-483a-bb1d-145940e3289e",
+              "name": "Parser output.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api.php?action=parse&page=<string>&text=<string>&prop=text|sections|links|categories&format=json#parse",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Must be `parse`.",
+                      "key": "action",
+                      "value": "parse"
+                    },
+                    {
+                      "description": "Title of the page to parse.",
+                      "key": "page",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Wikitext to parse instead of an existing page.",
+                      "key": "text",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Which parts of the parser output to return.",
+                      "key": "prop",
+                      "value": "text|sections|links|categories"
+                    },
+                    {
+                      "description": "Response format.",
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "hash": "parse"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"parse\": {\n    \"title\": \"<string>\",\n    \"pageid\": \"<integer>\",\n    \"text\": {\n      \"*\": \"<string>\"\n    },\n    \"sections\": [\n      {\n        \"toclevel\": \"<integer>\",\n        \"level\": \"<string>\",\n        \"line\": \"<string>\",\n        \"number\": \"<string>\",\n        \"index\": \"<string>\",\n        \"fromtitle\": \"<string>\",\n        \"anchor\": \"<string>\"\n      },\n      {\n        \"toclevel\": \"<integer>\",\n        \"level\": \"<string>\",\n        \"line\": \"<string>\",\n        \"number\": \"<string>\",\n        \"index\": \"<string>\",\n        \"fromtitle\": \"<string>\",\n        \"anchor\": \"<string>\"\n      }\n    ],\n    \"links\": [\n      {\n        \"elit_5\": 18581988\n      },\n      {\n        \"ipsum_fc8\": -51961847\n      }\n    ],\n    \"categories\": [\n      {\n        \"id03\": \"eiusmod labore esse consequat\",\n        \"ut37\": 43006905,\n        \"commodo_25\": -65208348.88882736\n      },\n      {\n        \"laboris_ec\": \"proident sed fugiat et exercitation\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T03:30:01.000Z",
+              "updatedAt": "2026-07-28T03:30:01.000Z",
+              "uid": "35240-efd077bd-73e1-483a-bb1d-145940e3289e"
+            }
+          ],
+          "createdAt": "2026-07-28T03:30:01.000Z",
+          "updatedAt": "2026-07-28T03:30:01.000Z",
+          "uid": "35240-8f92b33a-e75f-4937-8619-0a61916867f3"
+        }
+      ],
+      "id": "11d3a583-ed36-4232-aec3-e61b156a2117",
+      "createdAt": "2026-07-28T03:30:01.000Z",
+      "updatedAt": "2026-07-28T03:30:01.000Z",
+      "uid": "35240-11d3a583-ed36-4232-aec3-e61b156a2117"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://en.wiktionary.org/w/rest.php"
+    }
+  ]
+}

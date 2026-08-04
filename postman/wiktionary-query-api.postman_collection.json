@@ -1,0 +1,718 @@
+{
+  "info": {
+    "_postman_id": "d6597f61-4043-4340-a485-78add85a2633",
+    "name": "Wiktionary MediaWiki Core REST Definition Query API",
+    "description": "The newer MediaWiki Core REST API, exposed per wiki at /w/rest.php. It offers a smaller, streamlined surface than the Action API for fetching page content, history, search, files, and revisions. On Wiktionary it serves the same content as the Action API in a more developer-friendly JSON shape. All content is CC BY-SA 4.0.\n\nContact Support:\n Name: Wikimedia Foundation",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:30:17.000Z",
+    "updatedAt": "2026-07-28T03:30:17.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d6597f61-4043-4340-a485-78add85a2633"
+  },
+  "item": [
+    {
+      "name": "api.php",
+      "item": [
+        {
+          "name": "Wiktionary Query Action",
+          "id": "62d16a11-1d6b-47f1-aca2-84ea8fa9301a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api.php?action=query&format=json&titles=<string>&prop=<string>&list=<string>&meta=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api.php"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Which Action API module to dispatch.",
+                  "key": "action",
+                  "value": "query"
+                },
+                {
+                  "description": "Response format.",
+                  "key": "format",
+                  "value": "json"
+                },
+                {
+                  "description": "Pipe-separated list of page titles (max 50 per request).",
+                  "key": "titles",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Properties to fetch (e.g. wikitext, extracts, revisions, links).",
+                  "key": "prop",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Lists to fetch (e.g. search, allpages, recentchanges).",
+                  "key": "list",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Meta information (e.g. siteinfo, tokens, userinfo).",
+                  "key": "meta",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Dispatch any read-only MediaWiki Action API call. The `action` query parameter selects the module (query, parse, opensearch, expandtemplates). Use the more specific operations below for typed access, or pass arbitrary `action`/`format` values here."
+          },
+          "response": [
+            {
+              "id": "a7ed5b83-aad2-41f2-adef-aea0ba8057f4",
+              "name": "Action API response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api.php?action=query&format=json&titles=<string>&prop=<string>&list=<string>&meta=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Which Action API module to dispatch.",
+                      "key": "action",
+                      "value": "query"
+                    },
+                    {
+                      "description": "Response format.",
+                      "key": "format",
+                      "value": "json"
+                    },
+                    {
+                      "description": "Pipe-separated list of page titles (max 50 per request).",
+                      "key": "titles",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Properties to fetch (e.g. wikitext, extracts, revisions, links).",
+                      "key": "prop",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Lists to fetch (e.g. search, allpages, recentchanges).",
+                      "key": "list",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Meta information (e.g. siteinfo, tokens, userinfo).",
+                      "key": "meta",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"batchcomplete\": \"<string>\",\n  \"continue\": {\n    \"ut_b87\": false,\n    \"Ut_6\": \"aute pariatur quis\"\n  },\n  \"query\": {\n    \"laborea\": true\n  },\n  \"parse\": {\n    \"adb\": 5835754,\n    \"anim_f8\": 94111503,\n    \"ullamco_92\": -28941492,\n    \"pariatur_c_f\": \"elit velit\"\n  },\n  \"warnings\": {\n    \"labore2_1\": 35925881,\n    \"aliquip_d\": \"non culpa\"\n  },\n  \"error\": {\n    \"code\": \"<string>\",\n    \"info\": \"<string>\",\n    \"*\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T03:30:18.000Z",
+              "updatedAt": "2026-07-28T03:30:18.000Z",
+              "uid": "35240-a7ed5b83-aad2-41f2-adef-aea0ba8057f4"
+            },
+            {
+              "id": "894862c6-4782-4531-b9e8-a0583ff17198",
+              "name": "Request was malformed.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api.php?action=query&format=json&titles=<string>&prop=<string>&list=<string>&meta=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Which Action API module to dispatch.",
+                      "key": "action",
+                      "value": "query"
+                    },
+                    {
+                      "description": "Response format.",
+                      "key": "format",
+                      "value": "json"
+                    },
+                    {
+                      "description": "Pipe-separated list of page titles (max 50 per request).",
+                      "key": "titles",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Properties to fetch (e.g. wikitext, extracts, revisions, links).",
+                      "key": "prop",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Lists to fetch (e.g. search, allpages, recentchanges).",
+                      "key": "list",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Meta information (e.g. siteinfo, tokens, userinfo).",
+                      "key": "meta",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<string>\",\n  \"info\": \"<string>\",\n  \"*\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:30:18.000Z",
+              "updatedAt": "2026-07-28T03:30:18.000Z",
+              "uid": "35240-894862c6-4782-4531-b9e8-a0583ff17198"
+            },
+            {
+              "id": "25e8893b-711c-4fc5-9918-33a4e305d73f",
+              "name": "Rate limit exceeded (shared cap is ~200 req/s; set a unique User-Agent).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api.php?action=query&format=json&titles=<string>&prop=<string>&list=<string>&meta=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Which Action API module to dispatch.",
+                      "key": "action",
+                      "value": "query"
+                    },
+                    {
+                      "description": "Response format.",
+                      "key": "format",
+                      "value": "json"
+                    },
+                    {
+                      "description": "Pipe-separated list of page titles (max 50 per request).",
+                      "key": "titles",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Properties to fetch (e.g. wikitext, extracts, revisions, links).",
+                      "key": "prop",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Lists to fetch (e.g. search, allpages, recentchanges).",
+                      "key": "list",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Meta information (e.g. siteinfo, tokens, userinfo).",
+                      "key": "meta",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<string>\",\n  \"info\": \"<string>\",\n  \"*\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:30:18.000Z",
+              "updatedAt": "2026-07-28T03:30:18.000Z",
+              "uid": "35240-25e8893b-711c-4fc5-9918-33a4e305d73f"
+            }
+          ],
+          "createdAt": "2026-07-28T03:30:18.000Z",
+          "updatedAt": "2026-07-28T03:30:18.000Z",
+          "uid": "35240-62d16a11-1d6b-47f1-aca2-84ea8fa9301a"
+        }
+      ],
+      "id": "af5b8a22-db71-4b66-a805-b6b7ed10c43a",
+      "createdAt": "2026-07-28T03:30:18.000Z",
+      "updatedAt": "2026-07-28T03:30:18.000Z",
+      "uid": "35240-af5b8a22-db71-4b66-a805-b6b7ed10c43a"
+    },
+    {
+      "name": "api.php#query-wikitext",
+      "item": [
+        {
+          "name": "Wiktionary Query Wikitext",
+          "id": "0d969016-414b-48cd-b874-f066368db186",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api.php?action=query&prop=revisions&rvprop=content&titles=<string>&format=json#query-wikitext",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api.php"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Must be `query`.",
+                  "key": "action",
+                  "value": "query"
+                },
+                {
+                  "description": "(Required) Must be `revisions`.",
+                  "key": "prop",
+                  "value": "revisions"
+                },
+                {
+                  "description": "(Required) Revision properties to fetch (use `content` for wikitext).",
+                  "key": "rvprop",
+                  "value": "content"
+                },
+                {
+                  "description": "(Required) Pipe-separated page titles.",
+                  "key": "titles",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Response format.",
+                  "key": "format",
+                  "value": "json"
+                }
+              ],
+              "hash": "query-wikitext"
+            },
+            "description": "Fetch the raw wikitext for one or more pages via action=query&prop=revisions&rvprop=content."
+          },
+          "response": [
+            {
+              "id": "e0ced092-251a-4b75-93fe-6751855aabf9",
+              "name": "Wikitext content for the requested pages.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api.php?action=query&prop=revisions&rvprop=content&titles=<string>&format=json#query-wikitext",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Must be `query`.",
+                      "key": "action",
+                      "value": "query"
+                    },
+                    {
+                      "description": "(Required) Must be `revisions`.",
+                      "key": "prop",
+                      "value": "revisions"
+                    },
+                    {
+                      "description": "(Required) Revision properties to fetch (use `content` for wikitext).",
+                      "key": "rvprop",
+                      "value": "content"
+                    },
+                    {
+                      "description": "(Required) Pipe-separated page titles.",
+                      "key": "titles",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Response format.",
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "hash": "query-wikitext"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"batchcomplete\": \"<string>\",\n  \"query\": {\n    \"pages\": {\n      \"est0c2\": {\n        \"pageid\": \"<integer>\",\n        \"ns\": \"<integer>\",\n        \"title\": \"<string>\",\n        \"revisions\": [\n          {\n            \"contentformat\": \"<string>\",\n            \"contentmodel\": \"<string>\",\n            \"*\": \"<string>\"\n          },\n          {\n            \"contentformat\": \"<string>\",\n            \"contentmodel\": \"<string>\",\n            \"*\": \"<string>\"\n          }\n        ]\n      },\n      \"animd2a\": {\n        \"pageid\": \"<integer>\",\n        \"ns\": \"<integer>\",\n        \"title\": \"<string>\",\n        \"revisions\": [\n          {\n            \"contentformat\": \"<string>\",\n            \"contentmodel\": \"<string>\",\n            \"*\": \"<string>\"\n          },\n          {\n            \"contentformat\": \"<string>\",\n            \"contentmodel\": \"<string>\",\n            \"*\": \"<string>\"\n          }\n        ]\n      }\n    }\n  }\n}",
+              "createdAt": "2026-07-28T03:30:18.000Z",
+              "updatedAt": "2026-07-28T03:30:18.000Z",
+              "uid": "35240-e0ced092-251a-4b75-93fe-6751855aabf9"
+            }
+          ],
+          "createdAt": "2026-07-28T03:30:18.000Z",
+          "updatedAt": "2026-07-28T03:30:18.000Z",
+          "uid": "35240-0d969016-414b-48cd-b874-f066368db186"
+        }
+      ],
+      "id": "bbbb5c1f-eb2f-4f1f-b239-5d44247f2625",
+      "createdAt": "2026-07-28T03:30:18.000Z",
+      "updatedAt": "2026-07-28T03:30:18.000Z",
+      "uid": "35240-bbbb5c1f-eb2f-4f1f-b239-5d44247f2625"
+    },
+    {
+      "name": "api.php#query-extracts",
+      "item": [
+        {
+          "name": "Wiktionary Query Extracts",
+          "id": "bbb4124e-1d56-4ad5-8785-5d1c689eb424",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api.php?action=query&prop=extracts&titles=<string>&exintro=<boolean>&explaintext=<boolean>&format=json#query-extracts",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api.php"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Must be `query`.",
+                  "key": "action",
+                  "value": "query"
+                },
+                {
+                  "description": "(Required) Must be `extracts`.",
+                  "key": "prop",
+                  "value": "extracts"
+                },
+                {
+                  "description": "(Required) Pipe-separated page titles.",
+                  "key": "titles",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Return only the lead section.",
+                  "key": "exintro",
+                  "value": "<boolean>"
+                },
+                {
+                  "description": "Return plain text instead of limited HTML.",
+                  "key": "explaintext",
+                  "value": "<boolean>"
+                },
+                {
+                  "description": "Response format.",
+                  "key": "format",
+                  "value": "json"
+                }
+              ],
+              "hash": "query-extracts"
+            },
+            "description": "Fetch plain-text or limited-HTML extracts of pages via action=query&prop=extracts. Powered by the TextExtracts extension."
+          },
+          "response": [
+            {
+              "id": "d41c4aa7-9e22-4c19-9909-f7b3f878388a",
+              "name": "Page extracts response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api.php?action=query&prop=extracts&titles=<string>&exintro=<boolean>&explaintext=<boolean>&format=json#query-extracts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Must be `query`.",
+                      "key": "action",
+                      "value": "query"
+                    },
+                    {
+                      "description": "(Required) Must be `extracts`.",
+                      "key": "prop",
+                      "value": "extracts"
+                    },
+                    {
+                      "description": "(Required) Pipe-separated page titles.",
+                      "key": "titles",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Return only the lead section.",
+                      "key": "exintro",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Return plain text instead of limited HTML.",
+                      "key": "explaintext",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Response format.",
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "hash": "query-extracts"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"query\": {\n    \"pages\": {\n      \"sit_22f\": {\n        \"pageid\": \"<integer>\",\n        \"ns\": \"<integer>\",\n        \"title\": \"<string>\",\n        \"extract\": \"<string>\"\n      },\n      \"labore5\": {\n        \"pageid\": \"<integer>\",\n        \"ns\": \"<integer>\",\n        \"title\": \"<string>\",\n        \"extract\": \"<string>\"\n      },\n      \"ipsum_faf\": {\n        \"pageid\": \"<integer>\",\n        \"ns\": \"<integer>\",\n        \"title\": \"<string>\",\n        \"extract\": \"<string>\"\n      },\n      \"dolor3b\": {\n        \"pageid\": \"<integer>\",\n        \"ns\": \"<integer>\",\n        \"title\": \"<string>\",\n        \"extract\": \"<string>\"\n      },\n      \"dolore_6b\": {\n        \"pageid\": \"<integer>\",\n        \"ns\": \"<integer>\",\n        \"title\": \"<string>\",\n        \"extract\": \"<string>\"\n      }\n    }\n  }\n}",
+              "createdAt": "2026-07-28T03:30:18.000Z",
+              "updatedAt": "2026-07-28T03:30:18.000Z",
+              "uid": "35240-d41c4aa7-9e22-4c19-9909-f7b3f878388a"
+            }
+          ],
+          "createdAt": "2026-07-28T03:30:18.000Z",
+          "updatedAt": "2026-07-28T03:30:18.000Z",
+          "uid": "35240-bbb4124e-1d56-4ad5-8785-5d1c689eb424"
+        }
+      ],
+      "id": "c6c01adc-73e3-4bfd-a256-0cbcea6cde13",
+      "createdAt": "2026-07-28T03:30:18.000Z",
+      "updatedAt": "2026-07-28T03:30:18.000Z",
+      "uid": "35240-c6c01adc-73e3-4bfd-a256-0cbcea6cde13"
+    },
+    {
+      "name": "api.php#query-search",
+      "item": [
+        {
+          "name": "Wiktionary Query Search",
+          "id": "a029f4b4-bd8c-4473-9c5a-4da6e215d4a8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api.php?action=query&list=search&srsearch=<string>&srlimit=10&sroffset=<integer>&format=json#query-search",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api.php"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Must be `query`.",
+                  "key": "action",
+                  "value": "query"
+                },
+                {
+                  "description": "(Required) Must be `search`.",
+                  "key": "list",
+                  "value": "search"
+                },
+                {
+                  "description": "(Required) Search query string.",
+                  "key": "srsearch",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Number of results to return (max 500).",
+                  "key": "srlimit",
+                  "value": "10"
+                },
+                {
+                  "description": "Offset into the result set for paging.",
+                  "key": "sroffset",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Response format.",
+                  "key": "format",
+                  "value": "json"
+                }
+              ],
+              "hash": "query-search"
+            },
+            "description": "Full-text search across Wiktionary pages via action=query&list=search. Backed by ElasticSearch (CirrusSearch)."
+          },
+          "response": [
+            {
+              "id": "24f34161-e48c-4d07-9046-4736319b3189",
+              "name": "Search response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api.php?action=query&list=search&srsearch=<string>&srlimit=10&sroffset=<integer>&format=json#query-search",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Must be `query`.",
+                      "key": "action",
+                      "value": "query"
+                    },
+                    {
+                      "description": "(Required) Must be `search`.",
+                      "key": "list",
+                      "value": "search"
+                    },
+                    {
+                      "description": "(Required) Search query string.",
+                      "key": "srsearch",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of results to return (max 500).",
+                      "key": "srlimit",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Offset into the result set for paging.",
+                      "key": "sroffset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Response format.",
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "hash": "query-search"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"batchcomplete\": \"<string>\",\n  \"continue\": {\n    \"ut8\": true\n  },\n  \"query\": {\n    \"searchinfo\": {\n      \"totalhits\": \"<integer>\"\n    },\n    \"search\": [\n      {\n        \"ns\": \"<integer>\",\n        \"title\": \"<string>\",\n        \"pageid\": \"<integer>\",\n        \"size\": \"<integer>\",\n        \"wordcount\": \"<integer>\",\n        \"snippet\": \"<string>\",\n        \"timestamp\": \"<dateTime>\"\n      },\n      {\n        \"ns\": \"<integer>\",\n        \"title\": \"<string>\",\n        \"pageid\": \"<integer>\",\n        \"size\": \"<integer>\",\n        \"wordcount\": \"<integer>\",\n        \"snippet\": \"<string>\",\n        \"timestamp\": \"<dateTime>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T03:30:18.000Z",
+              "updatedAt": "2026-07-28T03:30:18.000Z",
+              "uid": "35240-24f34161-e48c-4d07-9046-4736319b3189"
+            }
+          ],
+          "createdAt": "2026-07-28T03:30:18.000Z",
+          "updatedAt": "2026-07-28T03:30:18.000Z",
+          "uid": "35240-a029f4b4-bd8c-4473-9c5a-4da6e215d4a8"
+        }
+      ],
+      "id": "b5603e6d-c999-43ae-9867-dd2b91eddf53",
+      "createdAt": "2026-07-28T03:30:18.000Z",
+      "updatedAt": "2026-07-28T03:30:18.000Z",
+      "uid": "35240-b5603e6d-c999-43ae-9867-dd2b91eddf53"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://en.wiktionary.org/w/rest.php"
+    }
+  ]
+}

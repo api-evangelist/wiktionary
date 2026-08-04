@@ -1,0 +1,409 @@
+{
+  "info": {
+    "_postman_id": "2cf2242c-43e2-48d5-8540-c39211bd7fca",
+    "name": "Wiktionary MediaWiki Core REST Definition History API",
+    "description": "The newer MediaWiki Core REST API, exposed per wiki at /w/rest.php. It offers a smaller, streamlined surface than the Action API for fetching page content, history, search, files, and revisions. On Wiktionary it serves the same content as the Action API in a more developer-friendly JSON shape. All content is CC BY-SA 4.0.\n\nContact Support:\n Name: Wikimedia Foundation",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:29:54.000Z",
+    "updatedAt": "2026-07-28T03:29:54.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2cf2242c-43e2-48d5-8540-c39211bd7fca"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "page",
+          "item": [
+            {
+              "name": "{title}",
+              "item": [
+                {
+                  "name": "history",
+                  "item": [
+                    {
+                      "name": "counts",
+                      "item": [
+                        {
+                          "name": "{type}",
+                          "item": [
+                            {
+                              "name": "Wiktionary Get Page History Count",
+                              "id": "4f2bfb4e-d348-4219-95c9-3f8c4ee215a3",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/page/:title/history/counts/:type",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "page",
+                                    ":title",
+                                    "history",
+                                    "counts",
+                                    ":type"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "f2021059-3c46-4d2f-8484-ad226b65c0fb",
+                                      "key": "title",
+                                      "value": "<string>",
+                                      "description": "(Required) URL-encoded page title."
+                                    },
+                                    {
+                                      "id": "69375077-cc62-41b0-a24f-a8fcb50979bf",
+                                      "key": "type",
+                                      "value": "anonymous",
+                                      "description": "(Required) Which kind of revisions to count."
+                                    }
+                                  ]
+                                },
+                                "description": "Return a single numeric count of revisions for a page filtered by type."
+                              },
+                              "response": [
+                                {
+                                  "id": "410c964f-cdb2-4388-8666-1023036eb977",
+                                  "name": "Revision count response.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/page/:title/history/counts/:type",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "page",
+                                        ":title",
+                                        "history",
+                                        "counts",
+                                        ":type"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "title"
+                                        },
+                                        {
+                                          "key": "type"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"count\": \"<integer>\",\n  \"limit\": \"<boolean>\"\n}",
+                                  "createdAt": "2026-07-28T03:29:55.000Z",
+                                  "updatedAt": "2026-07-28T03:29:55.000Z",
+                                  "uid": "35240-410c964f-cdb2-4388-8666-1023036eb977"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T03:29:55.000Z",
+                              "updatedAt": "2026-07-28T03:29:55.000Z",
+                              "uid": "35240-4f2bfb4e-d348-4219-95c9-3f8c4ee215a3"
+                            }
+                          ],
+                          "id": "29164ef4-94a6-4463-9ecc-45d0050aeb89",
+                          "createdAt": "2026-07-28T03:29:55.000Z",
+                          "updatedAt": "2026-07-28T03:29:55.000Z",
+                          "uid": "35240-29164ef4-94a6-4463-9ecc-45d0050aeb89"
+                        }
+                      ],
+                      "id": "70823d85-af88-4dc0-bc5a-492cf0e212aa",
+                      "createdAt": "2026-07-28T03:29:55.000Z",
+                      "updatedAt": "2026-07-28T03:29:55.000Z",
+                      "uid": "35240-70823d85-af88-4dc0-bc5a-492cf0e212aa"
+                    },
+                    {
+                      "name": "Wiktionary Get Page History",
+                      "id": "bee685d3-4ca5-4f72-a95c-b1633f8feb4d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/page/:title/history?older_than=<integer>&newer_than=<integer>&filter=anonymous",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "page",
+                            ":title",
+                            "history"
+                          ],
+                          "query": [
+                            {
+                              "description": "Return revisions older than this revision id.",
+                              "key": "older_than",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Return revisions newer than this revision id.",
+                              "key": "newer_than",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Filter revisions (reverted, anonymous, bot, minor).",
+                              "key": "filter",
+                              "value": "anonymous"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "95180d59-d3f9-4329-9ca2-dd6b997c29ca",
+                              "key": "title",
+                              "value": "<string>",
+                              "description": "(Required) URL-encoded page title."
+                            }
+                          ]
+                        },
+                        "description": "Return a paged list of revisions for a page."
+                      },
+                      "response": [
+                        {
+                          "id": "e6a8485c-3eca-4a2c-b363-9fe0ecc968fc",
+                          "name": "Revision list.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/page/:title/history?older_than=<integer>&newer_than=<integer>&filter=anonymous",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "page",
+                                ":title",
+                                "history"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Return revisions older than this revision id.",
+                                  "key": "older_than",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Return revisions newer than this revision id.",
+                                  "key": "newer_than",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Filter revisions (reverted, anonymous, bot, minor).",
+                                  "key": "filter",
+                                  "value": "anonymous"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "title"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"revisions\": [\n    {\n      \"id\": \"<integer>\",\n      \"page\": {\n        \"id\": \"<integer>\",\n        \"title\": \"<string>\"\n      },\n      \"size\": \"<integer>\",\n      \"minor\": \"<boolean>\",\n      \"timestamp\": \"<dateTime>\",\n      \"content_model\": \"<string>\",\n      \"license\": {\n        \"url\": \"<uri>\",\n        \"title\": \"<string>\"\n      },\n      \"user\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\"\n      },\n      \"comment\": \"<string>\",\n      \"delta\": \"<integer>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"page\": {\n        \"id\": \"<integer>\",\n        \"title\": \"<string>\"\n      },\n      \"size\": \"<integer>\",\n      \"minor\": \"<boolean>\",\n      \"timestamp\": \"<dateTime>\",\n      \"content_model\": \"<string>\",\n      \"license\": {\n        \"url\": \"<uri>\",\n        \"title\": \"<string>\"\n      },\n      \"user\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\"\n      },\n      \"comment\": \"<string>\",\n      \"delta\": \"<integer>\"\n    }\n  ],\n  \"latest\": \"<uri>\",\n  \"older\": \"<uri>\",\n  \"newer\": \"<uri>\"\n}",
+                          "createdAt": "2026-07-28T03:29:55.000Z",
+                          "updatedAt": "2026-07-28T03:29:55.000Z",
+                          "uid": "35240-e6a8485c-3eca-4a2c-b363-9fe0ecc968fc"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:29:55.000Z",
+                      "updatedAt": "2026-07-28T03:29:55.000Z",
+                      "uid": "35240-bee685d3-4ca5-4f72-a95c-b1633f8feb4d"
+                    }
+                  ],
+                  "id": "e4d4d1ea-8f7c-473c-b055-0858f8e7c94a",
+                  "createdAt": "2026-07-28T03:29:55.000Z",
+                  "updatedAt": "2026-07-28T03:29:55.000Z",
+                  "uid": "35240-e4d4d1ea-8f7c-473c-b055-0858f8e7c94a"
+                }
+              ],
+              "id": "c96e3481-9dcc-4373-b4a4-e3181a02ae2c",
+              "createdAt": "2026-07-28T03:29:55.000Z",
+              "updatedAt": "2026-07-28T03:29:55.000Z",
+              "uid": "35240-c96e3481-9dcc-4373-b4a4-e3181a02ae2c"
+            }
+          ],
+          "id": "370d9f6b-9062-41e8-ba61-4612da70859a",
+          "createdAt": "2026-07-28T03:29:55.000Z",
+          "updatedAt": "2026-07-28T03:29:55.000Z",
+          "uid": "35240-370d9f6b-9062-41e8-ba61-4612da70859a"
+        },
+        {
+          "name": "revision",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "bare",
+                  "item": [
+                    {
+                      "name": "Wiktionary Get Revision Bare",
+                      "id": "fa9f4b6b-8bd6-4092-84a6-8c5e527e79f5",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/revision/:id/bare",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "revision",
+                            ":id",
+                            "bare"
+                          ],
+                          "variable": [
+                            {
+                              "id": "9cd51805-cd83-4078-a7d5-d3b2bca650fb",
+                              "key": "id",
+                              "value": "<integer>",
+                              "description": "(Required) Revision id."
+                            }
+                          ]
+                        },
+                        "description": "Fetch the bare metadata for a single revision id."
+                      },
+                      "response": [
+                        {
+                          "id": "b49af02b-6914-4ce1-a1ac-8679d7b35608",
+                          "name": "Revision metadata.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/revision/:id/bare",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "revision",
+                                ":id",
+                                "bare"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<integer>\",\n  \"page\": {\n    \"id\": \"<integer>\",\n    \"title\": \"<string>\"\n  },\n  \"size\": \"<integer>\",\n  \"minor\": \"<boolean>\",\n  \"timestamp\": \"<dateTime>\",\n  \"content_model\": \"<string>\",\n  \"license\": {\n    \"url\": \"<uri>\",\n    \"title\": \"<string>\"\n  },\n  \"user\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\"\n  },\n  \"comment\": \"<string>\",\n  \"delta\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T03:29:55.000Z",
+                          "updatedAt": "2026-07-28T03:29:55.000Z",
+                          "uid": "35240-b49af02b-6914-4ce1-a1ac-8679d7b35608"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:29:55.000Z",
+                      "updatedAt": "2026-07-28T03:29:55.000Z",
+                      "uid": "35240-fa9f4b6b-8bd6-4092-84a6-8c5e527e79f5"
+                    }
+                  ],
+                  "id": "5bf8c0b5-3322-489e-b544-6292d2b0869e",
+                  "createdAt": "2026-07-28T03:29:55.000Z",
+                  "updatedAt": "2026-07-28T03:29:55.000Z",
+                  "uid": "35240-5bf8c0b5-3322-489e-b544-6292d2b0869e"
+                }
+              ],
+              "id": "8a126a67-3805-46c5-9401-c603e9a68bce",
+              "createdAt": "2026-07-28T03:29:55.000Z",
+              "updatedAt": "2026-07-28T03:29:55.000Z",
+              "uid": "35240-8a126a67-3805-46c5-9401-c603e9a68bce"
+            }
+          ],
+          "id": "d7386810-42b3-4d94-ba27-8e061e11733e",
+          "createdAt": "2026-07-28T03:29:55.000Z",
+          "updatedAt": "2026-07-28T03:29:55.000Z",
+          "uid": "35240-d7386810-42b3-4d94-ba27-8e061e11733e"
+        }
+      ],
+      "id": "5cbe1292-c95f-4171-9b08-0335d4036196",
+      "createdAt": "2026-07-28T03:29:55.000Z",
+      "updatedAt": "2026-07-28T03:29:55.000Z",
+      "uid": "35240-5cbe1292-c95f-4171-9b08-0335d4036196"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://en.wiktionary.org/w/rest.php"
+    }
+  ]
+}

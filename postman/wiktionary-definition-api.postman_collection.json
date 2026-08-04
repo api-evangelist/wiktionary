@@ -1,0 +1,330 @@
+{
+  "info": {
+    "_postman_id": "0c6d63b8-37ae-43d0-9726-579e23ac1a69",
+    "name": "Wiktionary MediaWiki Core REST Definition API",
+    "description": "The newer MediaWiki Core REST API, exposed per wiki at /w/rest.php. It offers a smaller, streamlined surface than the Action API for fetching page content, history, search, files, and revisions. On Wiktionary it serves the same content as the Action API in a more developer-friendly JSON shape. All content is CC BY-SA 4.0.\n\nContact Support:\n Name: Wikimedia Foundation",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:29:52.000Z",
+    "updatedAt": "2026-07-28T03:29:52.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0c6d63b8-37ae-43d0-9726-579e23ac1a69"
+  },
+  "item": [
+    {
+      "name": "page",
+      "item": [
+        {
+          "name": "definition",
+          "item": [
+            {
+              "name": "{term}",
+              "item": [
+                {
+                  "name": "Wiktionary Get Definition",
+                  "id": "20479231-2ac3-459c-b902-12f083eaf6bd",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/page/definition/:term?redirect=true",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "page",
+                        "definition",
+                        ":term"
+                      ],
+                      "query": [
+                        {
+                          "description": "Whether to follow page redirects (defaults to true).",
+                          "key": "redirect",
+                          "value": "true"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "a6dc949e-18ab-43c4-b18d-3867901cebee",
+                          "key": "term",
+                          "value": "<string>",
+                          "description": "(Required) The dictionary term (URL-encoded; case-sensitive on Wiktionary)."
+                        }
+                      ]
+                    },
+                    "description": "Return a multilingual structured definition for a term, broken down by source language code (en, fr, de, \u2026) and then by part of speech. Wiktionary-specific endpoint built on top of Parsoid parsing."
+                  },
+                  "response": [
+                    {
+                      "id": "43b451bf-2880-4cc8-b84e-ca79fbcb7195",
+                      "name": "Multilingual definition response keyed by language code.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/page/definition/:term?redirect=true",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "page",
+                            "definition",
+                            ":term"
+                          ],
+                          "query": [
+                            {
+                              "description": "Whether to follow page redirects (defaults to true).",
+                              "key": "redirect",
+                              "value": "true"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "term"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"nisi_71\": [\n    {\n      \"partOfSpeech\": \"<string>\",\n      \"language\": \"<string>\",\n      \"definitions\": {\n        \"type\": \"array\",\n        \"items\": {\n          \"title\": \"DefinitionEntry\",\n          \"type\": \"object\",\n          \"required\": [\n            \"definition\"\n          ],\n          \"properties\": {\n            \"definition\": {\n              \"type\": \"string\",\n              \"description\": \"HTML/wikitext definition body for one sense.\",\n              \"example\": \"A standard greeting.\",\n              \"default\": \"<string>\"\n            },\n            \"examples\": {\n              \"type\": \"array\",\n              \"description\": \"Raw usage example strings.\",\n              \"items\": {\n                \"type\": \"string\",\n                \"default\": \"<string>\"\n              },\n              \"example\": [\n                \"Hello, world!\"\n              ]\n            },\n            \"parsedExamples\": {\n              \"type\": \"array\",\n              \"description\": \"Structured usage examples (HTML or translation pairs).\",\n              \"items\": {\n                \"type\": \"object\",\n                \"additionalProperties\": true,\n                \"properties\": {}\n              }\n            }\n          }\n        }\n      }\n    },\n    {\n      \"partOfSpeech\": \"<string>\",\n      \"language\": \"<string>\",\n      \"definitions\": {\n        \"type\": \"array\",\n        \"items\": {\n          \"title\": \"DefinitionEntry\",\n          \"type\": \"object\",\n          \"required\": [\n            \"definition\"\n          ],\n          \"properties\": {\n            \"definition\": {\n              \"type\": \"string\",\n              \"description\": \"HTML/wikitext definition body for one sense.\",\n              \"example\": \"A standard greeting.\",\n              \"default\": \"<string>\"\n            },\n            \"examples\": {\n              \"type\": \"array\",\n              \"description\": \"Raw usage example strings.\",\n              \"items\": {\n                \"type\": \"string\",\n                \"default\": \"<string>\"\n              },\n              \"example\": [\n                \"Hello, world!\"\n              ]\n            },\n            \"parsedExamples\": {\n              \"type\": \"array\",\n              \"description\": \"Structured usage examples (HTML or translation pairs).\",\n              \"items\": {\n                \"type\": \"object\",\n                \"additionalProperties\": true,\n                \"properties\": {}\n              }\n            }\n          }\n        }\n      }\n    }\n  ],\n  \"tempor_949\": [\n    {\n      \"partOfSpeech\": \"<string>\",\n      \"language\": \"<string>\",\n      \"definitions\": {\n        \"type\": \"array\",\n        \"items\": {\n          \"title\": \"DefinitionEntry\",\n          \"type\": \"object\",\n          \"required\": [\n            \"definition\"\n          ],\n          \"properties\": {\n            \"definition\": {\n              \"type\": \"string\",\n              \"description\": \"HTML/wikitext definition body for one sense.\",\n              \"example\": \"A standard greeting.\",\n              \"default\": \"<string>\"\n            },\n            \"examples\": {\n              \"type\": \"array\",\n              \"description\": \"Raw usage example strings.\",\n              \"items\": {\n                \"type\": \"string\",\n                \"default\": \"<string>\"\n              },\n              \"example\": [\n                \"Hello, world!\"\n              ]\n            },\n            \"parsedExamples\": {\n              \"type\": \"array\",\n              \"description\": \"Structured usage examples (HTML or translation pairs).\",\n              \"items\": {\n                \"type\": \"object\",\n                \"additionalProperties\": true,\n                \"properties\": {}\n              }\n            }\n          }\n        }\n      }\n    },\n    {\n      \"partOfSpeech\": \"<string>\",\n      \"language\": \"<string>\",\n      \"definitions\": {\n        \"type\": \"array\",\n        \"items\": {\n          \"title\": \"DefinitionEntry\",\n          \"type\": \"object\",\n          \"required\": [\n            \"definition\"\n          ],\n          \"properties\": {\n            \"definition\": {\n              \"type\": \"string\",\n              \"description\": \"HTML/wikitext definition body for one sense.\",\n              \"example\": \"A standard greeting.\",\n              \"default\": \"<string>\"\n            },\n            \"examples\": {\n              \"type\": \"array\",\n              \"description\": \"Raw usage example strings.\",\n              \"items\": {\n                \"type\": \"string\",\n                \"default\": \"<string>\"\n              },\n              \"example\": [\n                \"Hello, world!\"\n              ]\n            },\n            \"parsedExamples\": {\n              \"type\": \"array\",\n              \"description\": \"Structured usage examples (HTML or translation pairs).\",\n              \"items\": {\n                \"type\": \"object\",\n                \"additionalProperties\": true,\n                \"properties\": {}\n              }\n            }\n          }\n        }\n      }\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T03:29:52.000Z",
+                      "updatedAt": "2026-07-28T03:29:52.000Z",
+                      "uid": "35240-43b451bf-2880-4cc8-b84e-ca79fbcb7195"
+                    },
+                    {
+                      "id": "dc77a912-b091-49c9-8d94-7de5a967876b",
+                      "name": "Permanent redirect to the canonical term page.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/page/definition/:term?redirect=true",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "page",
+                            "definition",
+                            ":term"
+                          ],
+                          "query": [
+                            {
+                              "description": "Whether to follow page redirects (defaults to true).",
+                              "key": "redirect",
+                              "value": "true"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "term"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Moved Permanently",
+                      "code": 301,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:29:52.000Z",
+                      "updatedAt": "2026-07-28T03:29:52.000Z",
+                      "uid": "35240-dc77a912-b091-49c9-8d94-7de5a967876b"
+                    },
+                    {
+                      "id": "a8104d96-9bee-43f0-8998-735a7af81d35",
+                      "name": "Temporary redirect to a different term page.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/page/definition/:term?redirect=true",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "page",
+                            "definition",
+                            ":term"
+                          ],
+                          "query": [
+                            {
+                              "description": "Whether to follow page redirects (defaults to true).",
+                              "key": "redirect",
+                              "value": "true"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "term"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Found",
+                      "code": 302,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:29:52.000Z",
+                      "updatedAt": "2026-07-28T03:29:52.000Z",
+                      "uid": "35240-a8104d96-9bee-43f0-8998-735a7af81d35"
+                    },
+                    {
+                      "id": "711f1484-8af4-42ac-aa57-21be23954c77",
+                      "name": "Term not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/problem+json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/page/definition/:term?redirect=true",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "page",
+                            "definition",
+                            ":term"
+                          ],
+                          "query": [
+                            {
+                              "description": "Whether to follow page redirects (defaults to true).",
+                              "key": "redirect",
+                              "value": "true"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "term"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/problem+json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"method\": \"<string>\",\n  \"detail\": \"<string>\",\n  \"uri\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:29:52.000Z",
+                      "updatedAt": "2026-07-28T03:29:52.000Z",
+                      "uid": "35240-711f1484-8af4-42ac-aa57-21be23954c77"
+                    },
+                    {
+                      "id": "a2a4ec3f-a527-4ae6-a342-ef6558045da3",
+                      "name": "Unsupported language for structured definitions.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/problem+json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/page/definition/:term?redirect=true",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "page",
+                            "definition",
+                            ":term"
+                          ],
+                          "query": [
+                            {
+                              "description": "Whether to follow page redirects (defaults to true).",
+                              "key": "redirect",
+                              "value": "true"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "term"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Implemented",
+                      "code": 501,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/problem+json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"method\": \"<string>\",\n  \"detail\": \"<string>\",\n  \"uri\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:29:52.000Z",
+                      "updatedAt": "2026-07-28T03:29:52.000Z",
+                      "uid": "35240-a2a4ec3f-a527-4ae6-a342-ef6558045da3"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:29:52.000Z",
+                  "updatedAt": "2026-07-28T03:29:52.000Z",
+                  "uid": "35240-20479231-2ac3-459c-b902-12f083eaf6bd"
+                }
+              ],
+              "id": "2725340b-3503-43ff-8705-d5f9b76a28bc",
+              "createdAt": "2026-07-28T03:29:52.000Z",
+              "updatedAt": "2026-07-28T03:29:52.000Z",
+              "uid": "35240-2725340b-3503-43ff-8705-d5f9b76a28bc"
+            }
+          ],
+          "id": "0274574f-8417-45aa-9b34-65833151ae7e",
+          "createdAt": "2026-07-28T03:29:52.000Z",
+          "updatedAt": "2026-07-28T03:29:52.000Z",
+          "uid": "35240-0274574f-8417-45aa-9b34-65833151ae7e"
+        }
+      ],
+      "id": "5df3181a-da83-45f6-a036-0ecd298899fb",
+      "createdAt": "2026-07-28T03:29:52.000Z",
+      "updatedAt": "2026-07-28T03:29:52.000Z",
+      "uid": "35240-5df3181a-da83-45f6-a036-0ecd298899fb"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://en.wiktionary.org/w/rest.php"
+    }
+  ]
+}

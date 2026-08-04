@@ -1,0 +1,176 @@
+{
+  "info": {
+    "_postman_id": "efb655cc-9975-4a18-85b5-f230cb3a442a",
+    "name": "Wiktionary MediaWiki Core REST Definition File API",
+    "description": "The newer MediaWiki Core REST API, exposed per wiki at /w/rest.php. It offers a smaller, streamlined surface than the Action API for fetching page content, history, search, files, and revisions. On Wiktionary it serves the same content as the Action API in a more developer-friendly JSON shape. All content is CC BY-SA 4.0.\n\nContact Support:\n Name: Wikimedia Foundation",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:29:53.000Z",
+    "updatedAt": "2026-07-28T03:29:53.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-efb655cc-9975-4a18-85b5-f230cb3a442a"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "file",
+          "item": [
+            {
+              "name": "{title}",
+              "item": [
+                {
+                  "name": "Wiktionary Get File",
+                  "id": "3b33a0d4-b2de-4ed2-a4a7-f46d468280fd",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/file/:title",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "file",
+                        ":title"
+                      ],
+                      "variable": [
+                        {
+                          "id": "461d7fce-5f07-469d-9e12-3191c77dbc1f",
+                          "key": "title",
+                          "value": "<string>",
+                          "description": "(Required) URL-encoded file title (e.g. `File:Hello.ogg`)."
+                        }
+                      ]
+                    },
+                    "description": "Fetch metadata for a file (image, audio, video) hosted on Wiktionary or Commons."
+                  },
+                  "response": [
+                    {
+                      "id": "65361c4f-8143-463d-8ab3-98967b4fc984",
+                      "name": "File metadata.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/file/:title",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "file",
+                            ":title"
+                          ],
+                          "variable": [
+                            {
+                              "key": "title"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"title\": \"<string>\",\n  \"file_description_url\": \"<uri>\",\n  \"latest\": {\n    \"timestamp\": \"<dateTime>\",\n    \"user\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\"\n    }\n  },\n  \"preferred\": {\n    \"mediatype\": \"<string>\",\n    \"size\": \"<integer>\",\n    \"width\": \"<integer>\",\n    \"height\": \"<integer>\",\n    \"duration\": \"<number>\",\n    \"url\": \"<uri>\"\n  },\n  \"original\": {\n    \"nisi74c\": 85942266.28338832,\n    \"labore_11e\": \"enim in ut dolore\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:29:54.000Z",
+                      "updatedAt": "2026-07-28T03:29:54.000Z",
+                      "uid": "35240-65361c4f-8143-463d-8ab3-98967b4fc984"
+                    },
+                    {
+                      "id": "bfd5393f-3f81-4e27-a3fc-b668c0cbcade",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/problem+json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/file/:title",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "file",
+                            ":title"
+                          ],
+                          "variable": [
+                            {
+                              "key": "title"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/problem+json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"status\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T03:29:54.000Z",
+                      "updatedAt": "2026-07-28T03:29:54.000Z",
+                      "uid": "35240-bfd5393f-3f81-4e27-a3fc-b668c0cbcade"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:29:54.000Z",
+                  "updatedAt": "2026-07-28T03:29:54.000Z",
+                  "uid": "35240-3b33a0d4-b2de-4ed2-a4a7-f46d468280fd"
+                }
+              ],
+              "id": "cd096757-4b05-4f9b-9d8d-32502d89ae3e",
+              "createdAt": "2026-07-28T03:29:54.000Z",
+              "updatedAt": "2026-07-28T03:29:54.000Z",
+              "uid": "35240-cd096757-4b05-4f9b-9d8d-32502d89ae3e"
+            }
+          ],
+          "id": "bb56ccac-9f1c-4240-92d6-710d26f8f91c",
+          "createdAt": "2026-07-28T03:29:54.000Z",
+          "updatedAt": "2026-07-28T03:29:54.000Z",
+          "uid": "35240-bb56ccac-9f1c-4240-92d6-710d26f8f91c"
+        }
+      ],
+      "id": "7d3d923d-446e-453d-8fc8-0ecfc20f6b5d",
+      "createdAt": "2026-07-28T03:29:54.000Z",
+      "updatedAt": "2026-07-28T03:29:54.000Z",
+      "uid": "35240-7d3d923d-446e-453d-8fc8-0ecfc20f6b5d"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://en.wiktionary.org/w/rest.php"
+    }
+  ]
+}

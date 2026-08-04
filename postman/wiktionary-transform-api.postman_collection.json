@@ -1,0 +1,833 @@
+{
+  "info": {
+    "_postman_id": "182c4927-1bcf-4b17-897a-cf7643af5c04",
+    "name": "Wiktionary MediaWiki Core REST Definition Transform API",
+    "description": "The newer MediaWiki Core REST API, exposed per wiki at /w/rest.php. It offers a smaller, streamlined surface than the Action API for fetching page content, history, search, files, and revisions. On Wiktionary it serves the same content as the Action API in a more developer-friendly JSON shape. All content is CC BY-SA 4.0.\n\nContact Support:\n Name: Wikimedia Foundation",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:30:19.000Z",
+    "updatedAt": "2026-07-28T03:30:19.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-182c4927-1bcf-4b17-897a-cf7643af5c04"
+  },
+  "item": [
+    {
+      "name": "transform",
+      "item": [
+        {
+          "name": "wikitext",
+          "item": [
+            {
+              "name": "to",
+              "item": [
+                {
+                  "name": "html",
+                  "item": [
+                    {
+                      "name": "{title}",
+                      "item": [
+                        {
+                          "name": "Wiktionary Transform Wikitext to HTML",
+                          "id": "5bedfc95-3cc7-496b-9ee2-7af0d9fecd5c",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "text/html"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"wikitext\": \"<string>\",\n  \"body_only\": \"<boolean>\",\n  \"stash\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/transform/wikitext/to/html/:title",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "transform",
+                                "wikitext",
+                                "to",
+                                "html",
+                                ":title"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "cb0b2c33-7700-45d6-afc4-3ef7404341cb",
+                                  "key": "title",
+                                  "value": "<string>",
+                                  "description": "(Required) URL-encoded page title context."
+                                }
+                              ]
+                            },
+                            "description": "Convert supplied wikitext to Parsoid HTML in the context of a page title. Rate-limited to 25 req/s (5 req/s with stash=true)."
+                          },
+                          "response": [
+                            {
+                              "id": "12e28a4d-a8f4-458a-8c6f-76e04c1ef30f",
+                              "name": "Parsoid HTML.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "text/html"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"wikitext\": \"<string>\",\n  \"body_only\": \"<boolean>\",\n  \"stash\": \"<boolean>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/transform/wikitext/to/html/:title",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "transform",
+                                    "wikitext",
+                                    "to",
+                                    "html",
+                                    ":title"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "title"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "text/html"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "<string>",
+                              "createdAt": "2026-07-28T03:30:20.000Z",
+                              "updatedAt": "2026-07-28T03:30:20.000Z",
+                              "uid": "35240-12e28a4d-a8f4-458a-8c6f-76e04c1ef30f"
+                            },
+                            {
+                              "id": "1c924759-d298-46c7-84b1-e8316b61bb9e",
+                              "name": "Access restricted.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"wikitext\": \"<string>\",\n  \"body_only\": \"<boolean>\",\n  \"stash\": \"<boolean>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/transform/wikitext/to/html/:title",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "transform",
+                                    "wikitext",
+                                    "to",
+                                    "html",
+                                    ":title"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "title"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Forbidden",
+                              "code": 403,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:30:20.000Z",
+                              "updatedAt": "2026-07-28T03:30:20.000Z",
+                              "uid": "35240-1c924759-d298-46c7-84b1-e8316b61bb9e"
+                            },
+                            {
+                              "id": "09142f4f-0324-4920-a5c7-89fbe7e11540",
+                              "name": "Page not found.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"wikitext\": \"<string>\",\n  \"body_only\": \"<boolean>\",\n  \"stash\": \"<boolean>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/transform/wikitext/to/html/:title",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "transform",
+                                    "wikitext",
+                                    "to",
+                                    "html",
+                                    ":title"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "title"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:30:20.000Z",
+                              "updatedAt": "2026-07-28T03:30:20.000Z",
+                              "uid": "35240-09142f4f-0324-4920-a5c7-89fbe7e11540"
+                            },
+                            {
+                              "id": "20158f72-1dcb-490e-ad80-a48e10781d8f",
+                              "name": "Page has been deleted.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"wikitext\": \"<string>\",\n  \"body_only\": \"<boolean>\",\n  \"stash\": \"<boolean>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/transform/wikitext/to/html/:title",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "transform",
+                                    "wikitext",
+                                    "to",
+                                    "html",
+                                    ":title"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "title"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Gone",
+                              "code": 410,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:30:20.000Z",
+                              "updatedAt": "2026-07-28T03:30:20.000Z",
+                              "uid": "35240-20158f72-1dcb-490e-ad80-a48e10781d8f"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:30:20.000Z",
+                          "updatedAt": "2026-07-28T03:30:20.000Z",
+                          "uid": "35240-5bedfc95-3cc7-496b-9ee2-7af0d9fecd5c"
+                        }
+                      ],
+                      "id": "33ef102b-659e-40e1-85ca-7e627283e04c",
+                      "createdAt": "2026-07-28T03:30:20.000Z",
+                      "updatedAt": "2026-07-28T03:30:20.000Z",
+                      "uid": "35240-33ef102b-659e-40e1-85ca-7e627283e04c"
+                    }
+                  ],
+                  "id": "4c08cc60-93cb-4e05-9b98-45b46823b41e",
+                  "createdAt": "2026-07-28T03:30:20.000Z",
+                  "updatedAt": "2026-07-28T03:30:20.000Z",
+                  "uid": "35240-4c08cc60-93cb-4e05-9b98-45b46823b41e"
+                },
+                {
+                  "name": "lint",
+                  "item": [
+                    {
+                      "name": "{title}",
+                      "item": [
+                        {
+                          "name": "Wiktionary Transform Wikitext to Lint",
+                          "id": "8c37ba2c-6a5c-49d3-864c-c3a44b73c642",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"wikitext\": \"<string>\",\n  \"body_only\": \"<boolean>\",\n  \"stash\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/transform/wikitext/to/lint/:title",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "transform",
+                                "wikitext",
+                                "to",
+                                "lint",
+                                ":title"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "a9a34284-9f68-4be2-bd18-d434b24bce97",
+                                  "key": "title",
+                                  "value": "<string>",
+                                  "description": "(Required) URL-encoded page title context."
+                                }
+                              ]
+                            },
+                            "description": "Lint supplied wikitext and return a list of structural and semantic issues. Experimental stability."
+                          },
+                          "response": [
+                            {
+                              "id": "e5a53130-71c2-4579-89e8-464ef035802e",
+                              "name": "Lint errors found in the wikitext.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"wikitext\": \"<string>\",\n  \"body_only\": \"<boolean>\",\n  \"stash\": \"<boolean>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/transform/wikitext/to/lint/:title",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "transform",
+                                    "wikitext",
+                                    "to",
+                                    "lint",
+                                    ":title"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "title"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "[\n  {\n    \"type\": \"<string>\",\n    \"dsr\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"templateInfo\": {\n      \"commodo_f79\": \"adipisicing\",\n      \"nostrud_7ae\": 477794,\n      \"sunt_c50\": 82934611.67172277\n    },\n    \"params\": {\n      \"et_b\": \"cillum officia sint\"\n    }\n  },\n  {\n    \"type\": \"<string>\",\n    \"dsr\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"templateInfo\": {\n      \"eiusmodc8e\": -97717045.71206188,\n      \"irure_f94\": 96425883,\n      \"enim_7b\": -27696437.848745823\n    },\n    \"params\": {\n      \"ina\": -20871163.656255648,\n      \"aliqua624\": \"deserunt exercitation ipsum\"\n    }\n  }\n]",
+                              "createdAt": "2026-07-28T03:30:20.000Z",
+                              "updatedAt": "2026-07-28T03:30:20.000Z",
+                              "uid": "35240-e5a53130-71c2-4579-89e8-464ef035802e"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:30:20.000Z",
+                          "updatedAt": "2026-07-28T03:30:20.000Z",
+                          "uid": "35240-8c37ba2c-6a5c-49d3-864c-c3a44b73c642"
+                        }
+                      ],
+                      "id": "6e573bfd-6b42-47f1-9a5a-1cb2755877df",
+                      "createdAt": "2026-07-28T03:30:20.000Z",
+                      "updatedAt": "2026-07-28T03:30:20.000Z",
+                      "uid": "35240-6e573bfd-6b42-47f1-9a5a-1cb2755877df"
+                    }
+                  ],
+                  "id": "44885bd7-b634-495f-bc22-b785702d758b",
+                  "createdAt": "2026-07-28T03:30:20.000Z",
+                  "updatedAt": "2026-07-28T03:30:20.000Z",
+                  "uid": "35240-44885bd7-b634-495f-bc22-b785702d758b"
+                }
+              ],
+              "id": "c2301b49-0ce8-470f-8074-3a07b5f1c7d6",
+              "createdAt": "2026-07-28T03:30:20.000Z",
+              "updatedAt": "2026-07-28T03:30:20.000Z",
+              "uid": "35240-c2301b49-0ce8-470f-8074-3a07b5f1c7d6"
+            }
+          ],
+          "id": "259aafc7-e1e4-4d39-9998-aaca909ea987",
+          "createdAt": "2026-07-28T03:30:20.000Z",
+          "updatedAt": "2026-07-28T03:30:20.000Z",
+          "uid": "35240-259aafc7-e1e4-4d39-9998-aaca909ea987"
+        },
+        {
+          "name": "html",
+          "item": [
+            {
+              "name": "to",
+              "item": [
+                {
+                  "name": "wikitext",
+                  "item": [
+                    {
+                      "name": "{title}",
+                      "item": [
+                        {
+                          "name": "{revision}",
+                          "item": [
+                            {
+                              "name": "Wiktionary Transform HTML to Wikitext",
+                              "id": "e98bc5c1-fa40-4dd7-94f9-40aa34c0b643",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "(Required) ETag from the corresponding /page/html call.",
+                                    "key": "If-Match",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "text/plain"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"html\": \"<string>\",\n  \"scrub_wikitext\": \"<boolean>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/transform/html/to/wikitext/:title/:revision",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "transform",
+                                    "html",
+                                    "to",
+                                    "wikitext",
+                                    ":title",
+                                    ":revision"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "6d88f80e-ddda-4e12-ab5f-144a6f8c30c5",
+                                      "key": "title",
+                                      "value": "<string>",
+                                      "description": "(Required) URL-encoded page title."
+                                    },
+                                    {
+                                      "id": "2b3215e2-e390-41a2-9aa3-68bd23e1d38b",
+                                      "key": "revision",
+                                      "value": "<string>",
+                                      "description": "(Required) Revision id to anchor the round-trip against."
+                                    }
+                                  ]
+                                },
+                                "description": "Convert supplied Parsoid HTML back to wikitext for a given page and revision. Requires an If-Match ETag header. Rate-limited to 25 req/s."
+                              },
+                              "response": [
+                                {
+                                  "id": "c9693286-d6e7-4737-a333-4f6fc259af75",
+                                  "name": "Wikitext body.",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "description": "(Required) ETag from the corresponding /page/html call.",
+                                        "key": "If-Match",
+                                        "value": "<string>"
+                                      },
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "text/plain"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"html\": \"<string>\",\n  \"scrub_wikitext\": \"<boolean>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/transform/html/to/wikitext/:title/:revision",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "transform",
+                                        "html",
+                                        "to",
+                                        "wikitext",
+                                        ":title",
+                                        ":revision"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "title"
+                                        },
+                                        {
+                                          "key": "revision"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "text/plain"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "<string>",
+                                  "createdAt": "2026-07-28T03:30:20.000Z",
+                                  "updatedAt": "2026-07-28T03:30:20.000Z",
+                                  "uid": "35240-c9693286-d6e7-4737-a333-4f6fc259af75"
+                                },
+                                {
+                                  "id": "dd3d4326-151b-4190-a5fa-108c203310eb",
+                                  "name": "Access restricted.",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "description": "(Required) ETag from the corresponding /page/html call.",
+                                        "key": "If-Match",
+                                        "value": "<string>"
+                                      },
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"html\": \"<string>\",\n  \"scrub_wikitext\": \"<boolean>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/transform/html/to/wikitext/:title/:revision",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "transform",
+                                        "html",
+                                        "to",
+                                        "wikitext",
+                                        ":title",
+                                        ":revision"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "title"
+                                        },
+                                        {
+                                          "key": "revision"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Forbidden",
+                                  "code": 403,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T03:30:20.000Z",
+                                  "updatedAt": "2026-07-28T03:30:20.000Z",
+                                  "uid": "35240-dd3d4326-151b-4190-a5fa-108c203310eb"
+                                },
+                                {
+                                  "id": "32e1640b-ae27-4cbd-a597-d9f47482485a",
+                                  "name": "Page not found.",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "description": "(Required) ETag from the corresponding /page/html call.",
+                                        "key": "If-Match",
+                                        "value": "<string>"
+                                      },
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"html\": \"<string>\",\n  \"scrub_wikitext\": \"<boolean>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/transform/html/to/wikitext/:title/:revision",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "transform",
+                                        "html",
+                                        "to",
+                                        "wikitext",
+                                        ":title",
+                                        ":revision"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "title"
+                                        },
+                                        {
+                                          "key": "revision"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T03:30:20.000Z",
+                                  "updatedAt": "2026-07-28T03:30:20.000Z",
+                                  "uid": "35240-32e1640b-ae27-4cbd-a597-d9f47482485a"
+                                },
+                                {
+                                  "id": "333bb97b-cc6c-4d1a-a12a-3355fd78c2cf",
+                                  "name": "Page has been deleted.",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "description": "(Required) ETag from the corresponding /page/html call.",
+                                        "key": "If-Match",
+                                        "value": "<string>"
+                                      },
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"html\": \"<string>\",\n  \"scrub_wikitext\": \"<boolean>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/transform/html/to/wikitext/:title/:revision",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "transform",
+                                        "html",
+                                        "to",
+                                        "wikitext",
+                                        ":title",
+                                        ":revision"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "title"
+                                        },
+                                        {
+                                          "key": "revision"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Gone",
+                                  "code": 410,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T03:30:20.000Z",
+                                  "updatedAt": "2026-07-28T03:30:20.000Z",
+                                  "uid": "35240-333bb97b-cc6c-4d1a-a12a-3355fd78c2cf"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T03:30:20.000Z",
+                              "updatedAt": "2026-07-28T03:30:20.000Z",
+                              "uid": "35240-e98bc5c1-fa40-4dd7-94f9-40aa34c0b643"
+                            }
+                          ],
+                          "id": "bdb26151-c3f6-49e0-9609-d252dcdd08a1",
+                          "createdAt": "2026-07-28T03:30:20.000Z",
+                          "updatedAt": "2026-07-28T03:30:20.000Z",
+                          "uid": "35240-bdb26151-c3f6-49e0-9609-d252dcdd08a1"
+                        }
+                      ],
+                      "id": "7b2f6db4-2202-4f9d-a97b-58c4a68b1aec",
+                      "createdAt": "2026-07-28T03:30:20.000Z",
+                      "updatedAt": "2026-07-28T03:30:20.000Z",
+                      "uid": "35240-7b2f6db4-2202-4f9d-a97b-58c4a68b1aec"
+                    }
+                  ],
+                  "id": "385520bc-821e-4a54-ae33-0fee0e7e69a6",
+                  "createdAt": "2026-07-28T03:30:20.000Z",
+                  "updatedAt": "2026-07-28T03:30:20.000Z",
+                  "uid": "35240-385520bc-821e-4a54-ae33-0fee0e7e69a6"
+                }
+              ],
+              "id": "2cc6dd18-ca72-4fc1-a2ab-7aab5ea94446",
+              "createdAt": "2026-07-28T03:30:20.000Z",
+              "updatedAt": "2026-07-28T03:30:20.000Z",
+              "uid": "35240-2cc6dd18-ca72-4fc1-a2ab-7aab5ea94446"
+            }
+          ],
+          "id": "9dcb0bac-e868-43ad-92d6-2ad6d1525b8c",
+          "createdAt": "2026-07-28T03:30:20.000Z",
+          "updatedAt": "2026-07-28T03:30:20.000Z",
+          "uid": "35240-9dcb0bac-e868-43ad-92d6-2ad6d1525b8c"
+        }
+      ],
+      "id": "d0b7bc10-2cf1-4813-853d-9f176acb0fdb",
+      "createdAt": "2026-07-28T03:30:20.000Z",
+      "updatedAt": "2026-07-28T03:30:20.000Z",
+      "uid": "35240-d0b7bc10-2cf1-4813-853d-9f176acb0fdb"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://en.wiktionary.org/w/rest.php"
+    }
+  ]
+}

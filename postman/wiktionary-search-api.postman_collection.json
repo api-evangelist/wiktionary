@@ -1,0 +1,248 @@
+{
+  "info": {
+    "_postman_id": "c49ef1d0-17a6-413e-a7a8-a23105c7f5b8",
+    "name": "Wiktionary MediaWiki Core REST Definition Search API",
+    "description": "The newer MediaWiki Core REST API, exposed per wiki at /w/rest.php. It offers a smaller, streamlined surface than the Action API for fetching page content, history, search, files, and revisions. On Wiktionary it serves the same content as the Action API in a more developer-friendly JSON shape. All content is CC BY-SA 4.0.\n\nContact Support:\n Name: Wikimedia Foundation",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:30:18.000Z",
+    "updatedAt": "2026-07-28T03:30:18.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c49ef1d0-17a6-413e-a7a8-a23105c7f5b8"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "search",
+          "item": [
+            {
+              "name": "page",
+              "item": [
+                {
+                  "name": "Wiktionary Search Page",
+                  "id": "229b12ae-eb6a-48f8-843c-0d73dc5821e5",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/search/page?q=<string>&limit=50",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "search",
+                        "page"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Search query string.",
+                          "key": "q",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum results to return (1-100, default 50).",
+                          "key": "limit",
+                          "value": "50"
+                        }
+                      ]
+                    },
+                    "description": "Full-text search across Wiktionary pages."
+                  },
+                  "response": [
+                    {
+                      "id": "c9ec393d-e577-4c55-9086-9b4072f461df",
+                      "name": "Search results.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/search/page?q=<string>&limit=50",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "search",
+                            "page"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Search query string.",
+                              "key": "q",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Maximum results to return (1-100, default 50).",
+                              "key": "limit",
+                              "value": "50"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"pages\": [\n    {\n      \"id\": \"<integer>\",\n      \"key\": \"<string>\",\n      \"title\": \"<string>\",\n      \"excerpt\": \"<string>\",\n      \"matched_title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"thumbnail\": {\n        \"url\": \"<uri>\",\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\"\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"key\": \"<string>\",\n      \"title\": \"<string>\",\n      \"excerpt\": \"<string>\",\n      \"matched_title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"thumbnail\": {\n        \"url\": \"<uri>\",\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\"\n      }\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T03:30:19.000Z",
+                      "updatedAt": "2026-07-28T03:30:19.000Z",
+                      "uid": "35240-c9ec393d-e577-4c55-9086-9b4072f461df"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:30:19.000Z",
+                  "updatedAt": "2026-07-28T03:30:19.000Z",
+                  "uid": "35240-229b12ae-eb6a-48f8-843c-0d73dc5821e5"
+                }
+              ],
+              "id": "4133707b-5d67-4e27-8cd2-520eb5de34ec",
+              "createdAt": "2026-07-28T03:30:19.000Z",
+              "updatedAt": "2026-07-28T03:30:19.000Z",
+              "uid": "35240-4133707b-5d67-4e27-8cd2-520eb5de34ec"
+            },
+            {
+              "name": "title",
+              "item": [
+                {
+                  "name": "Wiktionary Search Title",
+                  "id": "ce1cdc09-d426-4f4b-af96-fdb9e177203d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/search/title?q=<string>&limit=50",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "search",
+                        "title"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Title prefix to autocomplete.",
+                          "key": "q",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum results to return.",
+                          "key": "limit",
+                          "value": "50"
+                        }
+                      ]
+                    },
+                    "description": "Title-prefix autocomplete search for Wiktionary pages."
+                  },
+                  "response": [
+                    {
+                      "id": "6887d6a0-efed-41aa-bb8d-b0a0496c93ba",
+                      "name": "Title autocomplete results.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/search/title?q=<string>&limit=50",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "search",
+                            "title"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Title prefix to autocomplete.",
+                              "key": "q",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Maximum results to return.",
+                              "key": "limit",
+                              "value": "50"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"pages\": [\n    {\n      \"id\": \"<integer>\",\n      \"key\": \"<string>\",\n      \"title\": \"<string>\",\n      \"excerpt\": \"<string>\",\n      \"matched_title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"thumbnail\": {\n        \"url\": \"<uri>\",\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\"\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"key\": \"<string>\",\n      \"title\": \"<string>\",\n      \"excerpt\": \"<string>\",\n      \"matched_title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"thumbnail\": {\n        \"url\": \"<uri>\",\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\"\n      }\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T03:30:19.000Z",
+                      "updatedAt": "2026-07-28T03:30:19.000Z",
+                      "uid": "35240-6887d6a0-efed-41aa-bb8d-b0a0496c93ba"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:30:19.000Z",
+                  "updatedAt": "2026-07-28T03:30:19.000Z",
+                  "uid": "35240-ce1cdc09-d426-4f4b-af96-fdb9e177203d"
+                }
+              ],
+              "id": "9fe71c92-d52d-40f5-bfcd-fe213f0d2c86",
+              "createdAt": "2026-07-28T03:30:19.000Z",
+              "updatedAt": "2026-07-28T03:30:19.000Z",
+              "uid": "35240-9fe71c92-d52d-40f5-bfcd-fe213f0d2c86"
+            }
+          ],
+          "id": "2db22342-6438-43dc-b2c7-73b609656af9",
+          "createdAt": "2026-07-28T03:30:19.000Z",
+          "updatedAt": "2026-07-28T03:30:19.000Z",
+          "uid": "35240-2db22342-6438-43dc-b2c7-73b609656af9"
+        }
+      ],
+      "id": "0fd99352-be19-4f92-aae4-96f842e6e18e",
+      "createdAt": "2026-07-28T03:30:19.000Z",
+      "updatedAt": "2026-07-28T03:30:19.000Z",
+      "uid": "35240-0fd99352-be19-4f92-aae4-96f842e6e18e"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://en.wiktionary.org/w/rest.php"
+    }
+  ]
+}

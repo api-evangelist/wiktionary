@@ -1,0 +1,458 @@
+{
+  "info": {
+    "_postman_id": "fbc70bed-94a4-4b31-820a-6c4dd3d8abd9",
+    "name": "Wiktionary MediaWiki Core REST Definition Page API",
+    "description": "The newer MediaWiki Core REST API, exposed per wiki at /w/rest.php. It offers a smaller, streamlined surface than the Action API for fetching page content, history, search, files, and revisions. On Wiktionary it serves the same content as the Action API in a more developer-friendly JSON shape. All content is CC BY-SA 4.0.\n\nContact Support:\n Name: Wikimedia Foundation",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:29:56.000Z",
+    "updatedAt": "2026-07-28T03:29:56.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-fbc70bed-94a4-4b31-820a-6c4dd3d8abd9"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "page",
+          "item": [
+            {
+              "name": "{title}",
+              "item": [
+                {
+                  "name": "html",
+                  "item": [
+                    {
+                      "name": "Wiktionary Get Page HTML",
+                      "id": "310eea23-ff73-4318-b89a-efa12e3ea179",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/html"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/page/:title/html",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "page",
+                            ":title",
+                            "html"
+                          ],
+                          "variable": [
+                            {
+                              "id": "ea199def-f41e-475b-904c-fd6af3c0d219",
+                              "key": "title",
+                              "value": "<string>",
+                              "description": "(Required) URL-encoded page title."
+                            }
+                          ]
+                        },
+                        "description": "Fetch the rendered HTML body for a Wiktionary page."
+                      },
+                      "response": [
+                        {
+                          "id": "a9c966aa-fa39-4e2d-af53-0cf6e6b457dd",
+                          "name": "Page HTML.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "text/html"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/page/:title/html",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "page",
+                                ":title",
+                                "html"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "title"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "text/html"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "<string>",
+                          "createdAt": "2026-07-28T03:29:56.000Z",
+                          "updatedAt": "2026-07-28T03:29:56.000Z",
+                          "uid": "35240-a9c966aa-fa39-4e2d-af53-0cf6e6b457dd"
+                        },
+                        {
+                          "id": "4221a8ca-d5f2-48b0-bff6-3b8ed12feafc",
+                          "name": "Resource not found.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/problem+json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/page/:title/html",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "page",
+                                ":title",
+                                "html"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "title"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/problem+json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"status\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T03:29:56.000Z",
+                          "updatedAt": "2026-07-28T03:29:56.000Z",
+                          "uid": "35240-4221a8ca-d5f2-48b0-bff6-3b8ed12feafc"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:29:56.000Z",
+                      "updatedAt": "2026-07-28T03:29:56.000Z",
+                      "uid": "35240-310eea23-ff73-4318-b89a-efa12e3ea179"
+                    }
+                  ],
+                  "id": "abccdd9b-0517-4985-8ba0-1272a857989e",
+                  "createdAt": "2026-07-28T03:29:56.000Z",
+                  "updatedAt": "2026-07-28T03:29:56.000Z",
+                  "uid": "35240-abccdd9b-0517-4985-8ba0-1272a857989e"
+                },
+                {
+                  "name": "with_html",
+                  "item": [
+                    {
+                      "name": "Wiktionary Get Page with HTML",
+                      "id": "03f22303-e978-4def-a9b4-73b2bfbd3682",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/page/:title/with_html",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "page",
+                            ":title",
+                            "with_html"
+                          ],
+                          "variable": [
+                            {
+                              "id": "93accf22-275f-4537-af56-e6218eea5edc",
+                              "key": "title",
+                              "value": "<string>",
+                              "description": "(Required) URL-encoded page title."
+                            }
+                          ]
+                        },
+                        "description": "Fetch both the source and rendered HTML for a page in one response."
+                      },
+                      "response": [
+                        {
+                          "id": "71e8b26c-3145-420a-a866-73d24230a7f7",
+                          "name": "Combined source + HTML response.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/page/:title/with_html",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "page",
+                                ":title",
+                                "with_html"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "title"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<integer>\",\n  \"key\": \"<string>\",\n  \"title\": \"<string>\",\n  \"latest\": {\n    \"id\": \"<integer>\",\n    \"timestamp\": \"<dateTime>\"\n  },\n  \"content_model\": \"<string>\",\n  \"license\": {\n    \"url\": \"<uri>\",\n    \"title\": \"<string>\"\n  },\n  \"source\": \"<string>\",\n  \"html\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:29:56.000Z",
+                          "updatedAt": "2026-07-28T03:29:56.000Z",
+                          "uid": "35240-71e8b26c-3145-420a-a866-73d24230a7f7"
+                        },
+                        {
+                          "id": "2fa9041b-9cc5-450c-9b0f-bf3ea0cafa9b",
+                          "name": "Resource not found.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/problem+json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/page/:title/with_html",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "page",
+                                ":title",
+                                "with_html"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "title"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/problem+json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"status\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T03:29:56.000Z",
+                          "updatedAt": "2026-07-28T03:29:56.000Z",
+                          "uid": "35240-2fa9041b-9cc5-450c-9b0f-bf3ea0cafa9b"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:29:56.000Z",
+                      "updatedAt": "2026-07-28T03:29:56.000Z",
+                      "uid": "35240-03f22303-e978-4def-a9b4-73b2bfbd3682"
+                    }
+                  ],
+                  "id": "d418b4c1-be01-4ab0-ace2-d2920ce8d5c2",
+                  "createdAt": "2026-07-28T03:29:56.000Z",
+                  "updatedAt": "2026-07-28T03:29:56.000Z",
+                  "uid": "35240-d418b4c1-be01-4ab0-ace2-d2920ce8d5c2"
+                },
+                {
+                  "name": "Wiktionary Get Page",
+                  "id": "750515d3-161c-4d86-bb91-d18a854eb161",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/page/:title",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "page",
+                        ":title"
+                      ],
+                      "variable": [
+                        {
+                          "id": "cc14d070-9ab2-4a03-ba83-60862e891ceb",
+                          "key": "title",
+                          "value": "<string>",
+                          "description": "(Required) URL-encoded page title."
+                        }
+                      ]
+                    },
+                    "description": "Fetch the source wikitext and metadata for a Wiktionary page by title."
+                  },
+                  "response": [
+                    {
+                      "id": "e6e7138c-b152-4b24-a190-49ea8b548d5a",
+                      "name": "Page source response.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/page/:title",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "page",
+                            ":title"
+                          ],
+                          "variable": [
+                            {
+                              "key": "title"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<integer>\",\n  \"key\": \"<string>\",\n  \"title\": \"<string>\",\n  \"latest\": {\n    \"id\": \"<integer>\",\n    \"timestamp\": \"<dateTime>\"\n  },\n  \"content_model\": \"<string>\",\n  \"license\": {\n    \"url\": \"<uri>\",\n    \"title\": \"<string>\"\n  },\n  \"source\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:29:56.000Z",
+                      "updatedAt": "2026-07-28T03:29:56.000Z",
+                      "uid": "35240-e6e7138c-b152-4b24-a190-49ea8b548d5a"
+                    },
+                    {
+                      "id": "2b06a4be-c4fa-4cc0-9f47-71079eec7b90",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/problem+json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/page/:title",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "page",
+                            ":title"
+                          ],
+                          "variable": [
+                            {
+                              "key": "title"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/problem+json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"status\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T03:29:56.000Z",
+                      "updatedAt": "2026-07-28T03:29:56.000Z",
+                      "uid": "35240-2b06a4be-c4fa-4cc0-9f47-71079eec7b90"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:29:56.000Z",
+                  "updatedAt": "2026-07-28T03:29:56.000Z",
+                  "uid": "35240-750515d3-161c-4d86-bb91-d18a854eb161"
+                }
+              ],
+              "id": "a19d95e0-97bb-45ae-b5a6-18ad8ad260c7",
+              "createdAt": "2026-07-28T03:29:56.000Z",
+              "updatedAt": "2026-07-28T03:29:56.000Z",
+              "uid": "35240-a19d95e0-97bb-45ae-b5a6-18ad8ad260c7"
+            }
+          ],
+          "id": "976b0f03-e111-40b0-8789-0f8b980aedbd",
+          "createdAt": "2026-07-28T03:29:56.000Z",
+          "updatedAt": "2026-07-28T03:29:56.000Z",
+          "uid": "35240-976b0f03-e111-40b0-8789-0f8b980aedbd"
+        }
+      ],
+      "id": "3d3a9598-1189-4930-9ce2-77ba634ac43a",
+      "createdAt": "2026-07-28T03:29:56.000Z",
+      "updatedAt": "2026-07-28T03:29:56.000Z",
+      "uid": "35240-3d3a9598-1189-4930-9ce2-77ba634ac43a"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://en.wiktionary.org/w/rest.php"
+    }
+  ]
+}
