@@ -5,7 +5,7 @@
       "source": "https://diff.wikimedia.org/feed/",
       "feed_url": "https://diff.wikimedia.org/feed/",
       "title": "",
-      "saved": 1,
+      "saved": 0,
       "method": "feed"
     },
     {
@@ -23,6 +23,6 @@
       "method": "discovered"
     }
   ],
-  "post_count": 110,
-  "fetched": "2026-08-01T15:49:00Z"
+  "post_count": 120,
+  "fetched": "2026-08-06T14:08:46Z"
 }
