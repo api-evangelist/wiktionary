@@ -138,14 +138,6 @@ apis:
     url: examples/mediawiki-action-api-revision-page-example.json
   - type: Examples
     url: examples/mediawiki-action-api-search-hit-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-expandtemplates.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-opensearch.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-parse.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-query.yaml
   - type: Documentation
     url: https://en.wiktionary.org/api/rest_v1/
   - type: APIReference
@@ -216,12 +208,6 @@ apis:
     url: examples/rest-api-revision-metadata-example.json
   - type: Examples
     url: examples/rest-api-wikitext-transform-request-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/rest-api-definition.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-api-page-content.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-api-transform.yaml
   - type: Documentation
     url: https://www.mediawiki.org/wiki/API:REST_API
   - type: APIReference
@@ -290,14 +276,6 @@ apis:
     url: examples/core-rest-api-search-page-example.json
   - type: Examples
     url: examples/core-rest-api-search-response-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-file.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-history.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-page.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-search.yaml
 - aid: wiktionary:wiktionary-expandtemplates-api
   name: Wiktionary ExpandTemplates API
   description: action=expandtemplates — Expand wikitext templates server-side
@@ -394,14 +372,6 @@ apis:
     url: examples/mediawiki-action-api-revision-page-example.json
   - type: Examples
     url: examples/mediawiki-action-api-search-hit-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-expandtemplates.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-opensearch.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-parse.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-query.yaml
   - type: Documentation
     url: https://en.wiktionary.org/api/rest_v1/
   - type: APIReference
@@ -472,12 +442,6 @@ apis:
     url: examples/rest-api-revision-metadata-example.json
   - type: Examples
     url: examples/rest-api-wikitext-transform-request-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/rest-api-definition.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-api-page-content.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-api-transform.yaml
   - type: Documentation
     url: https://www.mediawiki.org/wiki/API:REST_API
   - type: APIReference
@@ -546,14 +510,6 @@ apis:
     url: examples/core-rest-api-search-page-example.json
   - type: Examples
     url: examples/core-rest-api-search-response-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-file.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-history.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-page.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-search.yaml
 - aid: wiktionary:wiktionary-file-api
   name: Wiktionary File API
   description: File and media metadata
@@ -650,14 +606,6 @@ apis:
     url: examples/mediawiki-action-api-revision-page-example.json
   - type: Examples
     url: examples/mediawiki-action-api-search-hit-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-expandtemplates.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-opensearch.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-parse.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-query.yaml
   - type: Documentation
     url: https://en.wiktionary.org/api/rest_v1/
   - type: APIReference
@@ -728,12 +676,6 @@ apis:
     url: examples/rest-api-revision-metadata-example.json
   - type: Examples
     url: examples/rest-api-wikitext-transform-request-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/rest-api-definition.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-api-page-content.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-api-transform.yaml
   - type: Documentation
     url: https://www.mediawiki.org/wiki/API:REST_API
   - type: APIReference
@@ -802,14 +744,6 @@ apis:
     url: examples/core-rest-api-search-page-example.json
   - type: Examples
     url: examples/core-rest-api-search-response-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-file.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-history.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-page.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-search.yaml
 - aid: wiktionary:wiktionary-history-api
   name: Wiktionary History API
   description: Page history and revision details
@@ -906,14 +840,6 @@ apis:
     url: examples/mediawiki-action-api-revision-page-example.json
   - type: Examples
     url: examples/mediawiki-action-api-search-hit-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-expandtemplates.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-opensearch.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-parse.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-query.yaml
   - type: Documentation
     url: https://en.wiktionary.org/api/rest_v1/
   - type: APIReference
@@ -984,12 +910,6 @@ apis:
     url: examples/rest-api-revision-metadata-example.json
   - type: Examples
     url: examples/rest-api-wikitext-transform-request-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/rest-api-definition.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-api-page-content.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-api-transform.yaml
   - type: Documentation
     url: https://www.mediawiki.org/wiki/API:REST_API
   - type: APIReference
@@ -1058,14 +978,6 @@ apis:
     url: examples/core-rest-api-search-page-example.json
   - type: Examples
     url: examples/core-rest-api-search-response-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-file.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-history.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-page.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-search.yaml
 - aid: wiktionary:wiktionary-opensearch-api
   name: Wiktionary OpenSearch API
   description: action=opensearch — OpenSearch suggestions protocol
@@ -1162,14 +1074,6 @@ apis:
     url: examples/mediawiki-action-api-revision-page-example.json
   - type: Examples
     url: examples/mediawiki-action-api-search-hit-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-expandtemplates.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-opensearch.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-parse.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-query.yaml
   - type: Documentation
     url: https://en.wiktionary.org/api/rest_v1/
   - type: APIReference
@@ -1240,12 +1144,6 @@ apis:
     url: examples/rest-api-revision-metadata-example.json
   - type: Examples
     url: examples/rest-api-wikitext-transform-request-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/rest-api-definition.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-api-page-content.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-api-transform.yaml
   - type: Documentation
     url: https://www.mediawiki.org/wiki/API:REST_API
   - type: APIReference
@@ -1314,14 +1212,6 @@ apis:
     url: examples/core-rest-api-search-page-example.json
   - type: Examples
     url: examples/core-rest-api-search-response-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-file.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-history.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-page.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-search.yaml
 - aid: wiktionary:wiktionary-page-api
   name: Wiktionary Page API
   description: Page content, source, and HTML
@@ -1418,14 +1308,6 @@ apis:
     url: examples/mediawiki-action-api-revision-page-example.json
   - type: Examples
     url: examples/mediawiki-action-api-search-hit-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-expandtemplates.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-opensearch.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-parse.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-query.yaml
   - type: Documentation
     url: https://en.wiktionary.org/api/rest_v1/
   - type: APIReference
@@ -1496,12 +1378,6 @@ apis:
     url: examples/rest-api-revision-metadata-example.json
   - type: Examples
     url: examples/rest-api-wikitext-transform-request-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/rest-api-definition.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-api-page-content.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-api-transform.yaml
   - type: Documentation
     url: https://www.mediawiki.org/wiki/API:REST_API
   - type: APIReference
@@ -1570,14 +1446,6 @@ apis:
     url: examples/core-rest-api-search-page-example.json
   - type: Examples
     url: examples/core-rest-api-search-response-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-file.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-history.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-page.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-search.yaml
 - aid: wiktionary:wiktionary-page-content-api
   name: Wiktionary Page Content API
   description: Page HTML, summary, title metadata, and mobile-optimised HTML
@@ -1674,14 +1542,6 @@ apis:
     url: examples/mediawiki-action-api-revision-page-example.json
   - type: Examples
     url: examples/mediawiki-action-api-search-hit-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-expandtemplates.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-opensearch.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-parse.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-query.yaml
   - type: Documentation
     url: https://en.wiktionary.org/api/rest_v1/
   - type: APIReference
@@ -1752,12 +1612,6 @@ apis:
     url: examples/rest-api-revision-metadata-example.json
   - type: Examples
     url: examples/rest-api-wikitext-transform-request-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/rest-api-definition.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-api-page-content.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-api-transform.yaml
   - type: Documentation
     url: https://www.mediawiki.org/wiki/API:REST_API
   - type: APIReference
@@ -1826,14 +1680,6 @@ apis:
     url: examples/core-rest-api-search-page-example.json
   - type: Examples
     url: examples/core-rest-api-search-response-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-file.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-history.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-page.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-search.yaml
 - aid: wiktionary:wiktionary-parse-api
   name: Wiktionary Parse API
   description: action=parse — Render wikitext to HTML and parse section trees
@@ -1930,14 +1776,6 @@ apis:
     url: examples/mediawiki-action-api-revision-page-example.json
   - type: Examples
     url: examples/mediawiki-action-api-search-hit-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-expandtemplates.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-opensearch.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-parse.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-query.yaml
   - type: Documentation
     url: https://en.wiktionary.org/api/rest_v1/
   - type: APIReference
@@ -2008,12 +1846,6 @@ apis:
     url: examples/rest-api-revision-metadata-example.json
   - type: Examples
     url: examples/rest-api-wikitext-transform-request-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/rest-api-definition.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-api-page-content.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-api-transform.yaml
   - type: Documentation
     url: https://www.mediawiki.org/wiki/API:REST_API
   - type: APIReference
@@ -2082,14 +1914,6 @@ apis:
     url: examples/core-rest-api-search-page-example.json
   - type: Examples
     url: examples/core-rest-api-search-response-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-file.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-history.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-page.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-search.yaml
 - aid: wiktionary:wiktionary-query-api
   name: Wiktionary Query API
   description: action=query — Fetch wikitext, extracts, revisions, and search results
@@ -2186,14 +2010,6 @@ apis:
     url: examples/mediawiki-action-api-revision-page-example.json
   - type: Examples
     url: examples/mediawiki-action-api-search-hit-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-expandtemplates.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-opensearch.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-parse.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-query.yaml
   - type: Documentation
     url: https://en.wiktionary.org/api/rest_v1/
   - type: APIReference
@@ -2264,12 +2080,6 @@ apis:
     url: examples/rest-api-revision-metadata-example.json
   - type: Examples
     url: examples/rest-api-wikitext-transform-request-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/rest-api-definition.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-api-page-content.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-api-transform.yaml
   - type: Documentation
     url: https://www.mediawiki.org/wiki/API:REST_API
   - type: APIReference
@@ -2338,14 +2148,6 @@ apis:
     url: examples/core-rest-api-search-page-example.json
   - type: Examples
     url: examples/core-rest-api-search-response-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-file.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-history.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-page.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-search.yaml
 - aid: wiktionary:wiktionary-search-api
   name: Wiktionary Search API
   description: Title-prefix and full-text search
@@ -2442,14 +2244,6 @@ apis:
     url: examples/mediawiki-action-api-revision-page-example.json
   - type: Examples
     url: examples/mediawiki-action-api-search-hit-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-expandtemplates.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-opensearch.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-parse.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-query.yaml
   - type: Documentation
     url: https://en.wiktionary.org/api/rest_v1/
   - type: APIReference
@@ -2520,12 +2314,6 @@ apis:
     url: examples/rest-api-revision-metadata-example.json
   - type: Examples
     url: examples/rest-api-wikitext-transform-request-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/rest-api-definition.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-api-page-content.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-api-transform.yaml
   - type: Documentation
     url: https://www.mediawiki.org/wiki/API:REST_API
   - type: APIReference
@@ -2594,14 +2382,6 @@ apis:
     url: examples/core-rest-api-search-page-example.json
   - type: Examples
     url: examples/core-rest-api-search-response-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-file.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-history.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-page.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-search.yaml
 - aid: wiktionary:wiktionary-transform-api
   name: Wiktionary Transform API
   description: Parsoid wikitext ↔ HTML transforms and lint
@@ -2698,14 +2478,6 @@ apis:
     url: examples/mediawiki-action-api-revision-page-example.json
   - type: Examples
     url: examples/mediawiki-action-api-search-hit-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-expandtemplates.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-opensearch.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-parse.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/mediawiki-action-api-query.yaml
   - type: Documentation
     url: https://en.wiktionary.org/api/rest_v1/
   - type: APIReference
@@ -2776,12 +2548,6 @@ apis:
     url: examples/rest-api-revision-metadata-example.json
   - type: Examples
     url: examples/rest-api-wikitext-transform-request-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/rest-api-definition.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-api-page-content.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-api-transform.yaml
   - type: Documentation
     url: https://www.mediawiki.org/wiki/API:REST_API
   - type: APIReference
@@ -2850,14 +2616,6 @@ apis:
     url: examples/core-rest-api-search-page-example.json
   - type: Examples
     url: examples/core-rest-api-search-response-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-file.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-history.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-page.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/core-rest-api-search.yaml
 common:
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/wiktionary/overview
