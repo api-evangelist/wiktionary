@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wiktionary MediaWiki Core REST Definition Page API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Page",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Wiktionary Get Page",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://en.wiktionary.org/w/rest.php/v1/page/:title",
+            "params": [
+              {
+                "name": "title",
+                "value": "hello",
+                "type": "path",
+                "description": "URL-encoded page title."
+              }
+            ]
+          },
+          "docs": "Fetch the source wikitext and metadata for a Wiktionary page by title."
+        },
+        {
+          "info": {
+            "name": "Wiktionary Get Page HTML",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://en.wiktionary.org/w/rest.php/v1/page/:title/html",
+            "params": [
+              {
+                "name": "title",
+                "value": "hello",
+                "type": "path",
+                "description": "URL-encoded page title."
+              }
+            ]
+          },
+          "docs": "Fetch the rendered HTML body for a Wiktionary page."
+        },
+        {
+          "info": {
+            "name": "Wiktionary Get Page with HTML",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://en.wiktionary.org/w/rest.php/v1/page/:title/with_html",
+            "params": [
+              {
+                "name": "title",
+                "value": "hello",
+                "type": "path",
+                "description": "URL-encoded page title."
+              }
+            ]
+          },
+          "docs": "Fetch both the source and rendered HTML for a page in one response."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

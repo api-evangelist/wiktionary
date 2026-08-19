@@ -1,0 +1,99 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wiktionary MediaWiki Core REST Definition Transform API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Transform",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Wiktionary Transform Wikitext to HTML",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://en.wiktionary.org/w/rest.php/transform/wikitext/to/html/:title",
+            "params": [
+              {
+                "name": "title",
+                "value": "hello",
+                "type": "path",
+                "description": "URL-encoded page title context."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Convert supplied wikitext to Parsoid HTML in the context of a page title. Rate-limited to 25 req/s (5 req/s with stash=true)."
+        },
+        {
+          "info": {
+            "name": "Wiktionary Transform HTML to Wikitext",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://en.wiktionary.org/w/rest.php/transform/html/to/wikitext/:title/:revision",
+            "headers": [
+              {
+                "name": "If-Match",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "title",
+                "value": "hello",
+                "type": "path",
+                "description": "URL-encoded page title."
+              },
+              {
+                "name": "revision",
+                "value": "12345",
+                "type": "path",
+                "description": "Revision id to anchor the round-trip against."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Convert supplied Parsoid HTML back to wikitext for a given page and revision. Requires an If-Match ETag header. Rate-limited to 25 req/s."
+        },
+        {
+          "info": {
+            "name": "Wiktionary Transform Wikitext to Lint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://en.wiktionary.org/w/rest.php/transform/wikitext/to/lint/:title",
+            "params": [
+              {
+                "name": "title",
+                "value": "hello",
+                "type": "path",
+                "description": "URL-encoded page title context."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Lint supplied wikitext and return a list of structural and semantic issues. Experimental stability."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

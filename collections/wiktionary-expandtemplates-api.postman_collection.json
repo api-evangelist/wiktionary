@@ -1,0 +1,159 @@
+{
+  "item": [
+    {
+      "id": "868e691c-5b94-47b1-83f9-f3a0aec0dfac",
+      "name": "ExpandTemplates",
+      "description": {
+        "content": "action=expandtemplates — Expand wikitext templates server-side",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "48184085-9325-4ad9-8d72-5bfde8d08f53",
+          "name": "Wiktionary Expand Templates",
+          "request": {
+            "name": "Wiktionary Expand Templates",
+            "description": {
+              "content": "Expand templates and parser functions in supplied wikitext and return the result.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api.php"
+              ],
+              "hash": "expandtemplates",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "action",
+                  "value": "expandtemplates",
+                  "description": "(Required) Must be `expandtemplates`."
+                },
+                {
+                  "disabled": false,
+                  "key": "text",
+                  "value": "<string>",
+                  "description": "(Required) Wikitext containing templates to expand."
+                },
+                {
+                  "disabled": false,
+                  "key": "title",
+                  "value": "<string>",
+                  "description": "Page title context for the expansion."
+                },
+                {
+                  "disabled": false,
+                  "key": "prop",
+                  "value": "wikitext",
+                  "description": "Which expansion properties to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "json",
+                  "description": "Response format."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "25a241f8-c38a-4171-b5f6-02104c007a2a",
+              "name": "Expanded templates response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api.php"
+                  ],
+                  "hash": "expandtemplates",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "expandtemplates"
+                    },
+                    {
+                      "key": "text",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "title",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prop",
+                      "value": "wikitext"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"expandtemplates\": {\n    \"wikitext\": \"A standard greeting.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://en.wiktionary.org/w/rest.php",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "a8f11628-b6d0-4fac-9d1e-7c9002fe911a",
+    "name": "Wiktionary MediaWiki Core REST Definition ExpandTemplates API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The newer MediaWiki Core REST API, exposed per wiki at /w/rest.php. It offers a smaller, streamlined surface than the Action API for fetching page content, history, search, files, and revisions. On Wiktionary it serves the same content as the Action API in a more developer-friendly JSON shape. All content is CC BY-SA 4.0.\n\nContact Support:\n Name: Wikimedia Foundation",
+      "type": "text/plain"
+    }
+  }
+}

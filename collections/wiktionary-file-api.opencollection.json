@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wiktionary MediaWiki Core REST Definition File API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "File",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Wiktionary Get File",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://en.wiktionary.org/w/rest.php/v1/file/:title",
+            "params": [
+              {
+                "name": "title",
+                "value": "File:En-us-hello.ogg",
+                "type": "path",
+                "description": "URL-encoded file title (e.g. `File:Hello.ogg`)."
+              }
+            ]
+          },
+          "docs": "Fetch metadata for a file (image, audio, video) hosted on Wiktionary or Commons."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

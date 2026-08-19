@@ -1,0 +1,99 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wiktionary MediaWiki Core REST Definition History API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "History",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Wiktionary Get Page History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://en.wiktionary.org/w/rest.php/v1/page/:title/history",
+            "params": [
+              {
+                "name": "title",
+                "value": "hello",
+                "type": "path",
+                "description": "URL-encoded page title."
+              },
+              {
+                "name": "older_than",
+                "value": "",
+                "type": "query",
+                "description": "Return revisions older than this revision id."
+              },
+              {
+                "name": "newer_than",
+                "value": "",
+                "type": "query",
+                "description": "Return revisions newer than this revision id."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Filter revisions (reverted, anonymous, bot, minor)."
+              }
+            ]
+          },
+          "docs": "Return a paged list of revisions for a page."
+        },
+        {
+          "info": {
+            "name": "Wiktionary Get Page History Count",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://en.wiktionary.org/w/rest.php/v1/page/:title/history/counts/:type",
+            "params": [
+              {
+                "name": "title",
+                "value": "hello",
+                "type": "path",
+                "description": "URL-encoded page title."
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "Which kind of revisions to count."
+              }
+            ]
+          },
+          "docs": "Return a single numeric count of revisions for a page filtered by type."
+        },
+        {
+          "info": {
+            "name": "Wiktionary Get Revision Bare",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://en.wiktionary.org/w/rest.php/v1/revision/:id/bare",
+            "params": [
+              {
+                "name": "id",
+                "value": "7654321",
+                "type": "path",
+                "description": "Revision id."
+              }
+            ]
+          },
+          "docs": "Fetch the bare metadata for a single revision id."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

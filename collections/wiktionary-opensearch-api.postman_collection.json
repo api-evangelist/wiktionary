@@ -1,0 +1,159 @@
+{
+  "item": [
+    {
+      "id": "d2ea19b1-287e-4b55-b36e-c2e8b73b20e5",
+      "name": "OpenSearch",
+      "description": {
+        "content": "action=opensearch — OpenSearch suggestions protocol",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2fc2fff2-4787-46e7-ace9-1ec8ac8bc290",
+          "name": "Wiktionary OpenSearch Suggest",
+          "request": {
+            "name": "Wiktionary OpenSearch Suggest",
+            "description": {
+              "content": "Return autocomplete suggestions following the OpenSearch suggestions protocol. Response is a 4-element array (query, titles, descriptions, urls).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api.php"
+              ],
+              "hash": "opensearch",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "action",
+                  "value": "opensearch",
+                  "description": "(Required) Must be `opensearch`."
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "(Required) Prefix to autocomplete."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Maximum number of suggestions to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "namespace",
+                  "value": "0",
+                  "description": "Pipe-separated namespace numbers to search within."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "json",
+                  "description": "Response format."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c527041c-baee-4ffb-aaf3-9f6dbbe63a31",
+              "name": "OpenSearch suggestions response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api.php"
+                  ],
+                  "hash": "opensearch",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "opensearch"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "namespace",
+                      "value": "0"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  \"string\",\n  \"string\",\n  \"string\",\n  \"string\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://en.wiktionary.org/w/rest.php",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "8388f85b-61ae-44a8-abec-3839378d7e84",
+    "name": "Wiktionary MediaWiki Core REST Definition OpenSearch API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The newer MediaWiki Core REST API, exposed per wiki at /w/rest.php. It offers a smaller, streamlined surface than the Action API for fetching page content, history, search, files, and revisions. On Wiktionary it serves the same content as the Action API in a more developer-friendly JSON shape. All content is CC BY-SA 4.0.\n\nContact Support:\n Name: Wikimedia Foundation",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,227 @@
+{
+  "item": [
+    {
+      "id": "18f3c077-e230-473d-afa4-932a3dcf15df",
+      "name": "Search",
+      "description": {
+        "content": "Title-prefix and full-text search",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "400601a3-a958-457c-a025-e8c88d2584cc",
+          "name": "Wiktionary Search Page",
+          "request": {
+            "name": "Wiktionary Search Page",
+            "description": {
+              "content": "Full-text search across Wiktionary pages.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "search",
+                "page"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) Search query string."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "Maximum results to return (1-100, default 50)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ec57f0e2-47ca-40d2-ac97-8824050ead8a",
+              "name": "Search results.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "search",
+                    "page"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "greeting"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pages\": [\n    {\n      \"id\": 12345,\n      \"key\": \"hello\",\n      \"title\": \"hello\",\n      \"excerpt\": \"A standard <span class=\\\"searchmatch\\\">greeting</span>.\",\n      \"matched_title\": null,\n      \"description\": \"English interjection.\",\n      \"thumbnail\": {\n        \"url\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/example.png\",\n        \"width\": 60,\n        \"height\": 60\n      }\n    },\n    {\n      \"id\": 12345,\n      \"key\": \"hello\",\n      \"title\": \"hello\",\n      \"excerpt\": \"A standard <span class=\\\"searchmatch\\\">greeting</span>.\",\n      \"matched_title\": null,\n      \"description\": \"English interjection.\",\n      \"thumbnail\": {\n        \"url\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/example.png\",\n        \"width\": 60,\n        \"height\": 60\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0710e6f7-605a-4bff-8e64-49ad10befddd",
+          "name": "Wiktionary Search Title",
+          "request": {
+            "name": "Wiktionary Search Title",
+            "description": {
+              "content": "Title-prefix autocomplete search for Wiktionary pages.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "search",
+                "title"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) Title prefix to autocomplete."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "Maximum results to return."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f2a0c512-b127-4feb-9a26-b883e482f01c",
+              "name": "Title autocomplete results.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "search",
+                    "title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "hel"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pages\": [\n    {\n      \"id\": 12345,\n      \"key\": \"hello\",\n      \"title\": \"hello\",\n      \"excerpt\": \"A standard <span class=\\\"searchmatch\\\">greeting</span>.\",\n      \"matched_title\": null,\n      \"description\": \"English interjection.\",\n      \"thumbnail\": {\n        \"url\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/example.png\",\n        \"width\": 60,\n        \"height\": 60\n      }\n    },\n    {\n      \"id\": 12345,\n      \"key\": \"hello\",\n      \"title\": \"hello\",\n      \"excerpt\": \"A standard <span class=\\\"searchmatch\\\">greeting</span>.\",\n      \"matched_title\": null,\n      \"description\": \"English interjection.\",\n      \"thumbnail\": {\n        \"url\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/example.png\",\n        \"width\": 60,\n        \"height\": 60\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://en.wiktionary.org/w/rest.php",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "fb3b41a1-bef5-4631-9861-2f74e0794255",
+    "name": "Wiktionary MediaWiki Core REST Definition Search API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The newer MediaWiki Core REST API, exposed per wiki at /w/rest.php. It offers a smaller, streamlined surface than the Action API for fetching page content, history, search, files, and revisions. On Wiktionary it serves the same content as the Action API in a more developer-friendly JSON shape. All content is CC BY-SA 4.0.\n\nContact Support:\n Name: Wikimedia Foundation",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,208 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wiktionary MediaWiki Core REST Definition Query API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Query",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Wiktionary Query Action",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://en.wiktionary.org/w/rest.php/api.php",
+            "params": [
+              {
+                "name": "action",
+                "value": "",
+                "type": "query",
+                "description": "Which Action API module to dispatch."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Response format."
+              },
+              {
+                "name": "titles",
+                "value": "",
+                "type": "query",
+                "description": "Pipe-separated list of page titles (max 50 per request)."
+              },
+              {
+                "name": "prop",
+                "value": "",
+                "type": "query",
+                "description": "Properties to fetch (e.g. wikitext, extracts, revisions, links)."
+              },
+              {
+                "name": "list",
+                "value": "",
+                "type": "query",
+                "description": "Lists to fetch (e.g. search, allpages, recentchanges)."
+              },
+              {
+                "name": "meta",
+                "value": "",
+                "type": "query",
+                "description": "Meta information (e.g. siteinfo, tokens, userinfo)."
+              }
+            ]
+          },
+          "docs": "Dispatch any read-only MediaWiki Action API call. The `action` query parameter selects the module (query, parse, opensearch, expandtemplates). Use the more specific operations below for typed access, or pass arbitrary `action`/`format` values here."
+        },
+        {
+          "info": {
+            "name": "Wiktionary Query Wikitext",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://en.wiktionary.org/w/rest.php/api.php#query-wikitext",
+            "params": [
+              {
+                "name": "action",
+                "value": "",
+                "type": "query",
+                "description": "Must be `query`."
+              },
+              {
+                "name": "prop",
+                "value": "",
+                "type": "query",
+                "description": "Must be `revisions`."
+              },
+              {
+                "name": "rvprop",
+                "value": "",
+                "type": "query",
+                "description": "Revision properties to fetch (use `content` for wikitext)."
+              },
+              {
+                "name": "titles",
+                "value": "",
+                "type": "query",
+                "description": "Pipe-separated page titles."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Response format."
+              }
+            ]
+          },
+          "docs": "Fetch the raw wikitext for one or more pages via action=query&prop=revisions&rvprop=content."
+        },
+        {
+          "info": {
+            "name": "Wiktionary Query Extracts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://en.wiktionary.org/w/rest.php/api.php#query-extracts",
+            "params": [
+              {
+                "name": "action",
+                "value": "",
+                "type": "query",
+                "description": "Must be `query`."
+              },
+              {
+                "name": "prop",
+                "value": "",
+                "type": "query",
+                "description": "Must be `extracts`."
+              },
+              {
+                "name": "titles",
+                "value": "",
+                "type": "query",
+                "description": "Pipe-separated page titles."
+              },
+              {
+                "name": "exintro",
+                "value": "",
+                "type": "query",
+                "description": "Return only the lead section."
+              },
+              {
+                "name": "explaintext",
+                "value": "",
+                "type": "query",
+                "description": "Return plain text instead of limited HTML."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Response format."
+              }
+            ]
+          },
+          "docs": "Fetch plain-text or limited-HTML extracts of pages via action=query&prop=extracts. Powered by the TextExtracts extension."
+        },
+        {
+          "info": {
+            "name": "Wiktionary Query Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://en.wiktionary.org/w/rest.php/api.php#query-search",
+            "params": [
+              {
+                "name": "action",
+                "value": "",
+                "type": "query",
+                "description": "Must be `query`."
+              },
+              {
+                "name": "list",
+                "value": "",
+                "type": "query",
+                "description": "Must be `search`."
+              },
+              {
+                "name": "srsearch",
+                "value": "",
+                "type": "query",
+                "description": "Search query string."
+              },
+              {
+                "name": "srlimit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return (max 500)."
+              },
+              {
+                "name": "sroffset",
+                "value": "",
+                "type": "query",
+                "description": "Offset into the result set for paging."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Response format."
+              }
+            ]
+          },
+          "docs": "Full-text search across Wiktionary pages via action=query&list=search. Backed by ElasticSearch (CirrusSearch)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

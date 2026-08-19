@@ -1,0 +1,170 @@
+{
+  "item": [
+    {
+      "id": "ef3d2f91-17dc-4035-b171-6cf190c3eed3",
+      "name": "File",
+      "description": {
+        "content": "File and media metadata",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1165c492-5b6c-4611-87b2-683f9ea229b3",
+          "name": "Wiktionary Get File",
+          "request": {
+            "name": "Wiktionary Get File",
+            "description": {
+              "content": "Fetch metadata for a file (image, audio, video) hosted on Wiktionary or Commons.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "file",
+                ":title"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "title",
+                  "description": "(Required) URL-encoded file title (e.g. `File:Hello.ogg`)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dbb0d5c0-bbeb-4a1a-9bf8-69bce3860ce3",
+              "name": "File metadata.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "file",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) URL-encoded file title (e.g. `File:Hello.ogg`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"File:En-us-hello.ogg\",\n  \"file_description_url\": \"https://commons.wikimedia.org/wiki/File:En-us-hello.ogg\",\n  \"latest\": {\n    \"timestamp\": \"2025-03-15T14:30:00Z\",\n    \"user\": {\n      \"id\": 1,\n      \"name\": \"ExampleUploader\"\n    }\n  },\n  \"preferred\": {\n    \"mediatype\": \"AUDIO\",\n    \"size\": 8192,\n    \"width\": null,\n    \"height\": null,\n    \"duration\": 1.4,\n    \"url\": \"https://upload.wikimedia.org/wikipedia/commons/example/En-us-hello.ogg\"\n  },\n  \"original\": {\n    \"key_0\": 2897,\n    \"key_1\": \"string\",\n    \"key_2\": false,\n    \"key_3\": 3236\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "409b0c53-a424-416c-a465-73324e54c62b",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "file",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) URL-encoded file title (e.g. `File:Hello.ogg`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://mediawiki.org/wiki/HyperSwitch/errors/not_found\",\n  \"title\": \"Not found.\",\n  \"detail\": \"Page not found.\",\n  \"instance\": \"/v1/page/nonexistentword\",\n  \"status\": 404\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://en.wiktionary.org/w/rest.php",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "c4671310-b7dd-45b3-a663-11b3d2c3e7eb",
+    "name": "Wiktionary MediaWiki Core REST Definition File API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The newer MediaWiki Core REST API, exposed per wiki at /w/rest.php. It offers a smaller, streamlined surface than the Action API for fetching page content, history, search, files, and revisions. On Wiktionary it serves the same content as the Action API in a more developer-friendly JSON shape. All content is CC BY-SA 4.0.\n\nContact Support:\n Name: Wikimedia Foundation",
+      "type": "text/plain"
+    }
+  }
+}

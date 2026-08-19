@@ -1,0 +1,124 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wiktionary MediaWiki Core REST Definition Page Content API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Page Content",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Wiktionary Get Page Summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://en.wiktionary.org/w/rest.php/page/summary/:title",
+            "params": [
+              {
+                "name": "title",
+                "value": "hello",
+                "type": "path",
+                "description": "URL-encoded page title."
+              },
+              {
+                "name": "redirect",
+                "value": "",
+                "type": "query",
+                "description": "Whether to follow redirects."
+              }
+            ]
+          },
+          "docs": "Return a short structured summary of a Wiktionary page, including the leading extract and metadata. Useful for previews and tooltips."
+        },
+        {
+          "info": {
+            "name": "Wiktionary Get Page HTML",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://en.wiktionary.org/w/rest.php/page/html/:title",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "title",
+                "value": "hello",
+                "type": "path",
+                "description": "URL-encoded page title."
+              },
+              {
+                "name": "redirect",
+                "value": "",
+                "type": "query",
+                "description": "Whether to follow redirects."
+              },
+              {
+                "name": "stash",
+                "value": "",
+                "type": "query",
+                "description": "Whether to stash the result for later transform calls."
+              }
+            ]
+          },
+          "docs": "Return the latest Parsoid HTML for a page title. Suitable for direct rendering in client applications."
+        },
+        {
+          "info": {
+            "name": "Wiktionary Get Page Title Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://en.wiktionary.org/w/rest.php/page/title/:title",
+            "params": [
+              {
+                "name": "title",
+                "value": "hello",
+                "type": "path",
+                "description": "URL-encoded page title."
+              }
+            ]
+          },
+          "docs": "Return revision metadata for a page title — latest revision id, timestamp, comment, and user."
+        },
+        {
+          "info": {
+            "name": "Wiktionary Get Page Mobile HTML",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://en.wiktionary.org/w/rest.php/page/mobile-html/:title",
+            "params": [
+              {
+                "name": "title",
+                "value": "hello",
+                "type": "path",
+                "description": "URL-encoded page title."
+              },
+              {
+                "name": "redirect",
+                "value": "",
+                "type": "query",
+                "description": "Whether to follow redirects."
+              }
+            ]
+          },
+          "docs": "Return mobile-optimised HTML for a page (lazy-loadable images, collapsed tables, theme support). Experimental stability."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

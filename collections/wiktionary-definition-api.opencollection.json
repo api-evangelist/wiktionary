@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wiktionary MediaWiki Core REST Definition API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Definition",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Wiktionary Get Definition",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://en.wiktionary.org/w/rest.php/page/definition/:term",
+            "params": [
+              {
+                "name": "term",
+                "value": "hello",
+                "type": "path",
+                "description": "The dictionary term (URL-encoded; case-sensitive on Wiktionary)."
+              },
+              {
+                "name": "redirect",
+                "value": "",
+                "type": "query",
+                "description": "Whether to follow page redirects (defaults to true)."
+              }
+            ]
+          },
+          "docs": "Return a multilingual structured definition for a term, broken down by source language code (en, fr, de, …) and then by part of speech. Wiktionary-specific endpoint built on top of Parsoid parsing."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,608 @@
+{
+  "item": [
+    {
+      "id": "2cef4053-4c50-412a-82b1-13aabd352c4e",
+      "name": "Page Content",
+      "description": {
+        "content": "Page HTML, summary, title metadata, and mobile-optimised HTML",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "caaee65e-7d53-4625-8d51-1f20737dca31",
+          "name": "Wiktionary Get Page Summary",
+          "request": {
+            "name": "Wiktionary Get Page Summary",
+            "description": {
+              "content": "Return a short structured summary of a Wiktionary page, including the leading extract and metadata. Useful for previews and tooltips.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "page",
+                "summary",
+                ":title"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "redirect",
+                  "value": "true",
+                  "description": "Whether to follow redirects."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "title",
+                  "description": "(Required) URL-encoded page title."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4f135524-b202-4e07-a8a6-2f19fea4d3b1",
+              "name": "Page summary response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "summary",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "redirect",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) URL-encoded page title."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"standard\",\n  \"title\": \"hello\",\n  \"displaytitle\": \"hello\",\n  \"pageid\": 12345,\n  \"extract\": \"A standard greeting; an expression of puzzlement.\",\n  \"extract_html\": \"<p>A standard greeting.</p>\",\n  \"content_urls\": {\n    \"desktop\": {\n      \"page\": \"https://en.wiktionary.org/wiki/hello\"\n    },\n    \"mobile\": {\n      \"page\": \"https://en.m.wiktionary.org/wiki/hello\"\n    }\n  },\n  \"timestamp\": \"2025-03-15T14:30:00Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "574a43c0-45c5-49cf-b736-b024b77f3ce1",
+              "name": "Page not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "summary",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "redirect",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) URL-encoded page title."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://mediawiki.org/wiki/HyperSwitch/errors/not_found\",\n  \"title\": \"Not found.\",\n  \"method\": \"get\",\n  \"detail\": \"Page or revision not found.\",\n  \"uri\": \"/en.wiktionary.org/v1/page/definition/nonexistentword\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "743822a9-8bda-4695-b8d5-ab1a43ae3aa0",
+          "name": "Wiktionary Get Page HTML",
+          "request": {
+            "name": "Wiktionary Get Page HTML",
+            "description": {
+              "content": "Return the latest Parsoid HTML for a page title. Suitable for direct rendering in client applications.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "page",
+                "html",
+                ":title"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "redirect",
+                  "value": "true",
+                  "description": "Whether to follow redirects."
+                },
+                {
+                  "disabled": false,
+                  "key": "stash",
+                  "value": "false",
+                  "description": "Whether to stash the result for later transform calls."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "title",
+                  "description": "(Required) URL-encoded page title."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "BCP-47 language tag for content-language negotiation.",
+                "key": "Accept-Language",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f0d9616d-9a10-4749-9282-64c4b54b7a74",
+              "name": "Parsoid HTML.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "html",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "redirect",
+                      "value": "true"
+                    },
+                    {
+                      "key": "stash",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) URL-encoded page title."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "BCP-47 language tag for content-language negotiation.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/html"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cdaeb2e0-a292-41b9-931b-248e1bae3260",
+              "name": "Page not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "html",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "redirect",
+                      "value": "true"
+                    },
+                    {
+                      "key": "stash",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) URL-encoded page title."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "BCP-47 language tag for content-language negotiation.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://mediawiki.org/wiki/HyperSwitch/errors/not_found\",\n  \"title\": \"Not found.\",\n  \"method\": \"get\",\n  \"detail\": \"Page or revision not found.\",\n  \"uri\": \"/en.wiktionary.org/v1/page/definition/nonexistentword\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5078bcbe-6d6d-4b18-8323-36be0d513163",
+          "name": "Wiktionary Get Page Title Metadata",
+          "request": {
+            "name": "Wiktionary Get Page Title Metadata",
+            "description": {
+              "content": "Return revision metadata for a page title — latest revision id, timestamp, comment, and user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "page",
+                "title",
+                ":title"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "title",
+                  "description": "(Required) URL-encoded page title."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "019592d0-17f4-42a7-98f1-93208548a547",
+              "name": "Revision metadata.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "title",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) URL-encoded page title."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"title\": \"hello\",\n      \"page_id\": 12345,\n      \"rev\": 7654321,\n      \"tid\": \"1c2d3e4f-aaaa-bbbb-cccc-ddddeeeeffff\",\n      \"namespace\": 0,\n      \"user_id\": 1,\n      \"user_text\": \"ExampleEditor\",\n      \"timestamp\": \"2025-03-15T14:30:00Z\",\n      \"comment\": \"typo fix\",\n      \"page_language\": \"en\"\n    },\n    {\n      \"title\": \"hello\",\n      \"page_id\": 12345,\n      \"rev\": 7654321,\n      \"tid\": \"1c2d3e4f-aaaa-bbbb-cccc-ddddeeeeffff\",\n      \"namespace\": 0,\n      \"user_id\": 1,\n      \"user_text\": \"ExampleEditor\",\n      \"timestamp\": \"2025-03-15T14:30:00Z\",\n      \"comment\": \"typo fix\",\n      \"page_language\": \"en\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f04d5bc4-bdc0-40d9-9fe5-ce29f53ac35d",
+              "name": "Page not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "title",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) URL-encoded page title."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://mediawiki.org/wiki/HyperSwitch/errors/not_found\",\n  \"title\": \"Not found.\",\n  \"method\": \"get\",\n  \"detail\": \"Page or revision not found.\",\n  \"uri\": \"/en.wiktionary.org/v1/page/definition/nonexistentword\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "70c53ee8-e009-4aea-b9bb-7fcb082903e4",
+          "name": "Wiktionary Get Page Mobile HTML",
+          "request": {
+            "name": "Wiktionary Get Page Mobile HTML",
+            "description": {
+              "content": "Return mobile-optimised HTML for a page (lazy-loadable images, collapsed tables, theme support). Experimental stability.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "page",
+                "mobile-html",
+                ":title"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "redirect",
+                  "value": "true",
+                  "description": "Whether to follow redirects."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "title",
+                  "description": "(Required) URL-encoded page title."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fc722aec-1e34-4cd4-a813-b939da81d85c",
+              "name": "Mobile-optimised HTML.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "mobile-html",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "redirect",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) URL-encoded page title."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/html"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://en.wiktionary.org/w/rest.php",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "1a935e47-ebc5-46ff-a899-80c5ec09a043",
+    "name": "Wiktionary MediaWiki Core REST Definition Page Content API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The newer MediaWiki Core REST API, exposed per wiki at /w/rest.php. It offers a smaller, streamlined surface than the Action API for fetching page content, history, search, files, and revisions. On Wiktionary it serves the same content as the Action API in a more developer-friendly JSON shape. All content is CC BY-SA 4.0.\n\nContact Support:\n Name: Wikimedia Foundation",
+      "type": "text/plain"
+    }
+  }
+}

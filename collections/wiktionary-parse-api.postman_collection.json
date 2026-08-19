@@ -1,0 +1,159 @@
+{
+  "item": [
+    {
+      "id": "29827c17-0925-488a-8c1b-7b35fdf7b03e",
+      "name": "Parse",
+      "description": {
+        "content": "action=parse — Render wikitext to HTML and parse section trees",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c4ecc04a-ad5f-486e-bacd-534fc7f46ba6",
+          "name": "Wiktionary Parse Page",
+          "request": {
+            "name": "Wiktionary Parse Page",
+            "description": {
+              "content": "Parse the wikitext of a page (or supplied text) and return rendered HTML, section structure, links, categories, and other parser output.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api.php"
+              ],
+              "hash": "parse",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "action",
+                  "value": "parse",
+                  "description": "(Required) Must be `parse`."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<string>",
+                  "description": "Title of the page to parse."
+                },
+                {
+                  "disabled": false,
+                  "key": "text",
+                  "value": "<string>",
+                  "description": "Wikitext to parse instead of an existing page."
+                },
+                {
+                  "disabled": false,
+                  "key": "prop",
+                  "value": "text|sections|links|categories",
+                  "description": "Which parts of the parser output to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "json",
+                  "description": "Response format."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "112717ba-fb0c-4f29-aaf0-dcb43ebc970e",
+              "name": "Parser output.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api.php"
+                  ],
+                  "hash": "parse",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "parse"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "text",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prop",
+                      "value": "text|sections|links|categories"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"parse\": {\n    \"title\": \"hello\",\n    \"pageid\": 12345,\n    \"text\": {\n      \"*\": \"<p><b>hello</b> — a standard greeting.</p>\"\n    },\n    \"sections\": [\n      {\n        \"toclevel\": 1,\n        \"level\": \"2\",\n        \"line\": \"English\",\n        \"number\": \"1\",\n        \"index\": \"1\",\n        \"fromtitle\": \"hello\",\n        \"anchor\": \"English\"\n      },\n      {\n        \"toclevel\": 1,\n        \"level\": \"2\",\n        \"line\": \"English\",\n        \"number\": \"1\",\n        \"index\": \"1\",\n        \"fromtitle\": \"hello\",\n        \"anchor\": \"English\"\n      }\n    ],\n    \"links\": [\n      {\n        \"key_0\": \"string\"\n      },\n      {\n        \"key_0\": false\n      }\n    ],\n    \"categories\": [\n      {\n        \"key_0\": false,\n        \"key_1\": 7733.183517599335\n      },\n      {\n        \"key_0\": 6340.62561148348\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://en.wiktionary.org/w/rest.php",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "ac839f87-ebf6-4c78-af2b-53d35c5f338a",
+    "name": "Wiktionary MediaWiki Core REST Definition Parse API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The newer MediaWiki Core REST API, exposed per wiki at /w/rest.php. It offers a smaller, streamlined surface than the Action API for fetching page content, history, search, files, and revisions. On Wiktionary it serves the same content as the Action API in a more developer-friendly JSON shape. All content is CC BY-SA 4.0.\n\nContact Support:\n Name: Wikimedia Foundation",
+      "type": "text/plain"
+    }
+  }
+}

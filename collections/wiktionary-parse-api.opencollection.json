@@ -1,0 +1,61 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wiktionary MediaWiki Core REST Definition Parse API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Parse",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Wiktionary Parse Page",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://en.wiktionary.org/w/rest.php/api.php#parse",
+            "params": [
+              {
+                "name": "action",
+                "value": "",
+                "type": "query",
+                "description": "Must be `parse`."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Title of the page to parse."
+              },
+              {
+                "name": "text",
+                "value": "",
+                "type": "query",
+                "description": "Wikitext to parse instead of an existing page."
+              },
+              {
+                "name": "prop",
+                "value": "",
+                "type": "query",
+                "description": "Which parts of the parser output to return."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Response format."
+              }
+            ]
+          },
+          "docs": "Parse the wikitext of a page (or supplied text) and return rendered HTML, section structure, links, categories, and other parser output."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

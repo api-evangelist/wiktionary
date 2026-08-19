@@ -1,0 +1,361 @@
+{
+  "item": [
+    {
+      "id": "a1d17c43-e213-440e-be6e-e310b89b22d7",
+      "name": "History",
+      "description": {
+        "content": "Page history and revision details",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7063ae51-b60f-4afc-bf2d-f9da0155d37b",
+          "name": "Wiktionary Get Page History",
+          "request": {
+            "name": "Wiktionary Get Page History",
+            "description": {
+              "content": "Return a paged list of revisions for a page.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "page",
+                ":title",
+                "history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "older_than",
+                  "value": "<integer>",
+                  "description": "Return revisions older than this revision id."
+                },
+                {
+                  "disabled": false,
+                  "key": "newer_than",
+                  "value": "<integer>",
+                  "description": "Return revisions newer than this revision id."
+                },
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>",
+                  "description": "Filter revisions (reverted, anonymous, bot, minor)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "title",
+                  "description": "(Required) URL-encoded page title."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4769e4c3-df49-4a51-a334-ccda7768aa0f",
+              "name": "Revision list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "page",
+                    ":title",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "older_than",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "newer_than",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) URL-encoded page title."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"revisions\": [\n    {\n      \"id\": 7654321,\n      \"page\": {\n        \"id\": 12345,\n        \"title\": \"hello\"\n      },\n      \"size\": 4321,\n      \"minor\": false,\n      \"timestamp\": \"2025-03-15T14:30:00Z\",\n      \"content_model\": \"wikitext\",\n      \"license\": {\n        \"url\": \"https://creativecommons.org/licenses/by-sa/4.0/\",\n        \"title\": \"Creative Commons Attribution-Share Alike 4.0 International\"\n      },\n      \"user\": {\n        \"id\": 1,\n        \"name\": \"ExampleEditor\"\n      },\n      \"comment\": \"typo fix\",\n      \"delta\": 12\n    },\n    {\n      \"id\": 7654321,\n      \"page\": {\n        \"id\": 12345,\n        \"title\": \"hello\"\n      },\n      \"size\": 4321,\n      \"minor\": false,\n      \"timestamp\": \"2025-03-15T14:30:00Z\",\n      \"content_model\": \"wikitext\",\n      \"license\": {\n        \"url\": \"https://creativecommons.org/licenses/by-sa/4.0/\",\n        \"title\": \"Creative Commons Attribution-Share Alike 4.0 International\"\n      },\n      \"user\": {\n        \"id\": 1,\n        \"name\": \"ExampleEditor\"\n      },\n      \"comment\": \"typo fix\",\n      \"delta\": 12\n    }\n  ],\n  \"latest\": \"https://en.wiktionary.org/w/rest.php/v1/page/hello/history\",\n  \"older\": \"https://en.wiktionary.org/w/rest.php/v1/page/hello/history?older_than=7654321\",\n  \"newer\": \"https://en.wiktionary.org/w/rest.php/v1/page/hello/history?newer_than=7654321\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e677928a-19ea-46f3-bfd5-f336440dc3ff",
+          "name": "Wiktionary Get Page History Count",
+          "request": {
+            "name": "Wiktionary Get Page History Count",
+            "description": {
+              "content": "Return a single numeric count of revisions for a page filtered by type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "page",
+                ":title",
+                "history",
+                "counts",
+                ":type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "title",
+                  "description": "(Required) URL-encoded page title."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "type",
+                  "description": "(Required) Which kind of revisions to count."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7bc022ed-e71e-4ed4-a7ef-fe30fc2d8f09",
+              "name": "Revision count response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "page",
+                    ":title",
+                    "history",
+                    "counts",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) URL-encoded page title."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) Which kind of revisions to count."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 412,\n  \"limit\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "29eecc51-5b60-4f71-a6d1-33792f594b05",
+          "name": "Wiktionary Get Revision Bare",
+          "request": {
+            "name": "Wiktionary Get Revision Bare",
+            "description": {
+              "content": "Fetch the bare metadata for a single revision id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "revision",
+                ":id",
+                "bare"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Revision id."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b42ddd80-f725-42d1-9c52-68a6a76bb343",
+              "name": "Revision metadata.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "revision",
+                    ":id",
+                    "bare"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Revision id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 7654321,\n  \"page\": {\n    \"id\": 12345,\n    \"title\": \"hello\"\n  },\n  \"size\": 4321,\n  \"minor\": false,\n  \"timestamp\": \"2025-03-15T14:30:00Z\",\n  \"content_model\": \"wikitext\",\n  \"license\": {\n    \"url\": \"https://creativecommons.org/licenses/by-sa/4.0/\",\n    \"title\": \"Creative Commons Attribution-Share Alike 4.0 International\"\n  },\n  \"user\": {\n    \"id\": 1,\n    \"name\": \"ExampleEditor\"\n  },\n  \"comment\": \"typo fix\",\n  \"delta\": 12\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://en.wiktionary.org/w/rest.php",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "a81b5551-ef4d-4c6d-934a-852a0820b322",
+    "name": "Wiktionary MediaWiki Core REST Definition History API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The newer MediaWiki Core REST API, exposed per wiki at /w/rest.php. It offers a smaller, streamlined surface than the Action API for fetching page content, history, search, files, and revisions. On Wiktionary it serves the same content as the Action API in a more developer-friendly JSON shape. All content is CC BY-SA 4.0.\n\nContact Support:\n Name: Wikimedia Foundation",
+      "type": "text/plain"
+    }
+  }
+}

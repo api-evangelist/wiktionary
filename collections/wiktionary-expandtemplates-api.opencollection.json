@@ -1,0 +1,61 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wiktionary MediaWiki Core REST Definition ExpandTemplates API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ExpandTemplates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Wiktionary Expand Templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://en.wiktionary.org/w/rest.php/api.php#expandtemplates",
+            "params": [
+              {
+                "name": "action",
+                "value": "",
+                "type": "query",
+                "description": "Must be `expandtemplates`."
+              },
+              {
+                "name": "text",
+                "value": "",
+                "type": "query",
+                "description": "Wikitext containing templates to expand."
+              },
+              {
+                "name": "title",
+                "value": "",
+                "type": "query",
+                "description": "Page title context for the expansion."
+              },
+              {
+                "name": "prop",
+                "value": "",
+                "type": "query",
+                "description": "Which expansion properties to return."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Response format."
+              }
+            ]
+          },
+          "docs": "Expand templates and parser functions in supplied wikitext and return the result."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

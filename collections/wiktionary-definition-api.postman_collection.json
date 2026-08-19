@@ -1,0 +1,325 @@
+{
+  "item": [
+    {
+      "id": "aa1295ce-68d9-4fab-ae5e-9c6bd734c625",
+      "name": "Definition",
+      "description": {
+        "content": "Wiktionary-specific structured multilingual definition endpoint",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5d854702-f11f-4e89-adc7-9d6ef0ac8203",
+          "name": "Wiktionary Get Definition",
+          "request": {
+            "name": "Wiktionary Get Definition",
+            "description": {
+              "content": "Return a multilingual structured definition for a term, broken down by source language code (en, fr, de, …) and then by part of speech. Wiktionary-specific endpoint built on top of Parsoid parsing.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "page",
+                "definition",
+                ":term"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "redirect",
+                  "value": "true",
+                  "description": "Whether to follow page redirects (defaults to true)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "term",
+                  "description": "(Required) The dictionary term (URL-encoded; case-sensitive on Wiktionary)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b0dcb75b-7ab2-467d-9f79-45b038d2b5a3",
+              "name": "Multilingual definition response keyed by language code.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "definition",
+                    ":term"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "redirect",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "term",
+                      "description": "(Required) The dictionary term (URL-encoded; case-sensitive on Wiktionary)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"en\": [\n    {\n      \"partOfSpeech\": \"Interjection\",\n      \"language\": \"English\",\n      \"definitions\": [\n        {\n          \"definition\": \"A standard greeting.\",\n          \"examples\": [\n            \"Hello, world!\"\n          ],\n          \"parsedExamples\": []\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1cec84df-3e6d-45ea-bb47-b445d5ce2f0c",
+              "name": "Permanent redirect to the canonical term page.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "definition",
+                    ":term"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "redirect",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "term",
+                      "description": "(Required) The dictionary term (URL-encoded; case-sensitive on Wiktionary)."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6fde037f-f6ea-4a50-a367-51994b3a82eb",
+              "name": "Temporary redirect to a different term page.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "definition",
+                    ":term"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "redirect",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "term",
+                      "description": "(Required) The dictionary term (URL-encoded; case-sensitive on Wiktionary)."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "352b0a7b-5726-420b-8a03-8dc9b5102fbe",
+              "name": "Term not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "definition",
+                    ":term"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "redirect",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "term",
+                      "description": "(Required) The dictionary term (URL-encoded; case-sensitive on Wiktionary)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://mediawiki.org/wiki/HyperSwitch/errors/not_found\",\n  \"title\": \"Not found.\",\n  \"method\": \"get\",\n  \"detail\": \"Page or revision not found.\",\n  \"uri\": \"/en.wiktionary.org/v1/page/definition/nonexistentword\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7195a576-d116-4479-8908-66f59e1cfe3d",
+              "name": "Unsupported language for structured definitions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "definition",
+                    ":term"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "redirect",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "term",
+                      "description": "(Required) The dictionary term (URL-encoded; case-sensitive on Wiktionary)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://mediawiki.org/wiki/HyperSwitch/errors/not_found\",\n  \"title\": \"Not found.\",\n  \"method\": \"get\",\n  \"detail\": \"Page or revision not found.\",\n  \"uri\": \"/en.wiktionary.org/v1/page/definition/nonexistentword\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://en.wiktionary.org/w/rest.php",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "f9b28f8b-7815-4c7f-8816-07690cda9d4c",
+    "name": "Wiktionary MediaWiki Core REST Definition API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The newer MediaWiki Core REST API, exposed per wiki at /w/rest.php. It offers a smaller, streamlined surface than the Action API for fetching page content, history, search, files, and revisions. On Wiktionary it serves the same content as the Action API in a more developer-friendly JSON shape. All content is CC BY-SA 4.0.\n\nContact Support:\n Name: Wikimedia Foundation",
+      "type": "text/plain"
+    }
+  }
+}

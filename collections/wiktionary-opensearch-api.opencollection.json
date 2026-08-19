@@ -1,0 +1,61 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wiktionary MediaWiki Core REST Definition OpenSearch API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OpenSearch",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Wiktionary OpenSearch Suggest",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://en.wiktionary.org/w/rest.php/api.php#opensearch",
+            "params": [
+              {
+                "name": "action",
+                "value": "",
+                "type": "query",
+                "description": "Must be `opensearch`."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Prefix to autocomplete."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of suggestions to return."
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "query",
+                "description": "Pipe-separated namespace numbers to search within."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Response format."
+              }
+            ]
+          },
+          "docs": "Return autocomplete suggestions following the OpenSearch suggestions protocol. Response is a 4-element array (query, titles, descriptions, urls)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

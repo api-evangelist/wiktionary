@@ -1,0 +1,679 @@
+{
+  "item": [
+    {
+      "id": "806ab826-e6e8-4d5c-9b50-6001e4a5c1dd",
+      "name": "Query",
+      "description": {
+        "content": "action=query — Fetch wikitext, extracts, revisions, and search results",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "25da63c4-5879-47a5-9ff5-81b9dd08e60e",
+          "name": "Wiktionary Query Action",
+          "request": {
+            "name": "Wiktionary Query Action",
+            "description": {
+              "content": "Dispatch any read-only MediaWiki Action API call. The `action` query parameter selects the module (query, parse, opensearch, expandtemplates). Use the more specific operations below for typed access, or pass arbitrary `action`/`format` values here.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api.php"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "action",
+                  "value": "query",
+                  "description": "(Required) Which Action API module to dispatch."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "json",
+                  "description": "Response format."
+                },
+                {
+                  "disabled": false,
+                  "key": "titles",
+                  "value": "<string>",
+                  "description": "Pipe-separated list of page titles (max 50 per request)."
+                },
+                {
+                  "disabled": false,
+                  "key": "prop",
+                  "value": "<string>",
+                  "description": "Properties to fetch (e.g. wikitext, extracts, revisions, links)."
+                },
+                {
+                  "disabled": false,
+                  "key": "list",
+                  "value": "<string>",
+                  "description": "Lists to fetch (e.g. search, allpages, recentchanges)."
+                },
+                {
+                  "disabled": false,
+                  "key": "meta",
+                  "value": "<string>",
+                  "description": "Meta information (e.g. siteinfo, tokens, userinfo)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bc489331-e26b-47f0-ad63-0c546d1d1aac",
+              "name": "Action API response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api.php"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "query"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    },
+                    {
+                      "key": "titles",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prop",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "list",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "meta",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"batchcomplete\": \"\",\n  \"continue\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": 9685.17641491571\n  },\n  \"query\": {\n    \"key_0\": 1991.1168328138262\n  },\n  \"parse\": {\n    \"key_0\": \"string\"\n  },\n  \"warnings\": {\n    \"key_0\": 6935\n  },\n  \"error\": {\n    \"code\": \"badvalue\",\n    \"info\": \"Unrecognized value for parameter \\\"action\\\".\",\n    \"*\": \"See https://en.wiktionary.org/w/api.php for help.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "31903cbe-4848-4351-9470-7f4ebda4c804",
+              "name": "Request was malformed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api.php"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "query"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    },
+                    {
+                      "key": "titles",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prop",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "list",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "meta",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"badvalue\",\n  \"info\": \"Unrecognized value for parameter \\\"action\\\".\",\n  \"*\": \"See https://en.wiktionary.org/w/api.php for help.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f396e06f-f00e-4776-95e2-0b2510885e12",
+              "name": "Rate limit exceeded (shared cap is ~200 req/s; set a unique User-Agent).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api.php"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "query"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    },
+                    {
+                      "key": "titles",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prop",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "list",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "meta",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"badvalue\",\n  \"info\": \"Unrecognized value for parameter \\\"action\\\".\",\n  \"*\": \"See https://en.wiktionary.org/w/api.php for help.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ebe39968-c3c8-4281-9d26-1111fdaae7c5",
+          "name": "Wiktionary Query Wikitext",
+          "request": {
+            "name": "Wiktionary Query Wikitext",
+            "description": {
+              "content": "Fetch the raw wikitext for one or more pages via action=query&prop=revisions&rvprop=content.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api.php"
+              ],
+              "hash": "query-wikitext",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "action",
+                  "value": "query",
+                  "description": "(Required) Must be `query`."
+                },
+                {
+                  "disabled": false,
+                  "key": "prop",
+                  "value": "revisions",
+                  "description": "(Required) Must be `revisions`."
+                },
+                {
+                  "disabled": false,
+                  "key": "rvprop",
+                  "value": "content",
+                  "description": "(Required) Revision properties to fetch (use `content` for wikitext)."
+                },
+                {
+                  "disabled": false,
+                  "key": "titles",
+                  "value": "<string>",
+                  "description": "(Required) Pipe-separated page titles."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "json",
+                  "description": "Response format."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3b9628ab-039a-44c8-b860-53f85f014733",
+              "name": "Wikitext content for the requested pages.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api.php"
+                  ],
+                  "hash": "query-wikitext",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "query"
+                    },
+                    {
+                      "key": "prop",
+                      "value": "revisions"
+                    },
+                    {
+                      "key": "rvprop",
+                      "value": "content"
+                    },
+                    {
+                      "key": "titles",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"batchcomplete\": \"\",\n  \"query\": {\n    \"pages\": {\n      \"key_0\": {\n        \"pageid\": 12345,\n        \"ns\": 0,\n        \"title\": \"hello\",\n        \"revisions\": [\n          {\n            \"contentformat\": \"text/x-wiki\",\n            \"contentmodel\": \"wikitext\",\n            \"*\": \"==English==\\n===Interjection===\\n# A standard greeting.\"\n          },\n          {\n            \"contentformat\": \"text/x-wiki\",\n            \"contentmodel\": \"wikitext\",\n            \"*\": \"==English==\\n===Interjection===\\n# A standard greeting.\"\n          }\n        ]\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0f48cae0-73dc-4897-8e67-9c506dc13cd3",
+          "name": "Wiktionary Query Extracts",
+          "request": {
+            "name": "Wiktionary Query Extracts",
+            "description": {
+              "content": "Fetch plain-text or limited-HTML extracts of pages via action=query&prop=extracts. Powered by the TextExtracts extension.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api.php"
+              ],
+              "hash": "query-extracts",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "action",
+                  "value": "query",
+                  "description": "(Required) Must be `query`."
+                },
+                {
+                  "disabled": false,
+                  "key": "prop",
+                  "value": "extracts",
+                  "description": "(Required) Must be `extracts`."
+                },
+                {
+                  "disabled": false,
+                  "key": "titles",
+                  "value": "<string>",
+                  "description": "(Required) Pipe-separated page titles."
+                },
+                {
+                  "disabled": false,
+                  "key": "exintro",
+                  "value": "<boolean>",
+                  "description": "Return only the lead section."
+                },
+                {
+                  "disabled": false,
+                  "key": "explaintext",
+                  "value": "<boolean>",
+                  "description": "Return plain text instead of limited HTML."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "json",
+                  "description": "Response format."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d5ff7f8d-0c1b-4304-8f8a-7e58246aa910",
+              "name": "Page extracts response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api.php"
+                  ],
+                  "hash": "query-extracts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "query"
+                    },
+                    {
+                      "key": "prop",
+                      "value": "extracts"
+                    },
+                    {
+                      "key": "titles",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exintro",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "explaintext",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"query\": {\n    \"pages\": {\n      \"key_0\": {\n        \"pageid\": 12345,\n        \"ns\": 0,\n        \"title\": \"hello\",\n        \"extract\": \"A standard greeting; an expression of puzzlement or discovery.\"\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d037b9da-2d54-40a1-9b8a-86edcabc3fa3",
+          "name": "Wiktionary Query Search",
+          "request": {
+            "name": "Wiktionary Query Search",
+            "description": {
+              "content": "Full-text search across Wiktionary pages via action=query&list=search. Backed by ElasticSearch (CirrusSearch).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api.php"
+              ],
+              "hash": "query-search",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "action",
+                  "value": "query",
+                  "description": "(Required) Must be `query`."
+                },
+                {
+                  "disabled": false,
+                  "key": "list",
+                  "value": "search",
+                  "description": "(Required) Must be `search`."
+                },
+                {
+                  "disabled": false,
+                  "key": "srsearch",
+                  "value": "<string>",
+                  "description": "(Required) Search query string."
+                },
+                {
+                  "disabled": false,
+                  "key": "srlimit",
+                  "value": "10",
+                  "description": "Number of results to return (max 500)."
+                },
+                {
+                  "disabled": false,
+                  "key": "sroffset",
+                  "value": "<integer>",
+                  "description": "Offset into the result set for paging."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "json",
+                  "description": "Response format."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aa964244-fd71-475b-a2cb-cf87859dc911",
+              "name": "Search response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api.php"
+                  ],
+                  "hash": "query-search",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "query"
+                    },
+                    {
+                      "key": "list",
+                      "value": "search"
+                    },
+                    {
+                      "key": "srsearch",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "srlimit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "sroffset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"batchcomplete\": \"\",\n  \"continue\": {\n    \"key_0\": 1542.5880351510812,\n    \"key_1\": false\n  },\n  \"query\": {\n    \"searchinfo\": {\n      \"totalhits\": 1234\n    },\n    \"search\": [\n      {\n        \"ns\": 0,\n        \"title\": \"hello\",\n        \"pageid\": 12345,\n        \"size\": 4321,\n        \"wordcount\": 412,\n        \"snippet\": \"A standard <span class=\\\"searchmatch\\\">greeting</span>.\",\n        \"timestamp\": \"2025-03-15T14:30:00Z\"\n      },\n      {\n        \"ns\": 0,\n        \"title\": \"hello\",\n        \"pageid\": 12345,\n        \"size\": 4321,\n        \"wordcount\": 412,\n        \"snippet\": \"A standard <span class=\\\"searchmatch\\\">greeting</span>.\",\n        \"timestamp\": \"2025-03-15T14:30:00Z\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://en.wiktionary.org/w/rest.php",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "7ab24cb8-a19c-4abe-b68a-b88a03c4a3af",
+    "name": "Wiktionary MediaWiki Core REST Definition Query API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The newer MediaWiki Core REST API, exposed per wiki at /w/rest.php. It offers a smaller, streamlined surface than the Action API for fetching page content, history, search, files, and revisions. On Wiktionary it serves the same content as the Action API in a more developer-friendly JSON shape. All content is CC BY-SA 4.0.\n\nContact Support:\n Name: Wikimedia Foundation",
+      "type": "text/plain"
+    }
+  }
+}

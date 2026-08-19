@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wiktionary MediaWiki Core REST Definition Search API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Wiktionary Search Page",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://en.wiktionary.org/w/rest.php/v1/search/page",
+            "params": [
+              {
+                "name": "q",
+                "value": "greeting",
+                "type": "query",
+                "description": "Search query string."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum results to return (1-100, default 50)."
+              }
+            ]
+          },
+          "docs": "Full-text search across Wiktionary pages."
+        },
+        {
+          "info": {
+            "name": "Wiktionary Search Title",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://en.wiktionary.org/w/rest.php/v1/search/title",
+            "params": [
+              {
+                "name": "q",
+                "value": "hel",
+                "type": "query",
+                "description": "Title prefix to autocomplete."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum results to return."
+              }
+            ]
+          },
+          "docs": "Title-prefix autocomplete search for Wiktionary pages."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

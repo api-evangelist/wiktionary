@@ -1,0 +1,750 @@
+{
+  "item": [
+    {
+      "id": "ae6b695d-54d9-42f3-9147-a821f1048912",
+      "name": "Transform",
+      "description": {
+        "content": "Parsoid wikitext ↔ HTML transforms and lint",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0f115f23-6649-488d-be56-17de01346fc5",
+          "name": "Wiktionary Transform Wikitext to HTML",
+          "request": {
+            "name": "Wiktionary Transform Wikitext to HTML",
+            "description": {
+              "content": "Convert supplied wikitext to Parsoid HTML in the context of a page title. Rate-limited to 25 req/s (5 req/s with stash=true).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transform",
+                "wikitext",
+                "to",
+                "html",
+                ":title"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "title",
+                  "description": "(Required) URL-encoded page title context."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"wikitext\": \"<string>\",\n  \"body_only\": \"<boolean>\",\n  \"stash\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f0482d00-e673-45fc-bd7d-3985a6efd8a4",
+              "name": "Parsoid HTML.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "wikitext",
+                    "to",
+                    "html",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) URL-encoded page title context."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"wikitext\": \"==English==\\n===Interjection===\\n# A standard greeting.\",\n  \"body_only\": true,\n  \"stash\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/html"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7679fd8e-3eaa-47a5-b5bb-a73f71b6c0e8",
+              "name": "Access restricted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "wikitext",
+                    "to",
+                    "html",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) URL-encoded page title context."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"wikitext\": \"==English==\\n===Interjection===\\n# A standard greeting.\",\n  \"body_only\": true,\n  \"stash\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "de064b89-1915-4472-842f-8458ac833618",
+              "name": "Page not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "wikitext",
+                    "to",
+                    "html",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) URL-encoded page title context."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"wikitext\": \"==English==\\n===Interjection===\\n# A standard greeting.\",\n  \"body_only\": true,\n  \"stash\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "423de410-2e26-41f5-940a-a8b8170c44f9",
+              "name": "Page has been deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "wikitext",
+                    "to",
+                    "html",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) URL-encoded page title context."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"wikitext\": \"==English==\\n===Interjection===\\n# A standard greeting.\",\n  \"body_only\": true,\n  \"stash\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Gone",
+              "code": 410,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0f6ad909-c7e8-48a6-aaa3-58c794226bb5",
+          "name": "Wiktionary Transform HTML to Wikitext",
+          "request": {
+            "name": "Wiktionary Transform HTML to Wikitext",
+            "description": {
+              "content": "Convert supplied Parsoid HTML back to wikitext for a given page and revision. Requires an If-Match ETag header. Rate-limited to 25 req/s.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transform",
+                "html",
+                "to",
+                "wikitext",
+                ":title",
+                ":revision"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "title",
+                  "description": "(Required) URL-encoded page title."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "revision",
+                  "description": "(Required) Revision id to anchor the round-trip against."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ETag from the corresponding /page/html call.",
+                "key": "If-Match",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"html\": \"<string>\",\n  \"scrub_wikitext\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f8430f86-3fa5-4b21-85ac-cf6dee60370a",
+              "name": "Wikitext body.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "html",
+                    "to",
+                    "wikitext",
+                    ":title",
+                    ":revision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) URL-encoded page title."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "revision",
+                      "description": "(Required) Revision id to anchor the round-trip against."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ETag from the corresponding /page/html call.",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"html\": \"<section><h2>English</h2><p>A standard greeting.</p></section>\",\n  \"scrub_wikitext\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3a2bbf33-95da-47a5-82f1-590942d1b734",
+              "name": "Access restricted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "html",
+                    "to",
+                    "wikitext",
+                    ":title",
+                    ":revision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) URL-encoded page title."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "revision",
+                      "description": "(Required) Revision id to anchor the round-trip against."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ETag from the corresponding /page/html call.",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"html\": \"<section><h2>English</h2><p>A standard greeting.</p></section>\",\n  \"scrub_wikitext\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0dfdeef6-4f20-4c99-8af3-38a43143607c",
+              "name": "Page not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "html",
+                    "to",
+                    "wikitext",
+                    ":title",
+                    ":revision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) URL-encoded page title."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "revision",
+                      "description": "(Required) Revision id to anchor the round-trip against."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ETag from the corresponding /page/html call.",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"html\": \"<section><h2>English</h2><p>A standard greeting.</p></section>\",\n  \"scrub_wikitext\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "79f07729-9299-4ec8-bc5f-96d3e6d5076f",
+              "name": "Page has been deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "html",
+                    "to",
+                    "wikitext",
+                    ":title",
+                    ":revision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) URL-encoded page title."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "revision",
+                      "description": "(Required) Revision id to anchor the round-trip against."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ETag from the corresponding /page/html call.",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"html\": \"<section><h2>English</h2><p>A standard greeting.</p></section>\",\n  \"scrub_wikitext\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Gone",
+              "code": 410,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6b26130c-4cc3-4d47-befa-85151f979fae",
+          "name": "Wiktionary Transform Wikitext to Lint",
+          "request": {
+            "name": "Wiktionary Transform Wikitext to Lint",
+            "description": {
+              "content": "Lint supplied wikitext and return a list of structural and semantic issues. Experimental stability.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transform",
+                "wikitext",
+                "to",
+                "lint",
+                ":title"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "title",
+                  "description": "(Required) URL-encoded page title context."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"wikitext\": \"<string>\",\n  \"body_only\": \"<boolean>\",\n  \"stash\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0361a591-398d-4ae9-84d8-3eab14165e06",
+              "name": "Lint errors found in the wikitext.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "wikitext",
+                    "to",
+                    "lint",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) URL-encoded page title context."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"wikitext\": \"==English==\\n===Interjection===\\n# A standard greeting.\",\n  \"body_only\": true,\n  \"stash\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"type\": \"missing-end-tag\",\n    \"dsr\": [\n      0,\n      12,\n      0,\n      0\n    ],\n    \"templateInfo\": {\n      \"key_0\": 4373.507698024987\n    },\n    \"params\": {\n      \"key_0\": 7707\n    }\n  },\n  {\n    \"type\": \"missing-end-tag\",\n    \"dsr\": [\n      0,\n      12,\n      0,\n      0\n    ],\n    \"templateInfo\": {\n      \"key_0\": false,\n      \"key_1\": 5550.56058657539\n    },\n    \"params\": {\n      \"key_0\": true\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://en.wiktionary.org/w/rest.php",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "f538881b-7ff7-489d-b632-883a2156b300",
+    "name": "Wiktionary MediaWiki Core REST Definition Transform API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The newer MediaWiki Core REST API, exposed per wiki at /w/rest.php. It offers a smaller, streamlined surface than the Action API for fetching page content, history, search, files, and revisions. On Wiktionary it serves the same content as the Action API in a more developer-friendly JSON shape. All content is CC BY-SA 4.0.\n\nContact Support:\n Name: Wikimedia Foundation",
+      "type": "text/plain"
+    }
+  }
+}
