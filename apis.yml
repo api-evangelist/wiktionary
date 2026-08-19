@@ -23,7 +23,7 @@ description: >-
   content is licensed CC BY-SA 4.0 (and GFDL) and hosted by the Wikimedia
   Foundation.
 url: https://en.wiktionary.org/w/api.php
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 created: '2026-05-28'
 modified: '2026-05-30'
 x-type: opensource
