@@ -35,6 +35,14 @@ x-license: CC BY-SA 4.0
 x-host: Wikimedia Foundation
 tags:
   - Dictionaries
+  - Open-Source
+  - Wikimedia
+  - MediaWiki
+  - Linguistics
+  - Open Data
+  - Public APIs
+tags_raw:
+  - Dictionaries
   - Open Source
   - Wikimedia
   - MediaWiki
@@ -1452,6 +1460,8 @@ apis:
   humanURL: https://en.wiktionary.org/w/api.php
   baseURL: https://en.wiktionary.org/w/api.php
   tags:
+  - Page content
+  tags_raw:
   - Page Content
   properties:
   - type: OpenAPI
@@ -2388,6 +2398,8 @@ apis:
   humanURL: https://en.wiktionary.org/w/api.php
   baseURL: https://en.wiktionary.org/w/api.php
   tags:
+  - Transforms
+  tags_raw:
   - Transform
   properties:
   - type: OpenAPI
