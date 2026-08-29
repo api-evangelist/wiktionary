@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Wiktionary MediaWiki Core REST Definition Page Content API
   description: The newer MediaWiki Core REST API, exposed per wiki at /w/rest.php. It offers a smaller, streamlined surface than the Action API for fetching page content, history, search, files, and revisions. On Wiktionary it serves the same content as the Action API in a more developer-friendly JSON shape. All content is CC BY-SA 4.0.
@@ -178,33 +178,58 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ContentUrls:
-      title: ContentUrls
+    ProblemDetails:
+      title: ProblemDetails
+      description: RFC 7807 problem-details error envelope.
       type: object
       properties:
-        desktop:
-          type: object
-          properties:
-            page:
-              type: string
-              format: uri
-              example: https://en.wiktionary.org/wiki/hello
-        mobile:
-          type: object
-          properties:
-            page:
-              type: string
-              format: uri
-              example: https://en.m.wiktionary.org/wiki/hello
-    RevisionMetadata:
-      title: RevisionMetadata
-      description: Metadata about the latest revision of a page.
+        type:
+          type: string
+          format: uri
+          example: https://mediawiki.org/wiki/HyperSwitch/errors/not_found
+        title:
+          type: string
+          example: Not found.
+        method:
+          type: string
+          example: get
+        detail:
+          type: string
+          example: Page or revision not found.
+        uri:
+          type: string
+          example: /en.wiktionary.org/v1/page/definition/nonexistentword
+    PageSummary:
+      title: PageSummary
+      description: Short structured summary of a page.
       type: object
       properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/RevisionItem'
+        type:
+          type: string
+          example: standard
+        title:
+          type: string
+          example: hello
+        displaytitle:
+          type: string
+          example: hello
+        pageid:
+          type: integer
+          example: 12345
+        extract:
+          type: string
+          description: Plain-text extract.
+          example: A standard greeting; an expression of puzzlement.
+        extract_html:
+          type: string
+          description: HTML extract.
+          example: <p>A standard greeting.</p>
+        content_urls:
+          $ref: '#/components/schemas/ContentUrls'
+        timestamp:
+          type: string
+          format: date-time
+          example: '2025-03-15T14:30:00Z'
     RevisionItem:
       title: RevisionItem
       type: object
@@ -251,58 +276,33 @@ components:
         page_language:
           type: string
           example: en
-    PageSummary:
-      title: PageSummary
-      description: Short structured summary of a page.
+    ContentUrls:
+      title: ContentUrls
       type: object
       properties:
-        type:
-          type: string
-          example: standard
-        title:
-          type: string
-          example: hello
-        displaytitle:
-          type: string
-          example: hello
-        pageid:
-          type: integer
-          example: 12345
-        extract:
-          type: string
-          description: Plain-text extract.
-          example: A standard greeting; an expression of puzzlement.
-        extract_html:
-          type: string
-          description: HTML extract.
-          example: <p>A standard greeting.</p>
-        content_urls:
-          $ref: '#/components/schemas/ContentUrls'
-        timestamp:
-          type: string
-          format: date-time
-          example: '2025-03-15T14:30:00Z'
-    ProblemDetails:
-      title: ProblemDetails
-      description: RFC 7807 problem-details error envelope.
+        desktop:
+          type: object
+          properties:
+            page:
+              type: string
+              format: uri
+              example: https://en.wiktionary.org/wiki/hello
+        mobile:
+          type: object
+          properties:
+            page:
+              type: string
+              format: uri
+              example: https://en.m.wiktionary.org/wiki/hello
+    RevisionMetadata:
+      title: RevisionMetadata
+      description: Metadata about the latest revision of a page.
       type: object
       properties:
-        type:
-          type: string
-          format: uri
-          example: https://mediawiki.org/wiki/HyperSwitch/errors/not_found
-        title:
-          type: string
-          example: Not found.
-        method:
-          type: string
-          example: get
-        detail:
-          type: string
-          example: Page or revision not found.
-        uri:
-          type: string
-          example: /en.wiktionary.org/v1/page/definition/nonexistentword
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/RevisionItem'
   securitySchemes:
     oauth2:
       type: oauth2

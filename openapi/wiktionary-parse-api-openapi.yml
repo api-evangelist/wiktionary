@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Wiktionary MediaWiki Core REST Definition Parse API
   description: The newer MediaWiki Core REST API, exposed per wiki at /w/rest.php. It offers a smaller, streamlined surface than the Action API for fetching page content, history, search, files, and revisions. On Wiktionary it serves the same content as the Action API in a more developer-friendly JSON shape. All content is CC BY-SA 4.0.
@@ -70,24 +70,32 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    Format:
-      name: format
-      in: query
-      required: false
-      description: Response format.
-      schema:
-        type: string
-        enum:
-        - json
-        - jsonfm
-        - xml
-        - xmlfm
-        - php
-        - phpfm
-        - none
-        default: json
   schemas:
+    ParseSection:
+      title: ParseSection
+      type: object
+      properties:
+        toclevel:
+          type: integer
+          example: 1
+        level:
+          type: string
+          example: '2'
+        line:
+          type: string
+          example: English
+        number:
+          type: string
+          example: '1'
+        index:
+          type: string
+          example: '1'
+        fromtitle:
+          type: string
+          example: hello
+        anchor:
+          type: string
+          example: English
     ParseResponse:
       title: ParseResponse
       description: action=parse result containing parser output for a page or text.
@@ -123,31 +131,23 @@ components:
               items:
                 type: object
                 additionalProperties: true
-    ParseSection:
-      title: ParseSection
-      type: object
-      properties:
-        toclevel:
-          type: integer
-          example: 1
-        level:
-          type: string
-          example: '2'
-        line:
-          type: string
-          example: English
-        number:
-          type: string
-          example: '1'
-        index:
-          type: string
-          example: '1'
-        fromtitle:
-          type: string
-          example: hello
-        anchor:
-          type: string
-          example: English
+  parameters:
+    Format:
+      name: format
+      in: query
+      required: false
+      description: Response format.
+      schema:
+        type: string
+        enum:
+        - json
+        - jsonfm
+        - xml
+        - xmlfm
+        - php
+        - phpfm
+        - none
+        default: json
   securitySchemes:
     oauth2:
       type: oauth2

@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Wiktionary MediaWiki Core REST Definition ExpandTemplates API
+  title: Wiktionary MediaWiki Core REST Definition Expand Templates API
   description: The newer MediaWiki Core REST API, exposed per wiki at /w/rest.php. It offers a smaller, streamlined surface than the Action API for fetching page content, history, search, files, and revisions. On Wiktionary it serves the same content as the Action API in a more developer-friendly JSON shape. All content is CC BY-SA 4.0.
   version: 1.0.0
   termsOfService: https://foundation.wikimedia.org/wiki/Terms_of_Use
@@ -70,6 +70,19 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  schemas:
+    ExpandTemplatesResponse:
+      title: ExpandTemplatesResponse
+      description: action=expandtemplates result.
+      type: object
+      properties:
+        expandtemplates:
+          type: object
+          properties:
+            wikitext:
+              type: string
+              description: Wikitext after template expansion.
+              example: A standard greeting.
   parameters:
     Format:
       name: format
@@ -87,19 +100,6 @@ components:
         - phpfm
         - none
         default: json
-  schemas:
-    ExpandTemplatesResponse:
-      title: ExpandTemplatesResponse
-      description: action=expandtemplates result.
-      type: object
-      properties:
-        expandtemplates:
-          type: object
-          properties:
-            wikitext:
-              type: string
-              description: Wikitext after template expansion.
-              example: A standard greeting.
   securitySchemes:
     oauth2:
       type: oauth2

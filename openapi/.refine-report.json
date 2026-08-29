@@ -29,6 +29,19 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "wiktionary-definition-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "wiktionary-expandtemplates-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "wiktionary-file-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "wiktionary-history-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "wiktionary-opensearch-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "wiktionary-page-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "wiktionary-page-content-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "wiktionary-parse-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "wiktionary-query-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "wiktionary-search-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "wiktionary-transform-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }
