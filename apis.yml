@@ -1,4 +1,17 @@
 aid: wiktionary
+deliveryModel:
+  model: unknown
+  open_source: unknown
+  commercial: true
+  callable_host: true
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  - pricing
+  - repository-unlicensed
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
@@ -2629,6 +2642,12 @@ apis:
   - type: Examples
     url: examples/core-rest-api-search-response-example.json
 common:
+  - type: IssueTracker
+    url: https://github.com/wikimedia/mediawiki/issues
+  - type: SecurityPolicy
+    url: https://github.com/wikimedia/mediawiki/blob/master/SECURITY
+  - type: CodeOfConduct
+    url: https://github.com/wikimedia/mediawiki/blob/master/CODE_OF_CONDUCT.md
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/wiktionary/overview
   - type: AgenticAccess
