@@ -1473,7 +1473,7 @@ apis:
   humanURL: https://en.wiktionary.org/w/api.php
   baseURL: https://en.wiktionary.org/w/api.php
   tags:
-  - Page content
+  - Page Content
   tags_raw:
   - Page Content
   properties:
