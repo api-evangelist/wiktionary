@@ -1,47 +1,47 @@
 {
   "provider": "wiktionary",
   "sources": [
-    "wiktionary-definition-api-openapi.yml",
-    "wiktionary-expandtemplates-api-openapi.yml",
-    "wiktionary-file-api-openapi.yml",
-    "wiktionary-history-api-openapi.yml",
-    "wiktionary-opensearch-api-openapi.yml",
-    "wiktionary-page-api-openapi.yml",
-    "wiktionary-page-content-api-openapi.yml",
-    "wiktionary-parse-api-openapi.yml",
-    "wiktionary-query-api-openapi.yml",
-    "wiktionary-search-api-openapi.yml",
-    "wiktionary-transform-api-openapi.yml"
+    "_ae-authored/wiktionary-core-rest-api-openapi-original.yml",
+    "_ae-authored/wiktionary-mediawiki-action-api-openapi-original.yml",
+    "_ae-authored/wiktionary-rest-api-openapi-original.yml"
   ],
   "outputs": [
-    "wiktionary-definition-api-openapi.yml",
-    "wiktionary-expandtemplates-api-openapi.yml",
     "wiktionary-file-api-openapi.yml",
     "wiktionary-history-api-openapi.yml",
-    "wiktionary-opensearch-api-openapi.yml",
     "wiktionary-page-api-openapi.yml",
-    "wiktionary-page-content-api-openapi.yml",
+    "wiktionary-search-api-openapi.yml",
+    "wiktionary-expandtemplates-api-openapi.yml",
+    "wiktionary-opensearch-api-openapi.yml",
     "wiktionary-parse-api-openapi.yml",
     "wiktionary-query-api-openapi.yml",
-    "wiktionary-search-api-openapi.yml",
+    "wiktionary-definition-api-openapi.yml",
+    "wiktionary-page-content-api-openapi.yml",
     "wiktionary-transform-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
   "notes": [
-    "wiktionary-definition-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "wiktionary-expandtemplates-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "wiktionary-file-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "wiktionary-history-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "wiktionary-opensearch-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "wiktionary-page-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "wiktionary-page-content-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "wiktionary-parse-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "wiktionary-query-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "wiktionary-search-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "wiktionary-transform-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "apis.yml register: already-registered"
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "wiktionary-core-rest-api-openapi-original.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "wiktionary-mediawiki-action-api-openapi-original.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "wiktionary-rest-api-openapi-original.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "superseded outputs removed: wiktionary-open-search-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 11 total)"
   ],
-  "skipped": []
+  "skipped": [
+    "wiktionary-definition-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wiktionary-expandtemplates-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wiktionary-file-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wiktionary-history-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wiktionary-open-search-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wiktionary-page-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wiktionary-page-content-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wiktionary-parse-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wiktionary-query-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wiktionary-search-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wiktionary-transform-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

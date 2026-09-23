@@ -1,23 +1,22 @@
 openapi: 3.2.0
 info:
-  title: Wiktionary MediaWiki Core REST Definition Page Content API
-  description: The newer MediaWiki Core REST API, exposed per wiki at /w/rest.php. It offers a smaller, streamlined surface than the Action API for fetching page content, history, search, files, and revisions. On Wiktionary it serves the same content as the Action API in a more developer-friendly JSON shape. All content is CC BY-SA 4.0.
+  title: Wiktionary Wikimedia REST Page Content API
+  description: The Wikimedia REST API (RESTBase) exposed per-project at /api/rest_v1/. English Wiktionary publishes a Wiktionary-specific extension that returns structured multilingual definitions (/page/definition/{term}), alongside generic page-content endpoints (HTML, summary, mobile-HTML, title metadata) and Parsoid transform endpoints (wikitext ↔ HTML, lint). Capped at ~200 req/s; a unique User-Agent or Api-User-Agent header is required. Content is CC BY-SA 4.0.
   version: 1.0.0
   termsOfService: https://foundation.wikimedia.org/wiki/Terms_of_Use
   contact:
     name: Wikimedia Foundation
-    url: https://www.mediawiki.org/wiki/API:REST_API
+    url: https://en.wiktionary.org/api/rest_v1/
   license:
     name: CC BY-SA 4.0
     url: https://creativecommons.org/licenses/by-sa/4.0/
   x-generated-from: documentation
   x-last-validated: '2026-05-30'
 servers:
-- url: https://en.wiktionary.org/w/rest.php
-  description: English Wiktionary Core REST endpoint
+- url: https://en.wiktionary.org/api/rest_v1
+  description: English Wiktionary REST API
 security:
 - {}
-- oauth2: []
 tags:
 - name: Page Content
   description: Page HTML, summary, title metadata, and mobile-optimised HTML
@@ -178,58 +177,15 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ProblemDetails:
-      title: ProblemDetails
-      description: RFC 7807 problem-details error envelope.
+    RevisionMetadata:
+      title: RevisionMetadata
+      description: Metadata about the latest revision of a page.
       type: object
       properties:
-        type:
-          type: string
-          format: uri
-          example: https://mediawiki.org/wiki/HyperSwitch/errors/not_found
-        title:
-          type: string
-          example: Not found.
-        method:
-          type: string
-          example: get
-        detail:
-          type: string
-          example: Page or revision not found.
-        uri:
-          type: string
-          example: /en.wiktionary.org/v1/page/definition/nonexistentword
-    PageSummary:
-      title: PageSummary
-      description: Short structured summary of a page.
-      type: object
-      properties:
-        type:
-          type: string
-          example: standard
-        title:
-          type: string
-          example: hello
-        displaytitle:
-          type: string
-          example: hello
-        pageid:
-          type: integer
-          example: 12345
-        extract:
-          type: string
-          description: Plain-text extract.
-          example: A standard greeting; an expression of puzzlement.
-        extract_html:
-          type: string
-          description: HTML extract.
-          example: <p>A standard greeting.</p>
-        content_urls:
-          $ref: '#/components/schemas/ContentUrls'
-        timestamp:
-          type: string
-          format: date-time
-          example: '2025-03-15T14:30:00Z'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/RevisionItem'
     RevisionItem:
       title: RevisionItem
       type: object
@@ -276,6 +232,58 @@ components:
         page_language:
           type: string
           example: en
+    PageSummary:
+      title: PageSummary
+      description: Short structured summary of a page.
+      type: object
+      properties:
+        type:
+          type: string
+          example: standard
+        title:
+          type: string
+          example: hello
+        displaytitle:
+          type: string
+          example: hello
+        pageid:
+          type: integer
+          example: 12345
+        extract:
+          type: string
+          description: Plain-text extract.
+          example: A standard greeting; an expression of puzzlement.
+        extract_html:
+          type: string
+          description: HTML extract.
+          example: <p>A standard greeting.</p>
+        content_urls:
+          $ref: '#/components/schemas/ContentUrls'
+        timestamp:
+          type: string
+          format: date-time
+          example: '2025-03-15T14:30:00Z'
+    ProblemDetails:
+      title: ProblemDetails
+      description: RFC 7807 problem-details error envelope.
+      type: object
+      properties:
+        type:
+          type: string
+          format: uri
+          example: https://mediawiki.org/wiki/HyperSwitch/errors/not_found
+        title:
+          type: string
+          example: Not found.
+        method:
+          type: string
+          example: get
+        detail:
+          type: string
+          example: Page or revision not found.
+        uri:
+          type: string
+          example: /en.wiktionary.org/v1/page/definition/nonexistentword
     ContentUrls:
       title: ContentUrls
       type: object
@@ -294,22 +302,3 @@ components:
               type: string
               format: uri
               example: https://en.m.wiktionary.org/wiki/hello
-    RevisionMetadata:
-      title: RevisionMetadata
-      description: Metadata about the latest revision of a page.
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/RevisionItem'
-  securitySchemes:
-    oauth2:
-      type: oauth2
-      description: OAuth 2.0 access tokens issued via api.wikimedia.org.
-      flows:
-        authorizationCode:
-          authorizationUrl: https://meta.wikimedia.org/w/rest.php/oauth2/authorize
-          tokenUrl: https://meta.wikimedia.org/w/rest.php/oauth2/access_token
-          scopes:
-            basic: Basic read access to user identity

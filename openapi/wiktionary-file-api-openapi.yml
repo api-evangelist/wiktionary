@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Wiktionary MediaWiki Core REST Definition File API
+  title: Wiktionary MediaWiki Core REST File API
   description: The newer MediaWiki Core REST API, exposed per wiki at /w/rest.php. It offers a smaller, streamlined surface than the Action API for fetching page content, history, search, files, and revisions. On Wiktionary it serves the same content as the Action API in a more developer-friendly JSON shape. All content is CC BY-SA 4.0.
   version: 1.0.0
   termsOfService: https://foundation.wikimedia.org/wiki/Terms_of_Use
@@ -50,14 +50,28 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  responses:
-    NotFound:
-      description: Resource not found.
-      content:
-        application/problem+json:
-          schema:
-            $ref: '#/components/schemas/ProblemDetails'
   schemas:
+    ProblemDetails:
+      title: ProblemDetails
+      description: RFC 7807 problem-details error envelope.
+      type: object
+      properties:
+        type:
+          type: string
+          format: uri
+          example: https://mediawiki.org/wiki/HyperSwitch/errors/not_found
+        title:
+          type: string
+          example: Not found.
+        detail:
+          type: string
+          example: Page not found.
+        instance:
+          type: string
+          example: /v1/page/nonexistentword
+        status:
+          type: integer
+          example: 404
     FileMetadata:
       title: FileMetadata
       type: object
@@ -114,27 +128,13 @@ components:
         original:
           type: object
           additionalProperties: true
-    ProblemDetails:
-      title: ProblemDetails
-      description: RFC 7807 problem-details error envelope.
-      type: object
-      properties:
-        type:
-          type: string
-          format: uri
-          example: https://mediawiki.org/wiki/HyperSwitch/errors/not_found
-        title:
-          type: string
-          example: Not found.
-        detail:
-          type: string
-          example: Page not found.
-        instance:
-          type: string
-          example: /v1/page/nonexistentword
-        status:
-          type: integer
-          example: 404
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetails'
   securitySchemes:
     oauth2:
       type: oauth2

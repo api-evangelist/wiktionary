@@ -1,23 +1,22 @@
 openapi: 3.2.0
 info:
-  title: Wiktionary MediaWiki Core REST Definition Transform API
-  description: The newer MediaWiki Core REST API, exposed per wiki at /w/rest.php. It offers a smaller, streamlined surface than the Action API for fetching page content, history, search, files, and revisions. On Wiktionary it serves the same content as the Action API in a more developer-friendly JSON shape. All content is CC BY-SA 4.0.
+  title: Wiktionary Wikimedia REST Transform API
+  description: The Wikimedia REST API (RESTBase) exposed per-project at /api/rest_v1/. English Wiktionary publishes a Wiktionary-specific extension that returns structured multilingual definitions (/page/definition/{term}), alongside generic page-content endpoints (HTML, summary, mobile-HTML, title metadata) and Parsoid transform endpoints (wikitext ↔ HTML, lint). Capped at ~200 req/s; a unique User-Agent or Api-User-Agent header is required. Content is CC BY-SA 4.0.
   version: 1.0.0
   termsOfService: https://foundation.wikimedia.org/wiki/Terms_of_Use
   contact:
     name: Wikimedia Foundation
-    url: https://www.mediawiki.org/wiki/API:REST_API
+    url: https://en.wiktionary.org/api/rest_v1/
   license:
     name: CC BY-SA 4.0
     url: https://creativecommons.org/licenses/by-sa/4.0/
   x-generated-from: documentation
   x-last-validated: '2026-05-30'
 servers:
-- url: https://en.wiktionary.org/w/rest.php
-  description: English Wiktionary Core REST endpoint
+- url: https://en.wiktionary.org/api/rest_v1
+  description: English Wiktionary REST API
 security:
 - {}
-- oauth2: []
 tags:
 - name: Transform
   description: Parsoid wikitext ↔ HTML transforms and lint
@@ -163,28 +162,6 @@ components:
           type: boolean
           description: Whether to clean up the resulting wikitext.
           example: true
-    WikitextTransformRequest:
-      title: WikitextTransformRequest
-      type: object
-      required:
-      - wikitext
-      properties:
-        wikitext:
-          type: string
-          description: Wikitext content to transform.
-          example: '==English==
-
-            ===Interjection===
-
-            # A standard greeting.'
-        body_only:
-          type: boolean
-          description: If true, only return the body fragment instead of a full HTML document.
-          example: true
-        stash:
-          type: boolean
-          description: If true, server-side stash for later /transform calls.
-          example: false
     LintError:
       title: LintError
       description: One Parsoid lint error found in supplied wikitext.
@@ -212,13 +189,25 @@ components:
           type: object
           additionalProperties: true
           description: Error-specific parameters.
-  securitySchemes:
-    oauth2:
-      type: oauth2
-      description: OAuth 2.0 access tokens issued via api.wikimedia.org.
-      flows:
-        authorizationCode:
-          authorizationUrl: https://meta.wikimedia.org/w/rest.php/oauth2/authorize
-          tokenUrl: https://meta.wikimedia.org/w/rest.php/oauth2/access_token
-          scopes:
-            basic: Basic read access to user identity
+    WikitextTransformRequest:
+      title: WikitextTransformRequest
+      type: object
+      required:
+      - wikitext
+      properties:
+        wikitext:
+          type: string
+          description: Wikitext content to transform.
+          example: '==English==
+
+            ===Interjection===
+
+            # A standard greeting.'
+        body_only:
+          type: boolean
+          description: If true, only return the body fragment instead of a full HTML document.
+          example: true
+        stash:
+          type: boolean
+          description: If true, server-side stash for later /transform calls.
+          example: false

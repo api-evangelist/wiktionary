@@ -1,23 +1,22 @@
 openapi: 3.2.0
 info:
-  title: Wiktionary MediaWiki Core REST Definition API
-  description: The newer MediaWiki Core REST API, exposed per wiki at /w/rest.php. It offers a smaller, streamlined surface than the Action API for fetching page content, history, search, files, and revisions. On Wiktionary it serves the same content as the Action API in a more developer-friendly JSON shape. All content is CC BY-SA 4.0.
+  title: Wiktionary Wikimedia REST Definition API
+  description: The Wikimedia REST API (RESTBase) exposed per-project at /api/rest_v1/. English Wiktionary publishes a Wiktionary-specific extension that returns structured multilingual definitions (/page/definition/{term}), alongside generic page-content endpoints (HTML, summary, mobile-HTML, title metadata) and Parsoid transform endpoints (wikitext ↔ HTML, lint). Capped at ~200 req/s; a unique User-Agent or Api-User-Agent header is required. Content is CC BY-SA 4.0.
   version: 1.0.0
   termsOfService: https://foundation.wikimedia.org/wiki/Terms_of_Use
   contact:
     name: Wikimedia Foundation
-    url: https://www.mediawiki.org/wiki/API:REST_API
+    url: https://en.wiktionary.org/api/rest_v1/
   license:
     name: CC BY-SA 4.0
     url: https://creativecommons.org/licenses/by-sa/4.0/
   x-generated-from: documentation
   x-last-validated: '2026-05-30'
 servers:
-- url: https://en.wiktionary.org/w/rest.php
-  description: English Wiktionary Core REST endpoint
+- url: https://en.wiktionary.org/api/rest_v1
+  description: English Wiktionary REST API
 security:
 - {}
-- oauth2: []
 tags:
 - name: Definition
   description: Wiktionary-specific structured multilingual definition endpoint
@@ -93,23 +92,27 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DefinitionEntry'
-    DefinitionResponse:
-      title: DefinitionResponse
-      description: Multilingual structured definitions keyed by ISO language code. Each value is a list of language-grouped entries describing the term in that language.
+    ProblemDetails:
+      title: ProblemDetails
+      description: RFC 7807 problem-details error envelope.
       type: object
-      additionalProperties:
-        type: array
-        items:
-          $ref: '#/components/schemas/LanguageEntry'
-      example:
-        en:
-        - partOfSpeech: Interjection
-          language: English
-          definitions:
-          - definition: A standard greeting.
-            examples:
-            - Hello, world!
-            parsedExamples: []
+      properties:
+        type:
+          type: string
+          format: uri
+          example: https://mediawiki.org/wiki/HyperSwitch/errors/not_found
+        title:
+          type: string
+          example: Not found.
+        method:
+          type: string
+          example: get
+        detail:
+          type: string
+          example: Page or revision not found.
+        uri:
+          type: string
+          example: /en.wiktionary.org/v1/page/definition/nonexistentword
     DefinitionEntry:
       title: DefinitionEntry
       type: object
@@ -133,34 +136,20 @@ components:
           items:
             type: object
             additionalProperties: true
-    ProblemDetails:
-      title: ProblemDetails
-      description: RFC 7807 problem-details error envelope.
+    DefinitionResponse:
+      title: DefinitionResponse
+      description: Multilingual structured definitions keyed by ISO language code. Each value is a list of language-grouped entries describing the term in that language.
       type: object
-      properties:
-        type:
-          type: string
-          format: uri
-          example: https://mediawiki.org/wiki/HyperSwitch/errors/not_found
-        title:
-          type: string
-          example: Not found.
-        method:
-          type: string
-          example: get
-        detail:
-          type: string
-          example: Page or revision not found.
-        uri:
-          type: string
-          example: /en.wiktionary.org/v1/page/definition/nonexistentword
-  securitySchemes:
-    oauth2:
-      type: oauth2
-      description: OAuth 2.0 access tokens issued via api.wikimedia.org.
-      flows:
-        authorizationCode:
-          authorizationUrl: https://meta.wikimedia.org/w/rest.php/oauth2/authorize
-          tokenUrl: https://meta.wikimedia.org/w/rest.php/oauth2/access_token
-          scopes:
-            basic: Basic read access to user identity
+      additionalProperties:
+        type: array
+        items:
+          $ref: '#/components/schemas/LanguageEntry'
+      example:
+        en:
+        - partOfSpeech: Interjection
+          language: English
+          definitions:
+          - definition: A standard greeting.
+            examples:
+            - Hello, world!
+            parsedExamples: []

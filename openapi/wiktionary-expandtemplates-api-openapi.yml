@@ -1,23 +1,24 @@
 openapi: 3.2.0
 info:
-  title: Wiktionary MediaWiki Core REST Definition Expand Templates API
-  description: The newer MediaWiki Core REST API, exposed per wiki at /w/rest.php. It offers a smaller, streamlined surface than the Action API for fetching page content, history, search, files, and revisions. On Wiktionary it serves the same content as the Action API in a more developer-friendly JSON shape. All content is CC BY-SA 4.0.
-  version: 1.0.0
+  title: Wiktionary MediaWiki Action Expand Templates API
+  description: 'The MediaWiki Action API is the canonical query/edit API exposed on every Wikimedia project at /w/api.php. This spec captures the most commonly used read actions against English Wiktionary: action=query (with prop=wikitext, prop=extracts, prop=revisions, list=search), action=parse, action=opensearch, action=expandtemplates. All Wiktionary content is licensed CC BY-SA 4.0.'
+  version: '1.0'
   termsOfService: https://foundation.wikimedia.org/wiki/Terms_of_Use
   contact:
     name: Wikimedia Foundation
-    url: https://www.mediawiki.org/wiki/API:REST_API
+    url: https://www.mediawiki.org/wiki/API:Main_page
   license:
     name: CC BY-SA 4.0
     url: https://creativecommons.org/licenses/by-sa/4.0/
   x-generated-from: documentation
   x-last-validated: '2026-05-30'
 servers:
-- url: https://en.wiktionary.org/w/rest.php
-  description: English Wiktionary Core REST endpoint
+- url: https://en.wiktionary.org/w
+  description: English Wiktionary MediaWiki endpoint
 security:
 - {}
 - oauth2: []
+- botPassword: []
 tags:
 - name: ExpandTemplates
   description: action=expandtemplates — Expand wikitext templates server-side
@@ -70,19 +71,6 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  schemas:
-    ExpandTemplatesResponse:
-      title: ExpandTemplatesResponse
-      description: action=expandtemplates result.
-      type: object
-      properties:
-        expandtemplates:
-          type: object
-          properties:
-            wikitext:
-              type: string
-              description: Wikitext after template expansion.
-              example: A standard greeting.
   parameters:
     Format:
       name: format
@@ -100,6 +88,19 @@ components:
         - phpfm
         - none
         default: json
+  schemas:
+    ExpandTemplatesResponse:
+      title: ExpandTemplatesResponse
+      description: action=expandtemplates result.
+      type: object
+      properties:
+        expandtemplates:
+          type: object
+          properties:
+            wikitext:
+              type: string
+              description: Wikitext after template expansion.
+              example: A standard greeting.
   securitySchemes:
     oauth2:
       type: oauth2
@@ -110,3 +111,9 @@ components:
           tokenUrl: https://meta.wikimedia.org/w/rest.php/oauth2/access_token
           scopes:
             basic: Basic read access to user identity
+            createeditmovepage: Create, edit, and move pages
+            highvolume: Higher rate limits for bot use
+    botPassword:
+      type: http
+      scheme: basic
+      description: Legacy BotPassword scoped credentials.
