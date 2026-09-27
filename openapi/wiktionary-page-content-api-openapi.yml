@@ -177,15 +177,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    RevisionMetadata:
-      title: RevisionMetadata
-      description: Metadata about the latest revision of a page.
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/RevisionItem'
     RevisionItem:
       title: RevisionItem
       type: object
@@ -263,6 +254,24 @@ components:
           type: string
           format: date-time
           example: '2025-03-15T14:30:00Z'
+    ContentUrls:
+      title: ContentUrls
+      type: object
+      properties:
+        desktop:
+          type: object
+          properties:
+            page:
+              type: string
+              format: uri
+              example: https://en.wiktionary.org/wiki/hello
+        mobile:
+          type: object
+          properties:
+            page:
+              type: string
+              format: uri
+              example: https://en.m.wiktionary.org/wiki/hello
     ProblemDetails:
       title: ProblemDetails
       description: RFC 7807 problem-details error envelope.
@@ -284,21 +293,12 @@ components:
         uri:
           type: string
           example: /en.wiktionary.org/v1/page/definition/nonexistentword
-    ContentUrls:
-      title: ContentUrls
+    RevisionMetadata:
+      title: RevisionMetadata
+      description: Metadata about the latest revision of a page.
       type: object
       properties:
-        desktop:
-          type: object
-          properties:
-            page:
-              type: string
-              format: uri
-              example: https://en.wiktionary.org/wiki/hello
-        mobile:
-          type: object
-          properties:
-            page:
-              type: string
-              format: uri
-              example: https://en.m.wiktionary.org/wiki/hello
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/RevisionItem'

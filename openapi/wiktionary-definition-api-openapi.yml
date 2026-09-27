@@ -113,6 +113,23 @@ components:
         uri:
           type: string
           example: /en.wiktionary.org/v1/page/definition/nonexistentword
+    DefinitionResponse:
+      title: DefinitionResponse
+      description: Multilingual structured definitions keyed by ISO language code. Each value is a list of language-grouped entries describing the term in that language.
+      type: object
+      additionalProperties:
+        type: array
+        items:
+          $ref: '#/components/schemas/LanguageEntry'
+      example:
+        en:
+        - partOfSpeech: Interjection
+          language: English
+          definitions:
+          - definition: A standard greeting.
+            examples:
+            - Hello, world!
+            parsedExamples: []
     DefinitionEntry:
       title: DefinitionEntry
       type: object
@@ -136,20 +153,3 @@ components:
           items:
             type: object
             additionalProperties: true
-    DefinitionResponse:
-      title: DefinitionResponse
-      description: Multilingual structured definitions keyed by ISO language code. Each value is a list of language-grouped entries describing the term in that language.
-      type: object
-      additionalProperties:
-        type: array
-        items:
-          $ref: '#/components/schemas/LanguageEntry'
-      example:
-        en:
-        - partOfSpeech: Interjection
-          language: English
-          definitions:
-          - definition: A standard greeting.
-            examples:
-            - Hello, world!
-            parsedExamples: []

@@ -1,16 +1,22 @@
 aid: wiktionary
 deliveryModel:
-  model: unknown
+  model: saas
+  license_evidence:
+    not_product:
+    - wikimedia/mediawiki
+    - wikimedia/parsoid
+    - wikimedia/pywikibot
+    - wikimedia/restbase
   open_source: unknown
   commercial: true
   callable_host: true
-  label: Delivery model not determined — needs a product licence on record
+  label: Hosted service · you call their endpoint
   confidence: low
   source:
   - openapi
   - pricing
-  - repository-unlicensed
-  generated: '2026-08-28'
+  - repository-not-product
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: unknown
@@ -48,7 +54,7 @@ x-license: CC BY-SA 4.0
 x-host: Wikimedia Foundation
 tags:
   - Dictionaries
-  - Open-Source
+  - Open Source
   - Wikimedia
   - MediaWiki
   - Linguistics
@@ -62,6 +68,7 @@ tags_raw:
   - Linguistics
   - Open Data
   - Public APIs
+  - Open-Source
 apis:
 - aid: wiktionary:wiktionary-definition-api
   name: Wiktionary Definition API
@@ -2413,8 +2420,6 @@ apis:
   humanURL: https://en.wiktionary.org/w/api.php
   baseURL: https://en.wiktionary.org/w/api.php
   tags:
-  - OpenSearch
-  tags_raw:
   - Open Search
   properties:
   - type: OpenAPI
