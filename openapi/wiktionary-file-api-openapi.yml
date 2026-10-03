@@ -50,13 +50,6 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  responses:
-    NotFound:
-      description: Resource not found.
-      content:
-        application/problem+json:
-          schema:
-            $ref: '#/components/schemas/ProblemDetails'
   schemas:
     ProblemDetails:
       title: ProblemDetails
@@ -135,6 +128,13 @@ components:
         original:
           type: object
           additionalProperties: true
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetails'
   securitySchemes:
     oauth2:
       type: oauth2

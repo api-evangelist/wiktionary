@@ -74,23 +74,6 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    Format:
-      name: format
-      in: query
-      required: false
-      description: Response format.
-      schema:
-        type: string
-        enum:
-        - json
-        - jsonfm
-        - xml
-        - xmlfm
-        - php
-        - phpfm
-        - none
-        default: json
   schemas:
     OpenSearchResponse:
       title: OpenSearchResponse
@@ -115,6 +98,23 @@ components:
       - - https://en.wiktionary.org/wiki/hello
         - https://en.wiktionary.org/wiki/help
         - https://en.wiktionary.org/wiki/helmet
+  parameters:
+    Format:
+      name: format
+      in: query
+      required: false
+      description: Response format.
+      schema:
+        type: string
+        enum:
+        - json
+        - jsonfm
+        - xml
+        - xmlfm
+        - php
+        - phpfm
+        - none
+        default: json
   securitySchemes:
     oauth2:
       type: oauth2

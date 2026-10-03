@@ -162,6 +162,28 @@ components:
           type: boolean
           description: Whether to clean up the resulting wikitext.
           example: true
+    WikitextTransformRequest:
+      title: WikitextTransformRequest
+      type: object
+      required:
+      - wikitext
+      properties:
+        wikitext:
+          type: string
+          description: Wikitext content to transform.
+          example: '==English==
+
+            ===Interjection===
+
+            # A standard greeting.'
+        body_only:
+          type: boolean
+          description: If true, only return the body fragment instead of a full HTML document.
+          example: true
+        stash:
+          type: boolean
+          description: If true, server-side stash for later /transform calls.
+          example: false
     LintError:
       title: LintError
       description: One Parsoid lint error found in supplied wikitext.
@@ -189,25 +211,3 @@ components:
           type: object
           additionalProperties: true
           description: Error-specific parameters.
-    WikitextTransformRequest:
-      title: WikitextTransformRequest
-      type: object
-      required:
-      - wikitext
-      properties:
-        wikitext:
-          type: string
-          description: Wikitext content to transform.
-          example: '==English==
-
-            ===Interjection===
-
-            # A standard greeting.'
-        body_only:
-          type: boolean
-          description: If true, only return the body fragment instead of a full HTML document.
-          example: true
-        stash:
-          type: boolean
-          description: If true, server-side stash for later /transform calls.
-          example: false

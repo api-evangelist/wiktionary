@@ -177,6 +177,15 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    RevisionMetadata:
+      title: RevisionMetadata
+      description: Metadata about the latest revision of a page.
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/RevisionItem'
     RevisionItem:
       title: RevisionItem
       type: object
@@ -293,12 +302,3 @@ components:
         uri:
           type: string
           example: /en.wiktionary.org/v1/page/definition/nonexistentword
-    RevisionMetadata:
-      title: RevisionMetadata
-      description: Metadata about the latest revision of a page.
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/RevisionItem'
