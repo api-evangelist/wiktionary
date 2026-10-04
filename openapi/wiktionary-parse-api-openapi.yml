@@ -72,31 +72,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ParseSection:
-      title: ParseSection
-      type: object
-      properties:
-        toclevel:
-          type: integer
-          example: 1
-        level:
-          type: string
-          example: '2'
-        line:
-          type: string
-          example: English
-        number:
-          type: string
-          example: '1'
-        index:
-          type: string
-          example: '1'
-        fromtitle:
-          type: string
-          example: hello
-        anchor:
-          type: string
-          example: English
     ParseResponse:
       title: ParseResponse
       description: action=parse result containing parser output for a page or text.
@@ -132,6 +107,31 @@ components:
               items:
                 type: object
                 additionalProperties: true
+    ParseSection:
+      title: ParseSection
+      type: object
+      properties:
+        toclevel:
+          type: integer
+          example: 1
+        level:
+          type: string
+          example: '2'
+        line:
+          type: string
+          example: English
+        number:
+          type: string
+          example: '1'
+        index:
+          type: string
+          example: '1'
+        fromtitle:
+          type: string
+          example: hello
+        anchor:
+          type: string
+          example: English
   parameters:
     Format:
       name: format

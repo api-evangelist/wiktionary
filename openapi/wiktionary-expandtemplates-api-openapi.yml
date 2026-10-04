@@ -71,6 +71,19 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  schemas:
+    ExpandTemplatesResponse:
+      title: ExpandTemplatesResponse
+      description: action=expandtemplates result.
+      type: object
+      properties:
+        expandtemplates:
+          type: object
+          properties:
+            wikitext:
+              type: string
+              description: Wikitext after template expansion.
+              example: A standard greeting.
   parameters:
     Format:
       name: format
@@ -88,19 +101,6 @@ components:
         - phpfm
         - none
         default: json
-  schemas:
-    ExpandTemplatesResponse:
-      title: ExpandTemplatesResponse
-      description: action=expandtemplates result.
-      type: object
-      properties:
-        expandtemplates:
-          type: object
-          properties:
-            wikitext:
-              type: string
-              description: Wikitext after template expansion.
-              example: A standard greeting.
   securitySchemes:
     oauth2:
       type: oauth2

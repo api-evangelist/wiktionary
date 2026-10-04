@@ -148,42 +148,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    HtmlTransformRequest:
-      title: HtmlTransformRequest
-      type: object
-      required:
-      - html
-      properties:
-        html:
-          type: string
-          description: Parsoid HTML to convert back to wikitext.
-          example: <section><h2>English</h2><p>A standard greeting.</p></section>
-        scrub_wikitext:
-          type: boolean
-          description: Whether to clean up the resulting wikitext.
-          example: true
-    WikitextTransformRequest:
-      title: WikitextTransformRequest
-      type: object
-      required:
-      - wikitext
-      properties:
-        wikitext:
-          type: string
-          description: Wikitext content to transform.
-          example: '==English==
-
-            ===Interjection===
-
-            # A standard greeting.'
-        body_only:
-          type: boolean
-          description: If true, only return the body fragment instead of a full HTML document.
-          example: true
-        stash:
-          type: boolean
-          description: If true, server-side stash for later /transform calls.
-          example: false
     LintError:
       title: LintError
       description: One Parsoid lint error found in supplied wikitext.
@@ -211,3 +175,39 @@ components:
           type: object
           additionalProperties: true
           description: Error-specific parameters.
+    WikitextTransformRequest:
+      title: WikitextTransformRequest
+      type: object
+      required:
+      - wikitext
+      properties:
+        wikitext:
+          type: string
+          description: Wikitext content to transform.
+          example: '==English==
+
+            ===Interjection===
+
+            # A standard greeting.'
+        body_only:
+          type: boolean
+          description: If true, only return the body fragment instead of a full HTML document.
+          example: true
+        stash:
+          type: boolean
+          description: If true, server-side stash for later /transform calls.
+          example: false
+    HtmlTransformRequest:
+      title: HtmlTransformRequest
+      type: object
+      required:
+      - html
+      properties:
+        html:
+          type: string
+          description: Parsoid HTML to convert back to wikitext.
+          example: <section><h2>English</h2><p>A standard greeting.</p></section>
+        scrub_wikitext:
+          type: boolean
+          description: Whether to clean up the resulting wikitext.
+          example: true

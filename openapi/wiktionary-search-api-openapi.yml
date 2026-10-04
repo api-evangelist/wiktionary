@@ -92,14 +92,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    SearchResponse:
-      title: SearchResponse
-      type: object
-      properties:
-        pages:
-          type: array
-          items:
-            $ref: '#/components/schemas/SearchPage'
     SearchPage:
       title: SearchPage
       type: object
@@ -139,6 +131,14 @@ components:
             height:
               type: integer
               example: 60
+    SearchResponse:
+      title: SearchResponse
+      type: object
+      properties:
+        pages:
+          type: array
+          items:
+            $ref: '#/components/schemas/SearchPage'
   securitySchemes:
     oauth2:
       type: oauth2
